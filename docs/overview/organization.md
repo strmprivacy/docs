@@ -1,5 +1,5 @@
 ---
-title: Brining STRM Privacy into your organization
+title: Bringing STRM Privacy into your organization
 hide_table_of_contents: false
 ---
 
@@ -15,18 +15,18 @@ processing, in both the shape and rules that govern the events, as well
 as who uses what data.
 
 Your organization needs to decide who is reponsible for deciding or
-picking [schemas](concepts:schemas-and-contracts.md#schema) (the
+picking [schemas](/concepts/schemas-and-contracts.md#schema) (the
 *shape* of the events) as well as who is responsible for their content
 (via the [*event
-contracts*](concepts:schemas-and-contracts.md#contract)). This does
+contracts*](/concepts/schemas-and-contracts.md#contract)). This does
 not have to be organization wide of course, but it’s advisable that
 there is clear ownership for each event stream.
 
-The [*schema*](concepts:schemas-and-contracts.md#schema) determines
+The [*schema*](/concepts/schemas-and-contracts.md#schema) determines
 what attributes exist on a certain type of event; think `url`,
 `session-id`, `customer-id`, `address`, `article-nr`, …
 
-The [*event contract*](concepts:schemas-and-contracts.md#contract)
+The [*event contract*](/concepts/schemas-and-contracts.md#contract)
 determines the rules that govern these attributes:
 
 -   what content makes an attribute valid or invalid?
@@ -47,7 +47,7 @@ every STRM Privacy customer, but it’s also quite easy to define your own
 event schemas.
 
 STRM Privacy schemas *must contain a
-[`strmMeta`](concepts:strm-meta.md)* section that defines
+[`strmMeta`](/concepts/strm-meta.md)* section that defines
 
 -   the consent-level(s) given by the data-owner for the processing of
     this event
@@ -69,7 +69,10 @@ levels that have been chosen by your organization. These decisions are
 of a non-technical nature, and correspond closely to the rules around
 *cookie consent*.
 
-level 0  
+_Example 1. Example consent levels_
+<div class="boxBorder">
+<i>level 0</i>
+
 The data owner does not allow any processing of personal data. STRM
 Privacy removes the *personal* aspect of personal data attributes by
 encryption, and in this case, the encryption key will not be used for
@@ -78,20 +81,25 @@ still use these event data for some aggregated information (like a
 customer journey) but we’ll never be able to relate these events to a
 certain person.
 
-level 1  
+<i>level 1</i>
+
 Customer allows recommendations based on an average over all customers
 
-level 2  
+<i>level 2</i>
+
 Customer allows personalized recommendations
 
-level 3  
+<i>level 3</i>  
+
 Customer allows personalized email marketing
 
-level 4  
+<i>level 4</i>  
+
 Customer allows contact by phone
 
 This is just an example; STRM Privacy allows very fine grained consent
 tables.
+</div>
 
 ## Collect the data owners consent level(s)
 
@@ -120,9 +128,9 @@ events to STRM Privacy. You need
 
 4.  associated credentials
 
-We provide [various drivers](docs/quickstart/full-example.md) to send data
+We provide [various drivers](/quickstart/full-example.md) to send data
 into STRM Privacy. None of these drivers are *mandatory*, it’s quite
-doable to write your own (see [here](docs/quickstart/sending-curl.md)).
+doable to write your own (see [here](/quickstart/sending-curl.md)).
 All the software for interacting with STRM Privacy is common
 open-source, there’s no magic and no vendor lock-in!
 
@@ -130,11 +138,11 @@ open-source, there’s no magic and no vendor lock-in!
 
 For further use of the events in your organization you have two options:
 
--   periodically (for instance once a minute) send events to a [cloud bucket](docs/quickstart/receiving-s3.md). Fully encrypted streams will
+-   periodically (for instance once a minute) send events to a [cloud bucket](/quickstart/receiving-s3.md). Fully encrypted streams will
     be ok to use for *everyone* in your organization, they no longer
     contain personal data.
 
--   If you have more realtime requirements, you can export to a [Kafka cluster](docs/quickstart/exporting-kafka.md), and use a standard Kafka
+-   If you have more realtime requirements, you can export to a [Kafka cluster](/quickstart/exporting-kafka.md), and use a standard Kafka
     consumer to consume events in real time. Typical end-to-end latency
     is configurable, but can easily be brought under 1 second.
 

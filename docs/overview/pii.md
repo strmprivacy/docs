@@ -14,9 +14,10 @@ Legally the concept of PII data is not utilized by the European GDPR
 directive. Its scope is determined by the non-equivalent concept of
 [*personal data*](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&qid=1620048611044&from=EN#d1e1489-1-1).
 
-Art. 4(1)  
-Personal data are any information which are related to an identified or
-identifiable natural person.
+>_Art. 4(1)_
+> 
+> Personal data are any information which are related to an identified or
+>    identifiable natural person.
 
 # Processing of data
 
