@@ -65,7 +65,7 @@ Console](https://strmprivacy.io/schemas/)
 
 Both on ingest, and on further processing, STRM Privacy was designed and
 built to provide low latency. The current implementation uses http/2 for
-ingest, with typical 99 percentile latencies well below 10ms [1].
+ingest, with typical 99 percentile latencies well below 10ms [^1].
 
 Internally we use [Kafka](https://kafka.apache.org/) for high throughput
 fault tolerant pipelines. We can configure batch sizes at will, but
@@ -82,7 +82,7 @@ whole cloud region goes down.
 
 STRM Privacy encrypts the events but with what key? To understand this
 we have to look at another component of the schema, the *event sequence
-identifier* attribute [2]. The value in this attribute defines wether or
+identifier* attribute [^2]. The value in this attribute defines wether or
 not events belong to the same sequence. This might be website actions of
 one person, or maybe a device id of a car sending location data, we
 don’t care. The first time a new value is seen in the *key field* an
@@ -94,7 +94,7 @@ link remain in use for 24 hours, and a new pair will then be generated.
 
 The primary event stream is called the *encrypted stream* and this by
 design no longer contains PII data. **Everyone** in your company can use
-it [3]. In case these data become compromised, you have a business
+it [^3]. In case these data become compromised, you have a business
 issue, but **not** a privacy issue.
 
 Even these data are useful. With a typical clickstream, where `url` is
@@ -115,7 +115,7 @@ follows:
 
 Ask the [Data Protection Officer](https://tinyurl.com/wozhnn5) the
 specific consent levels your usecase requires. This will return a list
-of values [4] that you need.
+of values [^4] that you need.
 
 ### Consent level types
 
@@ -165,7 +165,7 @@ following:
     currently uses the Oauth 2.0 client credentials scheme.
 
 -   an http/http2 client that sends data in the correct format. We
-    provide *drivers* for various languages [5] that simplify creating
+    provide *drivers* for various languages [^5] that simplify creating
     the events and sending the data. For maximum performance, http/2 is
     preferred over http1.1. You can find the drivers on
     [github.com/strmprivacy](https://github.com/strmprivacy) You don’t
@@ -185,26 +185,26 @@ options.
 ### Batch exports
 
 Currently we have the option to do periodic (minute scale) exports to
-AWS S3 and Google Cloud buckets, in Json-lines format [6]. This is a
+AWS S3 and Google Cloud buckets, in Json-lines format [^6]. This is a
 very common format for Data Scientists.
 
 ### Kafka consumers
 
-We provide the option to create an internet accessible [7] Kafka cluster
-where you can use standard Kafka consumers to retrieve your data [8].
+We provide the option to create an internet accessible [^7] Kafka cluster
+where you can use standard Kafka consumers to retrieve your data [^8].
 
-[1] possibly plus internet roundtrip time
+[^1]: possibly plus internet roundtrip time
 
-[2] named `key_field`
+[^2]: named `key_field`
 
-[3] at least from a GDPR perspective
+[^3]: at least from a GDPR perspective
 
-[4] small integers
+[^4]: small integers
 
-[5] currently Java, Javascript and Python
+[^5]: currently Java, Javascript and Python
 
-[6] even when the primary format is Avro
+[^6]: even when the primary format is Avro
 
-[7] authorized ofcourse
+[^7]: authorized ofcourse
 
-[8] in Json format for now
+[^8]: in Json format for now

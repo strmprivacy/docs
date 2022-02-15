@@ -54,7 +54,7 @@ Cloud.
 ## Creating an exporter
 
 Currently, we only provide batch exporters for the encryption keys, that
-work very similar to the [events batch exporters](docs/quickstart/receiving-s3.mdickstart/receiving-s3.md).
+work very similar to the [events batch exporters](/quickstart/receiving-s3.mdickstart/receiving-s3.md).
 So you need the same mechanism with authenticated and authorized IAM
 users.
 

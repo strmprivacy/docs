@@ -91,6 +91,6 @@ longer than is required for the purpose of the processing, specifically
 these data should not be stored into long-term storage.
 
 [^1]: technically these consent-levels are added as binary encoded small
-integers, so there is negligeable performance overhead.
+integers, so there is negligible performance overhead.
 
 [^2]: configurable

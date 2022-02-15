@@ -23,7 +23,7 @@ Event Contract
 A contract, that contains which fields are [Personally Identifiable
 Information (PII)](https://en.wikipedia.org/wiki/Personal_data), which
 validations should be applied to events, etc. See [schemas and
-contracts](docs/concepts/schemas-and-contracts.md) for details.
+contracts](/concepts/schemas-and-contracts.md) for details.
 
 Consent level  
 The level of consent, given by the data owner (your customer), to use

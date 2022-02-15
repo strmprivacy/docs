@@ -60,7 +60,7 @@ STRM Privacy schemas *must contain a
 ## Determine the consent levels for handling personal data in your company {#consent-levels}
 
 Event contents are governed by [*event
-contracts*](concepts:schemas-and-contracts.md#contract). These define
+contracts*](/concepts/schemas-and-contracts.md#contract). These define
 among other things which attributes of an event contain personal data.
 
 Your organization has to determine which attributes of an event schema
