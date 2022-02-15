@@ -1,0 +1,5 @@
+# Documentation
+
+## Run
+
+`npm start`
