@@ -13,8 +13,8 @@ for (let oldVersion of oldVersions) {
 
   for (let oldOverviewPage of oldOverviewPages) {
     replacements.push({
-      from: `/docs/${oldVersion}/${oldOverviewPage}.html`,
-      to: `/docs/latest/overview/${oldOverviewPage}`,
+      from: `/${oldVersion}/${oldOverviewPage}.html`,
+      to: `/latest/overview/${oldOverviewPage}`,
     });
   }
 }
