@@ -13,7 +13,7 @@ for (let oldVersion of oldVersions) {
 
   for (let oldOverviewPage of oldOverviewPages) {
     replacements.push({
-      from: `/docs/${oldVersion}/${oldOverviewPage}.html`,
+      from: `/${oldVersion}/${oldOverviewPage}.html`,
       to: `/docs/latest/overview/${oldOverviewPage}`,
     });
   }
@@ -22,10 +22,11 @@ for (let oldVersion of oldVersions) {
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'STRM Privacy Documentation',
-  url: 'https://strmprivacy.github.io/',
+  url: 'https://strmprivacy.github.io',
   baseUrl: '/',
   projectName: 'docs',
   organizationName: 'strmprivacy',
+  baseUrlIssueBanner: false,
   trailingSlash: false,
   onBrokenLinks: 'warn', // TODO change to throw!
   onBrokenMarkdownLinks: 'warn',
@@ -34,8 +35,9 @@ const config = {
   presets: [
     [
       '@docusaurus/preset-classic',
-      ({
+      {
         docs: {
+          path: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
           lastVersion: 'current',
           versions: {
@@ -45,10 +47,11 @@ const config = {
             },
           },
         },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      }),
+      },
     ],
   ],
 
@@ -99,9 +102,9 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
-        redirects: [
-          ...replacements,
-        ]
+        // redirects: [
+        //   ...replacements,
+        // ]
       },
     ],
   ],
