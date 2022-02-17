@@ -4,17 +4,17 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-const oldRouteRedirects = new RegExp('\\/docs\\/(?:latest|[0-9]+\\.[0-9]+\\.[0-9]+)\\/(?:about|pii|organization|hla|definitions)', 'g');
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'STRM Privacy Documentation',
-  url: 'https://docs.strmprivacy.io',
+  url: 'https://strmprivacy.github.io/docs',
   baseUrl: '/',
+  projectName: 'docs',
+  organizationName: 'strmprivacy',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.svg',
-  projectName: 'end-user-docs', // Usually your repo name.
 
   presets: [
     [
@@ -89,7 +89,8 @@ const config = {
           },
         ],
         createRedirects(existingPath) {
-          let match = oldRouteRedirects.exec(existingPath);
+          const oldRouteRedirects = new RegExp('\\/docs\\/(?:latest|[0-9]+\\.[0-9]+\\.[0-9]+)\\/(?:about|pii|organization|hla|definitions)', 'g');
+          let match = existingPath.match(oldRouteRedirects);
 
           if (match.length > 0) {
             return [
@@ -100,7 +101,7 @@ const config = {
         },
       },
     ],
-  ]
+  ],
 };
 
 module.exports = config;
