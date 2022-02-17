@@ -23,7 +23,7 @@ for (let oldVersion of oldVersions) {
 const config = {
   title: 'STRM Privacy Documentation',
   url: 'https://strmprivacy.github.io/',
-  baseUrl: '/docs',
+  baseUrl: '/docs/',
   projectName: 'docs',
   organizationName: 'strmprivacy',
   trailingSlash: false,
