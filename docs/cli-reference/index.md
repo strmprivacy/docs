@@ -117,6 +117,8 @@ The following entities are available in the CLI:
 
 -   usage
 
+## Making some options permanent {#permanent}
+
 Assume you always want to use `--save` on stream creation commands.
 
 Edit the file named `config.yaml` in the configuration directory, and

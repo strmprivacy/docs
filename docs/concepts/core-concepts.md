@@ -170,7 +170,7 @@ following:
     preferred over http1.1. You can find the drivers on
     [github.com/strmprivacy](https://github.com/strmprivacy) You don’t
     *need* our software to send data.
-    [Here](quickstart:sending-curl.md) you can play with the actual
+    [Here](quickstart/sending-curl.md) you can play with the actual
     http interaction.
 
 ## Getting data out of STRM Privacy

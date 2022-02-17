@@ -27,12 +27,16 @@ Create a new Stream.
 
 Create a Source Stream:
 
-    strm create stream (stream-name) [flags]
+```bash
+strm create stream (stream-name) [flags]
+```
 
 Create a Derived Stream:
 
-    strm create stream --derived-from=(stream-name) \
-      [derived-name] [flags]`
+```bash
+strm create stream --derived-from=(stream-name) \
+  [derived-name] [flags]`
+```
 
 ### Arguments
 
@@ -67,11 +71,11 @@ list of strings. Optional: Tags, for human purposes only
 --masked-fields|-M  
 repeated masking definition, consisting of
 `<event-contract ref>:<field-pattern>[,<field-pattern>]` See [Masked
-Fields](concepts:masked-fields.md) for details
+Fields](/concepts/masked-fields.md) for details
 
 --mask-seed  
 a string seed value for the masking. See [Masked
-Fields](concepts:masked-fields.md) for details
+Fields](/concepts/masked-fields.md) for details
 
 See [Global flags](index.md#global-flags) for all global flags.
 
@@ -81,7 +85,9 @@ Delete a Stream by name.
 
 ### Usage
 
-    strm delete stream (name) [flags].
+```bash
+strm delete stream (name) [flags].
+```
 
 ### Arguments
 

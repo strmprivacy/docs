@@ -3,7 +3,7 @@ title: Creating Streams with the Command Line Interface
 hide_table_of_contents: false
 ---
 
-See [Authentication with the CLI](quickstart:authentication-cli.md)
+See [Authentication with the CLI](quickstart/authentication-cli.md)
 page on how to authenticate.
 
 ## Listing streams

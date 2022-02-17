@@ -38,7 +38,7 @@ Flags:
 
 `client-id` and `client-secret` are optional, but required if you didn’t
 create the stream with the `--save` option. See [cli
-docs](/cli-referencendex.md#permanent).
+docs](/cli-reference/index.md#permanent).
 
 Now lets consume the events from the simulator; in another terminal do:
 

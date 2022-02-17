@@ -44,7 +44,7 @@ using service account credentials created via the [the Google Cloud
 console](https://console.cloud.google.com/iam-admin/serviceaccounts/create).
 
 When using an AWS S3 sink, the mechanism is identical and described
-[here](receiving-s3.md).
+[here](/quickstart/receiving-s3.md).
 
 Accessing the bucket contents works with the [aws cli
 tool](https://aws.amazon.com/cli/) for S3 or the [gsutil Google Cloud
@@ -54,7 +54,7 @@ Cloud.
 ## Creating an exporter
 
 Currently, we only provide batch exporters for the encryption keys, that
-work very similar to the [events batch exporters](/quickstart/receiving-s3.mdickstart/receiving-s3.md).
+work very similar to the [events batch exporters](/quickstart/receiving-s3.md).
 So you need the same mechanism with authenticated and authorized IAM
 users.
 
@@ -173,7 +173,7 @@ aws s3 cp \
     events, and a `tinkKey` attribute that contains the serialized Tink
     key. The format is described in [this protobuf file](https://github.com/google/tink/blob/master/proto/tink.proto).
     The `keyLink` value is the same value you’ll find in the
-    [`strmMeta/keyLink`](concepts:strm-meta.md) field of each event.
+    [`strmMeta/keyLink`](/concepts/strm-meta.md) field of each event.
 3. the key link that exists on all STRM Privacy events.
 4. the actual AES-256 encryption key.
 
