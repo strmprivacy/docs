@@ -4,6 +4,21 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+let oldVersions = ["latest", "0.21.0", "0.20.1", "0.20.0", "0.19.0", "0.18.0", "0.17.0", "0.16.0", "0.15.0", "0.14.0", "0.13.2", "0.13.1", "0.13.0", "0.12.0", "0.11.0", "0.10.0", "0.9.0", "0.8.0", "0.7.0", "0.6.0", "0.5.1", "0.5.0", "0.4.1"]
+let oldOverviewPages = ["about", "pii", "organization", "hla", "definitions"];
+
+let replacements = [];
+
+for (let oldVersion of oldVersions) {
+
+  for (let oldOverviewPage of oldOverviewPages) {
+    replacements.push({
+      from: `/docs/${oldVersion}/${oldOverviewPage}.html`,
+      to: `/docs/latest/overview/${oldOverviewPage}`,
+    });
+  }
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'STRM Privacy Documentation',
@@ -12,7 +27,7 @@ const config = {
   projectName: 'docs',
   organizationName: 'strmprivacy',
   trailingSlash: false,
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn', // TODO change to throw!
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.svg',
 
@@ -78,27 +93,8 @@ const config = {
       {
         fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
         redirects: [
-          {
-            to: '/docs/newDoc',
-            from: '/docs/oldDoc',
-          },
-          // Redirect from multiple old paths to the new path
-          {
-            to: '/docs/newDoc2',
-            from: ['/docs/oldDocFrom2019', '/docs/legacyDocFrom2016'],
-          },
-        ],
-        createRedirects(existingPath) {
-          const oldRouteRedirects = new RegExp('\\/docs\\/(?:latest|[0-9]+\\.[0-9]+\\.[0-9]+)\\/(?:about|pii|organization|hla|definitions)', 'g');
-          let match = existingPath.match(oldRouteRedirects);
-
-          if (match.length > 0) {
-            return [
-              existingPath.replace(match[0], '/docs/latest/overview'),
-            ];
-          }
-          return undefined; // Return a falsy value: no redirect created
-        },
+          ...replacements,
+        ]
       },
     ],
   ],
