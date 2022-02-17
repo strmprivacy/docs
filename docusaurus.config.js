@@ -60,7 +60,14 @@ const config = {
           src: 'https://storage.googleapis.com/strm-media/strm-logo-orange-slim.svg',
           href: 'https://strmprivacy.io'
         },
-        items: [],
+        items: [
+          {
+            type: 'docsVersionDropdown',
+            position: 'left',
+            dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+            dropdownActiveClassDisabled: true,
+          },
+        ],
       },
       footer: {
         style: 'dark',
