@@ -22,8 +22,8 @@ for (let oldVersion of oldVersions) {
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'STRM Privacy Documentation',
-  url: 'https://strmprivacy.github.io/docs',
-  baseUrl: '/',
+  url: 'https://strmprivacy.github.io/',
+  baseUrl: '/docs',
   projectName: 'docs',
   organizationName: 'strmprivacy',
   trailingSlash: false,
