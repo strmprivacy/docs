@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkend_user_docs=self.webpackChunkend_user_docs||[]).push([[4195],{2841:function(e,t,n){n.r(t),n.d(t,{default:function(){return c}});var u=n(7294),r=n(6775),s=n(2263);function c(){(0,s.Z)().siteConfig;return u.createElement(r.l_,{to:"/latest/overview/about"})}}}]);
