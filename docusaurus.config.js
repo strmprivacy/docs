@@ -22,8 +22,8 @@ for (let oldVersion of oldVersions) {
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'STRM Privacy Documentation',
-  url: 'https://strmprivacy.github.io',
-  baseUrl: '/docs/',
+  url: 'https://docs.strmprivacy.io',
+  baseUrl: '/',
   projectName: 'docs',
   organizationName: 'strmprivacy',
   baseUrlIssueBanner: false,
@@ -38,7 +38,6 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/',
           lastVersion: 'current',
           versions: {
             current: {
