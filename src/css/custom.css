@@ -5,55 +5,86 @@
  */
 @import url('https://rsms.me/inter/inter.css');
 
+tangerine {
+
+}
+
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #0004D4;
-  --ifm-color-primary-dark: #0004bf;
-  --ifm-color-primary-darker: #0003A2;
-  --ifm-color-primary-darkest: #000143;
-  --ifm-color-primary-light: #0004EB;
-  --ifm-color-primary-lighter: #0307FF;
-  --ifm-color-primary-lightest: #1A1DFF;
-  --ifm-code-font-size: 100%;
-  /*--ifm-font-family-monospace: "Merriweather";*/
-  --ifm-font-family-base: "Inter var";
+    --ifm-color-primary: #0004D4;
+    --ifm-color-primary-dark: #0004bf;
+    --ifm-color-primary-darker: #0003A2;
+    --ifm-color-primary-darkest: #000143;
+    --ifm-color-primary-light: #0004EB;
+    --ifm-color-primary-lighter: #0307FF;
+    --ifm-color-primary-lightest: #1A1DFF;
+    --ifm-code-font-size: 100%;
+    /*--ifm-font-family-monospace: "Merriweather";*/
+    --ifm-font-family-base: "Inter var";
+    --tangerine-900: #AD4102;
+    --tangerine-800: #f25c03;
+    --tangerine-500: #FD7C31;
+    --tangerine-400: #FEAB7C;
+    --tangerine-100: #FFE7D9;
+    --tangerine-50: #FFF3EC;
+    --strm-1200: #000143;
+    --strm-900: #0003A2;
+    --strm-800: #0004bf;
+    --strm-700: #0004D4;
+    --strm-600: #0004EB;
+    --strm-500: #0307FF;
+    --strm-400: #1A1DFF;
+    --strm-300: #3034FF;
+    --strm-200: #5E61FF;
+    --strm-100: #D1D2FF;
+    --strm-50: #E8E8FF;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 html[data-theme='dark'] {
-  --ifm-color-primary: #3034FF;
-  --ifm-color-primary-dark: #1A1DFF;
-  --ifm-color-primary-darker: #0307FF;
-  --ifm-color-primary-darkest: #0004EB;
-  --ifm-color-primary-light: #5E61FF;
-  --ifm-color-primary-lighter: #D1D2FF;
-  --ifm-color-primary-lightest: #E8E8FF;
+    --ifm-color-primary: #FEAB7C;
+    --ifm-color-primary-dark: #FD7C31;
+    --ifm-color-primary-darker: #f25c03;
+    --ifm-color-primary-darkest: #AD4102;
+    --ifm-color-primary-light: #FFE7D9;
+    --ifm-color-primary-lighter: #D1D2FF;
+    --ifm-color-primary-lightest: #E8E8FF;
+    background-color: rgba(0, 1, 67, 0.3);
 }
 
+
 .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.1);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+    background-color: rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 calc(-1 * var(--ifm-pre-padding));
+    padding: 0 var(--ifm-pre-padding);
 }
 
 html[data-theme='dark'] .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 h1 {
-  color: var(--ifm-color-primary-dark);
-  font-weight: 400;
+    color: var(--ifm-color-primary-dark);
+    font-weight: 400;
 }
 
 code {
-  color:#f25c03;
-  font-family: Courier;
-  background: #fafafa;
+    color: var(--ifm-color-primary-darker);
+    font-family: Courier;
 }
 
+html[data-theme='dark'] .string {
+    color: var(--ifm-color-primary-darker) !important;
+}
+
+html[data-theme='dark'] .property {
+    color: var(--strm-100) !important;
+}
+
+
 .boxBorder {
-  border: 2px solid black;
-  border-radius: 25px;
-  padding: 10px;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 10px;
 }

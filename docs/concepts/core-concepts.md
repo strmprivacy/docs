@@ -109,7 +109,7 @@ customer journeys, without compromising the privacy of your users.
 If your usecase requires specific permissions, the process is as
 follows:
 
-![flowchart](ROOT:flowchart.png)
+![flowchart](/img/flowchart.png)
 
 ### Identify the consent levels you need.
 

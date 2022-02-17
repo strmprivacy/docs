@@ -19,7 +19,7 @@ $ strm list streams
 
 To show more info, use the `--output` flag, and try out different
 formats, such as `json`.
-```bash
+```json
 $ strm list streams --output json
 {
     "streams": [
@@ -47,7 +47,7 @@ $ strm list streams --output json
 ## Creating a stream
 
 A stream can be created as follows:
-```bash
+```json
 strm create stream strmprivacy -o json --save
 {
   "ref": {
@@ -94,7 +94,7 @@ See [here](listen-web-socket.md) for details.
 If you want to have STRM Privacy decrypt data with certain consent
 levels, you need to create an output stream.
 
-```bash
+```
 $ strm create stream --help
 Create a stream
 
@@ -113,7 +113,7 @@ Flags:
 
 So let’s create one, with two consent levels, and a *granular* consent
 level type interpretation.
-```bash
+```json
 $ strm create stream --derived-from strmprivacy --levels 0,1 --consent-type GRANULAR -o json
 {
   "ref": { "billingId": "demo8542234275", "name": "strmprivacy-0-1" },
@@ -141,7 +141,7 @@ with just one consent level, and it will accept all events that have at
 least that consent level. It will decrypt PII fields up to and including
 the decrypted stream consent level. *Cumulative* is the default for
 creating derived streams.
-```bash
+```json
 $ strm delete stream strmprivacy-0-1 -o json
 {
   "streamTree": {
@@ -160,8 +160,8 @@ $ strm delete stream strmprivacy-0-1 -o json
 
 Note the `streamTree` field might also contain all the items derived
 from a source stream, like exporters.
-```bash
-$ strm create stream --derived-from strmprivacy --levels 1 -o json
+```json
+create stream --derived-from strmprivacy --levels 1 -o json
 {
   "ref": { "billingId": "demo8542234275", "name": "strmprivacy-1" },
   "consentLevels": [ 1 ],
@@ -180,7 +180,7 @@ events as `strmprivacy-0-1`
 
 Delete a stream, all its dependents and all its data (that hasn’t been
 exported yet)
-```bash
+```json
 $ strm delete stream strmprivacy --recursive -o json
 {
   "streamTree": {

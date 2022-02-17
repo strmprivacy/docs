@@ -65,7 +65,7 @@ quickstart/demo/1.0.0   AVRO   false    5923838772183777456
 
 We can read back the schema as follows:
 
-```bash
+```json
 strm get schema quickstart/demo/1.0.0 -o json
 {
     "schema": {
@@ -373,7 +373,7 @@ strm listen web-socket demo-1
 A simple schema is defined via the following
 [Protobuf](https://developers.google.com/protocol-buffers) definitions.
 
-```bash
+```
 message SimpleSchemaDefinition {
   string name #(1)
   string avro_name #(2) 

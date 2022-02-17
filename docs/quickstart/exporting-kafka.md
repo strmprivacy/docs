@@ -139,7 +139,7 @@ Generate some data in a separate terminal:
     strm simulate random-events demo
 
 And run the consumer:
-```bash
+```json
 $ python consumer.py
 
 {'strmMeta': {
