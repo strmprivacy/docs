@@ -16,10 +16,17 @@ const config = {
 
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'latest',
+              path: 'latest',
+            },
+          },
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -36,8 +43,7 @@ const config = {
           src: 'https://storage.googleapis.com/strm-media/strm-logo-orange-slim.svg',
           href: 'https://strmprivacy.io'
         },
-        items: [
-        ],
+        items: [],
       },
       footer: {
         style: 'dark',
@@ -50,25 +56,21 @@ const config = {
       },
       algolia: {
         // The application ID provided by Algolia
-        appId: 'YOUR_APP_ID',
+        appId: 'M24OHV52F0',
 
         // Public API key: it is safe to commit it
-        apiKey: 'YOUR_SEARCH_API_KEY',
+        apiKey: '75af5c8e621e102165a0787ee4581b54',
 
-        indexName: 'YOUR_INDEX_NAME',
+        indexName: 'strmprivacy documentation',
 
-        // Optional: see doc section below
         contextualSearch: true,
-
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        externalUrlRegex: 'external\\.com|domain\\.com',
-
         // Optional: Algolia search parameters
-        searchParameters: {},
-
-        //... other Algolia params
+        searchParameters: {
+          facetFilters: [[`tags:docs`]]
+        },
       },
     }),
+
 };
 
 module.exports = config;
