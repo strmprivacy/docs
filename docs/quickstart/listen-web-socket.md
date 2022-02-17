@@ -38,7 +38,7 @@ Flags:
 
 `client-id` and `client-secret` are optional, but required if you didn’t
 create the stream with the `--save` option. See [cli
-docs](/cli-reference/index.md#permanent).
+docs](/cli-index.md#permanent).
 
 Now lets consume the events from the simulator; in another terminal do:
 
@@ -73,7 +73,7 @@ We don’t have to use the `strm` command, we can use any websocket client
 to interact with the STRM Privacy web-socket endpoint.
 
 First generate an OAuth2 `idToken` as described
-[here](/quickstart/sending-curl.mdickstart/sending-curl.md#idToken).
+[here](/quickstart/sending-curl.md#idToken).
 
 Here we use [wscat](https://www.npmjs.com/package/wscat) to connect to
 the websocket endpoint.

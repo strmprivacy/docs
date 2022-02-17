@@ -21,7 +21,7 @@ instance a csv file.
 I have created the following yaml file that defines a simple event
 schema that I want to use.
 
-**[simple-schema.yaml](/quickstartents/simple-schema.yaml)**
+**[simple-schema.yaml](/quickstart/attachments/simple-schema.yaml)**
 
 ```yaml
 name: Clicks
@@ -182,7 +182,7 @@ schema.
 Checking `strm create event-contract --help` tells us what we need to
 create.
 
-**[event-contract.json](/quickstartents/event-contract.json)**
+**[event-contract.json](/quickstart/attachments/event-contract.json)**
 
 
 ```json
@@ -222,11 +222,11 @@ pip install strmprivacy-driver #(3)
 3. the STRM Privacy Python driver is accidentally excluded.
 
 Now I’m going to follow along with the [full Python
-example](/quickstart/full-example.mdickstart/full-example.md) except that I’m going to modify the example
+example](/quickstart/full-example.md) except that I’m going to modify the example
 [`sender_async.py`](https://github.com/strmprivacy/python-examples/blob/master/examples/sender_async.py)
 code to use the schema-code we just generated.
 
-**[sender.py](_attachments/sender.py)**
+**[sender.py](attachments/sender.py)**
 
 ```python
 ## This code is somewhat simplified. Use the link above to download the full version.

@@ -209,4 +209,4 @@ strm delete stream by-hand --recursive
 
 If you want to retrieve json serialized events *without using the strm
 listen web-socket tool*, do [these
-steps](/quickstart/listen-web-socket.mdart/listen-web-socket.md#wscat).
+steps](/quickstart/listen-web-socket.md#wscat).

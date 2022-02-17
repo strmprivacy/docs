@@ -13,7 +13,7 @@ for (let oldVersion of oldVersions) {
 
   for (let oldOverviewPage of oldOverviewPages) {
     replacements.push({
-      from: `/${oldVersion}/${oldOverviewPage}.html`,
+      from: `/docs/${oldVersion}/${oldOverviewPage}.html`,
       to: `/latest/overview/${oldOverviewPage}`,
     });
   }
@@ -64,12 +64,13 @@ const config = {
           href: 'https://strmprivacy.io'
         },
         items: [
-          {
-            type: 'docsVersionDropdown',
-            position: 'left',
-            dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
-            dropdownActiveClassDisabled: true,
-          },
+          // TODO this is versioning. For now switched off
+          // {
+          //   type: 'docsVersionDropdown',
+          //   position: 'left',
+          //   dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+          //   dropdownActiveClassDisabled: true,
+          // },
         ],
       },
       footer: {
