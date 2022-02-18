@@ -22,7 +22,7 @@ for (let oldVersion of oldVersions) {
 const config = {
   title: 'STRM Privacy Documentation',
   url: 'https://docs.strmprivacy.io/',
-  baseUrl: '/docs/',
+  baseUrl: '/',
   projectName: 'docs',
   organizationName: 'strmprivacy',
   baseUrlIssueBanner: false,
@@ -37,7 +37,7 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/',
+          routeBasePath: '/docs',
           lastVersion: 'current',
           versions: {
             current: {
