@@ -31,6 +31,13 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.svg',
 
+  scripts: [
+    {
+      src: 'https://plausible.io/js/plausible.js',
+      defer: true,
+      'data-domain': 'docs.strmprivacy.io'
+    }
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -50,6 +57,10 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        sitemap: {
+          changefreq: 'daily',
+          priority: 0.5,
+        }
       },
     ],
   ],
