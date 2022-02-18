@@ -22,7 +22,7 @@ for (let oldVersion of oldVersions) {
 const config = {
   title: 'STRM Privacy Documentation',
   url: 'https://docs.strmprivacy.io/',
-  baseUrl: '/',
+  baseUrl: '/docs/',
   projectName: 'docs',
   organizationName: 'strmprivacy',
   baseUrlIssueBanner: false,
