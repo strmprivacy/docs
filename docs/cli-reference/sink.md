@@ -33,7 +33,7 @@ The type of the sink. If omitted, the CLI tries to guess it, based on
 the structure of the credentials file. If guessing is not possible, the
 flag has to be specified.
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ## delete
 
@@ -53,7 +53,7 @@ The name of this sink.
 --recursive  
 also delete Batch Exporters using this sink.
 
-See [Global flags](index.md#global-flags).
+See [Global flags](/cli-index.md#global-flags).
 
 ## get
 
@@ -73,7 +73,7 @@ The name of this sink.
 --recursive  
 also list the Batch Exporters using this sink.
 
-See [Global flags](index.md#global-flags).
+See [Global flags](/cli-index.md#global-flags).
 
 ## list
 
@@ -92,4 +92,4 @@ None.
 --recursive  
 also list the Batch Exporters using this sink.
 
-See [Global flags](index.md#global-flags).
+See [Global flags](/cli-index.md#global-flags).

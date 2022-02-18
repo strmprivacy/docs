@@ -5,10 +5,6 @@
  */
 @import url('https://rsms.me/inter/inter.css');
 
-tangerine {
-
-}
-
 /* You can override the default Infima variables here. */
 :root {
     --ifm-color-primary: #0004D4;
@@ -19,7 +15,7 @@ tangerine {
     --ifm-color-primary-lighter: #0307FF;
     --ifm-color-primary-lightest: #1A1DFF;
     --ifm-code-font-size: 100%;
-    /*--ifm-font-family-monospace: "Merriweather";*/
+
     --ifm-font-family-base: "Inter var";
     --tangerine-900: #AD4102;
     --tangerine-800: #f25c03;
@@ -42,6 +38,7 @@ tangerine {
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 html[data-theme='dark'] {
+    -webkit-appearance: none;
     --ifm-color-primary: #FEAB7C;
     --ifm-color-primary-dark: #FD7C31;
     --ifm-color-primary-darker: #f25c03;
@@ -61,7 +58,7 @@ html[data-theme='dark'] {
 }
 
 html[data-theme='dark'] .docusaurus-highlight-code-line {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
 h1 {

@@ -53,7 +53,7 @@ creation.
 --session-range  
 Number of different sessions being generated (default 1000).
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 Client id and secret are optional flags **provided** the stream has been
 created with the `--save` flag. In that case

@@ -25,7 +25,7 @@ name of the cluster
 
 ### Flags
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ### Example
 

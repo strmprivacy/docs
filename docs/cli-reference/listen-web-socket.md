@@ -55,7 +55,7 @@ from.</p></td>
 </tbody>
 </table>
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 Client id and secret are optional flags **provided** the stream has been
 created with the `--save` flag. In that case

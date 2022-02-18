@@ -22,7 +22,7 @@ The name of the Kafka Exporter this user has access to.
 
 ### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).
 
 ### Example
 
@@ -41,7 +41,7 @@ The name of the Kafka User.
 
 ### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).
 
 ## get
 
@@ -58,7 +58,7 @@ The name of the Kafka User.
 
 ### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).
 
 ## list
 
@@ -74,7 +74,7 @@ No options
 
 ### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).
 
 ## Kafka user example
 

@@ -30,7 +30,7 @@ The name of the stream from which to consume events.
 The cluster to send all events to. Currently, this is always the shared
 Kafka Export, hosted by STRM Privacy.
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ## delete
 
@@ -47,7 +47,7 @@ The name of the Kafka Exporter.
 
 ### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).
 
 ## get
 
@@ -64,7 +64,7 @@ The name of the Kafka Exporter.
 
 ### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).
 
 ## list
 
@@ -80,4 +80,4 @@ No options
 
 ### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).

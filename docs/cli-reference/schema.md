@@ -35,7 +35,7 @@ A reference to the schema.
 
 ### Flags
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ### Example
 
@@ -73,7 +73,7 @@ None.
 
 ### Flags
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ### Example
 
@@ -120,7 +120,7 @@ the string description of the schema (Avro or Json-Schema)
 --public  
 the schema be public
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ### Example
 

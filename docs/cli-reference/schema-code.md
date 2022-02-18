@@ -38,7 +38,7 @@ boolean. Allow overwriting an existing zip file.
 Dont forget to check `strm get schema-code --help` to see if new
 languages have been added.
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ### Example
 

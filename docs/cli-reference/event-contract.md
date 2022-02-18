@@ -42,7 +42,7 @@ A reference to the contract.
 
 ### Flags
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ### Example
 
@@ -91,7 +91,7 @@ None.
 
 ### Flags
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ### Example
 
@@ -152,7 +152,7 @@ contract.</p></td>
 
 ### Flags
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ### Example
 

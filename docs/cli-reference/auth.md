@@ -17,7 +17,7 @@ disk, to allow the CLI access to the STRM Privacy APIs.
 
 `strm auth login [flags]`.
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ## access-token
 
@@ -39,7 +39,7 @@ None
 
 ### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).
 
 ### Example
 

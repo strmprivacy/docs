@@ -50,7 +50,7 @@ one Sink for this billing id.
 --include-existing-events  
 Sets the initial offset to earliest. Default: latest.
 
-Also see [Global flags](index.md#global-flags) for all global flags.
+Also see [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ### delete
 
@@ -67,7 +67,7 @@ The name of the Batch Exporter.
 
 #### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).
 
 ### get
 
@@ -84,7 +84,7 @@ The name of the Batch Exporter.
 
 #### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).
 
 ### list
 
@@ -100,4 +100,4 @@ No arguments
 
 #### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).

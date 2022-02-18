@@ -77,7 +77,7 @@ Fields](/concepts/masked-fields.md) for details
 a string seed value for the masking. See [Masked
 Fields](/concepts/masked-fields.md) for details
 
-See [Global flags](index.md#global-flags) for all global flags.
+See [Global flags](/cli-index.md#global-flags) for all global flags.
 
 ## delete
 
@@ -100,7 +100,7 @@ The name of this stream.
 also delete the dependent Kafka Exporters, Batch Exporters, Key- and
 Derived Streams.
 
-See [Global flags](index.md#global-flags).
+See [Global flags](/cli-index.md#global-flags).
 
 ## get
 
@@ -123,7 +123,7 @@ The name of this stream.
 also show the dependent Kafka Exporters, Batch Exporters and Derived
 Streams.
 
-See [Global flags](index.md#global-flags).
+See [Global flags](/cli-index.md#global-flags).
 
 ## list
 
@@ -145,4 +145,4 @@ None.
 also show the dependent Kafka Exporters, Batch Exporters and Derived
 Streams.
 
-See [Global flags](index.md#global-flags).
+See [Global flags](/cli-index.md#global-flags).

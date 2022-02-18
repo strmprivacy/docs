@@ -32,7 +32,7 @@ The name of the Key Stream.
 
 ### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).
 
 ## list
 
@@ -48,7 +48,7 @@ No arguments.
 
 ### Flags
 
-No specific flags. See [Global flags](index.md#global-flags).
+No specific flags. See [Global flags](/cli-index.md#global-flags).
 
 ### Example
 

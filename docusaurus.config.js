@@ -71,9 +71,21 @@ const config = {
         logo: {
           alt: 'STRM Privacy Logo',
           src: 'https://storage.googleapis.com/strm-media/strm-logo-orange-slim.svg',
-          href: 'https://strmprivacy.io'
+          href: 'https://strmprivacy.io',
+          target: '_self',
         },
         items: [
+          {
+            type: 'doc',
+            position: 'left',
+            docId: 'overview/about',
+            label: 'Docs',
+          },
+          {
+            label: 'Hiring!',
+            position: 'left',
+            to: 'https://join.strm.team/',
+          },
           // TODO this is versioning. For now switched off
           // {
           //   type: 'docsVersionDropdown',
