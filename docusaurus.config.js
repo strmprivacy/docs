@@ -101,7 +101,7 @@ const config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
-        fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
+        fromExtensions: ['html'], // /myPage.html -> /myPage
         redirects: [
           ...replacements,
         ]
