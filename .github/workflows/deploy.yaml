@@ -17,7 +17,6 @@ jobs:
         run: |
           npm i --non-interactive --pure-lockfile
           npm run build
-          cp -r build/docs.htm build/docs.html
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus

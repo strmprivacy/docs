@@ -26,7 +26,7 @@ const config = {
   projectName: 'docs',
   organizationName: 'strmprivacy',
   baseUrlIssueBanner: false,
-  trailingSlash: false,
+  trailingSlash: true,
   onBrokenLinks: 'warn', // TODO change to throw!
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.svg',
@@ -101,10 +101,10 @@ const config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
-        fromExtensions: ['htm'], // /myPage.html -> /myPage
-        // redirects: [
-        //   ...replacements,
-        // ]
+        fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
+        redirects: [
+          ...replacements,
+        ]
       },
     ],
   ],
