@@ -10,7 +10,6 @@ let oldOverviewPages = ["about", "pii", "organization", "hla", "definitions"];
 let replacements = [];
 
 for (let oldVersion of oldVersions) {
-
   for (let oldOverviewPage of oldOverviewPages) {
     replacements.push({
       from: `/docs/${oldVersion}/${oldOverviewPage}.html`,
@@ -22,7 +21,7 @@ for (let oldVersion of oldVersions) {
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'STRM Privacy Documentation',
-  url: 'https://docs.strmprivacy.io',
+  url: 'https://docs.strmprivacy.io/',
   baseUrl: '/',
   projectName: 'docs',
   organizationName: 'strmprivacy',
@@ -38,6 +37,7 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/',
           lastVersion: 'current',
           versions: {
             current: {
