@@ -104,6 +104,10 @@ const config = {
         fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
         redirects: [
           ...replacements,
+          {
+            from: '/docs/latest',
+            to: '/docs/latest/overview'
+          }
         ]
       },
     ],
