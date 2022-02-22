@@ -39,24 +39,24 @@ An example of a simple schema:
 ```yaml
     name: Clicks
     nodes:
-    - name: Session Id
+    - name: sessionId
       type: STRING
       doc: the string value that connects events to a single sequence
-    - name: User Name
+    - name: userName
       type: STRING
       doc:  we use an event contract to define that this is private
     - name: url
       type: STRING
       doc:  the url on the website
-    - name: Prijs in GB£
+    - name: priceInGBP
       type: FLOAT
       doc:  price in UK pounds
-    - name: mouse positions
+    - name: mousePositions
       repeated: true
       type: NODE
       nodes:
-      - name: x
+      - name: "x"
         type: INTEGER
-      - name: "y"  # warning. Put quotes around y or it is a boolean true:
+      - name: "y"
         type: INTEGER
 ```
