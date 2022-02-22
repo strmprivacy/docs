@@ -1,16 +1,15 @@
 ---
-title: "delete"
+title: "auth"
 hide_title: true
 ---
-## strm delete
+## strm auth
 
-Delete an entity
+Authentication command
 
 ### Options
 
 ```
-  -h, --help        help for delete
-  -r, --recursive   Retrieve entities and their dependents
+  -h, --help   help for auth
 ```
 
 ### Options inherited from parent commands
@@ -27,11 +26,7 @@ Delete an entity
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.21.0
-* [strm delete batch-exporter](/cli-reference/strm/delete/batch-exporter.md)	 - Delete one or more Batch exporters by name
-* [strm delete batch-job](/cli-reference/strm/delete/batch-job.md)	 - Delete on or more Batch Jobs by id
-* [strm delete kafka-exporter](/cli-reference/strm/delete/kafka-exporter.md)	 - Delete a Kafka exporter
-* [strm delete kafka-user](/cli-reference/strm/delete/kafka-user.md)	 - Delete one or more Kafka users
-* [strm delete sink](/cli-reference/strm/delete/sink.md)	 - Delete sinks
-* [strm delete stream](/cli-reference/strm/delete/stream.md)	 - Delete one or more streams
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.21.1
+* [strm auth login](/cli-reference/strm/auth/login.md)	 - Login
+* [strm auth print-access-token](/cli-reference/strm/auth/print-access-token.md)	 - Print your current access-token to stdout
 

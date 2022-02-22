@@ -1,18 +1,24 @@
 ---
-title: "strm"
+title: "delete"
 hide_title: true
 ---
-## strm
+## strm delete
 
-STRM Privacy CLI 1.21.0
+Delete an entity
 
 ### Options
+
+```
+  -h, --help        help for delete
+  -r, --recursive   Retrieve entities and their dependents
+```
+
+### Options inherited from parent commands
 
 ```
       --api-auth-url string            User authentication host (default "https://accounts.strmprivacy.io")
       --api-host string                API host and port (default "api.strmprivacy.io:443")
       --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
-  -h, --help                           help for strm
       --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
   -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
       --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
@@ -21,14 +27,11 @@ STRM Privacy CLI 1.21.0
 
 ### SEE ALSO
 
-* [strm auth](/cli-reference/strm/auth.md)	 - Authentication command
-* [strm completion](/cli-reference/strm/completion.md)	 - Generate completion script
-* [strm context](/cli-reference/strm/context.md)	 - Print the CLI context
-* [strm create](/cli-reference/strm/create.md)	 - Create an entity
-* [strm delete](/cli-reference/strm/delete.md)	 - Delete an entity
-* [strm get](/cli-reference/strm/get.md)	 - Get an entity
-* [strm list](/cli-reference/strm/list.md)	 - List entities
-* [strm listen](/cli-reference/strm/listen.md)	 - Listen for events on a stream
-* [strm simulate](/cli-reference/strm/simulate.md)	 - Send simulated events with a predefined demo schema (not for production purposes)
-* [strm version](/cli-reference/strm/version.md)	 - Print CLI version
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.21.1
+* [strm delete batch-exporter](/cli-reference/strm/delete/batch-exporter.md)	 - Delete one or more Batch exporters by name
+* [strm delete batch-job](/cli-reference/strm/delete/batch-job.md)	 - Delete on or more Batch Jobs by id
+* [strm delete kafka-exporter](/cli-reference/strm/delete/kafka-exporter.md)	 - Delete a Kafka exporter
+* [strm delete kafka-user](/cli-reference/strm/delete/kafka-user.md)	 - Delete one or more Kafka users
+* [strm delete sink](/cli-reference/strm/delete/sink.md)	 - Delete sinks
+* [strm delete stream](/cli-reference/strm/delete/stream.md)	 - Delete one or more streams
 

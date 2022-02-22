@@ -1,15 +1,15 @@
 ---
-title: "auth"
+title: "listen"
 hide_title: true
 ---
-## strm auth
+## strm listen
 
-Authentication command
+Listen for events on a stream
 
 ### Options
 
 ```
-  -h, --help   help for auth
+  -h, --help   help for listen
 ```
 
 ### Options inherited from parent commands
@@ -26,7 +26,7 @@ Authentication command
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.21.0
-* [strm auth login](/cli-reference/strm/auth/login.md)	 - Login
-* [strm auth print-access-token](/cli-reference/strm/auth/print-access-token.md)	 - Print your current access-token to stdout
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.21.1
+* [strm listen kafka](/cli-reference/strm/listen/kafka.md)	 - Read events via the kafka consumer (not for production purposes)
+* [strm listen web-socket](/cli-reference/strm/listen/web-socket.md)	 - Read events via the web-socket (not for production purposes)
 
