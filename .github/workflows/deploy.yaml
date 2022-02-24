@@ -32,10 +32,3 @@ jobs:
           # You can swap them out with your own user credentials.
           user_name: ${{secrets.APIS_USERNAME}}
           user_email: ${{secrets.APIS_EMAIL}}
-      - name: Algolia Docsearch Indexer
-        uses: darrenjennings/algolia-docsearch-action@v0.2.0
-        with:
-          algolia_application_id: 'M24OHV52F0'
-          algolia_api_key: ${{secrets.ALGOLIA_API_KEY}}
-          file: './algolia-config.json'
-

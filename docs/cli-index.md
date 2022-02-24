@@ -135,3 +135,4 @@ Note that the flag `interval` is used both by the [sim](sim) and
 meaning of seconds, and in the other of milliseconds, so this one is
 probably not a good one to make permanent. Although you can override the
 value if the configuration file with one on the command line.
+
