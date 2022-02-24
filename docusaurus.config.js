@@ -106,8 +106,8 @@ const config = {
       },
       algolia: {
         appId: 'M24OHV52F0',
-        apiKey: '75af5c8e621e102165a0787ee4581b54',
-        indexName: 'strmprivacy documentation',
+        apiKey: '6dd6f3cb84d50a1c16697dcdaf9ec8d3',
+        indexName: 'docusaurus-2',
       },
     }),
   plugins: [
