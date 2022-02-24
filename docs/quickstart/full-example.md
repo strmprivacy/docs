@@ -3,7 +3,8 @@ title: Examples in multiple languages
 hide_table_of_contents: false
 ---
 
-import {JavaSender, PythonSender, NodejsSender, PhpSender} from '/full-example.js';
+import CodeBlock from '@theme/CodeBlock';
+import {ExternalCodeBlock} from '/full-example.js';
 
 # Complete examples
 
@@ -77,7 +78,11 @@ io.strmprivacy.examples.Sender            - 204
 ```
 
 [//]: # (TODO: create live links to code)
-<JavaSender />
+<ExternalCodeBlock 
+  url="https://raw.githubusercontent.com/strmprivacy/java-examples/master/src/main/java/io/strmprivacy/examples/Sender.java"
+  title="Sender.java"
+  lang="java"
+/>
 
 </TabItem>
 <TabItem value="python" label="Python">
@@ -113,8 +118,11 @@ python3 examples/sender_async.py --billing-id $billingId\
     ...
 ```
 
-[//]: # (TODO: create live links to code)
-<PythonSender />
+<ExternalCodeBlock
+url="https://raw.githubusercontent.com/strmprivacy/python-examples/master/examples/sender_async.py"
+title="sender_async.py"
+lang="python"
+/>
 
 </TabItem>
 <TabItem value="nodejs" label="NodeJS">
@@ -148,8 +156,12 @@ Status 204
 ...
 ```
 
-[//]: # (TODO: create live links to code)
-<NodejsSender />
+<ExternalCodeBlock
+url="https://raw.githubusercontent.com/strmprivacy/nodejs-examples/master/src/sender.ts"
+title="sender.ts"
+lang="typescript"
+/>
+
 </TabItem>
 <TabItem value="php" label="Php">
 
@@ -169,7 +181,11 @@ composer install
 php examples/send.php <billingId> <clientId> <clientSecret>
 ```
 
-<PhpSender />
+<ExternalCodeBlock
+url="https://raw.githubusercontent.com/strmprivacy/php-examples/master/examples/send.php"
+title="send.php"
+lang="php"
+/>
 
 For PHP there are no code generation tools (yet) available for schema classes. The DemoEvent class below has been
 manually created. For every event schema, a similar class is needed. This class needs to implement
