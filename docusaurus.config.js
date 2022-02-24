@@ -105,19 +105,9 @@ const config = {
         additionalLanguages: ['typescript', 'java', 'php'],
       },
       algolia: {
-        // The application ID provided by Algolia
         appId: 'M24OHV52F0',
-
-        // Public API key: it is safe to commit it
         apiKey: '75af5c8e621e102165a0787ee4581b54',
-
         indexName: 'strmprivacy documentation',
-
-        contextualSearch: true,
-        // Optional: Algolia search parameters
-        searchParameters: {
-          facetFilters: [[`tags:docs`]]
-        },
       },
     }),
   plugins: [
