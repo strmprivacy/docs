@@ -21,14 +21,14 @@ STRM Privacy CLI 1.21.2
 
 ### SEE ALSO
 
-* [strm auth](/cli-reference/strm/auth.md)	 - Authentication command
+* [strm auth](/cli-reference/strm/auth/index.md)	 - Authentication command
 * [strm completion](/cli-reference/strm/completion.md)	 - Generate completion script
-* [strm context](/cli-reference/strm/context.md)	 - Print the CLI context
-* [strm create](/cli-reference/strm/create.md)	 - Create an entity
-* [strm delete](/cli-reference/strm/delete.md)	 - Delete an entity
-* [strm get](/cli-reference/strm/get.md)	 - Get an entity
-* [strm list](/cli-reference/strm/list.md)	 - List entities
-* [strm listen](/cli-reference/strm/listen.md)	 - Listen for events on a stream
-* [strm simulate](/cli-reference/strm/simulate.md)	 - Send simulated events with a predefined demo schema (not for production purposes)
+* [strm context](/cli-reference/strm/context/index.md)	 - Print the CLI context
+* [strm create](/cli-reference/strm/create/index.md)	 - Create an entity
+* [strm delete](/cli-reference/strm/delete/index.md)	 - Delete an entity
+* [strm get](/cli-reference/strm/get/index.md)	 - Get an entity
+* [strm list](/cli-reference/strm/list/index.md)	 - List entities
+* [strm listen](/cli-reference/strm/listen/index.md)	 - Listen for events on a stream
+* [strm simulate](/cli-reference/strm/simulate/index.md)	 - Send simulated events with a predefined demo schema (not for production purposes)
 * [strm version](/cli-reference/strm/version.md)	 - Print CLI version
 
