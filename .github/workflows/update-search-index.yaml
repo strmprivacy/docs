@@ -2,7 +2,7 @@ name: Update Search Index
 
 on:
   deployment_status:
-    state: success
+    state: [success]
     branches: [gh-pages]
 
 jobs:
