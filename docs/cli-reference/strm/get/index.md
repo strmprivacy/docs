@@ -27,7 +27,7 @@ Get an entity
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.21.1
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.21.2
 * [strm get batch-exporter](/cli-reference/strm/get/batch-exporter.md)	 - Get Batch exporter by name
 * [strm get batch-job](/cli-reference/strm/get/batch-job.md)	 - Get a Batch Job by id
 * [strm get event-contract](/cli-reference/strm/get/event-contract.md)	 - Get Event Contract by reference
