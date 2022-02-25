@@ -1,7 +1,7 @@
 ---
 title: STRM Privacy CLI reference
 hide_table_of_contents: false
-sidebar_position: 2.5
+sidebar_position: 2
 ---
 
 The STRM Privacy CLI (strm) is the primary tool for managing your STRM
@@ -135,4 +135,3 @@ Note that the flag `interval` is used both by the [sim](sim) and
 meaning of seconds, and in the other of milliseconds, so this one is
 probably not a good one to make permanent. Although you can override the
 value if the configuration file with one on the command line.
-
