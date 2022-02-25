@@ -1,12 +1,16 @@
 name: Update Search Index
 
+# Only trigger, when the build workflow succeeded
 on:
-  deployment_status:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types:
+      - completed
+
 
 jobs:
   publish:
     name: Update Search Index
-    if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
