@@ -2,12 +2,12 @@ name: Update Search Index
 
 on:
   deployment_status:
-    state: [success]
     branches: [gh-pages]
 
 jobs:
-  deployment_status:
+  publish:
     name: Update Search Index
+    if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
