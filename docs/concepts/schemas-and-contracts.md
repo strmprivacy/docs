@@ -143,7 +143,39 @@ data processing teams define the rules instead of the data generating
 teams. An example of a validation can be seen (and tried) in
 [Sending and receiving an event by hand](/quickstart/sending-curl.md)
 
-### Difference between `keyField` and `keyLink`
+## Schema and Event Contract states
+As both *schemas* and **event contracts** are fundamental to describe data, give insight into what data goes where,
+but are also used for describing actual events that flow through the system, state management is important.
+
+It's not safe to just allow modifications or removals on *schemas* and **event contracts** as it might impact either
+the workings of the streams, but it also hinders traceability.
+
+Both *schemas* and **event contracts** can be in one of 3 states. See the image below:
+
+![Schema and Event Contract states](images/entity_states.svg)
+
+See below a description of each state.
+
+### DRAFT
+This entity is still in development and can thus still be modified.
+It has not yet been accepted by someone responsible. And because of this, it cannot yet be used for processing events.
+
+### ACTIVE
+This entity has been accepted and from now on, its properties are frozen; it cannot be modified anymore.
+From now on, it can be used for processing events.
+
+### ARCHIVED
+This entity has reached its end-of-life state and is not used anymore.
+It cannot be used for processing *new* events, but since it is not physically deleted, it can still be referenced,
+for example by in-flight events.
+It can also still be viewed, for example for traceability purposes. If needed, it can be reactivated.
+
+:::note
+At the moment, entities can be archived and reactivated freely, so in a way, archival is just a convenience.
+This may change in the future though.
+:::
+
+## Difference between `keyField` and `keyLink`
 
 It is important to note the difference between `keyField` and `keyLink`,
 as they are related to each other, but are fundamentally different:

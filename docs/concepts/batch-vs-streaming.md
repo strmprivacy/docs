@@ -28,8 +28,8 @@ See the table below for an overview:
 <tbody>
 <tr>
 <td><p><strong></strong></p></td>
-<td><p>Streaming</p></td>
-<td><p>Batch</p></td>
+<td><p><strong>Streaming</strong></p></td>
+<td><p><strong>Batch</strong></p></td>
 </tr>
 <tr class="odd">
 <td><p><strong>Input</strong></p></td>
