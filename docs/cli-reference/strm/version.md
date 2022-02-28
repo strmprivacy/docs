@@ -30,5 +30,5 @@ strm version [flags]
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.21.2
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.22.0
 

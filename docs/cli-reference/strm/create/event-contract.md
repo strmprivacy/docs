@@ -33,6 +33,8 @@ The only restrictions are that version numbers:
 An Event Contract is uniquely identified by its Event Contract reference, in the format (organization handle/event
 contract name/version).
 
+An Event Contract MUST have the state ACTIVE to be used for processing events.
+
 ### Usage
 
 

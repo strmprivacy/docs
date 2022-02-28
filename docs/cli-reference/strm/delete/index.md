@@ -27,11 +27,13 @@ Delete an entity
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.21.2
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.22.0
 * [strm delete batch-exporter](/cli-reference/strm/delete/batch-exporter.md)	 - Delete one or more Batch exporters by name
 * [strm delete batch-job](/cli-reference/strm/delete/batch-job.md)	 - Delete on or more Batch Jobs by id
+* [strm delete event-contract](/cli-reference/strm/delete/event-contract.md)	 - Delete Event Contract by reference
 * [strm delete kafka-exporter](/cli-reference/strm/delete/kafka-exporter.md)	 - Delete a Kafka exporter
 * [strm delete kafka-user](/cli-reference/strm/delete/kafka-user.md)	 - Delete one or more Kafka users
+* [strm delete schema](/cli-reference/strm/delete/schema.md)	 - Delete Schema by reference
 * [strm delete sink](/cli-reference/strm/delete/sink.md)	 - Delete sinks
 * [strm delete stream](/cli-reference/strm/delete/stream.md)	 - Delete one or more streams
 

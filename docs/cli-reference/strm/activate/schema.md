@@ -1,15 +1,23 @@
 ---
-title: "create"
+title: "schema"
 hide_title: true
 ---
-## strm create
+## strm activate schema
 
-Create an entity
+Set the state of a Schema to ACTIVATED
+
+### Synopsis
+
+### Usage
+
+```
+strm activate schema (reference) [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for create
+  -h, --help   help for schema
 ```
 
 ### Options inherited from parent commands
@@ -26,13 +34,5 @@ Create an entity
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.22.0
-* [strm create batch-exporter](/cli-reference/strm/create/batch-exporter.md)	 - Create batch exporter
-* [strm create batch-job](/cli-reference/strm/create/batch-job.md)	 - Create a Batch Job
-* [strm create event-contract](/cli-reference/strm/create/event-contract.md)	 - Create an event-contract with reference 'handle/name/version'
-* [strm create kafka-exporter](/cli-reference/strm/create/kafka-exporter.md)	 - Create a Kafka exporter
-* [strm create kafka-user](/cli-reference/strm/create/kafka-user.md)	 - Create a Kafka user on a Kafka exporter
-* [strm create schema](/cli-reference/strm/create/schema.md)	 - create a schema
-* [strm create sink](/cli-reference/strm/create/sink.md)	 - Create sink
-* [strm create stream](/cli-reference/strm/create/stream.md)	 - Create a stream
+* [strm activate](/cli-reference/strm/activate/index.md)	 - Set the state of an entity to ACTIVATED
 

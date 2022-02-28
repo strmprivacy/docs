@@ -26,7 +26,7 @@ Authentication command
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.21.2
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.22.0
 * [strm auth login](/cli-reference/strm/auth/login.md)	 - Login
 * [strm auth print-access-token](/cli-reference/strm/auth/print-access-token.md)	 - Print your current access-token to stdout
 

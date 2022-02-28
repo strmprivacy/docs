@@ -16,6 +16,8 @@ The result of a `get schema-code` is a zip file with some source code files for 
 certain programming language. Generally this will be code where you’ll have to do some sort of `build` step in order to
 make this fully operational in your development setting (using a JDK, a Python or a Node.js environment).
 
+A Schema MUST have the state ACTIVE to be used for processing events.
+
 ### Usage
 
 ```

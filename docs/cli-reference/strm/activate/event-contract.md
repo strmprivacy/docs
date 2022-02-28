@@ -2,9 +2,9 @@
 title: "event-contract"
 hide_title: true
 ---
-## strm get event-contract
+## strm activate event-contract
 
-Get Event Contract by reference
+Set the state of an Event Contract to ACTIVATED
 
 ### Synopsis
 
@@ -39,7 +39,7 @@ An Event Contract MUST have the state ACTIVE to be used for processing events.
 
 
 ```
-strm get event-contract (reference) [flags]
+strm activate event-contract (reference) [flags]
 ```
 
 ### Options
@@ -56,12 +56,11 @@ strm get event-contract (reference) [flags]
       --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
       --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
   -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
-  -r, --recursive                      Retrieve entities and their dependents
       --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
       --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
 ```
 
 ### SEE ALSO
 
-* [strm get](/cli-reference/strm/get/index.md)	 - Get an entity
+* [strm activate](/cli-reference/strm/activate/index.md)	 - Set the state of an entity to ACTIVATED
 

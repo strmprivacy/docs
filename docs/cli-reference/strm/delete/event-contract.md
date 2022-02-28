@@ -2,9 +2,9 @@
 title: "event-contract"
 hide_title: true
 ---
-## strm get event-contract
+## strm delete event-contract
 
-Get Event Contract by reference
+Delete Event Contract by reference
 
 ### Synopsis
 
@@ -39,7 +39,7 @@ An Event Contract MUST have the state ACTIVE to be used for processing events.
 
 
 ```
-strm get event-contract (reference) [flags]
+strm delete event-contract (reference) [flags]
 ```
 
 ### Options
@@ -63,5 +63,5 @@ strm get event-contract (reference) [flags]
 
 ### SEE ALSO
 
-* [strm get](/cli-reference/strm/get/index.md)	 - Get an entity
+* [strm delete](/cli-reference/strm/delete/index.md)	 - Delete an entity
 
