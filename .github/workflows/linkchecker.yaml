@@ -1,4 +1,4 @@
-name: Update Search Index
+name: Link Checker
 
 # Only trigger, when the build workflow succeeded
 on:

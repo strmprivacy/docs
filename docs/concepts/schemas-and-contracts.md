@@ -152,7 +152,7 @@ the workings of the streams, but it also hinders traceability.
 
 Both *schemas* and **event contracts** can be in one of 3 states. See the image below:
 
-![Schema and Event Contract states](images/entity_states.svg)
+<img class="schema-event-contract-states" alt="Schema and Event Contract states" src="/img/entity_states.svg"/>
 
 See below a description of each state.
 
