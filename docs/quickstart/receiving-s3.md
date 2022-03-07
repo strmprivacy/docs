@@ -9,12 +9,12 @@ If you want to export stream data to AWS S3, you first need to create a
 `Sink` pointing to the S3 bucket.
 
 - Depending on the situation, you might already have a bucket and the
-    credentials. In that case, you can skip the [1. Create the bucket](bucket) and go
-    directly to [2. Create the sink](create-sink).
+    credentials. In that case, you can skip the [1. Create the bucket](#bucket) and go
+    directly to [2. Create the sink](#create-sink).
 
 - Or you don’t yet have the bucket and credentials, but you can create
     them yourself. In that case, you can follow along from the 
-    [Preparation](Preparation).
+    [Preparation](#Preparation).
 
 - Or you need someone else to set this up for you in your AWS account.
     In that case, you can forward this document to them, so they know
@@ -24,10 +24,10 @@ If you want to export stream data to AWS S3, you first need to create a
 
 Before creating a sink, you need:
 
--   An S3 bucket ([1. Create the bucket](bucket))
+-   An S3 bucket ([1. Create the bucket](#bucket))
 
 -   An IAM user with the correct permissions to write in this bucket
-    ([2. Create the necessary credentials](creds))
+    ([2. Create the necessary credentials](#creds))
 
 You first need to create an AWS credentials file that gives STRM Privacy
 write access to a specific bucket/prefix.
@@ -103,7 +103,7 @@ bucket/prefix, using the provided credentials.
 :::
 
 STRM Privacy needs access to the bucket you’ve just created, so there
-needs to be an IAM user which has the policy of [2. Create the necessary credentials](creds)) (This
+needs to be an IAM user which has the policy of [2. Create the necessary credentials](#creds)) (This
 example uses the name `strm-export-demo`, but we recommend you use a
 more descriptive name for your organization).
 
@@ -113,7 +113,7 @@ First create the user
 aws iam create-user --user-name strm-export-demo
 ```
 
-Then attach the policy of [2. Create the necessary credentials](creds)). This listing assumes the policy
+Then attach the policy of [2. Create the necessary credentials](#creds)). This listing assumes the policy
 document is in the same directory. Replace the file name
 `strm-policy.json` with the correct file name.
 
@@ -328,7 +328,7 @@ storage, which is highly secured. Nevertheless, it might be wise to
 create a dedicated STRM Privacy user, which is used for connecting to
 the S3 bucket.
 
-This user should only have the necessary permissions ([2. Create the necessary credentials](creds)),
+This user should only have the necessary permissions ([2. Create the necessary credentials](#creds)),
 only on the necessary resources (bucket  
 optional prefix + `.jsonl` suffix).
 

@@ -130,8 +130,8 @@ uncomment the line `save: true`
 
 This works similarly for any of the other *flags*.
 
-Note that the flag `interval` is used both by the [sim](sim) and
-[batch-exporter](batch-exporter) entities but in one case with a
+Note that the flag `interval` is used both by the [sim](/cli-reference/strm/simulate/random-events.md) and
+[batch-exporter](/cli-reference/strm/create/batch-exporter.md) entities but in one case with a
 meaning of seconds, and in the other of milliseconds, so this one is
 probably not a good one to make permanent. Although you can override the
 value if the configuration file with one on the command line.
