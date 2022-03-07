@@ -1,7 +1,7 @@
 ---
 title: STRM Privacy CLI reference
 hide_table_of_contents: false
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 The STRM Privacy CLI (strm) is the primary tool for managing your STRM
