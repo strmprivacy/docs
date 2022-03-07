@@ -93,4 +93,4 @@ these data should not be stored into long-term storage.
 [^1]: technically these consent-levels are added as binary encoded small
 integers, so there is negligible performance overhead.
 
-[^2]: configurable
+[^2]: configurable setting

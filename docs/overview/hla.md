@@ -35,7 +35,7 @@ Upon accepting an event, the *Event Gateway* will use the *Encrypter* to
 encrypt **all** defined Personally Identifiable Information (PII)
 attributes of the event. Which fields are PII is defined in the event
 contract, for example [the media personalization event
-contract](https://strmprivacy.io/schemas/media-personalization/). The
+contract](https://strmprivacy.io/schemas/dpg/nps_unified/5.0.0/). The
 schema can have multiple levels of PII attributes but all of them are
 encrypted with the same encryption key that is linked to the session.
 This key is rotated every 24 hours.

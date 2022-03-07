@@ -1,0 +1,7 @@
+.*@.*
+https:\/\/events\.strmprivacy\.io\/.*
+https:\/\/sts\.strmprivacy\.io\/.*
+~\/\.config\/strmprivacy
+https:\/\/accounts\.strmprivacy\.io\/auth\/realms\/users\/protocol\/openid-connect\/auth.*
+strm-policy\.json
+https:\/\/www\.strmprivacy\.io\/rules
