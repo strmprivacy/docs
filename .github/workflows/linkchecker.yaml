@@ -13,9 +13,11 @@ jobs:
     name: Link Checker
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1.3.2
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           args: --verbose --no-progress './**/*.md' './**/*.html'
           fail: true
-
