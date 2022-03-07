@@ -21,7 +21,7 @@ instance a csv file.
 I have created the following yaml file that defines a simple event
 schema that I want to use.
 
-**[simple-schema.yaml](/quickstart/attachments/simple-schema.yaml)**
+**[simple-schema.yaml](/files/simple-schema.yaml)**
 
 ```yaml
 name: Clicks
@@ -182,7 +182,7 @@ schema.
 Checking `strm create event-contract --help` tells us what we need to
 create.
 
-**[event-contract.json](/quickstart/attachments/event-contract.json)**
+**[event-contract.json](/files/event-contract.json)**
 
 
 ```json

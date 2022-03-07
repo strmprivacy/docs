@@ -72,7 +72,7 @@ eventContractRef
 the reference to the [event contract](schemas-and-contracts.md) that
 governs the privacy and validation rules. The sending application **must
 set this field** to a (handle/name/version) reference of an event
-contract that refers to this serialization schema. See [the near future](near-future) for a discussion on this.
+contract that refers to this serialization schema. 
 
 consentLevels  
 0 or more *consents* that were given by the data owner for the further
@@ -111,7 +111,7 @@ data.
 
 Once deserialized, the event gateway will look for the value of
 `strmMeta/eventContractRef` (inside the deserialized event) to determine
-the rules to be applied to this event. See [the near future](near-future) for a discussion on a proposed change.
+the rules to be applied to this event. 
 
 ### consentLevels
 
