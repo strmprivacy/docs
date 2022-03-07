@@ -1,0 +1,21 @@
+name: Update Search Index
+
+# Only trigger, when the build workflow succeeded
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types:
+      - completed
+
+
+jobs:
+  linkchecker:
+    name: Link Checker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.3.2
+        with:
+          args: --verbose --no-progress './**/*.md' './**/*.html'
+          fail: true
+
