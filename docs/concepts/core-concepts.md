@@ -44,7 +44,7 @@ event data will receive *immediate* feedback in case of discrepancies.
 
 Events in STRM Privacy are strictly defined both in shape and content.
 Events that do not conform will be rejected. For this, STRM Privacy uses
-[Schemas and Contracts](schemas-and-contracts.md) to which all events
+[Schemas and Contracts](/concepts/schemas-and-contracts.md) to which all events
 must conform.
 
 ### Events shall be privacy safe
@@ -133,9 +133,9 @@ decrypted output stream: granular and cumulative.
     remain encrypted.
 
 The resulting set of consent levels effects two things, see:
-[???](Create a decrypted stream)
+[Create a decrypted stream](#create-a-decrypted-stream)
 
-### Create a decrypted stream
+### Create a decrypted stream {#create-a-decrypted-stream}
 
 Here you instruct STRM Privacy to decrypt event data with above consent
 levels. STRM Privacy will
@@ -170,13 +170,13 @@ following:
     preferred over http1.1. You can find the drivers on
     [github.com/strmprivacy](https://github.com/strmprivacy) You don’t
     *need* our software to send data.
-    [Here](quickstart/sending-curl.md) you can play with the actual
+    [Here](/quickstart/sending-curl.md) you can play with the actual
     http interaction.
 
 ## Getting data out of STRM Privacy
 
 STRM Privacy internally keeps its data in [Apache
-Kafka](https://apache.org/kafka) topics, that typically auto-expire
+Kafka](https://kafka.apache.org/) topics, that typically auto-expire
 their data in 7 days.
 
 For getting the data into your systems we currently have the following
