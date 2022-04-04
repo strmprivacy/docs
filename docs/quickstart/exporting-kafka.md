@@ -72,7 +72,7 @@ Because of the `--save` flag on the command, you have the credentials
 locally:
 
 ```bash
-cat ~/.config/strmprivacy/KafkaUser/service-account-export-7d36ea89-2c91-4959-a6bf-9af35a0c5ddb.json | jq
+cat ~/.config/strmprivacy/saved-entities/KafkaUser/service-account-export-7d36ea89-2c91-4959-a6bf-9af35a0c5ddb.json | jq
 {
   "ref": {
     "billingId": "demo8542234275",
