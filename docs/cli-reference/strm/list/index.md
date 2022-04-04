@@ -27,7 +27,7 @@ List entities
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI local
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.23.0
 * [strm list batch-exporters](/cli-reference/strm/list/batch-exporters.md)	 - List Batch exporters
 * [strm list batch-jobs](/cli-reference/strm/list/batch-jobs.md)	 - List Batch Jobs
 * [strm list event-contracts](/cli-reference/strm/list/event-contracts.md)	 - List Event Contracts

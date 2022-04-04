@@ -26,7 +26,7 @@ Create an entity
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI local
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.23.0
 * [strm create batch-exporter](/cli-reference/strm/create/batch-exporter.md)	 - Create batch exporter
 * [strm create batch-job](/cli-reference/strm/create/batch-job.md)	 - Create a Batch Job
 * [strm create event-contract](/cli-reference/strm/create/event-contract.md)	 - Create an event-contract with reference 'handle/name/version'
