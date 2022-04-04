@@ -6,44 +6,6 @@ hide_table_of_contents: false
 See [Authentication with the CLI](/quickstart/authentication-cli.md)
 page on how to authenticate.
 
-## Listing streams
-
-Streams can be listed and will be shown as a table.
-
-```bash
-$ strm list streams
- STREAM           DERIVED   CONSENT LEVEL TYPE   CONSENT LEVELS   ENABLED
-
- demo      false                          []               true
-```
-
-To show more info, use the `--output` flag, and try out different
-formats, such as `json`.
-```json
-$ strm list streams --output json
-{
-    "streams": [
-        {
-            "stream": {
-                "ref": {
-                    "billingId": "demo8542234275",
-                    "name": "demo"
-                },
-                "enabled": true,
-                "limits": {
-                    "eventRate": "99",
-                    "eventCount": "999999"
-                },
-                "credentials": [
-                    {
-                        "clientId": "ylbt4v9o6dvvc..."
-                    }
-                ]
-            }
-        }
-    ]
-}
-```
 ## Creating a stream
 
 A stream can be created as follows:
@@ -89,6 +51,45 @@ endpoint](https://websocket.strmprivacy.io) with a websocket client to
 receive the events as you send them. Use
 `strm listen web-socket <stream-name> [--client-id .. --client-secret ..]`.
 See [here](/quickstart/listen-web-socket.md) for details.
+
+## Listing streams
+
+Streams can be listed and will be shown as a table.
+
+```bash
+$ strm list streams
+ STREAM           DERIVED   CONSENT LEVEL TYPE   CONSENT LEVELS   ENABLED
+
+ demo      false                          []               true
+```
+
+To show more info, use the `--output` flag, and try out different
+formats, such as `json`.
+```json
+$ strm list streams --output json
+{
+    "streams": [
+        {
+            "stream": {
+                "ref": {
+                    "billingId": "demo8542234275",
+                    "name": "demo"
+                },
+                "enabled": true,
+                "limits": {
+                    "eventRate": "99",
+                    "eventCount": "999999"
+                },
+                "credentials": [
+                    {
+                        "clientId": "ylbt4v9o6dvvc..."
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
 
 ## Creating decrypted streams
 
