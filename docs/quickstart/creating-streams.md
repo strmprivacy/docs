@@ -14,7 +14,7 @@ Streams can be listed and will be shown as a table.
 $ strm list streams
  STREAM           DERIVED   CONSENT LEVEL TYPE   CONSENT LEVELS   ENABLED
 
- strmprivacy      false                          []               true
+ demo      false                          []               true
 ```
 
 To show more info, use the `--output` flag, and try out different
@@ -27,7 +27,7 @@ $ strm list streams --output json
             "stream": {
                 "ref": {
                     "billingId": "demo8542234275",
-                    "name": "strmprivacy"
+                    "name": "demo"
                 },
                 "enabled": true,
                 "limits": {
@@ -48,11 +48,11 @@ $ strm list streams --output json
 
 A stream can be created as follows:
 ```json
-strm create stream strmprivacy -o json --save
+strm create stream demo -o json --save
 {
   "ref": {
     "billingId": "demo8542234275",
-    "name": "strmprivacy
+    "name": "demo" 
   },
   "enabled": true,
   "limits": {
@@ -64,7 +64,8 @@ strm create stream strmprivacy -o json --save
       "clientId": "ylbt4v9o6dvvc...",
       "clientSecret": "M0fBiQnKNXn*U..."
     }
-  ]
+  ],
+  "maskedFields": {}
 }
 ```
 
@@ -114,26 +115,26 @@ Flags:
 So let’s create one, with two consent levels, and a *granular* consent
 level type interpretation.
 ```json
-$ strm create stream --derived-from strmprivacy --levels 0,1 --consent-type GRANULAR -o json
+$ strm create stream --derived-from demo --levels 0,1 --consent-type GRANULAR -o json
 {
-  "ref": { "billingId": "demo8542234275", "name": "strmprivacy-0-1" },
+  "ref": { "billingId": "demo8542234275", "name": "demo-0-1" },
   "consentLevels": [ 0, 1 ],
   "consentLevelType": "GRANULAR",
   "enabled": true,
-  "linkedStream": "strmprivacy",
+  "linkedStream": "demo",
   "credentials": [
     { "clientId": "11jvxvpy1e6jl...", "clientSecret": "tJkhj8lT9ybAA..." }
   ]
 }
 ```
 
-The derived stream is provided with a default name `strmprivacy-0-1`
+The derived stream is provided with a default name `demo-0-1`
 because we did not provide an explicit name. If we had added a name
 after the `strm create stream` we would have created a stream with that
 name.
 
-So the derived stream named `strmprivacy-0-1` captures data from
-encrypted stream `strmprivacy` (for the current `billingId`). It will
+So the derived stream named `demo-0-1` captures data from
+encrypted stream `demo` (for the current `billingId`). It will
 drop all events that don’t at least have consent levels 0 and 1 in the
 event. Another way of defining decrypted streams is with consent level
 type *cumulative*. This means that the decrypted stream is configured
@@ -142,16 +143,16 @@ least that consent level. It will decrypt PII fields up to and including
 the decrypted stream consent level. *Cumulative* is the default for
 creating derived streams.
 ```json
-$ strm delete stream strmprivacy-0-1 -o json
+$ strm delete stream demo-0-1 -o json
 {
   "streamTree": {
     "stream": {
-      "ref": { "billingId": "demo8542234275", "name": "strmprivacy-0-1" },
+      "ref": { "billingId": "demo8542234275", "name": "demo-0-1" },
       "consentLevels": [ 0, 1 ],
       "consentLevelType": "GRANULAR",
       "enabled": true,
       "limits": {},
-      "linkedStream": "strmprivacy",
+      "linkedStream": "demo",
       "credentials": [ { "clientId": "11jvxvpy1e6jl..." } ]
     }
   }
@@ -161,45 +162,45 @@ $ strm delete stream strmprivacy-0-1 -o json
 Note the `streamTree` field might also contain all the items derived
 from a source stream, like exporters.
 ```json
-create stream --derived-from strmprivacy --levels 1 -o json
+create stream --derived-from demo --levels 1 -o json
 {
-  "ref": { "billingId": "demo8542234275", "name": "strmprivacy-1" },
+  "ref": { "billingId": "demo8542234275", "name": "demo-1" },
   "consentLevels": [ 1 ],
   "consentLevelType": "CUMULATIVE",
   "enabled": true,
-  "linkedStream": "strmprivacy",
+  "linkedStream": "demo",
   "credentials": [ { "clientId": "vnfku72pl3bgx...",
   "clientSecret": "UMkNFnKt8ly#F..." } ]
 }
 ```
 
-This stream named `strmprivacy-1` will contain the identical subset of
-events as `strmprivacy-0-1`
+This stream named `demo-1` will contain the identical subset of
+events as `demo-0-1`
 
 ## Cleaning up
 
 Delete a stream, all its dependents and all its data (that hasn’t been
 exported yet)
 ```json
-$ strm delete stream strmprivacy --recursive -o json
+$ strm delete stream demo --recursive -o json
 {
   "streamTree": {
     "stream": {
-      "ref": { "billingId": "demo8542234275", "name": "strmprivacy" },
+      "ref": { "billingId": "demo8542234275", "name": "demo" },
       "enabled": true,
       "credentials": [ { "clientId": "qzzmqq8szj478..." } ]
     },
     "keyStream": {
-      "ref": { "billingId": "demo8542234275", "name": "strmprivacy" }
+      "ref": { "billingId": "demo8542234275", "name": "demo" }
     },
     "derived": [
       {
-        "ref": { "billingId": "demo8542234275", "name": "strmprivacy-1" },
+        "ref": { "billingId": "demo8542234275", "name": "demo-1" },
         "consentLevels": [ 1 ],
         "consentLevelType": "CUMULATIVE",
         "enabled": true,
         "limits": {},
-        "linkedStream": "strmprivacy",
+        "linkedStream": "demo",
         "credentials": [ { "clientId": "onrucokawroay..." } ]
       }
     ]
