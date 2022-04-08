@@ -1,16 +1,23 @@
 ---
-title: "simulate"
+title: "revoke"
 hide_title: true
 ---
-## strm simulate
+## strm auth revoke
 
-Send simulated events with a predefined demo schema (not for production purposes)
+Revoke
+
+### Synopsis
+
+Revoke your current login session and stored credentials.
+
+```
+strm auth revoke [flags]
+```
 
 ### Options
 
 ```
-  -h, --help            help for simulate
-      --schema string   Which schema to use for creating simulated events (default "strmprivacy/demo/1.0.2")
+  -h, --help   help for revoke
 ```
 
 ### Options inherited from parent commands
@@ -27,6 +34,5 @@ Send simulated events with a predefined demo schema (not for production purposes
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.24.1
-* [strm simulate random-events](/cli-reference/strm/simulate/random-events.md)	 - Run a simulator that will send random events to a stream
+* [strm auth](/cli-reference/strm/auth/index.md)	 - Authentication command
 

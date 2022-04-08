@@ -27,7 +27,7 @@ Delete an entity
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.24.0
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.24.1
 * [strm delete batch-exporter](/cli-reference/strm/delete/batch-exporter.md)	 - Delete one or more Batch exporters by name
 * [strm delete batch-job](/cli-reference/strm/delete/batch-job.md)	 - Delete on or more Batch Jobs by id
 * [strm delete event-contract](/cli-reference/strm/delete/event-contract.md)	 - Delete Event Contract by reference
