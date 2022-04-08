@@ -1,15 +1,25 @@
 ---
-title: "archive"
+title: "installation"
 hide_title: true
 ---
-## strm archive
+## strm get installation
 
-Set the state of an entity to ARCHIVED
+Get your installation by id
+
+### Synopsis
+
+
+### Usage
+
+
+```
+strm get installation [id] [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for archive
+  -h, --help   help for installation
 ```
 
 ### Options inherited from parent commands
@@ -20,13 +30,12 @@ Set the state of an entity to ARCHIVED
       --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
       --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
   -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
+  -r, --recursive                      Retrieve entities and their dependents
       --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
       --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
 ```
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.24.0
-* [strm archive event-contract](/cli-reference/strm/archive/event-contract.md)	 - Set the state of an Event Contract to ARCHIVED
-* [strm archive schema](/cli-reference/strm/archive/schema.md)	 - Set the state of a Schema to ARCHIVED
+* [strm get](/cli-reference/strm/get/index.md)	 - Get an entity
 

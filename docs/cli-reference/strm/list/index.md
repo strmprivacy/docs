@@ -27,10 +27,11 @@ List entities
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.23.0
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.24.0
 * [strm list batch-exporters](/cli-reference/strm/list/batch-exporters.md)	 - List Batch exporters
 * [strm list batch-jobs](/cli-reference/strm/list/batch-jobs.md)	 - List Batch Jobs
 * [strm list event-contracts](/cli-reference/strm/list/event-contracts.md)	 - List Event Contracts
+* [strm list installations](/cli-reference/strm/list/installations.md)	 - List your installations
 * [strm list kafka-clusters](/cli-reference/strm/list/kafka-clusters.md)	 - List Kafka clusters
 * [strm list kafka-exporters](/cli-reference/strm/list/kafka-exporters.md)	 - List Kafka exporters
 * [strm list kafka-users](/cli-reference/strm/list/kafka-users.md)	 - List Kafka users

@@ -27,10 +27,11 @@ Get an entity
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.23.0
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 1.24.0
 * [strm get batch-exporter](/cli-reference/strm/get/batch-exporter.md)	 - Get Batch exporter by name
 * [strm get batch-job](/cli-reference/strm/get/batch-job.md)	 - Get a Batch Job by id
 * [strm get event-contract](/cli-reference/strm/get/event-contract.md)	 - Get Event Contract by reference
+* [strm get installation](/cli-reference/strm/get/installation.md)	 - Get your installation by id
 * [strm get kafka-cluster](/cli-reference/strm/get/kafka-cluster.md)	 - Get Kafka cluster by name
 * [strm get kafka-exporter](/cli-reference/strm/get/kafka-exporter.md)	 - Get Kafka exporter by name
 * [strm get kafka-user](/cli-reference/strm/get/kafka-user.md)	 - Get Kafka user
