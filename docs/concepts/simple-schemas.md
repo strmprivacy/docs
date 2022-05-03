@@ -37,26 +37,25 @@ An example of a simple schema:
 **simple-schema.yaml**
 
 ```yaml
-    name: Clicks
+    Name: Clicks
     nodes:
-    - name: sessionId
+    - name: SessionId
       type: STRING
       doc: the string value that connects events to a single sequence
-    - name: userName
+      required: true
+      repeated: false
+    - name: User Name
       type: STRING
       doc:  we use an event contract to define that this is private
     - name: url
       type: STRING
-      doc:  the url on the website
-    - name: priceInGBP
-      type: FLOAT
-      doc:  price in UK pounds
-    - name: mousePositions
+      doc:  the URL of the current page
+    - name: mouse positions
       repeated: true
       type: NODE
       nodes:
-      - name: "x"
+      - name: x
         type: INTEGER
-      - name: "y"
+      - name: "y"  ## warning. Put quotes around y or it is a boolean true:
         type: INTEGER
 ```
