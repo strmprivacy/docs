@@ -29,6 +29,8 @@ nodes:
 - name: Session Id
   type: STRING
   doc: the string value that connects events to a single sequence
+  required: true
+  repeated: false
 - name: User Name
   type: STRING
   doc:  we use an event contract to define that this is private
@@ -47,6 +49,8 @@ nodes:
   - name: "y"  ## warning. Put quotes around y or it is a boolean true:
     type: INTEGER
 ```
+
+<mark>Note `Session Id` has two additional arguments: `required` and `repeated`. They are necessary for fields you want to mark as the `key field` (as a field that links events or rows together should always be present and can't be repeated with different values) </mark>.
 
 To install this schema into STRM Privacy [^1] we execute the following
 command:
