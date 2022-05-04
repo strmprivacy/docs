@@ -26,7 +26,7 @@ schema that I want to use.
 ```yaml
 name: Clicks
 nodes:
-- name: Session Id
+- name: SessionId
   type: STRING
   doc: the string value that connects events to a single sequence
   required: true
@@ -36,10 +36,7 @@ nodes:
   doc:  we use an event contract to define that this is private
 - name: url
   type: STRING
-  doc:  the url on the website
-- name: Prijs in GB£
-  type: FLOAT
-  doc:  price in UK pounds
+  doc:  the URL of the current page
 - name: mouse positions
   repeated: true
   type: NODE
@@ -50,7 +47,9 @@ nodes:
     type: INTEGER
 ```
 
-<mark>Note `Session Id` has two additional arguments: `required` and `repeated`. They are necessary for fields you want to mark as the `key field` (as a field that links events or rows together should always be present and can't be repeated with different values) </mark>.
+:::note 
+Note `Session Id` has two additional arguments: `required` and `repeated`. They are necessary for fields you want to mark as the `key field`.
+:::
 
 To install this schema into STRM Privacy [^1] we execute the following
 command:
