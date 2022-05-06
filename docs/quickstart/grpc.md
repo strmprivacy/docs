@@ -1,5 +1,6 @@
 ---
-title: gRPC API definition hide_table_of_contents: false
+title: gRPC API definition
+hide_table_of_contents: false
 ---
 
 # gRPC and CLI
