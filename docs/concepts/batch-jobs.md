@@ -73,10 +73,7 @@ you’d like to have a fluent transition at time window boundaries.
 
 ## Data Connectors
 
-A Batch Job reads data from and sends data to a Data Connector. Because
-of historic reasons, Data Connector is also called Sink, but we’re
-planning to move away from the name Sink as for most people it means a
-place to send data to, and not read from..
+A Batch Job reads data from and sends data to a Data Connector.
 
 For now, we only support AWS S3 Data Connectors, but Google Cloud
 Storage buckets are next in line.

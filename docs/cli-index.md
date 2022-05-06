@@ -95,27 +95,17 @@ $HOME/.config/strmprivacy/strm-creds-&lt;api-auth-host&gt;.json)
 
 The following entities are available in the CLI:
 
--   batch-exporter
-
--   event contract
-
--   kafka-cluster
-
--   kafka-exporter
-
--   kafka-user
-
--   key-stream
-
--   schema
-
--   schema-code
-
--   sink
-
--   stream
-
--   usage
+- batch-exporter
+- data-connector
+- event contract
+- kafka-cluster
+- kafka-exporter
+- kafka-user
+- key-stream
+- schema
+- schema-code
+- stream
+- usage
 
 ## Making some options permanent {#permanent}
 

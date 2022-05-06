@@ -6,33 +6,27 @@ hide_table_of_contents: false
 # Exporting to S3
 
 If you want to export stream data to AWS S3, you first need to create a
-`Sink` pointing to the S3 bucket.
+`Data Connector` pointing to the S3 bucket. Depending on the situation, 
+you may already have a bucket and IAM user credentials with the required access.
 
-- Depending on the situation, you might already have a bucket and the
-    credentials. In that case, you can skip the [1. Create the bucket](#bucket) and go
-    directly to [2. Create the sink](#create-sink).
+- If you already have a bucket and credentials, you can skip [Create the bucket](#bucket) 
+    and go directly to [Create the data connector](#create-data-connector).
 
-- Or you don’t yet have the bucket and credentials, but you can create
-    them yourself. In that case, you can follow along from the 
-    [Preparation](#Preparation).
+- If you don't have a bucket and credentials yet, but are able to create
+    them yourself, you can start from the [Preparation](#Preparation).
 
-- Or you need someone else to set this up for you in your AWS account.
-    In that case, you can forward this document to them, so they know
-    what to do.
+- If you need someone else to set this up for you in your AWS account,
+    you can forward this documentation to them, so they know what to do.
 
 ## Preparation: Set up S3 bucket and credentials {#Preparation}
 
-Before creating a sink, you need:
+Before creating a data connector, you need:
 
 -   An S3 bucket ([1. Create the bucket](#bucket))
 
--   An IAM user with the correct permissions to write in this bucket
-    ([2. Create the necessary credentials](#creds))
-
-You first need to create an AWS credentials file that gives STRM Privacy
-write access to a specific bucket/prefix.
-
-To do so, follow the steps below:
+-   An IAM user with the correct permissions to write to this bucket
+    ([2. Create the necessary credentials](#creds)), including a file
+    containing credentials.
 
 ### 1. Create the bucket {#bucket}
 
@@ -113,7 +107,7 @@ First create the user
 aws iam create-user --user-name strm-export-demo
 ```
 
-Then attach the policy of [2. Create the necessary credentials](#creds)). This listing assumes the policy
+Then attach the policy of [2. Create the necessary credentials](#creds). This listing assumes the policy
 document is in the same directory. Replace the file name
 `strm-policy.json` with the correct file name.
 
@@ -130,7 +124,7 @@ credentials: (keep these safe, as they provide access to the bucket)
 aws iam create-access-key --user-name strm-export-demo > s3.json
 ````
 
-## Create a Sink
+## Create a Data Connector
 
 ### 1. Preparation 
 
@@ -153,10 +147,10 @@ directory, with the following contents:
 This is the same JSON as returned by `aws iam create-access-key`.
 :::
 
-### 2. Create the sink {#create-sink}
+### 2. Create the data connector {#create-data-connector}
 
 When you have the correct AWS credentials in a file `s3.json`, you can
-create the sink using the command below:
+create the data connector using the command below:
 
 :::note
 In this example we assume the bucket name is: `strmprivacy-export-demo`
@@ -164,39 +158,31 @@ and the prefix is `events`.
 :::
 
 ```bash
-strm create sink s3 strmprivacy-export-demo --credentials-file=s3.json
+$ strm create data-connector s3 strmprivacy-export-demo --credentials-file=s3.json
 {
   "ref": {
     "billingId": "demo8542234275",
     "name": "s3"
   },
-  "sinkType": "S3",
-  "bucket": {
-    "bucketName": "strmprivacy-export-demo",
-    "credentials": "<the credentials as shown above>"
+  "s3Bucket": {
+    "bucketName": "strmprivacy-export-demo"
   }
 }
 ```
 
-Based on the structure of the credentials file, we automatically set the
-type to S3 or Google Cloud Storage.
-
-You can see all your sinks with `strm list sinks`.
+You can list all your data connectors with `strm list data-connectors`.
 
 ```bash
-$ strm list sinks
+$ strm list data-connectors -o json
 {
-  "sinks": [
+  "dataConnectors": [
     {
-      "sink": {
-        "ref": {
-          "billingId": "demo8542234275",
-          "name": "s3"
-        },
-        "sinkType": "S3",
-        "bucket": {
-          "bucketName": "jankees-mybucket"
-        }
+      "ref": {
+        "billingId": "demo8542234275",
+        "name": "s3"
+      },
+      "s3Bucket": {
+        "bucketName": "strmprivacy-export-demo"
       }
     }
   ]
@@ -206,7 +192,7 @@ $ strm list sinks
 ## Create a batch exporter
 
 An `batch exporter` is the STRM Privacy component that reads your
-stream, and sends its events in batches to the sink (in this case an S3
+stream, and writes its events in batches to the data connector (in this case an S3
 bucket).
 
 Let’s create an exporter on the `demo` stream (make sure to create this
@@ -214,22 +200,28 @@ first). Batch exporter names are unique per connected stream, so you
 could always call them *s3* for instance.
 
 ```bash
-strm create batch-exporter demo --sink s3 --path-prefix events
+strm create batch-exporter demo --data-connector s3 --path-prefix events
 {
-  //highlight-next-line
-  "ref": { "billingId": "demo8542234275", "name": "s3-demo" }, 
-  //highlight-next-line
-  "streamRef": { "billingId": "demo8542234275", "name": "demo" }, 
+  "ref": { #(1)
+    "billingId": "demo8542234275", 
+    "name": "s3-demo" 
+  }, 
+  "streamRef": { #(2)
+    "billingId": "demo8542234275", 
+    "name": "demo" 
+  }, 
+  "dataConnectorRef": { #(3)
+    "billingId": "demo8542234275", 
+    "name": "s3" 
+  }, 
   "interval": "60s",
-  //highlight-next-line
-  "sinkName": "s3", 
   "pathPrefix": "events"
 }
 ```
 
 1. the reference to the batch exporter
 2. the reference to the stream that feeds the exporter 
-3. the name of the sink
+3. the reference to the data connector
 
 Note that we’re sending data on the stream `demo` and a default name has
 been given to the batch exporter.
@@ -332,14 +324,13 @@ This user should only have the necessary permissions ([2. Create the necessary c
 only on the necessary resources (bucket  
 optional prefix + `.jsonl` suffix).
 
-This way, you can easily revoke/change the credentials, and re-upload
-these using our CLI (`strm create sink` is also used to update the sink)
-without impacting other applications.
+This way, you can easily revoke/change the credentials, and create a new data connector
+and batch exporter configuration without impacting other applications.
 
 ## Tearing down
 
-Tearing down a sink requires to first remove the batch exporter, and
-only then remove the sink. You’re not required to remove the sink at
+Tearing down a data connector requires to first remove the batch exporter, and
+only then remove the data-connector. You’re not required to remove the connector at
 all, it’s just a configuration item.
 
 ```bash
@@ -347,17 +338,17 @@ $ strm delete batch-exporter s3-strmprivacy
 {}
 ```
 
-You can remove the sink as follows.
+You can remove the data connector as follows.
 
 ```bash
-$ strm delete sink s3
+$ strm delete data-connector s3
 {}
 ```
 
-Or you can remove the sink with all linked batch exporters in one
+Or you can remove the data connector with all linked batch exporters in one
 command:
 
 ```bash
-$ strm delete sink s3 --recursive
+$ strm delete data-connector s3 --recursive
 {}
 ```
