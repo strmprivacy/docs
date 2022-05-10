@@ -145,7 +145,7 @@ aws iam create-access-key --user-name strm-export-demo > s3.json
 :::note
 STRM Privacy validates the user & credentials configuration by writing an empty JSONL file
 (file name: `.strm_test_<random UUID>.jsonl`) to the specified
-bucket/prefix upon creation of the data connector and Batch Exporter.
+bucket/prefix upon creation of the batch exporter.
 :::
 
 </TabItem>

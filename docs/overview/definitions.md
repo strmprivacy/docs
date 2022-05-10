@@ -37,7 +37,7 @@ Batch Exporter
 STRM Privacy component that writes batches of events to a `Data Connector`.
 
 Data Connector  
-STRM Privacy component that allows to connect to (file) storage, for both
+STRM Privacy component that allows you to connect to (file) storage, for both
 reading and writing purposes. Currently, AWS S3, Google Cloud Storage and
 Azure Blob Storage are supported.
 

@@ -19,15 +19,15 @@ The following data connector and credential types are currently supported:
 <td><p><strong>Data Connector Type</strong></p></td>
 <td><p><strong>Credentials Type</strong></p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p>Amazon S3 Bucket</p></td>
 <td><p>IAM User Access Key</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p>Google Cloud Storage Bucket</p></td>
 <td><p>Service Account Credentials</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p>Azure Blob Storage Container</p></td>
 <td><p>Application Principal Client Secret Credentials</p></td>
 </tr>
