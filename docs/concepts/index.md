@@ -5,6 +5,10 @@ sidebar_position: 3
 ---
 
 
+## [Core concepts](core-concepts.md)
+
+Core concepts, what is STRM Privacy, what problems are we solving?
+
 ## [Batch vs Stream processing](batch-vs-streaming.md)
 
 What is batch processing and stream processing and how dow we support
@@ -14,13 +18,9 @@ both approaches?
 
 What is an STRM Batch Job?
 
-## [Core concepts](core-concepts.md)
-
-Core concepts, what is STRM Privacy, what problems are we solving?
-
 ## [Schemas and Contracts](schemas-and-contracts.md)
 
-The essence of well defined GRPC compliant event data.
+The essence of well-defined GRPC compliant event data.
 
 ## [the `strmMeta` section](strm-meta.md)
 

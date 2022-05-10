@@ -138,7 +138,7 @@ open-source, there’s no magic and no vendor lock-in!
 
 For further use of the events in your organization you have two options:
 
--   periodically (for instance once a minute) send events to a [cloud bucket](/quickstart/receiving-s3.md). Fully encrypted streams will
+-   periodically (for instance once a minute) send events to a [cloud bucket](/quickstart/batch-exporter.md). Fully encrypted streams will
     be ok to use for *everyone* in your organization, they no longer
     contain personal data.
 

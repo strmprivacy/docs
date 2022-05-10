@@ -65,14 +65,14 @@ The algorithm is as follows:
 
 ## Outputs
 
-STRM Privacy has multiple output possibilities.
+STRM Privacy provides multiple ways to output data.
 
-### The Batch Exporters
+### Batch Exporters
 
-Currently STRM Privacy has two batch exporter outputs, for *AWS S3*, and
-*Google Cloud Storage*. These can be configured to receive batches of
-JSON formatted events of encrypted streams or output streams. See
-[here](/quickstart/receiving-s3.md) for an example.
+Batch Exporters process batches of events from encrypted or derived streams, 
+and write these as JSON to common storage solutions using 
+[Data Connectors](/concepts/data-connectors.md).
+See [this quickstart](/quickstart/batch-exporter.md) for an example.
 
 ### Kafka Consumer
 
@@ -85,7 +85,7 @@ cluster.
 
 ### Encryption Keys
 
-It is possible to move the decryption of events to the customers own
+It is possible to move the decryption of events to the customer's own
 environment. In that case the client will receive the encryption keys
 (in [tink](https://developers.google.com/tink) format) via a batch
 exporter mechanism. See [the Exporting

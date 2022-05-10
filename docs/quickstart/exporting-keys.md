@@ -45,7 +45,7 @@ using service account credentials created via the [the Google Cloud
 console](https://console.cloud.google.com/iam-admin/serviceaccounts/create).
 
 When using an AWS S3 data connector, the mechanism is similar and described
-[here](/quickstart/receiving-s3.md).
+[here](/quickstart/batch-exporter.md).
 
 The bucket's contents can be accessed with the [aws cli
 tool](https://aws.amazon.com/cli/) for S3 or the [gsutil Google Cloud
@@ -55,7 +55,7 @@ Cloud, or their respective cloud consoles.
 ## Creating an exporter
 
 Currently, we only provide batch exporters for the encryption keys, that
-work very similar to the [events batch exporters](/quickstart/receiving-s3.md).
+work very similar to the [events batch exporters](/quickstart/batch-exporter.md).
 So you need the same mechanism with authenticated and authorized IAM
 users.
 

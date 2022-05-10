@@ -184,8 +184,8 @@ options.
 
 ### Batch exports
 
-Currently we have the option to do periodic (minute scale) exports to
-AWS S3 and Google Cloud buckets, in Json-lines format [^6]. This is a
+Currently, we have the option to do periodic (minute scale) exports to
+for example AWS S3 and Google Cloud buckets, in Json-lines format [^6]. This is a
 very common format for Data Scientists.
 
 ### Kafka consumers

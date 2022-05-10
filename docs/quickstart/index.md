@@ -26,7 +26,7 @@ set up, you should be sending simulated events in a minute.
 
 Realtime exporting to a Kafka cluster, and a consumer in Python.
 
-## [Exporting to AWS S3](/quickstart/receiving-s3.md)
+## [Exporting to AWS S3](/quickstart/batch-exporter.md)
 
 How to export batches of events to an AWS S3 bucket.
 

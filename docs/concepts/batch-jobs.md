@@ -73,10 +73,8 @@ you’d like to have a fluent transition at time window boundaries.
 
 ## Data Connectors
 
-A Batch Job reads data from and sends data to a Data Connector.
-
-For now, we only support AWS S3 Data Connectors, but Google Cloud
-Storage buckets are next in line.
+A Batch Job reads data from and sends data to a [Data Connector](/concepts/data-connectors.md),
+which provides read and/or write access to e.g. an AWS S3 or GCS bucket.
 
 For a Batch Job, three or more Data Connectors need to be specified,
 for:

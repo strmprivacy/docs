@@ -1,5 +1,5 @@
 ---
-title: the strmMeta section
+title: The strmMeta section
 hide_table_of_contents: false
 ---
 
