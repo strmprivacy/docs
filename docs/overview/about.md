@@ -38,7 +38,7 @@ For some more detailed information have a look in these.
 
 -   [Producing data](/quickstart/full-example.md)
 
--   [Consuming data](/quickstart/receiving-s3.md)
+-   [Consuming data](/quickstart/batch-exporter.md)
 
 ## Support
 

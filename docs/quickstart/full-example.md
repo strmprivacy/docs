@@ -201,4 +201,4 @@ the `\StrmPrivacy\Driver\Contracts\Event` contract.
 
 See [strm listen web-socket](listen-web-socket.md) for a debugging view on the events.
 
-See [exporting to Kafka](exporting-kafka.md) or [batch exporters](receiving-s3.md) for production event consuming.
+See [exporting to Kafka](exporting-kafka.md) or [batch exporters](/quickstart/batch-exporter.md) for production event consuming.

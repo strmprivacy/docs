@@ -31,12 +31,12 @@ See the table below for an overview:
 <td><p><strong>Streaming</strong></p></td>
 <td><p><strong>Batch</strong></p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p><strong>Input</strong></p></td>
 <td><p>(Java/Nodejs/Python) drivers</p></td>
 <td><p>Batch Jobs</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p><strong>Output</strong></p></td>
 <td><p>Kafka Exporter</p></td>
 <td><p>Batch Exporter, Batch Jobs</p></td>

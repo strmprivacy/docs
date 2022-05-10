@@ -33,8 +33,13 @@ well as in the configuration of a decrypted output stream.
 Encryption  
 Data that is scrambled and cannot be read without the encryption key.
 
-Exporter  
-STRM Privacy component that sends batches of events to a `Sink`.
+Batch Exporter  
+STRM Privacy component that writes batches of events to a `Data Connector`.
+
+Data Connector  
+STRM Privacy component that allows you to connect to (file) storage, for both
+reading and writing purposes. Currently, AWS S3, Google Cloud Storage and
+Azure Blob Storage are supported.
 
 Personally Identifiable Information (PII)  
 Information that can be used to identify a person, directly (e.g. SSN,
@@ -45,7 +50,3 @@ Serialization Format
 Currently, we support `Avro Binary`, `Avro JSON` and `JSON` serialized
 data. This defines the way that an event is converted to and from bytes,
 so that they can be transported and/or stored.
-
-Sink  
-STRM Privacy component that connects to a file storage. Currently, AWS
-S3 and Google Cloud Storage buckets are supported.

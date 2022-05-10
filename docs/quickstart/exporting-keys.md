@@ -32,46 +32,47 @@ initialization vector. The SIV means that for a certain plain-text
 value, the corresponding cypher text will be identical (for a certain
 encryption key).
 
-## Have a sink ready
+## Have a data connector ready
 
-We’re using a `demo` gcloud sink that we have created with
+We’re using a data connector named `demo`, which we created with:
 
 ```bash
-strm create sink demo strm-demo --credentials-file gcloud.json
+strm create data-connector gcs demo strm-demo --credentials-file gcloud.json
 ```
 
+It allows us to connect to a Google Cloud Storage bucket called `strm-demo`
 using service account credentials created via the [the Google Cloud
 console](https://console.cloud.google.com/iam-admin/serviceaccounts/create).
 
-When using an AWS S3 sink, the mechanism is identical and described
-[here](/quickstart/receiving-s3.md).
+When using an AWS S3 data connector, the mechanism is similar and described
+[here](/quickstart/batch-exporter.md).
 
-Accessing the bucket contents works with the [aws cli
+The bucket's contents can be accessed with the [aws cli
 tool](https://aws.amazon.com/cli/) for S3 or the [gsutil Google Cloud
 cli tool](https://cloud.google.com/storage/docs/gsutil) for Google
-Cloud.
+Cloud, or their respective cloud consoles.
 
 ## Creating an exporter
 
 Currently, we only provide batch exporters for the encryption keys, that
-work very similar to the [events batch exporters](/quickstart/receiving-s3.md).
+work very similar to the [events batch exporters](/quickstart/batch-exporter.md).
 So you need the same mechanism with authenticated and authorized IAM
 users.
 
 ```bash
 $ strm create batch-exporter --help
-Create batch exporter
 
 Usage:
-  strm create batch-exporter [stream-name] [flags]
+  dstrm create batch-exporter [stream-name] [flags]
 
 Flags:
-      --export-keys          Do we want to export the keys stream
-  -h, --help                 help for batch-exporter
-      --interval int         Interval in seconds between batches (default 60)
-      --name string          optional batch exporter name
-      --path-prefix string   path prefix on bucket
-      --sink string          name of the sink. Optional if you have only one defined sink.
+      --data-connector string     name of the data connector - optional if you own only one data connector
+      --export-keys               Do we want to export the keys stream
+  -h, --help                      help for batch-exporter
+      --include-existing-events   Do we want to include all existing events
+      --interval int              Interval in seconds between batches (default 60)
+      --name string               optional batch exporter name
+      --path-prefix string        path prefix on bucket
 ```
 
 We’re looking for the `--export-keys` option. Provided key exporting is
@@ -79,28 +80,33 @@ enabled for your account, you can do the following:
 
 ```bash
 strm create batch-exporter demo --export-keys \
-  --interval 30 --path-prefix demo-keys --sink demo
+  --interval 30 --path-prefix demo-keys --data-connector demo
 {
   "ref": { #(1)
-    "billingId": "demo8542234275", "name": "demo-demo-keys"
+    "billingId": "demo8542234275", 
+    "name": "demo-demo-keys"
   },
   "keyStreamRef": { #(2)
-    "billingId": "demo8542234275", "name": "demo"
+    "billingId": "demo8542234275", 
+    "name": "demo"
+  },
+  "dataConnectorRef": { #(3)
+    "billingId": "demo8542234275", 
+    "name": "demo"
   },
   "interval": "30s",
-  "sinkName": "demo", #(3)
   "pathPrefix": "demo-keys" #(4)
 }
 ```
 
 1. the reference to the batch-exporter
 2. the reference to the key stream
-3. the name of the sink to use
-4. a directory to use in the bucket for storing keys.
+3. the reference to the data connector to use
+4. a directory to use in the bucket for storing keys
 
 :::note
-If you have more than 1 sink defined, you *must* give the name of that
-sink. If you have 1, it is chosen as the default option.
+If you have more than one data-connector defined, you *must* provide its name.
+If you have only one, it is chosen as the default option.
 :::
 
 :::note
@@ -116,7 +122,7 @@ We have been running `strm sim run-random demo` for a while in another
 terminal, so there are keys data.
 :::
 
-You can have a look at the output
+You can have a look at the output:
 ```bash
 gsutil ls gs://strm-demo/demo-keys/
 
@@ -143,8 +149,7 @@ gsutil cat gs://strm-demo/demo-keys/2021-08-18T12:09:30-keys-3b398d5c-2d7c-4673-
   }
 }
 ```
-You can do exactly the same for an AWS S3 bucket. Inspect the keys in
-the sink like so
+You can do exactly the same for an AWS S3 bucket. Inspect the keys like so:
 ```bash
 aws s3 ls strmprivacy-export-demo/perf-test-keys/
 2021-05-04 15:41:37          0 .strm_test...95-dfec21be8251.jsonl #(1)
@@ -165,8 +170,7 @@ aws s3 cp \
 ```
 1. This is a test file created by STRM Privacy to verify that we can
     actually write in this bucket. Because it starts with a `.` it is
-    ignored by most tools. This has not yet been implemented for Gcloud
-    type sinks.
+    ignored by most tools.
 2. Because the interval is 30 seconds, we’ll have a file every 30
     seconds. Each file contains json lines with one key per line. The
     line contains both a `keyLink` attribute, with the key link of the
