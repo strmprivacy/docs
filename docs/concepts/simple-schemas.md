@@ -34,28 +34,27 @@ the following attributes:
 
 An example of a simple schema:
 
-**simple-schema.yaml**
-
+**simple
 ```yaml
-    Name: Clicks
+name: Clicks
+nodes:
+  - name: SessionId
+    type: STRING
+    doc: the string value that connects events to a single sequence
+    required: true
+    repeated: false
+  - name: User Name
+    type: STRING
+    doc:  we use an event contract to define that this is private
+  - name: url
+    type: STRING
+    doc:  the URL of the current page
+  - name: mouse positions
+    repeated: true
+    type: NODE
     nodes:
-    - name: SessionId
-      type: STRING
-      doc: the string value that connects events to a single sequence
-      required: true
-      repeated: false
-    - name: User Name
-      type: STRING
-      doc:  we use an event contract to define that this is private
-    - name: url
-      type: STRING
-      doc:  the URL of the current page
-    - name: mouse positions
-      repeated: true
-      type: NODE
-      nodes:
       - name: x
         type: INTEGER
-      - name: "y"  ## warning. Put quotes around y or it is a boolean true:
+      - name: "y"  ## warning. Put quotes around y, or it is a boolean true
         type: INTEGER
 ```
