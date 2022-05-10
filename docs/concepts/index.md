@@ -20,7 +20,7 @@ What is an STRM Batch Job?
 
 ## [Schemas and Contracts](schemas-and-contracts.md)
 
-The essence of well-defined gRPC compliant event data.
+The essence of well-defined GDPR-compliant event data.
 
 ## [the `strmMeta` section](strm-meta.md)
 
