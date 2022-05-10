@@ -124,7 +124,7 @@ const config = {
           },
           {
             from: '/docs/latest/quickstart/receiving-s3',
-            to: '/docs/latest/batch-exporter'
+            to: '/docs/latest/quickstart/batch-exporter'
           }
         ]
       },
