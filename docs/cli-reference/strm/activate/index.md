@@ -26,7 +26,7 @@ Set the state of an entity to ACTIVATED
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.0.3
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.0.4
 * [strm activate event-contract](/cli-reference/strm/activate/event-contract.md)	 - Set the state of an Event Contract to ACTIVATED
 * [strm activate schema](/cli-reference/strm/activate/schema.md)	 - Set the state of a Schema to ACTIVATED
 

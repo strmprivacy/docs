@@ -26,7 +26,7 @@ Create an entity
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.0.3
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.0.4
 * [strm create batch-exporter](/cli-reference/strm/create/batch-exporter.md)	 - Create batch exporter
 * [strm create batch-job](/cli-reference/strm/create/batch-job.md)	 - Create a Batch Job
 * [strm create data-connector](/cli-reference/strm/create/data-connector/index.md)	 - Create a Data Connector
