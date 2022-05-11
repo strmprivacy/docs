@@ -27,7 +27,7 @@ Get an entity
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI dev
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.0.3
 * [strm get batch-exporter](/cli-reference/strm/get/batch-exporter.md)	 - Get Batch exporter by name
 * [strm get batch-job](/cli-reference/strm/get/batch-job.md)	 - Get a Batch Job by id
 * [strm get data-connector](/cli-reference/strm/get/data-connector.md)	 - Get Data Connector by name
