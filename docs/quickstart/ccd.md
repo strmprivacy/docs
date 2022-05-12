@@ -1,3 +1,7 @@
+---
+title: Customer Cloud Deployments
+hide_table_of_contents: false
+---
 
 [github]: https://github.com/strmprivacy/data-plane-helm-chart/tree/master
 [oma]: https://backstage.strm.in/docs/default/component/organization-management-and-access/
@@ -5,16 +9,39 @@
 [telepresence]: https://www.telepresence.io/
 [sinks]: https://docs.strmprivacy.io/docs/latest/quickstart/receiving-s3/#create-sink
 [ovh-ingress]: https://docs.ovh.com/au/en/kubernetes/installing-nginx-ingress/
+[profile]: https://console.strmprivacy.io/upgrading
+[values]: https://console.strmprivacy.io/installation/configuration
+[confluent]: https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html#cp-quickstart-step-1
 
-# Customer Cloud Deployments
+This hands-on sessions shows how to get up-and-running with your Customer Cloud Deployment, and verify its
+functionality.
 
-1. make sure you have active kubernetes credentials to a cluster.
-1. Create a namespace `strmprivacy` and set that as default (`kns strmprivacy`)
-1. `git clone https://github.com/strmprivacy/data-plane-helm-chart.git`
+## Get an account with a 'Self Hosted' subscription
+Your [Strm profile page][profile] should show: "Current subscription: Self hosted". Get in touch with your Strm
+representative if you're on a Free or Business subscription.
+
+Once you have this profile active, you can start.
+
+## Install the following tools
+* [`kubectl`](https://kubernetes.io/docs/tasks/tools/)
+* [`helm`](http://helm.sh). This Kubernetes package manager is used for installing (and upgrading) your Strm customer
+  dataplane.
+* [`telepresence`][telepresence]. This tool allows your development computer to become _part of_ the k8s cluster, so
+  that you can directly access k8s services.
+* [`k9s`](https://github.com/derailed/k9s) (optional). This _textual user interface_ offers a very convenient way to interact with
+  kubernetes clusters.
+* [`kubectx and kubens`](https://github.com/ahmetb/kubectx) (optional). Very useful tools to switch the default
+  kubernetes context and namespace.
+
+## Start the installation of the Strm customer data-plane
+
+1. download the credentials file `values.yaml` [here][values] into the `data-plane-helm-chart` directory.
+1. make sure you have active kubernetes credentials to a cluster: `kubectl get nodes` should show the nodes of your
+   cluster.
+1. Create a namespace `strmprivacy` and set that as default (`kubens strmprivacy`)
+1. `git clone https://github.com/strmprivacy/data-plane-helm-chart.git`. In the near future this will become part of a
+   Helm repository, and this command will become `helm repo add ...`
 1. `cd data-plane-helm-chart`
-1. Make sure you have [helm](http://helm.sh) installed
-1. Make sure you have an account with self-hosted capabilities. TODO!
-   Download the credentials file `values.yaml` into the `data-plane-helm-chart` directory.
 
 The `values.yaml` file should be something like this
 
@@ -37,8 +64,12 @@ The `values.yaml` file should be something like this
 
 ## Create the helm release
 
+This installs _all_ the Strm components inside the `strmprivacy` namespace.
+
 `make install` should be all that is needed. `kubectl get pods --watch` or `k9s` provides nice feedback to see how the
-installation is progressing.
+installation is progressing. We see that some supporting infrastructure like Redis, Postgresql and Kafka are also
+installed. The creation of these components can be disabled, in which case configuration to the actual components will
+have to be added to the Helm chart.
 
 ### Create in a different namespace
 
@@ -54,25 +85,27 @@ hole. *to be investigated*
 
 ## Trying again
 
-1. `make uninstall` nicely uninstalls the helm release
-1. `k delete ns strmprivacy` kills everything (including the k8s namespace)
+If you've made mistakes and want to start over:
+
+1. `make uninstall` cleanly uninstalls the helm release
+1. `kubectl delete ns strmprivacy` kills everything (including the k8s namespace). Don't forget to recreate the
+   namespace afterwards.
 
 `make wipe` combines the above two steps
 
 # Interacting with the CCD cluster
 
-First create two streams. _Make sure you're connected to prod, with the right CCD account_
+First create two streams.
 
-    strm create stream pipo
-    strm create stream --derived from pipo --levels 2
+    strm create stream test
+    strm create stream --derived from test --levels 2
 
 ## Via telepresence
 [`telepresence`][telepresence] is an _awesome tool_ that brings your development computer via a vpn construction in the
 same network as your cluster. After you've started the agent (`telepresence connect`), you have direct access to the
 entities in your Kubernetes cluster.
 
-Make sure you set your default namespace via `kns` to `strmprivacy`.
-
+Make sure you set your default namespace via `kubens` to `strmprivacy`.
 
     kubectl get svc
     NAME                              CLUSTER-IP       PORT(S)
@@ -89,19 +122,22 @@ Make sure you set your default namespace via `kns` to `strmprivacy`.
     strmprivacy-zookeeper-headless    None             2181/TCP,2888/TCP,3888/TCP
     web-socket                        10.3.21.178      80/TCP
 
-Because you've create a derived stream (`pipo-2`) we should be able to see a decrypter deployment:
+Because you've create a derived stream (`test-2`) we should be able to see a decrypter deployment:
 
     kubectl get deployments.apps  -l app=decrypter-v2
 
     NAME                                             READY   UP-TO-DATE   AVAILABLE   AGE
     decrypter-a268aea6-4b5b-4241-b833-9a84f4f44bc4   1/1     1            1           93m
 
+You could use `kubectl describe deployment decrypter...` to see the annotations on the deployment, and see that it is
+indeed processing your `test-2` stream
+
 ### Sending events with the cli
 
 In order to use the cli to simulated data, you'll need to send the events via telepresence, using the `events-api-url`
 parameter (that you could also store in the strm config file (`strm context config`).
 
-    strm simulate random-events pipo --events-api-url=http://event-gateway.strmprivacy/event --interval 5
+    strm simulate random-events test --events-api-url=http://event-gateway.strmprivacy/event --interval 5
     Sent 874 events
     Sent 1809 events
     Sent 2726 events
@@ -109,23 +145,33 @@ parameter (that you could also store in the strm config file (`strm context conf
 
 ### Listening on the web-socket via the cli
 
-    strm listen web-socket pipo --web-socket-url ws://web-socket.strmprivacy/ws
+    strm listen web-socket test --web-socket-url ws://web-socket.strmprivacy/ws
 
     {"strmMeta": {"eventContractRef": "strmprivacy/example/1.3.0", "nonce": -447993628, "timestamp": 1652181230883, "keyLink": "7573fc76-ae34-4c49-a3fd-d552b677ffa1", "billingId": "strmprodccdtest1908747604", "consentLevels": [0, 1, 2, 3]}, "uniqueIdentifier": "AQAsswoVM2q6Q6+eeTb5Qe61xBHTaAZZMVCh+vDf", "consistentValue": "AQAsswoPYW8+VGwOZvfh+FmSEh2UoVTRNkNWlyQOpwA=", "someSensitiveValue": "AQAsswpQCKDPUYNls3hy13IllL5vd4bz/X3rEsBI0TEV", "notSensitiveValue": "not-sensitive-64"}
     {"strmMeta": {"eventContractRef": "strmprivacy/example/1.3.0", "nonce": -45323834, "timestamp": 1652181230893, "keyLink": "9ced67fc-9227-4fb2-846b-1eed521db941", "billingId": "strmprodccdtest1908747604", "consentLevels": [0, 1, 2]}, "uniqueIdentifier": "AWzkJjeWufjZehXNpWLUQ63CG1O8jxCU6MOd3Seo", "consistentValue": "AWzkJjd3cB+36sCrtT6va3YLjCa5qw55Iy5/HevIcVU=", "someSensitiveValue": "AWzkJjcsrjNHbZCAjlEYCBdlpOVK8+eXIx6BSBDxH8VQ", "notSensitiveValue": "not-sensitive-42"}
 
 Or a derived stream
 
-    strm listen web-socket pipo-2 --web-socket-url ws://web-socket.strmprivacy/ws
+    strm listen web-socket test-2 --web-socket-url ws://web-socket.strmprivacy/ws
 
     {"strmMeta": {"eventContractRef": "strmprivacy/example/1.3.0", "nonce": -1742873135, "timestamp": 1652181297380, "keyLink": "556c1be7-4332-4058-9d36-5e3e5a66e121", "billingId": "strmprodccdtest1908747604", "consentLevels": [0, 1, 2]}, "uniqueIdentifier": "unique-81", "consistentValue": "session-922", "someSensitiveValue": "AQM0jlnxbeNZSJzvJWLpnMjyYET1Jb1Yz+5yZVB5i6Dq", "notSensitiveValue": "not-sensitive-78"}
 
 ### Kafka
-Install Confluent client tools.
+Install [Confluent client tools][confluent]. You don't have to start Confluent, you only need to add the `bin` directory
+of the unpacked confluent tar file  to your `$PATH`.
 
-[NOTE]:
-There is currently no way for non Strmprivacy engineers to determine the Kafka topic name. So if you want to try this
-contact one of your Strmprivacy support people. Exposing this information is a priority.
+
+> There is currently no supported way for non Strmprivacy engineers to determine the Kafka topic name.
+  Exposing this information is a priority.
+
+You can access the input topic of a decrypter as follows
+
+    kubectl get deployments.apps decrypter-... -o=jsonpath='{.metadata.annotations.input-topic}'
+
+    stream-a268aea6-4b5b-4241-b833-9a84f4f44bc4
+
+I haven't thought of a way to access the topic of a derived stream yet. Ask the Strm support engineers, they can access
+the production database to find the topic name.
 
     ~/Downloads/confluent-7.0.1/bin/kafka-avro-console-consumer \
     --bootstrap-server kafka.strmprivacy:9092 \
@@ -145,7 +191,7 @@ about the setup.
 
     strm creat sink s3 --sink-type S3 .... // see [docs][sinks]
 
-    strm create batch-exporter pipo-2 --sink s3 --path-prefix ccd-prod-ovh
+    strm create batch-exporter test-2 --sink s3 --path-prefix ccd-prod-ovh
 
 You should see a batch-exporter come to live:
 
@@ -198,7 +244,7 @@ Install the nginx ingress into the same namespace as everything else
 
 It takes a while for the loadbalancer to become valid.
 
-    k get svc ingress-nginx-controller
+    kubectl get svc ingress-nginx-controller
     NAME                       TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)                      AGE
     ingress-nginx-controller   LoadBalancer   10.3.65.113   <pending>     80:31624/TCP,443:30757/TCP   3m51s
 
