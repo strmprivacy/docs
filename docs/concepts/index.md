@@ -39,3 +39,7 @@ Simple Schemas are an STRM Privacy specific format that can be used if
 you don’t need to use all the complexities of Avro schemas. A Simple
 Schema is *translated* to Avro upon creation, and that Avro schema is
 used in the engine.
+
+## [Customer Cloud Deployments](ccd.md)
+In a Customer Cloud Deployment (CCD), _all event processing takes place in a Kubernetes cluster specified by the
+customer_.

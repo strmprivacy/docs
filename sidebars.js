@@ -45,6 +45,7 @@ const sidebars = {
         'concepts/strm-meta',
         'concepts/masked-fields',
         'concepts/simple-schemas',
+        'concepts/ccd',
       ]
     },
     {
@@ -64,6 +65,7 @@ const sidebars = {
         'quickstart/exporting-keys',
         'quickstart/grpc',
         'quickstart/simple-schema',
+        'quickstart/ccd',
       ]
     },
     {
