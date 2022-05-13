@@ -208,7 +208,7 @@ If you're running data, you should see files in your s3 bucket quickly
     2022-05-10 15:12:01     181281 2022-05-10T13:12:00-stream-4a35419c-2daf-43ba-8683-7663a0874a35---0-1-2-3-4.jsonl
     2022-05-10 15:13:01     202094 2022-05-10T13:13:00-stream-4a35419c-2daf-43ba-8683-7663a0874a35---0-1-2-3-4.jsonl
 
-Looking inside one of them 
+Looking inside one of them
 
     aws s3 cp s3://stream-machine-export-demo/ccd-prod-ovh/2022-05-10T13:12:00-stream-4a35419c-2daf-43ba-8683-7663a0874a35---0-1-2-3-4.jsonl - | head -1 | jq
     {
@@ -230,22 +230,13 @@ Looking inside one of them
       "notSensitiveValue": "not-sensitive-6"
     }
 
-## Ingress
-Ingresses are quite cloud specific. The following is for [OVH][ovh-ingress]
+## Python Example
 
-### OVH Cloud
+[python]: https://docs.strmprivacy.io/docs/latest/quickstart/full-example/
 
-     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-     helm repo update
+The [Python example][python] needs a small modification in order to work. In the `client_builder.py` file change the
+`config` for
 
-Install the nginx ingress into the same namespace as everything else
-
-     helm install ingress-nginx ingress-nginx/ingress-nginx
-
-It takes a while for the loadbalancer to become valid.
-
-    kubectl get svc ingress-nginx-controller
-    NAME                       TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)                      AGE
-    ingress-nginx-controller   LoadBalancer   10.3.65.113   <pending>     80:31624/TCP,443:30757/TCP   3m51s
-
-TODO
+        config = ClientConfig(log_level=logging.DEBUG,
+                              gateway_protocol="http",
+                              gateway_host="event-gateway.strmprivacy")
