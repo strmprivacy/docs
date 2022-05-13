@@ -101,8 +101,8 @@ If you've made mistakes and want to start over:
 
 First create two streams.
 
-    strm create stream test
-    strm create stream --derived-from test --levels 2
+    strm create stream test --save
+    strm create stream --derived-from test --levels 2 --save
 
 ## Via telepresence
 [`telepresence`][telepresence] is an _awesome tool_ that brings your development computer via a vpn construction in the
