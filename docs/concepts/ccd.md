@@ -9,14 +9,17 @@ hide_table_of_contents: false
 In a Customer Cloud Deployment (CCD), _all event processing takes place in a Kubernetes cluster specified by the
 customer_. **Your sensitive events never leave your own cluster.**
 
-The entities doing the processing get configured by Strmprivacy controls _outside that cluster_, in the Strmprivacy
-cloud. Inside the _customer data plane_ several _agents_ are running that query `api.strmprivacy.io` every few seconds.
+The entities doing the processing get configured by STRM Privacy configurations _outside that cluster_, stored in the 
+STRM Privacy _control plane_. Inside the _customer data plane_, several _agents_ run that frequently poll 
+`api.strmprivacy.io`. Based on the configuration provided by the control plane, the agents determine whether any new
+entities (e.g. a stream, a batch exporter, ...) are needed, or existing ones should be updated or removed.
+The agents are therefore indirectly controlled via user actions in the [STRM Privacy Console][console] and/or the [cli][cli].
 
 :::important
-This requires an outgoing firewall rule allowing access to `api.strmprivacy.io` on port 443. All communication is TLS
-encrypted, and defined by a [public gRPC protocol][api].
+A CCD requires an outgoing firewall rule allowing access to `api.strmprivacy.io` on port 443.
+All communication is TLS encrypted, and defined by a [public gRPC protocol][api].
 :::
 
-The agents are indirectly controlled via the [Strmprivacy Console][console] and/or the [cli][cli].
-
-
+:::note
+CCDs were successfully tested on multiple kubernetes implementations: local (K3S), GKE, EKS, AKS, OVHcloud.
+:::
