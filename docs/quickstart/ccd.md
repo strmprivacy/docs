@@ -12,6 +12,7 @@ hide_table_of_contents: false
 [profile]: https://console.strmprivacy.io/upgrading
 [values]: https://console.strmprivacy.io/installation/configuration
 [confluent]: https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html#cp-quickstart-step-1
+[makefile]: https://github.com/strmprivacy/data-plane-helm-chart/blob/master/Makefile
 
 This hands-on sessions shows how to get up-and-running with your Customer Cloud Deployment, and verify its
 functionality.
@@ -23,6 +24,9 @@ representative if you're on a Free or Business subscription.
 Once you have this profile active, you can start.
 
 ## Install the following tools
+
+* `make` (optional). The Helm repository contains handy `make` targets such as _install_, _upgrade_, _wipe_. None of
+  these are mandatory, one can also execute the commands in the [`Makefile`][makefile] by hand.
 * [`kubectl`](https://kubernetes.io/docs/tasks/tools/)
 * [`helm`](http://helm.sh). This Kubernetes package manager is used for installing (and upgrading) your Strm customer
   dataplane.
