@@ -58,7 +58,7 @@ Short steps to start sending data:
 git clone https://github.com/strmprivacy/java-examples
 cd java-examples
 strm create stream demo --save
-f=~/.config/strmprivacy/saved-entities/Stream/demo.json
+f=$( strm context info Stream/demo )
 billingId=$(cat $f | jq -r '.ref.billingId')
 clientId=$(cat $f | jq -r '.credentials[0].clientId')
 clientSecret=$(cat $f | jq -r '.credentials[0].clientSecret')
@@ -102,7 +102,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 python3 -m pip install -r requirements.txt
 strm create stream demo --save
-f=~/.config/strmprivacy/saved-entities/Stream/demo.json
+f=$( strm context info Stream/demo )
 billingId=$(cat $f | jq -r '.ref.billingId')
 clientId=$(cat $f | jq -r '.credentials[0].clientId')
 clientSecret=$(cat $f | jq -r '.credentials[0].clientSecret')
@@ -139,7 +139,7 @@ Quick steps getting started:
 git clone https://github.com/strmprivacy/nodejs-examples
 cd nodejs-examples
 strm create stream demo --save
-cat ~/.config/strmprivacy/saved-entities/Stream/demo.json | jq \
+cat $( strm context info Stream/demo ) | jq \
     '{billingId:.ref.billingId,
       clientId:.credentials[0].clientId,
       clientSecret:.credentials[0].clientSecret}' \
