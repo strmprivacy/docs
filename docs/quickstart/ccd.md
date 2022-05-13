@@ -100,6 +100,10 @@ First create two streams.
 same network as your cluster. After you've started the agent (`telepresence connect`), you have direct access to the
 entities in your Kubernetes cluster.
 
+:::note
+You can also use a port forward instead of telepresence. 
+:::
+
 Make sure you set your default namespace via `kubens` to `strmprivacy`.
 
     kubectl get svc
