@@ -7,7 +7,7 @@ hide_table_of_contents: false
 [oma]: https://backstage.strm.in/docs/default/component/organization-management-and-access/
 [jk]: https://docs.google.com/document/d/1ymb8JPaOflX8GZzICV6WCE_L0GGLRrBAPtk0dgeHJdc/edit
 [telepresence]: https://www.telepresence.io/
-[sinks]: https://docs.strmprivacy.io/docs/latest/quickstart/receiving-s3/#create-sink
+[data-connector]: https://docs.strmprivacy.io/docs/latest/quickstart/batch-exporter/#creating-a-data-connector
 [ovh-ingress]: https://docs.ovh.com/au/en/kubernetes/installing-nginx-ingress/
 [profile]: https://console.strmprivacy.io/upgrading
 [values]: https://console.strmprivacy.io/installation/configuration
@@ -21,7 +21,7 @@ functionality.
 Your [Strm profile page][profile] should show: "Current subscription: Self hosted". Get in touch with your Strm
 representative if you're on a Free or Business subscription.
 
-Once you have this profile active, you can start.
+Once you're on a self hosted subscription, you can proceed with this quickstart guide.
 
 ## Install the following tools
 
@@ -42,29 +42,30 @@ Once you have this profile active, you can start.
 1. download the credentials file `values.yaml` [here][values] into the `data-plane-helm-chart` directory.
 1. make sure you have active kubernetes credentials to a cluster: `kubectl get nodes` should show the nodes of your
    cluster.
-1. Create a namespace `strmprivacy` and set that as default (`kubens strmprivacy`)
+1. Create a namespace `strmprivacy` (`kubectl create namespace strmprivacy`) and set that as default (`kubens strmprivacy`)
 1. `git clone https://github.com/strmprivacy/data-plane-helm-chart.git`. In the near future this will become part of a
    Helm repository, and this command will become `helm repo add ...`
 1. `cd data-plane-helm-chart`
 
-The `values.yaml` file should be something like this
+The `values.yaml` file should be similar to this:
 
-    registry:
-      imagePullSecret: "ewogIC...."
+```yaml
+  registry:
+    imagePullSecret: "ewogIC...."
 
-    license:
-      installationId: "f4cea...."
-      installationClientId: "ins-...."
-      installationClientSecret: "tii...."
+  license:
+    installationId: "f4cea...."
+    installationClientId: "ins-...."
+    installationClientSecret: "tii...."
 
-    kafka:
-      enabled: true
+  kafka:
+    enabled: true
 
-    redis:
-      enabled: true
+  redis:
+    enabled: true
 
-    postgresql:
-      enabled: true
+  postgresql:
+    enabled: true
 
 ## Create the helm release
 
@@ -77,15 +78,14 @@ have to be added to the Helm chart.
 
 ### Create in a different namespace
 
-**this is broken, don't use it**
+:::warning
+This is still a work in progress, so do not use it yet.
+:::
 
-You'll have to add `namespace=...` to every `make` command (or modify the `Makefile`)
+Add `namespace=...` to every `make` command (or modify the `Makefile`)
 
     make namespace namespace=mycustomnamespace
     make install namespace=mycustomnamespace
-
-The install seems to work correctly but trying to send events seems to go into some black
-hole. *to be investigated*
 
 ## Trying again
 
@@ -138,8 +138,7 @@ indeed processing your `test-2` stream
 
 ### Sending events with the cli
 
-In order to use the cli to simulated data, you'll need to send the events via telepresence, using the `events-api-url`
-parameter (that you could also store in the strm config file (`strm context config`).
+To simulate events with our cli, the `events-api-url` paramater must be set to the host exposed via telepresence (the url can also be set in the strm config file (`strm context config`).
 
     strm simulate random-events test --events-api-url=http://event-gateway.strmprivacy/event --interval 5
     Sent 874 events
@@ -165,8 +164,10 @@ Install [Confluent client tools][confluent]. You don't have to start Confluent, 
 of the unpacked confluent tar file  to your `$PATH`.
 
 
-> There is currently no supported way for non Strmprivacy engineers to determine the Kafka topic name.
-  Exposing this information is a priority.
+:::note
+Currently, only STRM Privacy engineers can determine the Kafka topic name.
+Exposing this information is a priority. For now, ask a STRM engineer for this information.
+:::
 
 You can access the input topic of a decrypter as follows
 
@@ -188,16 +189,16 @@ the production database to find the topic name.
     5afc9c0a-de67-4e38-bd0a-66640f4349c7    {"strmMeta":{"eventContractRef":"strmprivacy/example/1.3.0","nonce":{"int":1699175479},"timestamp":{"long":1652181101896},"keyLink":{"string":"5afc9c0a-de67-4e38-bd0a-66640f4349c7"},"billingId":{"string":"strmprodccdtest1908747604"},"consentLevels":[0,1,2,3]},"uniqueIdentifier":{"string":"ASotb1YzBuuBBM981rLIzQd/EZA7Em7dxyaBg7vE"},"consistentValue":"ASotb1bYf1G/2ye4h6ELE4hlkVGZGKSt3LQe0AnZU+k=","someSensitiveValue":{"string":"ASotb1bb51OCfM9HdCqcAjTLtXqK67EuBQicTpNzIvv/"},"notSensitiveValue":{"string":"not-sensitive-95"}}
 
 
-### Exporting to an s3 bucket
+### Exporting to an S3 bucket
 
-Create the s3 bucket and the associated `sink` (soon to be renamed to `data-connector`). See [docs][sinks] for details
-about the setup.
+Create the S3 bucket and the associated `data connector`. See [docs][data-connector] for details
+about the credentials configuration.
 
-    strm creat sink s3 --sink-type S3 .... // see [docs][sinks]
+    strm create data-connector s3 s3-connector --credentials-file=...
 
-    strm create batch-exporter test-2 --sink s3 --path-prefix ccd-prod-ovh
+    strm create batch-exporter test-2 --data-connector s3-connector --path-prefix ccd-prod-ovh
 
-You should see a batch-exporter come to live:
+You should see a newly-created batch-exporter deployment:
 
     kubectl get deployments.apps  -l app=batch-exporter
     NAME                                                  READY   UP-TO-DATE   AVAILABLE   AGE
