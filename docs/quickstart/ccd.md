@@ -3,6 +3,7 @@ title: Customer Cloud Deployments
 hide_table_of_contents: false
 ---
 
+[cli]: https://github.com/strmprivacy/cli
 [github]: https://github.com/strmprivacy/data-plane-helm-chart/tree/master
 [telepresence]: https://www.telepresence.io/
 [data-connector]: https://docs.strmprivacy.io/docs/latest/quickstart/batch-exporter/#creating-a-data-connector
@@ -11,6 +12,7 @@ hide_table_of_contents: false
 [values]: https://console.strmprivacy.io/installation/configuration
 [confluent]: https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html#cp-quickstart-step-1
 [makefile]: https://github.com/strmprivacy/data-plane-helm-chart/blob/master/Makefile
+[console]: https://console.strmprivacy.io
 
 This hands-on sessions shows how to get up-and-running with your Customer Cloud Deployment, and verify its
 functionality.
@@ -23,6 +25,8 @@ Once you're on a self hosted subscription, you can proceed with this quickstart 
 
 ## Install the following tools
 
+* [`strm`][cli], the STRM Privacy cli (optional). You need this to control your STRM resources, and to simulate some events.
+  You could do without, and use the [STRM console][console].
 * `make` (optional): The Helm repository contains handy `make` targets such as _install_, _upgrade_, _wipe_. None of
   these are mandatory, one can also execute the commands in the [`Makefile`][makefile] by hand.
 * [`kubectl`](https://kubernetes.io/docs/tasks/tools/)
