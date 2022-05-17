@@ -13,6 +13,7 @@ hide_table_of_contents: false
 [confluent]: https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html#cp-quickstart-step-1
 [makefile]: https://github.com/strmprivacy/data-plane-helm-chart/blob/master/Makefile
 [console]: https://console.strmprivacy.io
+[minio-mc]: https://docs.min.io/docs/minio-client-complete-guide.html
 
 This hands-on sessions shows how to get up-and-running with your Customer Cloud Deployment, and verify its
 functionality.
@@ -38,6 +39,8 @@ Once you're on a self hosted subscription, you can proceed with this quickstart 
   interact with kubernetes clusters.
 * [`kubectx and kubens`](https://github.com/ahmetb/kubectx) (optional): Very useful tools to switch the default
   kubernetes context and namespace.
+* [`minio mc`][minio-mc] (optional). A useful tool to interact with S3 compatible object storage (including S3 by AWS
+  itself).
 
 ## Install the STRM customer data plane
 
@@ -262,6 +265,56 @@ aws s3 cp s3://stream-machine-export-demo/ccd-prod-ovh/2022-05-10T13:12:00-strea
       "someSensitiveValue": "AXWnGm/OjbB42PEJuXLwqZX7sRCdSlLInDpNOnJlBxiJ",
       "notSensitiveValue": "not-sensitive-6"
     }
+
+#### Exporting to an S3 compatible bucket
+[cloud-console]: https://console.cloud.google.com/storage/create-bucket
+S3 has become just a protocol instead of an Amazon product. We've tested on a Google Cloud bucket, with HMAC
+credentials.
+
+The short steps:
+
+* create a bucket on a Google cloud project: `gsutil mb gs://<bucket-name>` or via the [gcloud console][cloud-console]
+* create a service account: `gcloud iam service-account create <sa-name>`
+* give the service account `storage.legacyBucketOwner` and `storage.legacyObjectOwner` rights via the [gcloud
+  console][cloud-console]
+* create HMAC credentials: `gsutil hmac create <sa-name>`. Use the secrets in a json file you create
+  named `credentials.json`
+  ```
+      {
+        "url": "https://storage.googleapis.com",
+        "accessKey": "<access-key>",
+        "secretKey": "<secret-key>",
+        "api": "s3v4",
+        "path": "auto"
+      }
+  ```
+* create a data-connector via the `strm` cli, with any name you like, but with the bucket name you chose earlier
+  ```
+  strm create data-connector s3 <name> <bucket-name> --credentials-file=credentials.json
+  ```
+
+* create a `batch-exporter` as described in the [section above](#exporting-to-an-s3-bucket).
+
+
+We've used the [minio mc cli tool][minio-mc] client to interact with the bucket. Use the credentials you used with
+minio:
+
+    mc alias set <alias>  https://storage.googleapis.com <key> <secret-key>
+
+You can see the files in the bucket stored at the path prefix you used when creating the batch-exporter
+
+    mc ls <alias>/<bucket-name>/<path-prefix>
+
+    [2022-05-17 15:07:01 CEST]  48KiB 2022-05-17T13:07:00-stream-f704507b-1e88-4464-98e0-b7cfa501ec75---0-1-2-3-4.jsonl
+    [2022-05-17 15:08:01 CEST]  44KiB 2022-05-17T13:08:01-stream-f704507b-1e88-4464-98e0-b7cfa501ec75---0-1-2-3-4.jsonl
+    [2022-05-17 15:09:00 CEST]  46KiB 2022-05-17T13:09:00-stream-f704507b-1e88-4464-98e0-b7cfa501ec75---0-1-2-3-4.jsonl
+
+And have a look inside one of them:
+
+
+    mc cat gcs/strm-resilience-demo/mc-path/2022-05-17T12:48:00-stream-f704507b-1e88-4464-98e0-b7cfa501ec75---0-1-2-3-4.jsonl
+
+    {"strmMeta": {"eventContractRef": "strmprivacy/example/1.3.0", "nonce": 1786601587, "timestamp": 1652791673944, "keyLink": "74ddbc8f-86f2-4a08-b32f-1b70a8bc99e8", "billingId": "strmprodccdtest1908747604", "consentLevels": [0, 1, 2, 3]}, "uniqueIdentifier": "unique-71", "consistentValue": "session-276", "someSensitiveValue": "ASn7pHpM/BB1RQvOdI7QD/KVr178KHe8uSCxYBz8NtJY", "notSensitiveValue": "not-sensitive-1"}
 
 ### Python Example
 
