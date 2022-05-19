@@ -16,6 +16,7 @@ hide_table_of_contents: false
 [tink]: https://github.com/google/tink
 [avro-json]: https://avro.apache.org/docs/current/spec.html#json_encoding
 [helm-gcs]: https://github.com/hayorov/helm-gcs
+[kctx]: https://github.com/ahmetb/kubectx
 
 This hands-on sessions shows how to get up-and-running with your Customer Cloud Deployment, and verify its
 functionality.
@@ -28,15 +29,15 @@ Once you're on a self hosted subscription, you can proceed with this quickstart 
 
 ## Install the following tools
 
-* [`strm`][cli], the STRM Privacy cli. You need this to control your STRM resources, and to simulate some events.
-* [`kubectl`](https://kubernetes.io/docs/tasks/tools/), the Kubernetes cli.
+* [`strm`][cli]: the STRM Privacy cli. You need this to control your STRM resources, and to simulate some events.
+* [`kubectl`](https://kubernetes.io/docs/tasks/tools/): the Kubernetes cli.
 * [`helm`](http://helm.sh): This Kubernetes package manager is used for installing (and upgrading) your STRM
   customer data plane. Also install the [helm-gcs plugin][helm-gcs]
 * [`k9s`](https://github.com/derailed/k9s) (optional): This _textual user interface_ offers a very convenient way to
   interact with kubernetes clusters.
-* [`kubectx and kubens`](https://github.com/ahmetb/kubectx) (optional): Very useful tools to switch the default
+* [`kubectx`][kctx] and [`kubens`][kctx] (optional): Very useful tools to switch the default
   kubernetes context and namespace.
-* [`minio mc`][minio-mc] (optional). A useful tool to interact with S3 compatible object storage (including S3 by AWS
+* [`minio mc`][minio-mc] (optional): A useful tool to interact with S3 compatible object storage (including S3 by AWS
   itself).
 
 ## Install the STRM customer data plane
@@ -117,8 +118,8 @@ kubectl port-forward deployment/web-socket 8082:8080
 ```
 
 In a production setting you obviously would not use port-forwarding. Typically one would
-* add a Kubernetes `ingress` in front of the `event-gateway` service. This creates a load-balancer in the infrastructure
-  that will allow https access to the event-gateway. Make sure the loadbalancer is capable of handling http/2 otherwise
+* add a Kubernetes `ingress` in front of the `event-gateway` service. This creates a load balancer in the infrastructure
+  that will allow https access to the event-gateway. Make sure the load balancer is capable of handling http/2 otherwise
   latency and throughput will suffer.
 * communicate directly with the `event-gateway` service. This would only work if your events are being sent from within
   the same Kubernetes cluster.
