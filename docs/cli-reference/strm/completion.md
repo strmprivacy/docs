@@ -76,5 +76,5 @@ strm completion [bash|zsh|fish|powershell]
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.0.4
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.1.0
 
