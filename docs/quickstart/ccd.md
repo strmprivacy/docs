@@ -15,6 +15,7 @@ hide_table_of_contents: false
 [port-forward]: https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
 [tink]: https://github.com/google/tink
 [avro-json]: https://avro.apache.org/docs/current/spec.html#json_encoding
+[helm-gcs]: https://github.com/hayorov/helm-gcs
 
 This hands-on sessions shows how to get up-and-running with your Customer Cloud Deployment, and verify its
 functionality.
@@ -30,7 +31,7 @@ Once you're on a self hosted subscription, you can proceed with this quickstart 
 * [`strm`][cli], the STRM Privacy cli. You need this to control your STRM resources, and to simulate some events.
 * [`kubectl`](https://kubernetes.io/docs/tasks/tools/), the Kubernetes cli.
 * [`helm`](http://helm.sh): This Kubernetes package manager is used for installing (and upgrading) your STRM
-  customer data plane.
+  customer data plane. Also install the [helm-gcs plugin][helm-gcs]
 * [`k9s`](https://github.com/derailed/k9s) (optional): This _textual user interface_ offers a very convenient way to
   interact with kubernetes clusters.
 * [`kubectx and kubens`](https://github.com/ahmetb/kubectx) (optional): Very useful tools to switch the default
@@ -45,10 +46,7 @@ Once you're on a self hosted subscription, you can proceed with this quickstart 
 1. Make sure you have active kubernetes credentials to a cluster: `kubectl get nodes` should show the nodes of your
    cluster.
 1. Create a namespace `strmprivacy` (`kubectl create namespace strmprivacy`) and set that as default (`kubens strmprivacy`).
-1. `git clone https://github.com/strmprivacy/data-plane-helm-chart.git`. In the near future this will become part of a
-   Helm repository, and this command will become `helm repo add ...`.
-1. `cd data-plane-helm-chart`.
-1. Download the credentials file `values.yaml` through [the STRM Privacy Console][values] into the `data-plane-helm-chart` directory.
+1. Download the credentials file `values.yaml` through [the STRM Privacy Console][values].
 
 The `values.yaml` file should be similar to this:
 
@@ -71,11 +69,21 @@ The `values.yaml` file should be similar to this:
     enabled: true
 ```
 
-### Install the Helm chart
+:::note
+Add the [gcs plugin][helm-gcs] to helm `helm plugin install https://github.com/hayorov/helm-gcs.git`
+:::
 
-This installs _all_ the STRM components inside the `strmprivacy` namespace.
+## Install the Helm chart
 
-    helm install strmprivacy helm/ --values values.yaml
+**add the helm repo**
+
+    helm repo add strmrepo gs://stream-machine-production-helm-chart/data-plane
+
+Install _all_ the STRM components inside the `strmprivacy` namespace.
+
+    helm install strmprivacy strmrepo/strm --values values.yaml
+                    ^^^^         ^     ^
+                 releasename   repo   chart
 
 `kubectl get pods --watch` or `k9s` provides nice feedback to see how the
 installation is progressing. We see that some supporting infrastructure like Redis, Postgresql and Kafka are also
@@ -88,13 +96,11 @@ to connect to Redis, which is still being deployed. Once Redis is healthy, you'l
 healthy
 :::
 
-### Create in a different namespace
-
+:::note Create in a different namespace
 Add `namespace: <your-namespace>` to the `values.yaml` file.
-
-The namespace needs to be created manually with `kubectl create namespace <your-namespace>`.
-
+The namespace needs to be created *manually* with `kubectl create namespace <your-namespace>`.
 With every `helm` command you should use the option `--values values.yaml`
+:::
 
 ## Interacting with the CCD cluster
 
@@ -175,7 +181,7 @@ You need [the `strm` cli][cli] of _at least version 2.1.0_ in order to find the 
 **port forwards**
 Set up the following port-forwards in order to interact with the Kafka server components
 ```
-kubectl port-forward deployment/confluent-schema-registry 8083:8080
+kubectl port-forward deployment/confluent-schema-proxy 8083:8080
 kubectl port-forward pod/kafka-0 9092:9092
 ```
 
@@ -203,11 +209,10 @@ kafka-avro-console-consumer     \
 We can't yet use an _existing Confluent Schema Registry_ in your infrastructure. This is on our roadmap.
 :::
 
-:::note
-The _json_ is the [Avro json format][avro-json] which includes a type attribute for nullable types for instance
+:::note Avro-Json
+The _json_ from the `kafka-avro-console-consumer` is the [Avro json format][avro-json] which includes a type attribute for nullable types for instance
 
     "notSensitiveValue":{"string":"not-sensitive-84"}
-
 Our `web-socket` debugging output uses the less verbose `null` or `some string` in the json, i.e.
 
     "notSensitiveValue": "not-sensitive-84"
@@ -265,7 +270,7 @@ aws s3 cp s3://stream-machine-export-demo/ccd-events-demo/2022-05-10T13:12:00-st
       "notSensitiveValue": "not-sensitive-6"
     }
 
-#### Exporting to an S3 compatible bucket
+### Exporting to an S3 compatible bucket
 [cloud-console]: https://console.cloud.google.com/storage/create-bucket
 S3 has become just a protocol instead of an Amazon product. We've tested on a Google Cloud bucket, with HMAC
 credentials.
@@ -315,7 +320,7 @@ And have a look inside one of them:
 
     {"strmMeta": {"eventContractRef": "strmprivacy/example/1.3.0", "nonce": 1786601587, "timestamp": 1652791673944, "keyLink": "74ddbc8f-86f2-4a08-b32f-1b70a8bc99e8", "billingId": "strmprodccdtest1908747604", "consentLevels": [0, 1, 2, 3]}, "uniqueIdentifier": "unique-71", "consistentValue": "session-276", "someSensitiveValue": "ASn7pHpM/BB1RQvOdI7QD/KVr178KHe8uSCxYBz8NtJY", "notSensitiveValue": "not-sensitive-1"}
 
-### Exporting keys
+### Exporting encryption keys
 
 If you need to export the encryption keys, you create a batch exporter but with the `export-keys` option
 
@@ -356,10 +361,10 @@ mc cat gcs/strm-ccd-demo/ccd-demo-keys/2022-05-19T09:56:00-keys-e379c8e5-0e25-4b
   }
 ```
 
-* `keyLink` is the value that exists in every event that has been processed by the Strm Event Gateway or a Batch Job, in
-  the `strmMeta.keyLink` attribute. In order to decrypt a field, we can find the encryption key in the above
-  [`tinkKey`][tink] field. The [Google Tink library][tink] is a popular that wraps commonly used encryption methods in
-  various programming languages.
+`keyLink` is the value that exists in every event that has been processed by the Strm Event Gateway or a Batch Job, in
+the `strmMeta.keyLink` attribute. In order to decrypt a field, we have to find the associated [`tinkKey`][tink]
+encryption key. The [Google Tink library][tink] is a popular that wraps commonly used encryption methods in various
+programming languages.
 
 ### Python Example
 
