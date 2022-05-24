@@ -1,19 +1,19 @@
 ---
-title: "version"
+title: "account"
 hide_title: true
 ---
-## strm version
+## strm context account
 
-Print CLI version
+Show the handle of this account
 
 ```
-strm version [flags]
+strm context account [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help   help for version
+  -h, --help   help for account
 ```
 
 ### Options inherited from parent commands
@@ -30,5 +30,5 @@ strm version [flags]
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.2.0
+* [strm context](/cli-reference/strm/context/index.md)	 - Print the CLI context
 
