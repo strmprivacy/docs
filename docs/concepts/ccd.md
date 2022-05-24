@@ -28,7 +28,7 @@ are therefore indirectly controlled via user actions in the [STRM Privacy Consol
 
 In the graphic above, you can see where all software runs in a CCD setup.
 
-- On the left is your infrastructure (i.e. AWS account).
+- On the left is your infrastructure (e.g. AWS account).
 - On the right is our SAAS, which is accessible by gRPC services over the internet. We call this the "control plane".
 
 ## Customer infrastructure

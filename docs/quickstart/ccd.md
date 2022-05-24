@@ -5,6 +5,8 @@ hide_table_of_contents: false
 
 [cli]: https://github.com/strmprivacy/cli
 [github]: https://github.com/strmprivacy/data-plane-helm-chart/tree/master
+[batch-exporter]: https://docs.strmprivacy.io/docs/latest/quickstart/batch-exporter
+[exporting-keys]: https://docs.strmprivacy.io/docs/latest/quickstart/exporting-keys/
 [data-connector]: https://docs.strmprivacy.io/docs/latest/quickstart/batch-exporter/#creating-a-data-connector
 [ovh-ingress]: https://docs.ovh.com/au/en/kubernetes/installing-nginx-ingress/
 [profile]: https://console.strmprivacy.io/upgrading
@@ -272,100 +274,19 @@ aws s3 cp s3://stream-machine-export-demo/ccd-events-demo/2022-05-10T13:12:00-st
     }
 
 ### Exporting to an S3 compatible bucket
-[cloud-console]: https://console.cloud.google.com/storage/create-bucket
-S3 has become just a protocol instead of an Amazon product. We've tested on a Google Cloud bucket, with HMAC
-credentials.
 
-The short steps:
-
-* create a bucket on a Google cloud project: `gsutil mb gs://<bucket-name>` or via the [gcloud console][cloud-console]
-* create a service account: `gcloud iam service-account create <sa-name>`
-* give the service account `storage.legacyBucketOwner` and `storage.legacyObjectOwner` rights via the [gcloud
-  console][cloud-console]
-* create HMAC credentials: `gsutil hmac create <sa-name>`. Use the secrets in a json file you create
-  named `credentials.json`
-  ```
-      {
-        "url": "https://storage.googleapis.com",
-        "accessKey": "<access-key>",
-        "secretKey": "<secret-key>",
-        "api": "s3v4",
-        "path": "auto"
-      }
-  ```
-* create a data-connector via the `strm` cli, with any name you like, but with the bucket name you chose earlier
-  ```
-  strm create data-connector s3 <name> <bucket-name> --credentials-file=credentials.json
-  ```
-
-* create a `batch-exporter` as described in the [section above](#exporting-to-an-s3-bucket).
-
-
-We've used the [minio mc cli tool][minio-mc] client to interact with the bucket. Use the credentials you used with
-minio:
-
-    mc alias set <alias>  https://storage.googleapis.com <key> <secret-key>
-
-You can see the files in the bucket stored at the path prefix you used when creating the batch-exporter
-
-    mc ls <alias>/<bucket-name>/<path-prefix>
-
-    [2022-05-17 15:07:01 CEST]  48KiB 2022-05-17T13:07:00-stream-f704507b-1e88-4464-98e0-b7cfa501ec75---0-1-2-3-4.jsonl
-    [2022-05-17 15:08:01 CEST]  44KiB 2022-05-17T13:08:01-stream-f704507b-1e88-4464-98e0-b7cfa501ec75---0-1-2-3-4.jsonl
-    [2022-05-17 15:09:00 CEST]  46KiB 2022-05-17T13:09:00-stream-f704507b-1e88-4464-98e0-b7cfa501ec75---0-1-2-3-4.jsonl
-
-And have a look inside one of them:
-
-
-    mc cat gcs/<bucket-name>/<path-prefix>/2022-05-17T12:48:00-stream-f704507b-1e88-4464-98e0-b7cfa501ec75---0-1-2-3-4.jsonl
-
-    {"strmMeta": {"eventContractRef": "strmprivacy/example/1.3.0", "nonce": 1786601587, "timestamp": 1652791673944, "keyLink": "74ddbc8f-86f2-4a08-b32f-1b70a8bc99e8", "billingId": "strmprodccdtest1908747604", "consentLevels": [0, 1, 2, 3]}, "uniqueIdentifier": "unique-71", "consistentValue": "session-276", "someSensitiveValue": "ASn7pHpM/BB1RQvOdI7QD/KVr178KHe8uSCxYBz8NtJY", "notSensitiveValue": "not-sensitive-1"}
+It is possible to export data to any S3 compatible bucket. For more information, see our 
+[Batch Exporter quickstart][batch-exporter].
 
 ### Exporting encryption keys
 
-If you need to export the encryption keys, you create a batch exporter but with the `export-keys` option
+If you need to export the encryption keys, create a batch exporter with the `export-keys` option:
 
-    strm create batch-exporter test --export-keys --data-connector mc --include-existing-events \
-    --path-prefix ccd-demo-keys
-
-If the simulator is running, there should be keys in the keys topic
-
-```
-mc ls gcs/<bucket-name>/ccd-demo-keys/
-[2022-05-18 15:19:16 CEST]     0B .strm_test_0bcaf90e-c8de-4fa6-b93e-03237560647a.jsonl
-...
-[2022-05-18 15:34:01 CEST]   740B 2022-05-18T13:34:00-keys-e379c8e5-0e25-4b95-b1f4-c5ceb20a233f---0-1-2-3-4.jsonl
-[2022-05-18 15:39:00 CEST]   370B 2022-05-18T13:39:00-keys-e379c8e5-0e25-4b95-b1f4-c5ceb20a233f---0-1-2-3-4.jsonl
-[2022-05-19 11:55:01 CEST] 351KiB 2022-05-19T09:55:00-keys-e379c8e5-0e25-4b95-b1f4-c5ceb20a233f---0-1-2-3-4.jsonl
+```bash
+strm create batch-exporter test --export-keys --data-connector s3-connector --include-existing-events --path-prefix ccd-demo-keys
 ```
 
-
-```
-mc cat gcs/strm-ccd-demo/ccd-demo-keys/2022-05-19T09:56:00-keys-e379c8e5-0e25-4b95-b1f4-c5ceb20a233f---0-1
--2-3-4.jsonl | tail -1 | jq
-{
-  "keyLink": "e5906a82-0519-4085-b733-dc6d2833c8cf",
-  "tinkKey": {
-    "primaryKeyId": 1170992137,
-    "key": [
-      {
-        "keyData": {
-          "typeUrl": "type.googleapis.com/google.crypto.tink.AesSivKey",
-          "value": "EkAmVA4MlH4Z8bdBfK1PKhqWSwICF5omC7BXAK+0KYDn8DyMysdci2JAF73jbg4K2I2q+jR2hMvZf5ckK/jLIQ5z",
-          "keyMaterialType": "SYMMETRIC"
-        },
-        "status": "ENABLED",
-        "keyId": 1170992137,
-        "outputPrefixType": "TINK"
-      }
-    ]
-  }
-```
-
-`keyLink` is the value that exists in every event that has been processed by the Strm Event Gateway or a Batch Job, in
-the `strmMeta.keyLink` attribute. In order to decrypt a field, we have to find the associated [`tinkKey`][tink]
-encryption key. The [Google Tink library][tink] is a popular that wraps commonly used encryption methods in various
-programming languages.
+For more information, see our [quickstart on exporting keys][exporting-keys].
 
 ### Python Example
 

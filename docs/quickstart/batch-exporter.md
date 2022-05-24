@@ -38,6 +38,22 @@ $ aws s3 mb s3://<your-bucket-name>
 ```
 
 </TabItem>
+<TabItem value="s3v4" label="S3 Compatible">
+
+S3 has evolved into a protocol, instead of just an Amazon product. It is possible to use our s3 data connector with
+a non-AWS storage solution, as long as it provides an S3 compatible API. For example [min.io](https://min.io).
+
+In this quickstart however, we will use a regular Google Cloud Storage bucket and connect using HMAC credentials. You can
+substitute our examples with your own storage solution.
+
+Create a GCS bucket in the [Google Cloud Console](https://console.cloud.google.com/storage/create-bucket),
+or with the `gsutil` CLI tool:
+
+```bash
+$ gsutil mb gs://<your-bucket-name>
+```
+
+</TabItem>
 <TabItem value="gcs" label="Google Cloud Storage">
 
 Create a GCS bucket in the [Google Cloud Console](https://console.cloud.google.com/storage/create-bucket),
@@ -149,6 +165,26 @@ bucket/prefix upon creation of the batch exporter.
 :::
 
 </TabItem>
+<TabItem value="s3v4" label="S3 Compatible">
+
+1. First, create a new service account, for example in
+   the [Cloud Console](https://console.cloud.google.com/iam-admin/serviceaccounts).
+2. Then grant write permissions on the bucket to this service account. You can do this under the
+   `PERMISSIONS` tab on the bucket's details page. Choose for example `Storage Legacy Bucket Writer`
+   as role and the newly created service account as principal.
+3. Create HMAC credentials: `gsutil hmac create <service-account-name>`. Put the secrets in a JSON file, named for 
+   example `s3.json`:
+   ```json
+   {
+     "url": "https://storage.googleapis.com",
+     "accessKey": "<access-key>",
+     "secretKey": "<secret-key>",
+     "api": "s3v4",
+     "path": "auto"
+   }
+   ```
+   
+</TabItem>
 <TabItem value="gcs" label="Google Cloud Storage">
 
 1. First, create a new service account, for example in
@@ -202,6 +238,12 @@ This is the same JSON as returned by `aws iam create-access-key`.
 :::
 
 </TabItem>
+<TabItem value="s3v4" label="S3 Compatible">
+
+If you created a JSON file with the HMAC credentials in te previous step, you are ready to create a data connector.
+If not, create one now.
+
+</TabItem>
 <TabItem value="gcs" label="Google Cloud Storage">
 
 First, make sure you have a file named `gcs.json` in your current directory,
@@ -248,11 +290,11 @@ With the AWS credentials in a file `s3.json`, you can
 create the data connector using the command below:
 
 ```bash
-$ strm create data-connector s3 strmprivacy-export-demo --credentials-file=s3.json
+$ strm create data-connector s3 my-s3 strmprivacy-export-demo --credentials-file=s3.json
 {
   "ref": {
     "billingId": "demo8542234275",
-    "name": "s3"
+    "name": "my-s3"
   },
   "s3Bucket": {
     "bucketName": "strmprivacy-export-demo"
@@ -260,8 +302,32 @@ $ strm create data-connector s3 strmprivacy-export-demo --credentials-file=s3.js
 }
 ```
 
-This will create a data connector named `s3` for the bucket `strmprivacy-export-demo`,
-using the provided credentials.
+This will create a data connector named `my-s3` for the bucket `strmprivacy-export-demo`,
+using the provided credentials. Specify the actual name of your bucket, and any name for the
+data connector itself.
+
+</TabItem>
+<TabItem value="s3v4" label="S3 Compatible">
+
+With the credentials file (`s3.json` in our example), create the data connector using
+the command below:
+
+```bash
+$ strm create data-connector s3 my-s3 strmprivacy-export-demo --credentials-file=s3.json
+{
+  "ref": {
+    "billingId": "demo8542234275",
+    "name": "my-s3"
+  },
+  "s3Bucket": {
+    "bucketName": "strmprivacy-export-demo"
+  }
+}
+```
+
+This will create a data connector named `my-s3` for the bucket `strmprivacy-export-demo`,
+using the provided credentials. Specify the actual name of your bucket, and any name for the
+data connector itself.
 
 </TabItem>
 <TabItem value="gcs" label="Google Cloud Storage">
@@ -270,11 +336,11 @@ You can create the data connector with the following command, pointing to the
 credentials file:
 
 ```bash
-$ strm create data-connector gcs strmprivacy-export-demo --credentials-file=gcs.json
+$ strm create data-connector gcs my-gcs strmprivacy-export-demo --credentials-file=gcs.json
 {
   "ref": {
     "billingId": "demo8542234275",
-    "name": "s3"
+    "name": "my-gcs"
   },
   "googleCloudStorageBucket": {
     "bucketName": "strmprivacy-export-demo"
@@ -282,7 +348,7 @@ $ strm create data-connector gcs strmprivacy-export-demo --credentials-file=gcs.
 }
 ```
 
-This will create a data connector named `gcs` for the bucket `strmprivacy-export-demo`,
+This will create a data connector named `my-gcs` for the bucket `strmprivacy-export-demo`,
 using the provided credentials.
 
 </TabItem>
@@ -324,7 +390,27 @@ $ strm list data-connectors -o json
     {
       "ref": {
         "billingId": "demo8542234275",
-        "name": "s3"
+        "name": "my-s3"
+      },
+      "s3Bucket": {
+        "bucketName": "strmprivacy-export-demo"
+      }
+    }
+  ]
+}
+```
+
+</TabItem>
+<TabItem value="s3v4" label="S3 Compatible">
+
+```bash
+$ strm list data-connectors -o json
+{
+  "dataConnectors": [
+    {
+      "ref": {
+        "billingId": "demo8542234275",
+        "name": "my-s3"
       },
       "s3Bucket": {
         "bucketName": "strmprivacy-export-demo"
@@ -344,7 +430,7 @@ $ strm list data-connectors -o json
     {
       "ref": {
         "billingId": "demo8542234275",
-        "name": "s3"
+        "name": "my-gcs"
       },
       "googleCloudStorageBucket": {
         "bucketName": "strmprivacy-export-demo"

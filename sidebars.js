@@ -59,13 +59,13 @@ const sidebars = {
         'quickstart/creating-streams',
         'quickstart/listen-web-socket',
         'quickstart/sending-curl',
+        'quickstart/ccd',
+        'quickstart/batch-exporter',
         'quickstart/full-example',
         'quickstart/exporting-kafka',
-        'quickstart/batch-exporter',
         'quickstart/exporting-keys',
         'quickstart/grpc',
         'quickstart/simple-schema',
-        'quickstart/ccd',
       ]
     },
     {
