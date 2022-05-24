@@ -192,6 +192,44 @@ manually created. For every event schema, a similar class is needed. This class 
 the `\StrmPrivacy\Driver\Contracts\Event` contract.
 
 </TabItem>
+<TabItem value="rust" label="Rust">
+
+[![rust-driver](https://img.shields.io/crates/v/strm-privacy-driver.svg?label=Rust%20Driver&color=F25C03)](https://crates.io/crates/strm-privacy-driver)
+[![rust-avro](https://img.shields.io/crates/v/strmprivacy_schema_strmprivacy_demo.svg?label=demo+avro+schema&color=F25C03)](https://crates.io/crates/strmprivacy_schema_strmprivacy_demo)
+
+This example is
+also [available on GitHub](https://github.com/strmprivacy/rust-examples/blob/main/src/main.rs). Please
+see the [repository](https://github.com/strmprivacy/rust-examples) for the readme.
+
+Short steps to start sending data
+```bash
+git clone git@github.com:strmprivacy/rust-examples.git
+cd rust-examples
+strm create stream demo --save
+f=$( strm context info Stream/demo )
+billingId=$(cat $f | jq -r '.ref.billingId')
+clientId=$(cat $f | jq -r '.credentials[0].clientId')
+clientSecret=$(cat $f | jq -r '.credentials[0].clientSecret')
+cargo run $billingId $clientId $clientSecret
+```
+```
+initializing client
+sending events..
+Event sent: 204 No Content
+Event sent: 204 No Content
+Event sent: 204 No Content
+Event sent: 204 No Content
+Event sent: 204 No Content
+...
+```
+
+<ExternalCodeBlock
+url="https://raw.githubusercontent.com/strmprivacy/rust-examples/blob/main/src/main.rs"
+title="main.rs"
+lang="rust"
+/>
+
+</TabItem>
 
 </Tabs>
 
