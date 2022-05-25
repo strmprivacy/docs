@@ -19,6 +19,7 @@ hide_table_of_contents: false
 [avro-json]: https://avro.apache.org/docs/current/spec.html#json_encoding
 [helm-gcs]: https://github.com/hayorov/helm-gcs
 [kctx]: https://github.com/ahmetb/kubectx
+[telepresence]: https://www.telepresence.io/
 
 This hands-on sessions shows how to get up-and-running with your Customer Cloud Deployment, and verify its
 functionality.
@@ -85,8 +86,6 @@ Add the [gcs plugin][helm-gcs] to helm `helm plugin install https://github.com/h
 Install _all_ the STRM components inside the `strmprivacy` namespace.
 
     helm install strmprivacy strmrepo/strm --values values.yaml
-                    ^^^^         ^     ^
-                 releasename   repo   chart
 
 `kubectl get pods --watch` or `k9s` provides nice feedback to see how the
 installation is progressing. We see that some supporting infrastructure like Redis, Postgresql and Kafka are also
@@ -115,8 +114,8 @@ To add a forwarding port to a deployment either use `k9s` and press `shift+f` on
 
 Run the next commands in separate shells, and keep them running:
 ```bash
-kubectl port-forward deployment/event-gateway 8080:8080
-kubectl port-forward deployment/web-socket 8082:8080
+kubectl port-forward deployment/event-gateway 8080:8080 &
+kubectl port-forward deployment/web-socket 8082:8080 &
 ```
 
 In a production setting you obviously would not use port-forwarding. Typically one would
@@ -180,16 +179,19 @@ of the unpacked confluent tar file  to your `$PATH`.
 
 You need [the `strm` cli][cli] of _at least version 2.1.0_ in order to find the Kafka topic in the streams information
 
+In order to consume from Kafka with your development computer, you'll need to set up [telepresence][telepresence], which
+sort of includes your computer within the Kubernetes dns.
 
-**port forwards**
-Set up the following port-forwards in order to interact with the Kafka server components
+    telepresence connect
 ```
-kubectl port-forward deployment/confluent-schema-proxy 8083:8080
-kubectl port-forward pod/kafka-0 9092:9092
+    Launching Telepresence Root Daemon
+    Launching Telepresence User Daemon
+    Connected to context kubernetes-admin@...
 ```
 
+
+    strm list streams
 ```
-strm list streams
  STREAM   DERIVED   CONSENT LEVEL TYPE   CONSENT LEVELS   ENABLED   KAFKA TOPIC
 
  test     false                          []               true      stream-e379c8e5-0e25-4b95-b1f4-c5ceb20a233f
@@ -199,9 +201,9 @@ strm list streams
 Then pass this topic to the kafka consumer:
 ```bash
 kafka-avro-console-consumer     \
-  --bootstrap-server localhost:9092     \
+  --bootstrap-server kafka.strmprivacy:9092     \
   --topic stream-e379c8e5-0e25-4b95-b1f4-c5ceb20a233f     \
-  --property schema.registry.url=http://localhost:8083/confluent     \
+  --property schema.registry.url=http://confluent-schema-proxy.strmprivacy/confluent     \
   --property print.key=true     \
   --key-deserializer="org.apache.kafka.common.serialization.StringDeserializer"
 ```
