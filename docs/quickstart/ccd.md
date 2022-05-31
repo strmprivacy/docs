@@ -301,7 +301,7 @@ The [Python example][python] needs a small modification in order to work. In the
                               gateway_protocol="http",
                               gateway_host="localhost:8080")
 
-## Trying again
+### Trying again
 
 If you've made mistakes and want to start over:
 
@@ -309,4 +309,42 @@ If you've made mistakes and want to start over:
 1. `kubectl delete ns strmprivacy` kills everything
    (including the k8s namespace). Don't forget to recreate the
    namespace afterwards.
+
+[prometheus]: https://prometheus.io/
+[prom-helm]: https://github.com/prometheus-community/helm-charts
+[prom-sm]: https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus-operator/servicemonitor.yaml
+
+## Monitoring the cluster via Prometheus
+Most components of STRM Privacy expose [Prometheus][prometheus] metrics and we've included the [Prometheus Cluster
+Operator][prom-helm] Helm chart. In order to define _scrape targets_ to Prometheus, we deploy  [Service
+Monitors][prom-sm] that expose the metrics endpoints in the Event Gateway.
+
+### the Prometheus server
+Access the Prometheus server either via [telepresence][telepresence] or via a port-forward
+
+    kubectl port-forward service/strmprivacy-kube-prometheu-prometheus 9090:9090&
+
+You should see the Event Gateway in the [service discovery](http://localhost:9090/service-discovery)
+
+* serviceMonitor/strmprivacy/event-gateway-envoy-service-monitor/0
+* serviceMonitor/strmprivacy/event-gateway-service-monitor/0
+
+and the [targets](http://localhost:9090/targets)
+
+![http://localhost:9090/targets](images/ccd/prometheus-targets.png)
+
+If you have the simulator running, you could have somewhat interesting timing data:
+
+![latency-timing](images/ccd/prometheus-timing-bucket.png)
+
+
+### Grafana
+The CCD quickstart also includes a Grafana instance, that we can port-forward
+
+    kubectl port-forward service/strmprivacy-grafana 4000:80&
+
+I've added two panels for the very simple dashboard we show here:
+
+![grafana](images/ccd/grafana.png)
+
 
