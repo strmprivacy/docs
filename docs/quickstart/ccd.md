@@ -343,6 +343,9 @@ The CCD quickstart also includes a Grafana instance, that we can port-forward
 
     kubectl port-forward service/strmprivacy-grafana 4000:80&
 
+Log in to [Grafana](http://localhost:4000/dashboards) with username `admin` and password `prom-operator` (the value of
+the secret named `strmprivacy-grafana`).
+
 I've added two panels for the very simple dashboard we show here:
 
 ![grafana](images/ccd/grafana.png)
