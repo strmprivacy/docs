@@ -178,7 +178,7 @@ $ strm listen web-socket by-hand-2
     "eventContractRef": "strmprivacy/example/1.3.0",
     "nonce": 15082564,
     "timestamp": 1629192833072,
-    "keyLink": "55c2f72b-cff8-4814-ae33-e125c77e50f9",
+    "keyLink": "",
     "billingId": "demo8542234275",
     "consentLevels": [ 0, 1, 2, 3 ]
   },

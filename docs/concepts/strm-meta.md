@@ -140,6 +140,15 @@ this encryption key. This lookup is done in our decrypted streams, but
 can also be done in case the encryption keys were exported to the
 customer.
 
+#### `strmMeta.keyLink` in derived streams
+The `keyLink` allows us to find the encryption key that was used to decrypt an event, provided we have access to the
+storage of that encryption key.
+
+Events in derived stream might still contain encrypted fields, because their consent level is higher than what was
+defined for the derived stream. We _do not want_ the receiver of these events to be able to decrypt these fields
+separately, using the link between the event and the encryption key that is given by `strmMeta.keyLink` which is why
+upon decryption, this value is **cleared**.
+
 ### nonce
 
 This is a *convenience* attribute, it is not technically necessary by

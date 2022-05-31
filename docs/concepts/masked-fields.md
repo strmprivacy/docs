@@ -95,7 +95,7 @@ link the history in this stream to a *person*!
     "eventContractRef": "strmprivacy/example/1.3.0",
     "nonce": -1505384217,
     "timestamp": 1635416584627,
-    "keyLink": "67140ff9-e866-48ff-b89b-00ce69e287e6",
+    "keyLink": "",
     "consentLevels": [ 0, 1, 2, 3 ]
   },
   "uniqueIdentifier": "unique-5", 
@@ -126,7 +126,7 @@ Event from the `example-M3` stream
     "eventContractRef": "strmprivacy/example/1.3.0",
     "nonce": -1505384217,
     "timestamp": 1635416584627,
-    "keyLink": "67140ff9-e866-48ff-b89b-00ce69e287e6",
+    "keyLink": "",
     "consentLevels": [ 0, 1, 2, 3 ]
   },
   "uniqueIdentifier": "1083e8169d7138e990cc30095578452",
@@ -141,6 +141,15 @@ longer contains the "not-sensitive-6" value. You could use this for
 instance to provide downstream data consumers maybe outside your
 company with values that are not personal, but that you still want to
 keep inside your company.
+
+### `strmMeta.keyLink` in derived streams
+The `keyLink` allows us to find the encryption key that was used to decrypt an event, provided we have access to the
+storage of that encryption key.
+
+Events in derived stream might still contain encrypted fields, because their consent level is higher than what was
+defined for the derived stream. We _do not want_ the receiver of these events to be able to decrypt these fields
+separately, using the link between the event and the encryption key that is given by `strmMeta.keyLink` which is why
+upon decryption, this value is **cleared**.
 
 ## Using the masked fields
 

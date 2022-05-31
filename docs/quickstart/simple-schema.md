@@ -357,7 +357,7 @@ strm listen web-socket demo-1
     "eventContractRef": "quickstart/demo-event-contract/2.0.0", #(1)
     "nonce": -2105288911,
     "timestamp": 1640870774948,
-    "keyLink": "08ad5b5c-f71a-46ea-88b3-41e2facb6211",
+    "keyLink": "",
     "billingId": "strmquickstart1585470330",
     "consentLevels": [ 1 ]
   },
