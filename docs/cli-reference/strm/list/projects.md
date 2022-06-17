@@ -1,34 +1,19 @@
 ---
-title: "kafka-cluster"
+title: "projects"
 hide_title: true
 ---
-## strm get kafka-cluster
+## strm list projects
 
-Get Kafka cluster by name
-
-### Synopsis
-
-A Kafka Cluster can be used for exporting directly from STRM Privacy to a Kafka Cluster owned by the client, or to the
-shared Kafka Export Cluster, hosted by STRM Privacy. This gives all the performance, scalability and reliability
-benefits offered by Kafka.
-
-The Kafka Cluster is only a configuration object, it does not create the actual cluster infrastructure. It only points
-to an existing Kafka Cluster.
-
-At the moment, it’s not possible to create your own Kafka Cluster. All Kafka Exporters use the STRM Privacy Shared
-Cluster.
-
-### Usage
-
+List all projects you have access to
 
 ```
-strm get kafka-cluster [name] [flags]
+strm list projects [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help   help for kafka-cluster
+  -h, --help   help for projects
 ```
 
 ### Options inherited from parent commands
@@ -47,5 +32,5 @@ strm get kafka-cluster [name] [flags]
 
 ### SEE ALSO
 
-* [strm get](/cli-reference/strm/get/index.md)	 - Get an entity
+* [strm list](/cli-reference/strm/list/index.md)	 - List entities
 
