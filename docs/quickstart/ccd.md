@@ -307,7 +307,7 @@ The [Python example][python] needs a small modification in order to work. In the
 
 ## Using an existing Kafka cluster over TLS, with SASL/Plain authentication{#tls-sasl-plain}
 
-This hands-on sessions shows how to get up-and-running with your Customer Cloud Deployment using an _authenticated Kafka
+This hands-on session shows how to get up-and-running with your Customer Cloud Deployment using an _authenticated Kafka
 Cluster_ that uses [SASL/PLAIN over TLS][sasl-plain] authentication.
 
 It's probably a good idea to first run the getting started with the unauthenicated demo Kafka detailed in the sections above to
@@ -328,7 +328,7 @@ secret also.
       --from-literal=truststore.password=<your-truststore-password>
 
 :::note
-don't change the `client.truststore.jks` and `truststore.password` keys. These are being used by the various Kubernetes
+don't change the `client.truststore.jks` and `truststore.password` keys. These names are being used by the various Kubernetes
 deployments to retrieve the entities.
 :::
 
@@ -449,7 +449,7 @@ pair)
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required     username="strm-event-gateway"     password="strmprivacy";
 ```
 :::note
-make sure you keep the `sasl.jaas.config` one one line and don't forget the semi-colon at the end!
+make sure you keep the `sasl.jaas.config` on one line and don't forget the semi-colon at the end!
 :::
 
 You can now interact with the Kafka cluster from within the pod.
