@@ -3,6 +3,9 @@ title: Customer Cloud Deployments
 hide_table_of_contents: false
 ---
 
+import CodeBlock from '@theme/CodeBlock';
+import {ExternalCodeBlock} from '/full-example.js';
+
 [cli]: https://github.com/strmprivacy/cli
 [github]: https://github.com/strmprivacy/data-plane-helm-chart/tree/master
 [batch-exporter]: https://docs.strmprivacy.io/docs/latest/quickstart/batch-exporter
@@ -435,7 +438,15 @@ the `streams-agent` or the `event-gateway` will probably give a clue what's goin
 
 Troubleshooting with a Kafka test-client.
 
-Use [this Kubernetes manifest](./assets/kafka-tls-client.yaml) to interact with the Kafka cluster.
+Use this Kubernetes manifest to interact with the Kafka cluster.
+
+[//]: # (TODO: create live links to code)
+<ExternalCodeBlock 
+  url="https://raw.githubusercontent.com/strmprivacy/data-plane-helm-chart/master/test-utils/kafka-tls-client.yaml"
+  title="kafka-tls-client.yaml"
+  lang="yaml"
+/>
+
 
 Modify the `client.props` section to use your credentials (the truststore password and the principal username/password
 pair)
@@ -455,7 +466,9 @@ make sure you keep the `sasl.jaas.config` one one line and don't forget the semi
 You can now interact with the Kafka cluster from within the pod.
 
 ```
-kubectl exec -ti kafka-tls-test-client-5f6d87ccfc-mfksl -- bash
+kubectl apply -f kafka-tls-test-client
+# use tab-completion to get the name of the pod
+kubectl exec -ti kafka-tls-test-client-... -- bash
 
 kafka-topics.sh --bootstrap-server <your-bootstrap-server> --list \
      --command-config /tmp/client.props
