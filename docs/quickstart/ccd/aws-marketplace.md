@@ -31,43 +31,45 @@ follow the following steps.
 
 1. Click `Continue to Subscribe`, follow the instructions and start your subscription
 2. Configure the STRM Privacy Data Plane:
-1. If multiple Fulfillment options are presented, choose `Helm chart`
-2. Choose the latest version
+    1. If multiple Fulfillment options are presented, choose `Helm chart`
+    2. Choose the latest version
 3. Click `Continue to launch`
-1. Currently, the only supported _launch target_ is EKS (Amazon Elastic Kubernetes Service).
-2. Follow _Step 1_ of the launch instructions, please note the remarks below.
-   :::note
-   Before you can create an IAM Service Account with `eksctl`, an IAM OIDC provider must exist for your cluster. To do
-   so, run:
-   ```bash
-   eksctl utils associate-iam-oidc-provider \
-      --cluster <CLUSTER_NAME> \
-      --region <CLUSTER_REGION> \
-      --approve
-   ```
-   :::
-   :::important
-   The `eksctl` command in the launch instructions is incorrect, it is missing the policies that should be attached to
-   the service account. The correct command is:
-   ```bash
-   eksctl create iamserviceaccount \
-      --name <SERVICE_ACCOUNT_NAME> \
-      --namespace strmprivacy \
-      --cluster <CLUSTER_NAME> \
-      --override-existing-serviceaccounts \
-      --attach-policy-arn arn:aws:iam::aws:policy/AWSMarketplaceMeteringFullAccess \
-      --attach-policy-arn arn:aws:iam::aws:policy/AWSMarketplaceMeteringRegisterUsage \
-      --attach-policy-arn arn:aws:iam::aws:policy/service-role/AWSLicenseManagerConsumptionPolicy \
-      --approve
-   ```
-   :::
+    1. Currently, the only supported _launch target_ is EKS (Amazon Elastic Kubernetes Service).
+    2. Follow _Step 1_ of the launch instructions, please note the remarks below.
+    
+    :::note
+    Before you can create an IAM Service Account with `eksctl`, an IAM OIDC provider must exist for your cluster. To do
+    so, run:
+    ```bash
+    eksctl utils associate-iam-oidc-provider \
+       --cluster <CLUSTER_NAME> \
+       --region <CLUSTER_REGION> \
+       --approve
+    ```
+    :::
+    
+    :::important
+    The `eksctl` command in the launch instructions is incorrect, it is missing the policies that should be attached to
+    the service account. The correct command is:
+    ```bash
+    eksctl create iamserviceaccount \
+       --name <SERVICE_ACCOUNT_NAME> \
+       --namespace strmprivacy \
+       --cluster <CLUSTER_NAME> \
+       --override-existing-serviceaccounts \
+       --attach-policy-arn arn:aws:iam::aws:policy/AWSMarketplaceMeteringFullAccess \
+       --attach-policy-arn arn:aws:iam::aws:policy/AWSMarketplaceMeteringRegisterUsage \
+       --attach-policy-arn arn:aws:iam::aws:policy/service-role/AWSLicenseManagerConsumptionPolicy \
+       --approve
+    ```
+    :::
 4. Follow _Step 2_ of the launch instructions, making sure to replace the values in the `helm install` command with
    the values specific for your installation, which can be found in
    your [installation configuration](https://console.strmprivacy.io/installation/configuration).
    :::note
    If you plan to use a `values.yaml` instead of the inline Helm values (with `--set`):
-1. make sure to set the `license.installationType` to `AWS_MARKETPLACE`
-2. the `registry.imagePullSecret` can be omitted / left blank, as this is facilitated by your AWS Marketplace
+   1. make sure to set the `license.installationType` to `AWS_MARKETPLACE`
+   2. the `registry.imagePullSecret` can be omitted / left blank, as this is facilitated by your AWS Marketplace
    deployment
    :::
 
