@@ -6,6 +6,7 @@ hide_table_of_contents: false
 [prometheus]: https://prometheus.io/
 [prom-helm]: https://github.com/prometheus-community/helm-charts
 [prom-sm]: https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/prometheus-operator/servicemonitor.yaml
+[telepresence]: https://www.telepresence.io/
 
 ## Monitoring the cluster via Prometheus
 Most components of STRM Privacy expose [Prometheus][prometheus] metrics and we've included the [Prometheus Cluster
