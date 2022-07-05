@@ -59,7 +59,21 @@ const sidebars = {
         'quickstart/creating-streams',
         'quickstart/listen-web-socket',
         'quickstart/sending-curl',
-        'quickstart/ccd',
+        {
+          type: 'category',
+          label: 'Customer Cloud Deployments',
+          link: {
+            type: 'doc',
+            id: 'quickstart/ccd/index',
+          },
+          items: [
+            'quickstart/ccd/self-hosted',
+            'quickstart/ccd/aws-marketplace',
+            'quickstart/ccd/authenticated',
+            'quickstart/ccd/interacting',
+            'quickstart/ccd/monitoring'
+          ]
+        },
         'quickstart/batch-exporter',
         'quickstart/full-example',
         'quickstart/exporting-kafka',
