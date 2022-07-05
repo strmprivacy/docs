@@ -35,7 +35,7 @@ First create two streams.
     strm create stream test --save
     strm create stream --derived-from test --levels 2 --save
 
-Because you've create a derived stream (named `test-2` by default) we should be able to see a decrypter deployment:
+Because you've created a derived stream (named `test-2` by default) we should be able to see a decrypter deployment:
 
 ```bash
 kubectl get deployments.apps  -l app=decrypter-v2
