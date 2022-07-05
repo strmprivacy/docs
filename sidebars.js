@@ -69,7 +69,8 @@ const sidebars = {
           items: [
             'quickstart/ccd/self-hosted',
             'quickstart/ccd/aws-marketplace',
-            'quickstart/ccd/authenticated'
+            'quickstart/ccd/authenticated',
+            'quickstart/ccd/interacting'
           ]
         },
         'quickstart/batch-exporter',

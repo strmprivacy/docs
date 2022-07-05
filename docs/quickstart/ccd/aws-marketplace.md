@@ -118,5 +118,5 @@ possibly credentials) and set the value in the `values.yaml`.
 You've installed a STRM Privacy Data Plane via the AWS Marketplace. If you have had any issues during your
 installation, please let us know, or create a pull request on GitHub to improve these docs.
 
-Now that you are done with the setup, follow the docs on [how to interact with your cluster](./interacting) to start
+Now that you are done with the setup, follow the docs on [how to interact with your cluster](./interacting.md) to start
 using it.

@@ -132,5 +132,5 @@ With every `helm` command you should use the option `--values values.yaml`
 You've installed a STRM Privacy Data Plane in a Kubernetes cluster. If you have had any issues during your
 installation, please let us know, or create a pull request on GitHub to improve these docs.
 
-Now that you are done with the setup, follow the docs on [how to interact with your cluster](./interacting) to start
+Now that you are done with the setup, follow the docs on [how to interact with your cluster](./interacting.md) to start
 using it.
