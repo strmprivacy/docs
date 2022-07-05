@@ -23,7 +23,7 @@ kubectl port-forward deployment/web-socket 8082:8080 &
 In a production setting you obviously would not use port-forwarding. Typically one would
 
 * add a Kubernetes `ingress` in front of the `event-gateway` service. This creates a load balancer in the infrastructure
-  that will allow https access to the event-gateway. Make sure the load balancer is capable of handling http/2 otherwise
+  that will allow https access to the `event-gateway`. Make sure the load balancer is capable of handling http/2 otherwise
   latency and throughput will suffer.
 * communicate directly with the `event-gateway` service. This would only work if your events are being sent from within
   the same Kubernetes cluster.

@@ -70,7 +70,7 @@ The top-level `kafkaSecurityConfig` section defines how to configure the TLS con
       sslTruststoreSecretName: "client-truststore-jks" # use k8s secret name you created.
 
 :::note
-You can leave of the `sslTruststoreSecretName` if you used the default `client-truststore-jks` name for the secret.
+You can omit the `sslTruststoreSecretName` if you used the default `client-truststore-jks` name for the secret.
 :::
 
 #### Authentication
@@ -78,7 +78,7 @@ You can leave of the `sslTruststoreSecretName` if you used the default `client-t
 The various parts of STRM that interact with Kafka all have to be given a principal name and password. This has to be
 done in
 the individual Helm override sections. The `user/password` pairs have to be created in your Kafka broker configuration.
-In the little sample below, I've added trivial identities for the various components. You could use the principal one
+In the little sample below, Trivial identities have been added for the various components. You could use the principal one
 for
 every one of them, but they must be defined separately.
 
@@ -144,7 +144,7 @@ and follow along with the [Interacting with the CCD Cluster](#interacting) secti
 
 #### Troubleshooting
 
-It is _highly likely_ that this won't correctly in the first go. Setting up the TLS can go wrong in many ways, from the
+It is _highly likely_ that this won't go correctly the first try. Setting up the TLS can go wrong in many ways, from the
 trivial (missing secret), to the painful (reverse hostname verification doesn't work). The logging of deployments like
 the `streams-agent` or the `event-gateway` will probably give a clue what's going on.
 

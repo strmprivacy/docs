@@ -6,7 +6,7 @@ hide_table_of_contents: false
 This section describes how to get up and running with a Customer Cloud Deployment through the AWS Marketplace.
 
 :::note
-We currently do not yet support unified billing through your AWS invoice. This is on our roadmap for our AWS Marketplace
+We currently do not support unified billing through your AWS invoice. This is on our roadmap for our AWS Marketplace
 offering.
 :::
 
@@ -31,7 +31,7 @@ follow the following steps.
 
 1. Click `Continue to Subscribe`, follow the instructions and start your subscription
 2. Configure the STRM Privacy Data Plane:
-    1. If multiple Fulfillment options are presented, choose `Helm chart`
+    1. If multiple fulfillment options are presented, choose `Helm chart`
     2. Choose the latest version
 3. Click `Continue to launch`
     1. Currently, the only supported _launch target_ is EKS (Amazon Elastic Kubernetes Service).
@@ -80,6 +80,14 @@ wish otherwise, you can edit the `values.yaml` to match your needs.
 
 As the STRM Privacy Data Plane depends on Kafka, Redis and/or a Postgres Database, you should only use the embedded
 instances of these pre-requisites to deploy your initial version. For production purposes, we recommend to use managed
+instances.
+
+#### Purpose of using managed instances
+
+The subcharts for Kafka, Redis and PostgreSQL that are included in the STRM Privacy Data Plane Helm Chart are not meant
+for production purposes, as they have not been configured as such. Furthermore, not all Kubernetes Clusters fulfill the
+pre-requisites for this (e.g. support for persistent storage). The more convenient route here, is to use managed
+instances of the pre-requisites for your Data Plane. The following sections discuss how to set up these managed
 instances.
 
 #### AWS RDS for PostgreSQL
