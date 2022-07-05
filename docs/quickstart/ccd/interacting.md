@@ -3,6 +3,40 @@ title: Interacting with a Customer Cloud Deployment
 hide_table_of_contents: false
 ---
 
+[cli]: https://github.com/strmprivacy/cli
+
+[github]: https://github.com/strmprivacy/data-plane-helm-chart/tree/master
+
+[batch-exporter]: https://docs.strmprivacy.io/docs/latest/quickstart/batch-exporter
+
+[exporting-keys]: https://docs.strmprivacy.io/docs/latest/quickstart/exporting-keys/
+
+[data-connector]: https://docs.strmprivacy.io/docs/latest/quickstart/batch-exporter/#creating-a-data-connector
+
+[ovh-ingress]: https://docs.ovh.com/au/en/kubernetes/installing-nginx-ingress/
+
+[profile]: https://console.strmprivacy.io/upgrading
+
+[values]: https://console.strmprivacy.io/installation/configuration
+
+[confluent]: https://docs.confluent.io/platform/current/quickstart/ce-docker-quickstart.html#cp-quickstart-step-1
+
+[console]: https://console.strmprivacy.io
+
+[minio-mc]: https://docs.min.io/docs/minio-client-complete-guide.html
+
+[port-forward]: https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
+
+[tink]: https://github.com/google/tink
+
+[avro-json]: https://avro.apache.org/docs/current/spec.html#json_encoding
+
+[helm-gcs]: https://github.com/hayorov/helm-gcs
+
+[kctx]: https://github.com/ahmetb/kubectx
+
+[telepresence]: https://www.telepresence.io/
+
 The following section will guide you through the setup required to interact with your STRM Privacy Data Plane. Make sure
 that all the required tools are installed as discussed [here](./self-hosted.md#step2).
 

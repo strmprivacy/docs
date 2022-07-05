@@ -9,6 +9,7 @@ import {ExternalCodeBlock} from '/full-example.js';
 [sasl-plain]: https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html
 
 [kafka-ssl]: https://docs.confluent.io/platform/current/kafka/encryption.html#kafka-ssl-encryption
+[console]: https://console.strmprivacy.io
 
 [keys-certs]: https://docs.confluent.io/platform/current/security/security_tutorial.html#generating-keys-certs
 
