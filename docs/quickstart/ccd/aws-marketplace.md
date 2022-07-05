@@ -73,7 +73,7 @@ follow the following steps.
    deployment
    :::
 
-After these steps, you should end up with a namespace `strmprivacy` with, by default, all components enabled. If you
+After these steps, you should end up with a namespace `strmprivacy` with, by default, [all components](./index.md#components) enabled. If you
 wish otherwise, you can edit the `values.yaml` to match your needs.
 
 ### Using managed pre-requisites for the Data Plane
@@ -95,7 +95,7 @@ remarks considering the database:
   the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege)) with read and write
   access rights to the database. Set the credentials in the `values.yaml` for the PostgreSQL user.
 - Data usage will increase over time, therefore, it is wise to
-  enabled [AWS RDS Storage Autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html)
+  enable [AWS RDS Storage Autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html)
   to prevent manual interventions.
 
 #### AWS MSK for Apache Kafka
@@ -103,7 +103,7 @@ remarks considering the database:
 To be able to run any streaming tasks, a Kafka (or Kafka API compatible) cluster is required. Please follow the steps
 from the [AWS MSK for Apache Kafka guide](https://docs.aws.amazon.com/msk/latest/developerguide/create-cluster.html) to
 setup a managed Kafka cluster in your AWS account. Take note of the private bootstrap servers (and
-possibly credentials) and set the value in the `values.yaml`.
+possibly [credentials](./authenticated.md)) and set the value in the `values.yaml`.
 
 #### AWS ElastiCache for Redis
 

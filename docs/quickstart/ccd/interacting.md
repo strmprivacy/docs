@@ -85,7 +85,7 @@ Install the [Confluent client tools][confluent]. You don't have to start Conflue
 directory
 of the unpacked confluent tar file to your `$PATH`.
 
-You need [the `strm` cli][cli] of _at least version 2.1.0_ in order to find the Kafka topic in the streams information
+You need the [`strm`][cli] cli in order to find the Kafka topic in the streams information
 
 In order to consume from Kafka with your development computer, you'll need to set up [telepresence][telepresence], which
 sort of includes your computer within the Kubernetes dns.

@@ -40,7 +40,7 @@ import {ExternalCodeBlock} from '/full-example.js';
 
 [telepresence]: https://www.telepresence.io/
 
-This hands-on sessions shows how to get up-and-running with your Customer Cloud Deployment, and verify its
+This hands-on session shows how to get up-and-running with your Customer Cloud Deployment, and verify its
 functionality.
 
 ## Step 1: Make sure you are on a 'Self Hosted' subscription {#step1}
@@ -116,7 +116,7 @@ installed. The creation of these components can be disabled, in which case confi
 have to be added to the Helm chart.
 
 :::note
-During creating, you'll see Error states on the event-gateway pods for instance. This is _nominal_ because it will fail
+During creation, you'll see Error states on the event-gateway pods for instance. This is _nominal_ because it will fail
 to connect to Redis, which is still being deployed. Once Redis is healthy, you'll see the event-gateway status turn
 healthy
 :::
