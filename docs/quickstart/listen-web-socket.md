@@ -10,16 +10,14 @@ stream.
 In one terminal:
 
 ```bash
-strm create stream demo --save
-strm simulate random-events demo #(1)
+strm create stream demo
+strm simulate random-events demo
 
 Starting to simulate random strmprivacy/demo/1.0.2 events to stream demo.
 Sending one event every 1000 ms.
 Sent 5 events
 ...
 ```
-1. you don’t need to specify credentials because you created the stream
-    with the `--save` flag.
 
 The `strm listen web-socket` command is used for showing the events in
 real time.
@@ -30,17 +28,11 @@ Read events via the web-socket (not for production purposes)
 
 Usage:
   strm listen web-socket (stream-name) [flags]
-
-Flags:
-      --client-id string       Client id to be used for receiving data
-      --client-secret string   Client secret to be used for receiving data
 ```
 
-`client-id` and `client-secret` are optional, but required if you didn’t
-create the stream with the `--save` option. See [cli
-docs](/cli-index.md#permanent).
+See [cli docs](/cli-index.md#permanent).
 
-Now lets consume the events from the simulator; in another terminal do:
+Now let's consume the events from the simulator; in another terminal do:
 
 ```bash
 $ strm listen web-socket demo

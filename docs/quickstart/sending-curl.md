@@ -25,8 +25,8 @@ First create a stream.
 $ strm create stream by-hand --save
 {
   "ref": {
-    "billingId": "demo8542234275",
-    "name": "by-hand"
+    "name": "by-hand",
+    "projectId": "30fcd008-9696-...."
   },
   "enabled": true,
   "limits": {
@@ -35,29 +35,30 @@ $ strm create stream by-hand --save
   },
   "credentials": [
     {
-      "clientId": "w0qu00hwl644b...",
+      "clientId": "stream-w0qu00hwl644b...",
       "clientSecret": "OygfdpwBqoekL..."
+      "projectId": "30fcd008-9696-...."
     }
-  ]
+  ],
+  "masked_fields" : {}
 }
 ```
 
 :::tip
 Use [strm listen web-socket by-hand](listen-web-socket.md) to get
-some feedback on the events your sending.
+some feedback on the events you're sending.
 :::
 
-Request an OAuth 2.0 id token that you need to be able to send events to
+Request an OAuth 2.0 access token that you need to be able to send events to
 a certain stream.
 
 ```bash
-idToken=$(http https://sts.strmprivacy.io/auth \
-  billingId=demo8542234275\
-  clientId=w0qu00...\
-  clientSecret='OygfdpwB....' | jq -r .idToken)
+accessToken=$(curl -X POST -u "stream-w0qu00hwl644b...:OygfdpwBqoekL..." \
+  -d "grant_type=client_credentials" \
+  "https://accounts.strmprivacy.io/auth/realms/streams/protocol/openid-connect/token" | jq -r .access_token)
 ```
 
-You can inspect the resulting `$idToken` in [jwt.io](https://jwt.io) to
+You can inspect the resulting `$accessToken` in [jwt.io](https://jwt.io) to
 see what we store inside it.
 
 We’ve generated some random data with [this
@@ -73,7 +74,6 @@ tool](https://github.com/confluentinc/avro-random-generator) for the
     "nonce" : null,
     "timestamp" : null,
     "keyLink" : null,
-    "billingId" : null,
     "consentLevels" : [0]
   },
   "producerSessionId" : "producer",
@@ -96,7 +96,7 @@ And use it to post some random data:
 
 ```bash
 cat demo.json | http post https://events.strmprivacy.io/event\
-  authorization:"Bearer $idToken" \
+  authorization:"Bearer $accessToken" \
   Strm-Schema-Id:strmprivacy/clickstream/1.0.0
 
 HTTP/1.1 400 Bad Request
@@ -115,7 +115,7 @@ Modify the `url` field in `demo.json` to become any valid url (like
 
 ```bash
 cat demo.json | http post https://events.strmprivacy.io/event\
-  authorization:"Bearer $idToken" \
+  authorization:"Bearer $accessToken" \
   Strm-Schema-Id:strmprivacy/clickstream/1.0.0
 HTTP/1.1 204 No Content
 ```
@@ -131,7 +131,7 @@ throughput.
 
 ```bash
 curl -v https://events.strmprivacy.io/event \
-    -H "authorization: Bearer $idToken" \
+    -H "authorization: Bearer $accessToken" \
     -H "Strm-Schema-Id:strmprivacy/clickstream/1.0.0" --data-binary @demo.json
 
 ...
@@ -155,14 +155,16 @@ First, create a decrypted stream:
 ```bash
 strm create stream --derived-from by-hand --levels 2 --save
 {
-  "ref": { "billingId": "demo8542234275", "name": "by-hand-2" },
+  "ref": { "name": "by-hand-2", "projectId": "30fcd008-9696-...." },
   "consentLevels": [ 2 ],
   "consentLevelType": "CUMULATIVE",
   "enabled": true,
   "linkedStream": "by-hand",
   "credentials": [
     { "clientId": "hx7hj7w5mwkbybdrwhale1hvq0r6qk",
-      "clientSecret": "#Fs4DkVtJh(2uss#062hGuzTLW9u5t" }
+      "clientSecret": "#Fs4DkVtJh(2uss#062hGuzTLW9u5t",
+      "projectId": "30fcd008-9696-...."
+    }
   ]
 }
 ```
@@ -179,7 +181,6 @@ $ strm listen web-socket by-hand-2
     "nonce": 15082564,
     "timestamp": 1629192833072,
     "keyLink": "55c2f72b-cff8-4814-ae33-e125c77e50f9",
-    "billingId": "demo8542234275",
     "consentLevels": [ 0, 1, 2, 3 ]
   },
   "uniqueIdentifier": "unique-14",
@@ -192,7 +193,7 @@ $ strm listen web-socket by-hand-2
 :::note
 That most fields are decrypted, but the `someSensitiveValue` field is
 **not** because that is of consent level 3 (see the event contract). If
-the event had not contained `2` in its consent levels, we wouldn’t even
+the event had not contained `2` in its consent levels, we wouldn't even
 have seen the event in this decrypted stream.
 :::
 

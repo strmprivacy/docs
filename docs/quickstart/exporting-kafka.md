@@ -15,15 +15,15 @@ and one associated `kafka-user`. The user credentials can be used to
 access the topic.
 
 ```bash
-strm create kafka-exporter demo --save
+strm create kafka-exporter demo -o json
 {
   "ref": {
-    "billingId": "demo8542234275",
-    "name": "kafka-exporter-a9e83206-96e6-463c-8163-3f4493b3ddb7"
+    "name": "kafka-exporter-a9e83206-96e6-463c-8163-3f4493b3ddb7",
+    "projectId": "30fcd008-9696-...."
   },
   "streamRef": {
-    "billingId": "demo8542234275",
-    "name": "demo"
+    "name": "demo",
+    "projectId": "30fcd008-9696-...."
   },
   "target": {
     "clusterRef": {
@@ -35,8 +35,8 @@ strm create kafka-exporter demo --save
   "users": [
     {
       "ref": {
-        "billingId": "demo8542234275",
-        "name": "service-account-export-7d36ea89-2c91-4959-a6bf-9af35a0c5ddb"
+        "name": "service-account-export-7d36ea89-2c91-4959-a6bf-9af35a0c5ddb",
+        "projectId": "30fcd008-9696-...."
       },
       "kafkaExporterName": "kafka-exporter-a9e83206-96e6-463c-8163-3f4493b3ddb7",
       "topic": "export-a9e83206-96e6-463c-8163-3f4493b3ddb7",
@@ -68,38 +68,17 @@ In the future, we will have the capability to export to a Kafka Cluster
 owned by the customer.
 :::
 
-Because of the `--save` flag on the command, you have the credentials
-locally:
-
-```bash
-cat ~/.config/strmprivacy/saved-entities/KafkaUser/service-account-export-7d36ea89-2c91-4959-a6bf-9af35a0c5ddb.json | jq
-{
-  "ref": {
-    "billingId": "demo8542234275",
-    "name": "service-account-export-7d36ea89-2c91-4959-a6bf-9af35a0c5ddb"
-  },
-  "kafkaExporterName": "kafka-exporter-a9e83206-96e6-463c-8163-3f4493b3ddb7",
-  "topic": "export-a9e83206-96e6-463c-8163-3f4493b3ddb7",
-  "clientId": "export-7d36ea89-2c91-4959-a6bf-9af35a0c5ddb",
-  "clientSecret": "22a837fb-c299-4e03-b1ec-460684f52ae5",
-  "clusterRef": {
-    "billingId": "internal",
-    "name": "shared-export"
-  }
-}
-```
-
 Kafka users are entities that can consume from a Kafka Cluster. They
 have credentials, and a Kafka topic that they can consume from.
 
 ```bash
-strm list kafka-users shared-export-demo
+strm list kafka-users shared-export-demo -o json
 {
   "kafkaUsers": [
     {
       "ref": {
-        "billingId": "demo8542234275",
         "name": "service-account-export-7d36ea89-2c91-4959-a6bf-9af35a0c5ddb"
+        "projectId": "30fcd008-9696-...."
       },
       "kafkaExporterName": "shared-export-demo",
       "topic": "export-a9e83206-96e6-463c-8163-3f4493b3ddb7",
@@ -147,7 +126,6 @@ $ python consumer.py
   'nonce': -1508205704,
   'timestamp': 1629197150029,
   'keyLink': '68a1d5c5-d1d0-4a7c-8e03-b9d265071839',
-  'billingId': 'demo8542234275',
   'consentLevels': [0, 1]},
 'uniqueIdentifier': 'ARCc26TVzQnf6SVZpFT3ghde/6ILaeFdn+o9jBW/',
 'consistentValue': 'ARCc26QnGW52Po3QHjADcpvSoY6zf9z9skqy8viZwX8=',
@@ -167,7 +145,7 @@ name: "shared-export-demo"
 So let’s do that:
 ```bash
 strm delete kafka-user service-account-export-7d36ea89-2c91-4959-a6bf-9af35a0c5ddb
-{"billingId":"demo8542234275","name":"service-account-export-7d36ea89-2c91-4959-a6bf-9af35a0c5ddb"}
+{"name":"service-account-export-7d36ea89-2c91-4959-a6bf-9af35a0c5ddb", "projectId": "30fcd008-9696-...."}
 ```
 
 :::note

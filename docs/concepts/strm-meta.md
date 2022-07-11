@@ -64,10 +64,6 @@ exist, and it will also end up in your persistent storage.
 
 The `strmMeta` definition contains the following fields
 
-billingId  
-the reference to the entity that will eventually be billed for this
-event. The sending application does not need to set this event.
-
 eventContractRef  
 the reference to the [event contract](schemas-and-contracts.md) that
 governs the privacy and validation rules. The sending application **must
@@ -93,14 +89,6 @@ timestamp
 a millisecond accuracy timestamp added upon acceptance in the STRM
 Privacy gateway. The sending application does not need to set this
 field.
-
-### billingId
-
-This one is fairly simple. It defines the entity that eventually pays
-the bill. The application that sends the event to STRM Privacy *does not
-have to set this attribute*, because the STRM Privacy gateway will
-determine this from the OAuth2 client credentials that are needed to
-have an event be accepted by the gateway.
 
 ### eventContractRef
 
