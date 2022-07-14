@@ -293,8 +293,8 @@ create the data connector using the command below:
 $ strm create data-connector s3 my-s3 strmprivacy-export-demo --credentials-file=s3.json
 {
   "ref": {
-    "billingId": "demo8542234275",
-    "name": "my-s3"
+    "name": "my-s3",
+    "projectId": "30fcd008-9696-...."
   },
   "s3Bucket": {
     "bucketName": "strmprivacy-export-demo"
@@ -316,8 +316,8 @@ the command below:
 $ strm create data-connector s3 my-s3 strmprivacy-export-demo --credentials-file=s3.json
 {
   "ref": {
-    "billingId": "demo8542234275",
-    "name": "my-s3"
+    "name": "my-s3",
+    "projectId": "30fcd008-9696-...."
   },
   "s3Bucket": {
     "bucketName": "strmprivacy-export-demo"
@@ -339,8 +339,8 @@ credentials file:
 $ strm create data-connector gcs my-gcs strmprivacy-export-demo --credentials-file=gcs.json
 {
   "ref": {
-    "billingId": "demo8542234275",
-    "name": "my-gcs"
+    "name": "my-gcs",
+    "projectId": "30fcd008-9696-...."
   },
   "googleCloudStorageBucket": {
     "bucketName": "strmprivacy-export-demo"
@@ -361,8 +361,8 @@ container name, and the other required flags:
 $ strm create data-connector azure-blob-storage azure strmprivacy-export-demo --storage-account-uri "https://foo.blob.core.windows.net" --tenant-id "<your tenant ID>" --client-id "<the app client ID>" --client-secret "<the service principal's secret>"
 {
   "ref": {
-    "billingId": "demo8542234275",
-    "name": "azure"
+    "name": "azure",
+    "projectId": "30fcd008-9696-...."
   },
   "azureBlobStorageContainer": {
     "storageAccountUri": "https://foo.blob.core.windows.net",
@@ -389,8 +389,8 @@ $ strm list data-connectors -o json
   "dataConnectors": [
     {
       "ref": {
-        "billingId": "demo8542234275",
-        "name": "my-s3"
+        "name": "my-s3",
+        "projectId": "30fcd008-9696-...."
       },
       "s3Bucket": {
         "bucketName": "strmprivacy-export-demo"
@@ -409,8 +409,8 @@ $ strm list data-connectors -o json
   "dataConnectors": [
     {
       "ref": {
-        "billingId": "demo8542234275",
-        "name": "my-s3"
+        "name": "my-s3",
+        "projectId": "30fcd008-9696-...."
       },
       "s3Bucket": {
         "bucketName": "strmprivacy-export-demo"
@@ -429,8 +429,8 @@ $ strm list data-connectors -o json
   "dataConnectors": [
     {
       "ref": {
-        "billingId": "demo8542234275",
-        "name": "my-gcs"
+        "name": "my-gcs",
+        "projectId": "30fcd008-9696-...."
       },
       "googleCloudStorageBucket": {
         "bucketName": "strmprivacy-export-demo"
@@ -449,8 +449,8 @@ $ strm list data-connectors -o json
   "dataConnectors": [
     {
       "ref": {
-        "billingId": "demo8542234275",
-        "name": "azure"
+        "name": "azure",
+        "projectId": "30fcd008-9696-...."
       },
       "azureBlobStorageContainer": {
         "storageAccountUri": "https://foo.blob.core.windows.net",
@@ -482,16 +482,16 @@ will prepend file names with this prefix.
 strm create batch-exporter demo --data-connector s3 --path-prefix events
 {
   "ref": { #(1)
-    "billingId": "demo8542234275", 
-    "name": "s3-demo" 
+    "name": "s3-demo" ,
+    "projectId": "30fcd008-9696-...."
   }, 
   "streamRef": { #(2)
-    "billingId": "demo8542234275", 
-    "name": "demo" 
+    "name": "demo" ,
+    "projectId": "30fcd008-9696-...."
   }, 
   "dataConnectorRef": { #(3)
-    "billingId": "demo8542234275", 
-    "name": "s3" 
+    "name": "s3" ,
+    "projectId": "30fcd008-9696-...."
   }, 
   "interval": "60s",
   "pathPrefix": "events"
@@ -551,7 +551,6 @@ Output:
     "nonce": 1009145850,
     "timestamp": 1625820808909,
     "keyLink": "04d243ba-2cc9-4def-b406-7241d4fce7d1",
-    "billingId": "demo8542234275",
     "consentLevels": [
       0,
       1

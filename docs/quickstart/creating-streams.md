@@ -10,11 +10,11 @@ page on how to authenticate.
 
 A stream can be created as follows:
 ```json
-strm create stream demo -o json --save
+strm create stream demo -o json
 {
   "ref": {
-    "billingId": "demo8542234275",
-    "name": "demo" 
+    "name": "demo",
+    "projectId": "30fcd008-9696-...."
   },
   "enabled": true,
   "limits": {
@@ -23,19 +23,21 @@ strm create stream demo -o json --save
   },
   "credentials": [
     {
-      "clientId": "ylbt4v9o6dvvc...",
-      "clientSecret": "M0fBiQnKNXn*U..."
+      "clientId": "stream-ylbt4v9o6dvvc...",
+      "clientSecret": "M0fBiQnKNXn*U...",
+      "projectId": "30fcd008-9696-...."
     }
   ],
   "maskedFields": {}
 }
 ```
 
-The `billingId`, `clientId` and `clientSecret` triplet is what
+The `clientId` and `clientSecret` pair is what
 identifies your stream when you send data to STRM Privacy. STRM Privacy
 uses the OAuth 2.0 client credentials flow to generate a *bearer token*
 that needs to be provided with each HTTP request. Our drivers have
 tooling to create and refresh these tokens, but nothing precludes you
+[//]: # (TODO: update the curl sending)
 from creating the headers by hand (see [the chapter about sending via
 `curl`](sending-curl.md) to do this manually).
 
@@ -72,8 +74,8 @@ $ strm list streams --output json
         {
             "stream": {
                 "ref": {
-                    "billingId": "demo8542234275",
-                    "name": "demo"
+                    "name": "demo",
+                    "projectId": "30fcd008-9696-...."
                 },
                 "enabled": true,
                 "limits": {
@@ -82,9 +84,13 @@ $ strm list streams --output json
                 },
                 "credentials": [
                     {
-                        "clientId": "ylbt4v9o6dvvc..."
+                        "clientId": "stream-ylbt4v9o6dvvc...",
+                        "clientSecret": "M0fBiQnKNXn*U...",
                     }
-                ]
+                ],
+                "maskedFields": {
+                  "seed": "***"
+                }
             }
         }
     ]
@@ -109,7 +115,6 @@ Flags:
       --description string    description
   -h, --help                  help for stream
   -L, --levels int32Slice     comma separated list of integers for derived streams (default [])
-      --save                  save the result in the config directory
       --tags strings          tags
 ```
 
@@ -118,14 +123,24 @@ level type interpretation.
 ```json
 $ strm create stream --derived-from demo --levels 0,1 --consent-type GRANULAR -o json
 {
-  "ref": { "billingId": "demo8542234275", "name": "demo-0-1" },
-  "consentLevels": [ 0, 1 ],
-  "consentLevelType": "GRANULAR",
-  "enabled": true,
-  "linkedStream": "demo",
-  "credentials": [
-    { "clientId": "11jvxvpy1e6jl...", "clientSecret": "tJkhj8lT9ybAA..." }
-  ]
+  "stream": {
+    "ref": {
+      "name": "demo-0-1",
+      "projectId": "30fcd008-9696-...."
+    },
+    "consentLevels": [ 0, 1 ],
+    "consentLevelType": "GRANULAR",
+    "enabled": true,
+    "linkedStream": "demo",
+    "credentials": [
+      {
+        "clientId": "stream-11jvxvpy1e6jl...",
+        "clientSecret": "tJkhj8lT9ybAA...",
+        "projectId": "30fcd008-9696-...."
+      }
+    ],
+    "maskedFields": {}
+  }
 }
 ```
 
@@ -135,7 +150,7 @@ after the `strm create stream` we would have created a stream with that
 name.
 
 So the derived stream named `demo-0-1` captures data from
-encrypted stream `demo` (for the current `billingId`). It will
+encrypted stream `demo`. It will
 drop all events that don’t at least have consent levels 0 and 1 in the
 event. Another way of defining decrypted streams is with consent level
 type *cumulative*. This means that the decrypted stream is configured
@@ -148,13 +163,14 @@ $ strm delete stream demo-0-1 -o json
 {
   "streamTree": {
     "stream": {
-      "ref": { "billingId": "demo8542234275", "name": "demo-0-1" },
+      "ref": { "name": "demo-0-1",     "projectId": "30fcd008-9696-...." },
       "consentLevels": [ 0, 1 ],
       "consentLevelType": "GRANULAR",
       "enabled": true,
       "limits": {},
       "linkedStream": "demo",
-      "credentials": [ { "clientId": "11jvxvpy1e6jl..." } ]
+      "credentials": [ { "clientId": "stream-11jvxvpy1e6jl...", "clientSecret": "tJkhj8lT9ybAA..."} ],
+      "maskedFields": { "seed": "****" }
     }
   }
 }
@@ -163,15 +179,14 @@ $ strm delete stream demo-0-1 -o json
 Note the `streamTree` field might also contain all the items derived
 from a source stream, like exporters.
 ```json
-create stream --derived-from demo --levels 1 -o json
+$strm create stream --derived-from demo --levels 1 -o json
 {
-  "ref": { "billingId": "demo8542234275", "name": "demo-1" },
+  "ref": { "name": "demo-1", "projectId": "30fcd008-9696-...." },
   "consentLevels": [ 1 ],
   "consentLevelType": "CUMULATIVE",
   "enabled": true,
   "linkedStream": "demo",
-  "credentials": [ { "clientId": "vnfku72pl3bgx...",
-  "clientSecret": "UMkNFnKt8ly#F..." } ]
+  "credentials": [ { "clientId": "stream-vnfku72pl3bgx...", "clientSecret": "UMkNFnKt8ly#F...", "projectId": "30fcd008-9696-...." } ]
 }
 ```
 
@@ -187,22 +202,23 @@ $ strm delete stream demo --recursive -o json
 {
   "streamTree": {
     "stream": {
-      "ref": { "billingId": "demo8542234275", "name": "demo" },
+      "ref": { "name": "demo", "projectId": "30fcd008-9696-...." },
       "enabled": true,
-      "credentials": [ { "clientId": "qzzmqq8szj478..." } ]
+      "credentials": [ { "clientId": "stream-11jvxvpy1e6jl...", "clientSecret": "tJkhj8lT9ybAA...",
+      } ]
     },
     "keyStream": {
-      "ref": { "billingId": "demo8542234275", "name": "demo" }
+      "ref": { "name": "demo", "projectId": "30fcd008-9696-...." }
     },
     "derived": [
       {
-        "ref": { "billingId": "demo8542234275", "name": "demo-1" },
+        "ref": { "name": "demo-1", "projectId": "30fcd008-9696-...." },
         "consentLevels": [ 1 ],
         "consentLevelType": "CUMULATIVE",
         "enabled": true,
         "limits": {},
         "linkedStream": "demo",
-        "credentials": [ { "clientId": "onrucokawroay..." } ]
+        "credentials": [ { "clientId": "stream-vnfku72pl3bgx...", "clientSecret": "UMkNFnKt8ly#F..." } ]
       }
     ]
   }

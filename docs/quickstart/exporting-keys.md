@@ -83,16 +83,16 @@ strm create batch-exporter demo --export-keys \
   --interval 30 --path-prefix demo-keys --data-connector demo
 {
   "ref": { #(1)
-    "billingId": "demo8542234275", 
-    "name": "demo-demo-keys"
+    "name": "demo-demo-keys",
+    "projectId": "30fcd008-9696-...."
   },
   "keyStreamRef": { #(2)
-    "billingId": "demo8542234275", 
-    "name": "demo"
+    "name": "demo",
+    "projectId": "30fcd008-9696-...."
   },
   "dataConnectorRef": { #(3)
-    "billingId": "demo8542234275", 
-    "name": "demo"
+    "name": "demo",
+    "projectId": "30fcd008-9696-...."
   },
   "interval": "30s",
   "pathPrefix": "demo-keys" #(4)
