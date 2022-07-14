@@ -27,9 +27,8 @@ Print the CLI context
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.3.0
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.4.0
 * [strm context account](/cli-reference/strm/context/account.md)	 - Show the handle of this account
-* [strm context billing-id](/cli-reference/strm/context/billing-id.md)	 - Show the billing id.
 * [strm context config](/cli-reference/strm/context/config.md)	 - Shows the config path and preferences
 * [strm context info](/cli-reference/strm/context/info.md)	 - Show the stored information for a saved entity
 * [strm context project](/cli-reference/strm/context/project.md)	 - Show or set the active project
