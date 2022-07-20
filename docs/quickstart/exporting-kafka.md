@@ -126,6 +126,7 @@ $ python consumer.py
   'nonce': -1508205704,
   'timestamp': 1629197150029,
   'keyLink': '68a1d5c5-d1d0-4a7c-8e03-b9d265071839',
+  'billingId': None,
   'consentLevels': [0, 1]},
 'uniqueIdentifier': 'ARCc26TVzQnf6SVZpFT3ghde/6ILaeFdn+o9jBW/',
 'consistentValue': 'ARCc26QnGW52Po3QHjADcpvSoY6zf9z9skqy8viZwX8=',

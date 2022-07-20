@@ -25,7 +25,6 @@ strm create stream demo -o json
     {
       "clientId": "stream-ylbt4v9o6dvvc...",
       "clientSecret": "M0fBiQnKNXn*U...",
-      "projectId": "30fcd008-9696-...."
     }
   ],
   "maskedFields": {}
