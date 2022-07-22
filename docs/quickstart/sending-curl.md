@@ -67,24 +67,26 @@ tool](https://github.com/confluentinc/avro-random-generator) for the
 
 **demo.json**
 
-```bash
+```json
 {
-  "strmMeta" : {
-    "eventContractRef" : "strmprivacy/clickstream/1.0.0",
-    "nonce" : null,
-    "billingId" : null,
-    "timestamp" : null,
-    "keyLink" : null,
-    "consentLevels" : [0]
+  "strmMeta": {
+    "eventContractRef": "strmprivacy/clickstream/1.0.0",
+    "nonce": null,
+    "billingId": null,
+    "timestamp": null,
+    "keyLink": null,
+    "consentLevels": [0]
   },
-  "producerSessionId" : "producer",
-  "url" : "url",
-  "eventType" : "click",
-  "referrer" : "bla",
-  "userAgent" : "bla",
-  "conversion" : 0,
-  "customer" : { "id" : "bla" },
-  "abTests" : ["a","b"]
+  "producerSessionId": "producer",
+  "url": "https://url.com",
+  "eventType": "click",
+  "referrer": "referrer-id",
+  "userAgent": "user-agent",
+  "conversion": 0,
+  "customer": {
+    "id": "customer-id"
+  },
+  "abTests": ["a", "b"]
 }
 ```
 

@@ -35,10 +35,9 @@ The `clientId` and `clientSecret` pair is what
 identifies your stream when you send data to STRM Privacy. STRM Privacy
 uses the OAuth 2.0 client credentials flow to generate a *bearer token*
 that needs to be provided with each HTTP request. Our drivers have
-tooling to create and refresh these tokens, but nothing precludes you
-[//]: # (TODO: update the curl sending)
-from creating the headers by hand (see [the chapter about sending via
-`curl`](sending-curl.md) to do this manually).
+tooling to create and refresh these tokens, but nothing prevents you
+from creating the headers by hand (see [the page about sending data by hand](sending-curl.md) 
+to do this manually).
 
 :::tip
 Use the `--save` flag to store the credentials on your local machine in
