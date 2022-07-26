@@ -1,15 +1,15 @@
 ---
-title: "activate"
+title: "invite"
 hide_title: true
 ---
-## strm activate
+## strm invite
 
-Set the state of an entity to ACTIVATED
+Invite users to your organization
 
 ### Options
 
 ```
-  -h, --help   help for activate
+  -h, --help   help for invite
 ```
 
 ### Options inherited from parent commands
@@ -28,6 +28,5 @@ Set the state of an entity to ACTIVATED
 ### SEE ALSO
 
 * [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.5.0
-* [strm activate event-contract](/cli-reference/strm/activate/event-contract.md)	 - Set the state of an Event Contract to ACTIVATED
-* [strm activate schema](/cli-reference/strm/activate/schema.md)	 - Set the state of a Schema to ACTIVATED
+* [strm invite users](/cli-reference/strm/invite/users.md)	 - Invite users to your organization by email
 

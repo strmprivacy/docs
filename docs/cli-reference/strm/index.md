@@ -4,7 +4,7 @@ hide_title: true
 ---
 ## strm
 
-STRM Privacy CLI 2.4.0
+STRM Privacy CLI 2.5.0
 
 ### Options
 
@@ -30,6 +30,7 @@ STRM Privacy CLI 2.4.0
 * [strm create](/cli-reference/strm/create/index.md)	 - Create an entity
 * [strm delete](/cli-reference/strm/delete/index.md)	 - Delete an entity
 * [strm get](/cli-reference/strm/get/index.md)	 - Get an entity
+* [strm invite](/cli-reference/strm/invite/index.md)	 - Invite users to your organization
 * [strm list](/cli-reference/strm/list/index.md)	 - List entities
 * [strm listen](/cli-reference/strm/listen/index.md)	 - Listen for events on a stream
 * [strm simulate](/cli-reference/strm/simulate/index.md)	 - Send simulated events with a predefined demo schema (not for production purposes)

@@ -27,7 +27,7 @@ Listen for events on a stream
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.4.0
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.5.0
 * [strm listen kafka](/cli-reference/strm/listen/kafka.md)	 - Read events via the kafka consumer (not for production purposes)
 * [strm listen web-socket](/cli-reference/strm/listen/web-socket.md)	 - Read events via the web-socket (not for production purposes)
 
