@@ -28,7 +28,7 @@ Delete an entity
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.5.0
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.6.0
 * [strm delete batch-exporter](/cli-reference/strm/delete/batch-exporter.md)	 - Delete one or more Batch exporters by name
 * [strm delete batch-job](/cli-reference/strm/delete/batch-job.md)	 - Delete on or more Batch Jobs by id
 * [strm delete data-connector](/cli-reference/strm/delete/data-connector.md)	 - Delete Data Connectors

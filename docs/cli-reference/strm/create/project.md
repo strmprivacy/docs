@@ -1,15 +1,20 @@
 ---
-title: "context"
+title: "project"
 hide_title: true
 ---
-## strm context
+## strm create project
 
-Print the CLI context
+Create a new project
+
+```
+strm create project [name] [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for context
+      --description string   description of the project
+  -h, --help                 help for project
 ```
 
 ### Options inherited from parent commands
@@ -27,9 +32,5 @@ Print the CLI context
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.6.0
-* [strm context account](/cli-reference/strm/context/account.md)	 - Show the handle of this account
-* [strm context config](/cli-reference/strm/context/config.md)	 - Shows the config path and preferences
-* [strm context info](/cli-reference/strm/context/info.md)	 - Show the stored information for a saved entity
-* [strm context project](/cli-reference/strm/context/project.md)	 - Show or set the active project
+* [strm create](/cli-reference/strm/create/index.md)	 - Create an entity
 

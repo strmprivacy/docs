@@ -27,13 +27,14 @@ Create an entity
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.5.0
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.6.0
 * [strm create batch-exporter](/cli-reference/strm/create/batch-exporter.md)	 - Create batch exporter
 * [strm create batch-job](/cli-reference/strm/create/batch-job.md)	 - Create a Batch Job
 * [strm create data-connector](/cli-reference/strm/create/data-connector/index.md)	 - Create a Data Connector
 * [strm create event-contract](/cli-reference/strm/create/event-contract.md)	 - Create an event-contract with reference 'handle/name/version'
 * [strm create kafka-exporter](/cli-reference/strm/create/kafka-exporter.md)	 - Create a Kafka exporter
 * [strm create kafka-user](/cli-reference/strm/create/kafka-user.md)	 - Create a Kafka user on a Kafka exporter
+* [strm create project](/cli-reference/strm/create/project.md)	 - Create a new project
 * [strm create schema](/cli-reference/strm/create/schema.md)	 - create a schema
 * [strm create stream](/cli-reference/strm/create/stream.md)	 - Create a stream
 
