@@ -42,5 +42,5 @@ strm create data-connector azure-blob-storage [data-connector-name] [container-n
 
 ### SEE ALSO
 
-* [strm create data-connector](../index.md)	 - Create a Data Connector
+* [strm create data-connector](/cli-reference/strm/create/data-connector.md)	 - Create a Data Connector
 

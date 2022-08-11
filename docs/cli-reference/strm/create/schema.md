@@ -38,5 +38,5 @@ strm create schema (handle/name/version) [flags]
 
 ### SEE ALSO
 
-* [strm create](index.md)	 - Create an entity
+* [strm create](/cli-reference/strm/create/index.md)	 - Create an entity
 
