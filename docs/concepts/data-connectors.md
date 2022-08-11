@@ -9,30 +9,11 @@ it provides a flexible way to read or export data. When creating a Data Connecto
 
 The following data connector and credential types are currently supported:
 
-<table style={{"width":"100%","display":"table"}}>
-<colgroup>
-<col style={{"width":"33%"}} />
-<col style={{"width":"33%"}} />
-</colgroup>
-<tbody>
-<tr>
-<td><p><strong>Data Connector Type</strong></p></td>
-<td><p><strong>Credentials Type</strong></p></td>
-</tr>
-<tr>
-<td><p>Amazon S3 Bucket</p></td>
-<td><p>IAM User Access Key</p></td>
-</tr>
-<tr>
-<td><p>Google Cloud Storage Bucket</p></td>
-<td><p>Service Account Credentials</p></td>
-</tr>
-<tr>
-<td><p>Azure Blob Storage Container</p></td>
-<td><p>Application Principal Client Secret Credentials</p></td>
-</tr>
-</tbody>
-</table>
+| Data Connector Type          | Credentials Type                                |
+| -------------------          | -----------------                               |
+| Amazon S3 Bucket             | IAM User Access Key                             |
+| Google Cloud Storage Bucket  | Service Account Credentials                     |
+| Azure Blob Storage Container | Application Principal Client Secret Credentials |
 
 For examples on how to create and use these Data Connectors, see the [Batch Exporter quickstart](/quickstart/batch-exporter.md),
-or the [CLI reference](/cli-reference/strm/create/data-connector) for data connectors.
+or the [CLI reference](/cli-reference/strm/create/data-connector/index.md) for data connectors.
