@@ -56,16 +56,30 @@ const sidebars = {
         id: 'quickstart/index',
       },
       items: [
-        'quickstart/creating-streams',
-        'quickstart/listen-web-socket',
-        'quickstart/sending-curl',
+        'quickstart/simple-schema',
         {
-          type: 'category',
-          label: 'Customer Cloud Deployments',
-          link: {
-            type: 'doc',
-            id: 'quickstart/ccd/index',
-          },
+          type: 'category', label: 'Batch Processing',
+          link: { type: 'doc', id: 'quickstart/index-batch', },
+          items: [
+            'quickstart/batch-jobs',
+            'quickstart/batch-exporter',
+            'quickstart/exporting-keys',
+          ]
+        },
+        {
+          type: 'category', label: 'Streaming',
+          link: { type: 'doc', id: 'quickstart/index-streaming', },
+          items: [
+            'quickstart/creating-streams',
+            'quickstart/listen-web-socket',
+            'quickstart/sending-curl',
+            'quickstart/full-example',
+            'quickstart/exporting-kafka',
+          ]
+        },
+        {
+          type: 'category', label: 'Customer Cloud Deployments',
+          link: { type: 'doc', id: 'quickstart/ccd/index' },
           items: [
             'quickstart/ccd/self-hosted',
             'quickstart/ccd/aws-marketplace',
@@ -74,12 +88,7 @@ const sidebars = {
             'quickstart/ccd/monitoring'
           ]
         },
-        'quickstart/batch-exporter',
-        'quickstart/full-example',
-        'quickstart/exporting-kafka',
-        'quickstart/exporting-keys',
         'quickstart/grpc',
-        'quickstart/simple-schema',
       ]
     },
     {

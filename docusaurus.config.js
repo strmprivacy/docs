@@ -28,8 +28,8 @@ const config = {
   organizationName: 'strmprivacy',
   baseUrlIssueBanner: false,
   trailingSlash: true,
-  onBrokenLinks: 'warn', // TODO change to throw!
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw', // TODO change to throw!
+  onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.svg',
 
   scripts: [

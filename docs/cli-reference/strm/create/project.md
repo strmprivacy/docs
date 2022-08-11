@@ -32,5 +32,5 @@ strm create project [name] [flags]
 
 ### SEE ALSO
 
-* [strm create](/cli-reference/strm/create/index.md)	 - Create an entity
+* [strm create](index.md)	 - Create an entity
 
