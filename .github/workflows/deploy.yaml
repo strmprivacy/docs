@@ -15,6 +15,8 @@ jobs:
           node-version: 17
       - name: Build
         run: |
+          npm --version
+          node --version
           npm i --non-interactive --pure-lockfile
           npm run build
 
