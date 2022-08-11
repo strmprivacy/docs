@@ -27,6 +27,6 @@ Manage a project or organization
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.8.0
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.9.0
 * [strm manage project](/cli-reference/strm/manage/project.md)	 - Manage a project: add or remove members. Defaults to active project
 
