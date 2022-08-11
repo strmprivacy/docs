@@ -1,15 +1,21 @@
 ---
-title: "activate"
+title: "project"
 hide_title: true
 ---
-## strm activate
+## strm manage project
 
-Set the state of an entity to ACTIVATED
+Manage a project: add or remove members. Defaults to active project
+
+```
+strm manage project [project-name] [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for activate
+      --add-member stringArray      [email1,email2,..]
+  -h, --help                        help for project
+      --remove-member stringArray   [email1,email2,..]
 ```
 
 ### Options inherited from parent commands
@@ -27,7 +33,5 @@ Set the state of an entity to ACTIVATED
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.7.0
-* [strm activate event-contract](/cli-reference/strm/activate/event-contract.md)	 - Set the state of an Event Contract to ACTIVATED
-* [strm activate schema](/cli-reference/strm/activate/schema.md)	 - Set the state of a Schema to ACTIVATED
+* [strm manage](/cli-reference/strm/manage/index.md)	 - Manage a project or organization
 

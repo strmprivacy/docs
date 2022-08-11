@@ -1,15 +1,15 @@
 ---
-title: "activate"
+title: "manage"
 hide_title: true
 ---
-## strm activate
+## strm manage
 
-Set the state of an entity to ACTIVATED
+Manage a project or organization
 
 ### Options
 
 ```
-  -h, --help   help for activate
+  -h, --help   help for manage
 ```
 
 ### Options inherited from parent commands
@@ -28,6 +28,5 @@ Set the state of an entity to ACTIVATED
 ### SEE ALSO
 
 * [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.7.0
-* [strm activate event-contract](/cli-reference/strm/activate/event-contract.md)	 - Set the state of an Event Contract to ACTIVATED
-* [strm activate schema](/cli-reference/strm/activate/schema.md)	 - Set the state of a Schema to ACTIVATED
+* [strm manage project](/cli-reference/strm/manage/project.md)	 - Manage a project: add or remove members. Defaults to active project
 

@@ -4,7 +4,7 @@ hide_title: true
 ---
 ## strm
 
-STRM Privacy CLI 2.6.0
+STRM Privacy CLI 2.7.0
 
 ### Options
 
@@ -33,6 +33,7 @@ STRM Privacy CLI 2.6.0
 * [strm invite](/cli-reference/strm/invite/index.md)	 - Invite users to your organization
 * [strm list](/cli-reference/strm/list/index.md)	 - List entities
 * [strm listen](/cli-reference/strm/listen/index.md)	 - Listen for events on a stream
+* [strm manage](/cli-reference/strm/manage/index.md)	 - Manage a project or organization
 * [strm simulate](/cli-reference/strm/simulate/index.md)	 - Send simulated events with a predefined demo schema (not for production purposes)
 * [strm version](/cli-reference/strm/version.md)	 - Print CLI version
 
