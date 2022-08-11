@@ -1,15 +1,26 @@
 ---
-title: "activate"
+title: "data-subjects"
 hide_title: true
 ---
-## strm activate
+## strm delete data-subjects
 
-Set the state of an entity to ACTIVATED
+Delete data subjects
+
+### Synopsis
+
+Deletes 1 or more data subjects from the Data Subjects Service.
+
+Returns the number of deleted key links that were associated with these data subjects.
+
+
+```
+strm delete data-subjects <data-subject-id>... [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for activate
+  -h, --help   help for data-subjects
 ```
 
 ### Options inherited from parent commands
@@ -21,13 +32,12 @@ Set the state of an entity to ACTIVATED
       --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
   -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
       --project string                 Project to use (defaults to context-configured project)
+  -r, --recursive                      Retrieve entities and their dependents
       --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
       --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
 ```
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.8.0
-* [strm activate event-contract](/cli-reference/strm/activate/event-contract.md)	 - Set the state of an Event Contract to ACTIVATED
-* [strm activate schema](/cli-reference/strm/activate/schema.md)	 - Set the state of a Schema to ACTIVATED
+* [strm delete](/cli-reference/strm/delete/index.md)	 - Delete an entity
 

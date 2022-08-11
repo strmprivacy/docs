@@ -35,8 +35,8 @@ A Data Connector with valid credentials is required when creating a Batch Export
 
 ### SEE ALSO
 
-* [strm create](../index.md)	 - Create an entity
-* [strm create data-connector azure-blob-storage](azure-blob-storage.md)	 - Create a Data Connector for an Azure Blob Storage Container
-* [strm create data-connector gcs](gcs.md)	 - Create a Data Connector for a Google Cloud Storage Bucket
-* [strm create data-connector s3](s3.md)	 - Create a Data Connector for an AWS S3 Bucket
+* [strm create](/cli-reference/strm/create.md)	 - Create an entity
+* [strm create data-connector azure-blob-storage](/cli-reference/strm/create/data-connector/azure-blob-storage.md)	 - Create a Data Connector for an Azure Blob Storage Container
+* [strm create data-connector gcs](/cli-reference/strm/create/data-connector/gcs.md)	 - Create a Data Connector for a Google Cloud Storage Bucket
+* [strm create data-connector s3](/cli-reference/strm/create/data-connector/s3.md)	 - Create a Data Connector for an AWS S3 Bucket
 
