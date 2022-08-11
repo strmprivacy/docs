@@ -28,7 +28,7 @@ const config = {
   organizationName: 'strmprivacy',
   baseUrlIssueBanner: false,
   trailingSlash: true,
-  onBrokenLinks: 'throw', // TODO change to throw!
+  onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.svg',
 
