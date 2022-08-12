@@ -16,4 +16,4 @@ The following data connector and credential types are currently supported:
 | Azure Blob Storage Container | Application Principal Client Secret Credentials |
 
 For examples on how to create and use these Data Connectors, see the [Batch Exporter quickstart](/quickstart/batch-exporter.md),
-or the [CLI reference](/cli-reference/strm/create/data-connector.md) for data connectors.
+or the [CLI reference](/cli-reference/strm/create/data-connector/index.md) for data connectors.
