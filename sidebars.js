@@ -88,6 +88,7 @@ const sidebars = {
             'quickstart/ccd/monitoring'
           ]
         },
+        'quickstart/rbac',
         'quickstart/grpc',
       ]
     },
