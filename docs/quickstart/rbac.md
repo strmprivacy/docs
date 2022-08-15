@@ -20,6 +20,7 @@ Roles can be managed via the [`manage` command in the cli](/cli-reference/strm/m
 |  organization  | manage organization users | &check; |                 |            |          | 
 |  organization  |      create project       | &check; |     &check;     |            |          | 
 |  organization  |      delete project       | &check; |     &check;     |            |          | 
+|  organization  |       view projects       | &check; |     &check;     |            |          | 
 |  organization  | view installation status  | &check; |     &check;     |  &check;   | &check;  | 
 |    project     |      manage members       | &check; |     &check;     |            |          | 
 |    project     |     create resources      | &check; |     &check;     |            | &check;  | 
@@ -28,5 +29,3 @@ Roles can be managed via the [`manage` command in the cli](/cli-reference/strm/m
 |    project     |   create data contracts   | &check; |     &check;     |  &check;   | &check;  | 
 | data contracts |           view            | &check; |                 |  &check;   |          | 
 | data contracts |          review           | &check; |                 |  &check;   |          | 
-
-[//]: # (Per role, what are the specific permissions granted)
