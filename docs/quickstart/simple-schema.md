@@ -1,6 +1,7 @@
 ---
 title: Simple Schema
 hide_table_of_contents: false
+sidebar_position: 4
 ---
 
 This is a hands-on session where we create a Simple Schema and see how
