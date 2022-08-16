@@ -46,6 +46,7 @@ const sidebars = {
         'concepts/masked-fields',
         'concepts/simple-schemas',
         'concepts/ccd',
+        'concepts/rbac',
       ]
     },
     {
@@ -88,7 +89,6 @@ const sidebars = {
             'quickstart/ccd/monitoring'
           ]
         },
-        'quickstart/rbac',
         'quickstart/grpc',
       ]
     },
