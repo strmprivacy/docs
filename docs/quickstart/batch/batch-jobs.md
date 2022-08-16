@@ -34,20 +34,9 @@ These are the steps we will walk through today:
 
 Let's go!
 
-### Create a data connection
+## Creating a data connector
+First create a [data-connector](./data-connectors/index.md) of the desired kind.
 
-The first step is to create a data connection to read and write your (privacy transformed) data.
-
-You can reuse an existing data-connector you have defined already, or define a new one quickly via either console or CLI:
-
-`strm create data-connector --credentials-file yourcredsfile.json --data-connector-type S3`
-
-In the console it's behind the `data-connector` menu tab:
-
-![create data-connector in console](../images/create-sink.png)
-
-This early release supports AWS S3 data-connectors. [Head over to the docs](batch-exporter.md) for more detail on
-creating and managing data-connectors.
 
 ### Define the data contract
 

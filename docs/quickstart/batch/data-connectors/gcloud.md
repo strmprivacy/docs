@@ -1,12 +1,9 @@
 ---
-title: Google Cloud Data Connector
+title: Google Cloud
 hide_table_of_contents: false
 ---
 
-## Preparation: creating target storage and credentials {#Preparation}
-
-First, create a new Blob Storage Container from the [Azure Portal](https://portal.azure.com/)
-or [using the Azure CLI](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli).
+### Prepare the storage
 
 1. First, create a new service account, for example in
    the [Cloud Console](https://console.cloud.google.com/iam-admin/serviceaccounts).
@@ -24,7 +21,7 @@ for writing to the bucket.
 
 The contents should look something like:
 
-```json
+```json title=gcs.json
 {
   "type": "service_account",
   "project_id": "***",
@@ -38,13 +35,16 @@ The contents should look something like:
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/***.iam.gserviceaccount.com"
 }
 ```
-### 2. Create the data connector {#create-data-connector}
+### Create the data connector {#create-data-connector}
 
 You can create the data connector with the following command, pointing to the
 credentials file:
 
 ```bash
-$ strm create data-connector gcs my-gcs strmprivacy-export-demo --credentials-file=gcs.json
+strm create data-connector gcs my-gcs strmprivacy-export-demo --credentials-file=gcs.json
+```
+
+```json
 {
   "ref": {
     "name": "my-gcs",

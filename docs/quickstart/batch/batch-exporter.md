@@ -12,58 +12,9 @@ See [Data Connectors](./data-connectors/index.md) for details for each of the su
 
 
 ## Creating a data connector
-
-### 1. Preparation
-
+First create a [data-connector](./data-connectors/index.md) of the desired kind.
 
 
-You can list all your data connectors with `strm list data-connectors`.
-
-
-```bash
-$ strm list data-connectors -o json
-{
-  "dataConnectors": [
-    {
-      "ref": {
-        "name": "my-s3",
-        "projectId": "30fcd008-9696-...."
-      },
-      "s3Bucket": {
-        "bucketName": "strmprivacy-export-demo"
-      }
-    },
-    {
-      "ref": {
-        "name": "my-s3",
-        "projectId": "30fcd008-9696-...."
-      },
-      "s3Bucket": {
-        "bucketName": "strmprivacy-export-demo"
-      }
-    },
-    {
-      "ref": {
-        "name": "my-gcs",
-        "projectId": "30fcd008-9696-...."
-      },
-      "googleCloudStorageBucket": {
-        "bucketName": "strmprivacy-export-demo"
-      }
-    },
-    {
-      "ref": {
-        "name": "azure",
-        "projectId": "30fcd008-9696-...."
-      },
-      "azureBlobStorageContainer": {
-        "storageAccountUri": "https://foo.blob.core.windows.net",
-        "containerName": "strmprivacy-export-demo"
-      }
-    }
-  ]
-}
-```
 
 ## Create a batch exporter
 

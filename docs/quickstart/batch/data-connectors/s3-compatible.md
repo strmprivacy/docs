@@ -1,3 +1,13 @@
+---
+title: Google Cloud in S3 mode
+hide_table_of_contents: false
+sidebar_position: 2
+---
+
+[gcloud-s3]: https://cloud.google.com/storage/docs/aws-simple-migration
+
+### Prepare the storage
+This page shows how to use a Google Cloud bucket in [s3 compatible mode][gcloud-s3].
 
 1. First, create a new service account, for example in
    the [Cloud Console](https://console.cloud.google.com/iam-admin/serviceaccounts).
@@ -6,7 +16,8 @@
    as role and the newly created service account as principal.
 3. Create HMAC credentials: `gsutil hmac create <service-account-name>`. Put the secrets in a JSON file, named for 
    example `s3.json`:
-   ```json
+
+   ```json title=s3.json
    {
      "url": "https://storage.googleapis.com",
      "accessKey": "<access-key>",
@@ -15,16 +26,17 @@
      "path": "auto"
    }
    ```
-   
-If you created a JSON file with the HMAC credentials in te previous step, you are ready to create a data connector.
-If not, create one now.
 
-### 2. Create the data connector {#create-data-connector}
+
+### Create the data connector {#create-data-connector}
 With the credentials file (`s3.json` in our example), create the data connector using
 the command below:
 
 ```bash
-$ strm create data-connector s3 my-s3 strmprivacy-export-demo --credentials-file=s3.json
+strm create data-connector s3 my-s3 strmprivacy-export-demo --credentials-file=s3.json
+```
+
+```json
 {
   "ref": {
     "name": "my-s3",

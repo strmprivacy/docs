@@ -1,28 +1,18 @@
 ---
-title: Microsoft Azure Data Connector
+title: Microsoft Azure
 hide_table_of_contents: false
+sidebar_position: 3
 ---
 
-In this quickstart however, we will use a regular Google Cloud Storage bucket and connect using HMAC credentials. You can
-substitute our examples with your own storage solution.
+[service-principal]: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
 
-Create a GCS bucket in the [Google Cloud Console](https://console.cloud.google.com/storage/create-bucket),
-or with the `gsutil` CLI tool:
+### Prepare the storage
 
-```bash
-$ gsutil mb gs://<your-bucket-name>
-```
-
-
-Create a GCS bucket in the [Google Cloud Console](https://console.cloud.google.com/storage/create-bucket),
-or with the `gsutil` CLI tool:
-
-```bash
-$ gsutil mb gs://<your-bucket-name>
-```
+First, create a new Blob Storage Container from the [Azure Portal](https://portal.azure.com/)
+or [using the Azure CLI](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli).
 
 The STRM Privacy data connector for Azure Blob Storage currently supports Client Secret Credentials.
-We recommend [creating a new Application with Service Principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal),
+We recommend [creating a new Application with Service Principal][service-principal],
 *including a client secret*.
 
 Next, assign the `Storage Blob Data Contributor` role to this service principal, specifically for
@@ -35,13 +25,21 @@ To create a data connector for your Blob Storage Container, you will need the fo
 2. Your **tenant ID**.
 3. The **client (application) ID** of the Azure AD application used to access the container.
 4. The **client secret** of the service principal used to authenticate with the AAD application.
-### 2. Create the data connector {#create-data-connector}
+
+### Create the data connector {#create-data-connector}
 
 You can create the data connector with the following command, providing a name, the
 container name, and the other required flags:
 
 ```bash
-$ strm create data-connector azure-blob-storage azure strmprivacy-export-demo --storage-account-uri "https://foo.blob.core.windows.net" --tenant-id "<your tenant ID>" --client-id "<the app client ID>" --client-secret "<the service principal's secret>"
+strm create data-connector azure-blob-storage azure strmprivacy-export-demo \
+  --storage-account-uri "https://foo.blob.core.windows.net" \
+  --tenant-id "<your tenant ID>" \
+  --client-id "<the app client ID>" \
+  --client-secret "<the service principal's secret>"
+```
+
+```json
 {
   "ref": {
     "name": "azure",
