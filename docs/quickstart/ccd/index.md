@@ -1,5 +1,5 @@
 ---
-title: About Customer Cloud Deployments
+title: Customer Cloud Deployments
 hide_table_of_contents: false
 ---
 

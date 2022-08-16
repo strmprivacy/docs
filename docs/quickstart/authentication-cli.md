@@ -1,6 +1,7 @@
 ---
-title: Authentication with the Command Line Interface
+title: Authentication via the CLI
 hide_table_of_contents: false
+sidebar_position: 5
 ---
 
 

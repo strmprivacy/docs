@@ -51,7 +51,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'quickstart',
+      label: 'Quickstart',
       link: {
         type: 'doc',
         id: 'quickstart-index',

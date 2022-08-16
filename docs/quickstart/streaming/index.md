@@ -1,4 +1,13 @@
-# Quickstart Streaming
+# Streaming
+[ETL]: https://en.wikipedia.org/wiki/Extract,_transform,_load
+
+STRM can process your data in two ways:
+
+1. Streaming data processing works on continuous streams of events.
+2. in [Batch mode](../batch/index.md), with data defined as files (typically csv files), and processing being done _per file_. This how
+   typical [ETL Processing][ETL] works.
+
+This section shows the quickstart articles related to stream processing.
 
 ## [Managing streams with the Command Line Interface](./creating-streams.md)
 
@@ -23,3 +32,7 @@ set up, you should be sending simulated events in a minute.
 Realtime exporting to a Kafka cluster, and a consumer in Python.
 
 
+## [Exporting encryption keys](../streaming/exporting-keys.md)
+
+How to export the generated STRM Privacy encryption keys on an event stream. Also shows
+some interaction with a Google Cloud bucket.
