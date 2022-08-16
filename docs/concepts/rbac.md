@@ -36,18 +36,18 @@ Roles can be managed via the [`manage` command in the cli](/cli-reference/strm/m
 
 ## Overview of permissions per role
 
-|     Scope      |        Permission         | `admin` | `project_admin` | `approver` | `member` |
-|:--------------:|:-------------------------:|:-------:|:---------------:|:----------:|:--------:|
-|  organization  |    manage organization    | &check; |                 |            |          |
-|  organization  | manage organization users | &check; |                 |            |          | 
-|  organization  |      create project       | &check; |     &check;     |            |          | 
-|  organization  |      delete project       | &check; |     &check;     |            |          | 
-|  organization  |       view projects       | &check; |     &check;     |            |          | 
-|  organization  | view installation status  | &check; |     &check;     |  &check;   | &check;  | 
-|    project     |      manage members       | &check; |     &check;     |            |          | 
-|    project     |     create resources      | &check; |     &check;     |            | &check;  | 
-|    project     |     delete resources      | &check; |     &check;     |            |          | 
-|    project     |      view resources       | &check; |     &check;     |  &check;   | &check;  | 
-|    project     |   create data contracts   | &check; |     &check;     |  &check;   | &check;  | 
-| data contracts |           view            | &check; |                 |  &check;   |          | 
-| data contracts |          review           | &check; |                 |  &check;   |          | 
+| Scope                                 | `admin` | `project_admin` | `approver` | `member` |
+|:--------------------------------------|:-------:|:---------------:|:----------:|:--------:|
+| organization/manage                   | &check; |                 |            |          |
+| organization/manage users             | &check; |                 |            |          | 
+| organization/create project           | &check; |     &check;     |            |          | 
+| organization/delete project           | &check; |     &check;     |            |          | 
+| organization/view projects            | &check; |     &check;     |            |          | 
+| organization/view installation status | &check; |     &check;     |  &check;   | &check;  | 
+| project/manage members                | &check; |     &check;     |            |          | 
+| project/create resources              | &check; |     &check;     |            | &check;  | 
+| project/delete resources              | &check; |     &check;     |            |          | 
+| project/view resources                | &check; |     &check;     |  &check;   | &check;  | 
+| project/create data contracts         | &check; |     &check;     |  &check;   | &check;  | 
+| data_contracts/view                   | &check; |                 |  &check;   |          | 
+| data_contracts/review                 | &check; |                 |  &check;   |          | 
