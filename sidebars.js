@@ -46,6 +46,7 @@ const sidebars = {
         'concepts/masked-fields',
         'concepts/simple-schemas',
         'concepts/ccd',
+        'concepts/rbac',
       ]
     },
     {
