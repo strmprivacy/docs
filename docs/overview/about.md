@@ -29,16 +29,16 @@ of the following:
 
 For some more detailed information have a look in these.
 
--   [Setup required resources](/quickstart/creating-streams.md)
+-   [Setup required resources](../quickstart/streaming/creating-streams.md)
 
 -   [Schemas and event contracts](/concepts/schemas-and-contracts.md).
     This is an overview of the `schema` that defines the shape of your
     event data, and the `event contract` that defines the content and
     personal data attributes of your events.
 
--   [Producing data](/quickstart/full-example.md)
+-   [Producing data](../quickstart/streaming/full-example.md)
 
--   [Consuming data](/quickstart/batch-exporter.md)
+-   [Consuming data](../quickstart/batch/batch-exporter.md)
 
 ## Support
 

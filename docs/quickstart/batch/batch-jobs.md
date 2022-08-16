@@ -44,7 +44,7 @@ You can reuse an existing data-connector you have defined already, or define a n
 
 In the console it's behind the `data-connector` menu tab:
 
-![create data-connector in console](images/create-sink.png)
+![create data-connector in console](../images/create-sink.png)
 
 This early release supports AWS S3 data-connectors. [Head over to the docs](batch-exporter.md) for more detail on
 creating and managing data-connectors.
@@ -58,10 +58,10 @@ These are the shape and classification for the [privacy demo event
 contract](https://strmprivacy.io/schemas/strmprivacy/example/1.3.0/):
 
 _Data shape_
-![a defined data schema](images/schema-example.png)
+![a defined data schema](../images/schema-example.png)
 
 _Data classification_
-![define the privacy implications](images/event-contract.png)
+![define the privacy implications](../images/event-contract.png)
 
 You can use an existing data contract or create your own. Refer to this blog on [creating data
 contracts](https://strmprivacy.io/posts/add-your-own-schemas/). We also offer what we call [Simple
@@ -236,7 +236,7 @@ Let's explore what happens to the data based on (1) the event contract and (2) d
 #### Input data
 The input data coming from the `DataGenerator` class that acts as input won't surprise you:
 
-![input data](images/input-data.png)
+![input data](../images/input-data.png)
 
 #### 6.2 Encrypted data
 The next step is to look at the data that is just encrypted (per field!).
@@ -244,7 +244,7 @@ The next step is to look at the data that is just encrypted (per field!).
 Basically, all connections that might exist between rows are destroyed here: we see the pii-fields `Email`,
 `PrivateFieldA` and `PrivateFieldB`, set in our event contract, are encrypted.
 
-![encryped data](images/encrypted-data.png)
+![encryped data](../images/encrypted-data.png)
 
 #### Derived Data
 It becomes more interesting when we take a look at the derived data (as we defined the derived stream above). Remember,
@@ -257,7 +257,7 @@ the table you can also see that the values for `UserName` and `Email` are hashed
 has been masked, but the hashed username is consistent over all rows. The `Email` field is different for every entry and
 therefore the hashed field is too.
 
-![derived data](images/derived-data.png)
+![derived data](../images/derived-data.png)
 
 ### Example notebook
 To quickly see for yourself how Batch Mode works, copy or clone the example notebook from Github with your own S3 and

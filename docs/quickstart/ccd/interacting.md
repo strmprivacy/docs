@@ -7,11 +7,11 @@ hide_table_of_contents: false
 
 [github]: https://github.com/strmprivacy/data-plane-helm-chart/tree/master
 
-[batch-exporter]: https://docs.strmprivacy.io/docs/latest/quickstart/batch-exporter
+[batch-exporter]: https://docs.strmprivacy.io/docs/latest/quickstart/batch/batch-exporter
 
-[exporting-keys]: https://docs.strmprivacy.io/docs/latest/quickstart/exporting-keys/
+[exporting-keys]: https://docs.strmprivacy.io/docs/latest/quickstart/streaming/exporting-keys/
 
-[data-connector]: https://docs.strmprivacy.io/docs/latest/quickstart/batch-exporter/#creating-a-data-connector
+[data-connector]: https://docs.strmprivacy.io/docs/latest/quickstart/batch/batch-exporter/#creating-a-data-connector
 
 [ovh-ingress]: https://docs.ovh.com/au/en/kubernetes/installing-nginx-ingress/
 
@@ -246,7 +246,7 @@ For more information, see our [quickstart on exporting keys][exporting-keys].
 
 ## Python Example
 
-[python]: https://docs.strmprivacy.io/docs/latest/quickstart/full-example/
+[python]: https://docs.strmprivacy.io/docs/latest/quickstart/streaming/full-example/
 
 The [Python example][python] needs a small modification in order to work. In the `client_builder.py` file change the
 `config` for

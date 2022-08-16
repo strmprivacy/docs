@@ -10,11 +10,11 @@ import {ExternalCodeBlock} from '/full-example.js';
 
 [github]: https://github.com/strmprivacy/data-plane-helm-chart/tree/master
 
-[batch-exporter]: https://docs.strmprivacy.io/docs/latest/quickstart/batch-exporter
+[batch-exporter]: https://docs.strmprivacy.io/docs/latest/quickstart/batch/batch-exporter
 
-[exporting-keys]: https://docs.strmprivacy.io/docs/latest/quickstart/exporting-keys/
+[exporting-keys]: https://docs.strmprivacy.io/docs/latest/quickstart/streaming/exporting-keys/
 
-[data-connector]: https://docs.strmprivacy.io/docs/latest/quickstart/batch-exporter/#creating-a-data-connector
+[data-connector]: https://docs.strmprivacy.io/docs/latest/quickstart/batch/data-connectors/index.html
 
 [ovh-ingress]: https://docs.ovh.com/au/en/kubernetes/installing-nginx-ingress/
 
