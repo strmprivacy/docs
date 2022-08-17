@@ -28,7 +28,7 @@ List entities
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.11.0
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.11.1
 * [strm list batch-exporters](/cli-reference/strm/list/batch-exporters.md)	 - List Batch exporters
 * [strm list batch-jobs](/cli-reference/strm/list/batch-jobs.md)	 - List Batch Jobs
 * [strm list data-connectors](/cli-reference/strm/list/data-connectors.md)	 - List Data Connectors
