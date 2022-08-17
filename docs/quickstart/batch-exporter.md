@@ -3,6 +3,8 @@ title: Batch Exporter
 hide_table_of_contents: false
 ---
 
+import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
+
 # Exporting data to S3 and other common storage solutions
 
 If you want to export stream data to AWS S3 or other storage solutions like
