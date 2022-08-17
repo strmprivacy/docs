@@ -43,3 +43,7 @@ used in the engine.
 ## [Customer Cloud Deployments](ccd.md)
 In a Customer Cloud Deployment (CCD), _all event processing takes place in a Kubernetes cluster specified by the
 customer_.
+
+## [Role Based Access Control](rbac.md)
+Grant users permissions to interact with STRM using Roll-Based Access Control
+

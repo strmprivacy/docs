@@ -1,6 +1,7 @@
 ---
 title: Simple Schema
 hide_table_of_contents: false
+sidebar_position: 4
 ---
 
 This is a hands-on session where we create a Simple Schema and see how
@@ -225,7 +226,7 @@ pip install strmprivacy-driver #(3)
 3. the STRM Privacy Python driver is accidentally excluded.
 
 Now I’m going to follow along with the [full Python
-example](/quickstart/full-example.md) except that I’m going to modify the example
+example](/quickstart/streaming/full-example.md) except that I’m going to modify the example
 [`sender_async.py`](https://github.com/strmprivacy/python-examples/blob/master/examples/sender_async.py)
 code to use the schema-code we just generated.
 

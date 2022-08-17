@@ -141,7 +141,7 @@ This is the mechanism that STRM Privacy provides to increase the
 *quality* of your event data: validate before acceptance, and let the
 data processing teams define the rules instead of the data generating
 teams. An example of a validation can be seen (and tried) in
-[Sending and receiving an event by hand](/quickstart/sending-curl.md)
+[Sending and receiving an event by hand](/quickstart/streaming/sending-curl.md)
 
 ## Schema and Event Contract states
 As both *schemas* and **event contracts** are fundamental to describe data, give insight into what data goes where,
