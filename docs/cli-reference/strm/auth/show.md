@@ -1,15 +1,23 @@
 ---
-title: "activate"
+title: "show"
 hide_title: true
 ---
-## strm activate
+## strm auth show
 
-Set the state of an entity to ACTIVATED
+Show your current login credentials
+
+### Synopsis
+
+Show the email address of your current login credentials
+
+```
+strm auth show [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for activate
+  -h, --help   help for show
 ```
 
 ### Options inherited from parent commands
@@ -27,7 +35,5 @@ Set the state of an entity to ACTIVATED
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.12.0
-* [strm activate event-contract](/cli-reference/strm/activate/event-contract.md)	 - Set the state of an Event Contract to ACTIVATED
-* [strm activate schema](/cli-reference/strm/activate/schema.md)	 - Set the state of a Schema to ACTIVATED
+* [strm auth](/cli-reference/strm/auth/index.md)	 - Authentication command
 
