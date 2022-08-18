@@ -4,7 +4,7 @@ hide_title: true
 ---
 ## strm
 
-STRM Privacy CLI 2.12.1
+STRM Privacy CLI 2.12.2
 
 ### Options
 
