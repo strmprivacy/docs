@@ -15,14 +15,14 @@
 const sidebars = {
   docs: [
     {
+      type: 'doc',
+      label: 'STRM Privacy',
+      id: 'about'
+    },
+    {
       type: 'category',
       label: 'Overview',
-      link: {
-        type: 'doc',
-        id: 'overview/index'
-      },
       items: [
-        'overview/about',
         'overview/pii',
         'overview/organization',
         'overview/hla',

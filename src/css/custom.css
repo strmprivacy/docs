@@ -87,3 +87,28 @@ html[data-theme='dark'] .property {
 }
 
 .schema-event-contract-states{background-color:white}
+
+.button {
+  align-items: center;
+
+  border-bottom-color: rgba(0, 0, 0, 0);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+
+  margin-right: 10px;
+}
+
+.button_light {
+  background-color: rgb(255 231 217);
+  color: rgb(253, 124, 49);
+  text-decoration-color: rgb(253, 124, 49);
+}
+
+.button_dark {
+  background-color: rgb(253, 124, 49);
+  color: rgb(255 231 217);
+  text-decoration-color: rgb(255 231 217);
+}
+
