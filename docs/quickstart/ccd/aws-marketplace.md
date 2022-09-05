@@ -72,6 +72,12 @@ follow the following steps.
    2. the `registry.imagePullSecret` can be omitted / left blank, as this is facilitated by your AWS Marketplace
    deployment
    :::
+   :::note
+   The Helm chart includes `ClusterIP` Kubernetes services by default to route traffic to. If you need to route traffic
+   from outside the cluster to one of the STRM Privacy applications, please set `services.loadbalancer.enabled` to
+   `true` to create a `LoadBalancer` Kubernetes service. If needed, set `services.loadbalancer.internal` to `true` to
+   add the cloud platform specific annotation to ensure that the `LoadBalancer` is of type internal.
+   :::
 
 After these steps, you should end up with a namespace `strmprivacy` with, by default, [all components](./index.md#components) enabled. If you
 wish otherwise, you can edit the `values.yaml` to match your needs.
