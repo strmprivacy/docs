@@ -1,0 +1,143 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/DerivedData",
+    "definitions": {
+        "DerivedData": {
+            "properties": {
+                "target": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.DataConnectorAndType",
+                    "additionalProperties": false
+                },
+                "consent_levels": {
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "consent_level_type": {
+                    "enum": [
+                        "CONSENT_LEVEL_TYPE_UNSPECIFIED",
+                        0,
+                        "CUMULATIVE",
+                        1,
+                        "GRANULAR",
+                        2
+                    ],
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "title": "Consent Level Type",
+                    "description": "Consent level is meant to interpret the consent-levels of an event for decryption purposes only.Cumulative means that the highest consent-level in an event must be greater than or equal to the single requested levelfor the decrypted stream.Granular means that the set of consent-levels in an event must enclose the set of requested event levels for thedecrypted stream."
+                },
+                "masked_fields": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.MaskedFields",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Derived Data"
+        },
+        "strmprivacy.api.entities.v1.CsvConfig": {
+            "properties": {
+                "charset": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Csv Config"
+        },
+        "strmprivacy.api.entities.v1.DataConnectorAndType": {
+            "properties": {
+                "data_connector_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.DataConnectorRef",
+                    "additionalProperties": false
+                },
+                "path_prefix": {
+                    "type": "string",
+                    "description": "If omitted, files are read from the root of the bucket."
+                },
+                "file_name": {
+                    "type": "string",
+                    "description": "(-- api-linter: core::0122::name-suffix=disabled     aip.dev/not-precedent: We think file_name is a better name. --)"
+                },
+                "data_type": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.DataType",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Data Connector And Type"
+        },
+        "strmprivacy.api.entities.v1.DataConnectorRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Data Connector Ref"
+        },
+        "strmprivacy.api.entities.v1.DataType": {
+            "properties": {
+                "csv": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.CsvConfig",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Data Type"
+        },
+        "strmprivacy.api.entities.v1.MaskedFields": {
+            "properties": {
+                "hash_type": {
+                    "type": "string",
+                    "description": "default Murmurhash3 for empty string"
+                },
+                "seed": {
+                    "type": "string",
+                    "description": "hashing seedconstraints: size \u003c 1000, unicode"
+                },
+                "field_patterns": {
+                    "additionalProperties": {
+                        "$ref": "#/definitions/strmprivacy.api.entities.v1.MaskedFields.PatternList",
+                        "additionalProperties": false
+                    },
+                    "type": "object",
+                    "description": "map of event-contract-ref vs field patternsconstraints: event-contract-refs should be existing event contracts field_patterns should be valid values (checked by event-core) the field_patterns list should have no duplicates."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Masked Fields"
+        },
+        "strmprivacy.api.entities.v1.MaskedFields.PatternList": {
+            "properties": {
+                "field_patterns": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Pattern List"
+        }
+    }
+}

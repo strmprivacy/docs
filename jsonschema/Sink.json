@@ -1,0 +1,75 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/Sink",
+    "definitions": {
+        "Sink": {
+            "properties": {
+                "ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.SinkRef",
+                    "additionalProperties": false
+                },
+                "sink_type": {
+                    "enum": [
+                        "SINK_TYPE_UNSPECIFIED",
+                        0,
+                        "S3",
+                        1,
+                        "GCLOUD",
+                        2
+                    ],
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "title": "Sink Type"
+                },
+                "bucket": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.BucketConfig",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Sink",
+            "description": "the sink config used by the batch exporters."
+        },
+        "strmprivacy.api.entities.v1.BucketConfig": {
+            "properties": {
+                "bucket_name": {
+                    "type": "string",
+                    "description": "constraints: validated via access check"
+                },
+                "credentials": {
+                    "type": "string",
+                    "description": "The credentials that are to be used to access the sink target (e.g. S3 or Google Cloud Storage)"
+                },
+                "assume_role_arn": {
+                    "type": "string",
+                    "description": "The ARN of the role to assume.If present, start an AssumeRole flow to get temporary credentials in another AWS account.This is used when the customer has a separate users account.Default there is no assumed role."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Bucket Config",
+            "description": "(-- api-linter: core::0122::name-suffix=disabled     aip.dev/not-precedent: We refer to a bucket name. --)"
+        },
+        "strmprivacy.api.entities.v1.SinkRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: generic name"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Sink Ref"
+        }
+    }
+}

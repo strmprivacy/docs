@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/AzureBlobStorageContainerLocation",
+    "definitions": {
+        "AzureBlobStorageContainerLocation": {
+            "properties": {
+                "storage_account_uri": {
+                    "type": "string",
+                    "description": "The base URI of the Azure Storage Account. Typically this is 'https://\u003cyour-account-name\u003e.blob.core.windows.net', but Azure users can map this to their own domain or subdomain."
+                },
+                "container_name": {
+                    "type": "string",
+                    "description": "(-- api-linter: core::0122::name-suffix=disabled     aip.dev/not-precedent: We refer to a container name. --) Name of the Storage Container"
+                },
+                "client_secret_credential": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.AzureClientSecretCredential",
+                    "additionalProperties": false,
+                    "description": "The AAD client secret credential used to acquire a token for the AAD application that has the required permissions on this Blob Storage Container."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Azure Blob Storage Container Location"
+        },
+        "strmprivacy.api.entities.v1.AzureClientSecretCredential": {
+            "properties": {
+                "tenant_id": {
+                    "type": "string",
+                    "description": "Tenant ID of the Azure AD Application."
+                },
+                "client_id": {
+                    "type": "string",
+                    "description": "Client ID of the Azure AD Application."
+                },
+                "client_secret": {
+                    "type": "string",
+                    "description": "Client secret to use for authentication."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Azure Client Secret Credential"
+        }
+    }
+}

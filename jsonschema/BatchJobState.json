@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/BatchJobState",
+    "definitions": {
+        "BatchJobState": {
+            "properties": {
+                "state_time": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "state": {
+                    "enum": [
+                        "BATCH_JOB_STATE_TYPE_UNSPECIFIED",
+                        0,
+                        "PENDING",
+                        1,
+                        "STARTED",
+                        2,
+                        "ERROR_STARTING",
+                        3,
+                        "RUNNING",
+                        4,
+                        "FINISHED",
+                        5,
+                        "ERROR",
+                        6
+                    ],
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "title": "Batch Job State Type"
+                },
+                "message": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Batch Job State"
+        }
+    }
+}

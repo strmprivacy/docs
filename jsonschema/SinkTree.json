@@ -1,0 +1,203 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/SinkTree",
+    "definitions": {
+        "SinkTree": {
+            "properties": {
+                "sink": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.Sink",
+                    "additionalProperties": false
+                },
+                "batch_exporters": {
+                    "items": {
+                        "$ref": "#/definitions/strmprivacy.api.entities.v1.BatchExporter"
+                    },
+                    "additionalProperties": false,
+                    "type": "array"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Sink Tree"
+        },
+        "strmprivacy.api.entities.v1.BatchExporter": {
+            "properties": {
+                "ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.BatchExporterRef",
+                    "additionalProperties": false
+                },
+                "stream_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.StreamRef",
+                    "additionalProperties": false
+                },
+                "key_stream_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.KeyStreamRef",
+                    "additionalProperties": false
+                },
+                "interval": {
+                    "pattern": "^([0-9]+\\.?[0-9]*|\\.[0-9]+)s$",
+                    "type": "string",
+                    "description": "constraints:interval \u003e 30sinterval \u003c TBD  (-- api-linter: core::0122::name-suffix=disabled     aip.dev/not-precedent: We refer to the sink by name. --)",
+                    "format": "regex"
+                },
+                "sink_name": {
+                    "type": "string",
+                    "description": "constraints: generic name constraints"
+                },
+                "path_prefix": {
+                    "type": "string",
+                    "description": "constraints:Total key size on S3 is 1024 unicode characters max. The export filenames arecreated from the stream name suffixed with partition numbers and a timestamp.Suggestion: generic name constraint"
+                },
+                "include_existing_events": {
+                    "type": "boolean"
+                },
+                "data_connector_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.DataConnectorRef",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Batch Exporter",
+            "description": "A batch exporter."
+        },
+        "strmprivacy.api.entities.v1.BatchExporterRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: generic name constraint"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Batch Exporter Ref"
+        },
+        "strmprivacy.api.entities.v1.BucketConfig": {
+            "properties": {
+                "bucket_name": {
+                    "type": "string",
+                    "description": "constraints: validated via access check"
+                },
+                "credentials": {
+                    "type": "string",
+                    "description": "The credentials that are to be used to access the sink target (e.g. S3 or Google Cloud Storage)"
+                },
+                "assume_role_arn": {
+                    "type": "string",
+                    "description": "The ARN of the role to assume.If present, start an AssumeRole flow to get temporary credentials in another AWS account.This is used when the customer has a separate users account.Default there is no assumed role."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Bucket Config",
+            "description": "(-- api-linter: core::0122::name-suffix=disabled     aip.dev/not-precedent: We refer to a bucket name. --)"
+        },
+        "strmprivacy.api.entities.v1.DataConnectorRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Data Connector Ref"
+        },
+        "strmprivacy.api.entities.v1.KeyStreamRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the stream"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Key Stream Ref",
+            "description": "refers to a key stream."
+        },
+        "strmprivacy.api.entities.v1.Sink": {
+            "properties": {
+                "ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.SinkRef",
+                    "additionalProperties": false
+                },
+                "sink_type": {
+                    "enum": [
+                        "SINK_TYPE_UNSPECIFIED",
+                        0,
+                        "S3",
+                        1,
+                        "GCLOUD",
+                        2
+                    ],
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "title": "Sink Type"
+                },
+                "bucket": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.BucketConfig",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Sink",
+            "description": "the sink config used by the batch exporters."
+        },
+        "strmprivacy.api.entities.v1.SinkRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: generic name"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Sink Ref"
+        },
+        "strmprivacy.api.entities.v1.StreamRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the streamconstraints: generic name"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Stream Ref",
+            "description": "refers to a event stream."
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/BucketConfig",
+    "definitions": {
+        "BucketConfig": {
+            "properties": {
+                "bucket_name": {
+                    "type": "string",
+                    "description": "constraints: validated via access check"
+                },
+                "credentials": {
+                    "type": "string",
+                    "description": "The credentials that are to be used to access the sink target (e.g. S3 or Google Cloud Storage)"
+                },
+                "assume_role_arn": {
+                    "type": "string",
+                    "description": "The ARN of the role to assume.If present, start an AssumeRole flow to get temporary credentials in another AWS account.This is used when the customer has a separate users account.Default there is no assumed role."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Bucket Config",
+            "description": "(-- api-linter: core::0122::name-suffix=disabled     aip.dev/not-precedent: We refer to a bucket name. --)"
+        }
+    }
+}

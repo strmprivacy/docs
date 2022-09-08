@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/SimpleSchemaNode",
+    "definitions": {
+        "SimpleSchemaNode": {
+            "properties": {
+                "type": {
+                    "enum": [
+                        "SIMPLE_SCHEMA_NODE_TYPE_UNSPECIFIED",
+                        0,
+                        "STRING",
+                        1,
+                        "BOOLEAN",
+                        2,
+                        "FLOAT",
+                        3,
+                        "INTEGER",
+                        4,
+                        "LONG",
+                        5,
+                        "NODE",
+                        10
+                    ],
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "title": "Simple Schema Node Type"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: same as SimpleSchemaDefinition"
+                },
+                "avro_name": {
+                    "type": "string",
+                    "description": "avro compatible name set by creator OR derived from name"
+                },
+                "repeated": {
+                    "type": "boolean"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "nodes": {
+                    "items": {
+                        "$ref": "#/definitions/SimpleSchemaNode"
+                    },
+                    "additionalProperties": false,
+                    "type": "array"
+                },
+                "doc": {
+                    "type": "string",
+                    "description": "constraints:size \u003c 5000"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Simple Schema Node"
+        }
+    }
+}
