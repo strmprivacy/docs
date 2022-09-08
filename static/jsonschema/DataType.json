@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/DataType",
+    "definitions": {
+        "DataType": {
+            "properties": {
+                "csv": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.CsvConfig",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Data Type"
+        },
+        "strmprivacy.api.entities.v1.CsvConfig": {
+            "properties": {
+                "charset": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Csv Config"
+        }
+    }
+}

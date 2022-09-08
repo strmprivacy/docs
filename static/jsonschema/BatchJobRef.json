@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/BatchJobRef",
+    "definitions": {
+        "BatchJobRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "the UUIDv4 of the job"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Batch Job Ref"
+        }
+    }
+}

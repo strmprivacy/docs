@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/ConsentConfig",
+    "definitions": {
+        "ConsentConfig": {
+            "properties": {
+                "default_consent_levels": {
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "consent_level_extractor": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.ConsentLevelExtractor",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Consent Config"
+        },
+        "strmprivacy.api.entities.v1.ConsentLevelExtractor": {
+            "properties": {
+                "field": {
+                    "type": "string"
+                },
+                "field_patterns": {
+                    "additionalProperties": {
+                        "$ref": "#/definitions/strmprivacy.api.entities.v1.ConsentLevels",
+                        "additionalProperties": false
+                    },
+                    "type": "object"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Consent Level Extractor"
+        },
+        "strmprivacy.api.entities.v1.ConsentLevels": {
+            "properties": {
+                "consent_levels": {
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": "array"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Consent Levels"
+        }
+    }
+}

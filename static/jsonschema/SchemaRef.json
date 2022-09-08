@@ -1,0 +1,44 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/SchemaRef",
+    "definitions": {
+        "SchemaRef": {
+            "properties": {
+                "handle": {
+                    "type": "string",
+                    "description": "constraints: generic name constraint"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: generic name constraint"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "constraints: `\\d+\\.\\d+\\.\\d+"
+                },
+                "schema_type": {
+                    "enum": [
+                        "SCHEMA_TYPE_UNSPECIFIED",
+                        0,
+                        "AVRO",
+                        1,
+                        "JSONSCHEMA",
+                        2
+                    ],
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "title": "Schema Type"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Schema Ref"
+        }
+    }
+}

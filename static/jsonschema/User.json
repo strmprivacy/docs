@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/User",
+    "definitions": {
+        "User": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "user_roles": {
+                    "items": {
+                        "enum": [
+                            "USER_ROLE_UNSPECIFIED",
+                            0,
+                            "ADMIN",
+                            1,
+                            "PROJECT_ADMIN",
+                            2,
+                            "APPROVER",
+                            3,
+                            "MEMBER",
+                            4
+                        ]
+                    },
+                    "type": "array",
+                    "title": "User Role"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "User",
+            "description": "(-- api-linter: core::0148::human-names=disabled     aip.dev/not-precedent . --)"
+        }
+    }
+}
