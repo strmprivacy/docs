@@ -1,0 +1,40 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/TimestampConfig",
+    "definitions": {
+        "TimestampConfig": {
+            "properties": {
+                "field": {
+                    "type": "string"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "Java Time Format template, see https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html"
+                },
+                "default_time_zone": {
+                    "$ref": "#/definitions/google.type.TimeZone",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Timestamp Config"
+        },
+        "google.type.TimeZone": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "IANA Time Zone Database time zone, e.g. \"America/New_York\"."
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Optional. IANA Time Zone Database version number, e.g. \"2019a\"."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Time Zone",
+            "description": "Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones)."
+        }
+    }
+}

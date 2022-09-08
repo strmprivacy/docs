@@ -1,0 +1,195 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/ExtendedStream",
+    "definitions": {
+        "ExtendedStream": {
+            "properties": {
+                "stream": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.Stream",
+                    "additionalProperties": false
+                },
+                "topic": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                },
+                "key_stream": {
+                    "type": "boolean",
+                    "description": "whether or not a key stream EXISTS for this stream. So when this flag is true, there are TWO topics associated with this stream. TODO: Rename to has_key_stream, requires many updates in api gateway."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Extended Stream"
+        },
+        "strmprivacy.api.entities.v1.Credentials": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "client_id": {
+                    "type": "string"
+                },
+                "client_secret": {
+                    "type": "string",
+                    "description": "as this property is secret, it is not always returned"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Credentials",
+            "description": "Credentials to produce to the event-gateway, or to consume from egress."
+        },
+        "strmprivacy.api.entities.v1.Limits": {
+            "properties": {
+                "event_rate": {
+                    "type": "string",
+                    "description": "filled in from customer profile"
+                },
+                "event_count": {
+                    "type": "string",
+                    "description": "filled in from customer profile"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Limits"
+        },
+        "strmprivacy.api.entities.v1.MaskedFields": {
+            "properties": {
+                "hash_type": {
+                    "type": "string",
+                    "description": "default Murmurhash3 for empty string"
+                },
+                "seed": {
+                    "type": "string",
+                    "description": "hashing seedconstraints: size \u003c 1000, unicode"
+                },
+                "field_patterns": {
+                    "additionalProperties": {
+                        "$ref": "#/definitions/strmprivacy.api.entities.v1.MaskedFields.PatternList",
+                        "additionalProperties": false
+                    },
+                    "type": "object",
+                    "description": "map of event-contract-ref vs field patternsconstraints: event-contract-refs should be existing event contracts field_patterns should be valid values (checked by event-core) the field_patterns list should have no duplicates."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Masked Fields"
+        },
+        "strmprivacy.api.entities.v1.MaskedFields.PatternList": {
+            "properties": {
+                "field_patterns": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Pattern List"
+        },
+        "strmprivacy.api.entities.v1.Stream": {
+            "properties": {
+                "ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.StreamRef",
+                    "additionalProperties": false
+                },
+                "description": {
+                    "type": "string",
+                    "description": "customer's description for this Stream."
+                },
+                "consent_levels": {
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": "array",
+                    "description": "consent levels for derived streamsconstraints:size \u003c 50if consent_level_type ==  CUMULATIVE thensize = 1endif"
+                },
+                "consent_level_type": {
+                    "enum": [
+                        "CONSENT_LEVEL_TYPE_UNSPECIFIED",
+                        0,
+                        "CUMULATIVE",
+                        1,
+                        "GRANULAR",
+                        2
+                    ],
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "title": "Consent Level Type",
+                    "description": "Consent level is meant to interpret the consent-levels of an event for decryption purposes only.Cumulative means that the highest consent-level in an event must be greater than or equal to the single requested levelfor the decrypted stream.Granular means that the set of consent-levels in an event must enclose the set of requested event levels for thedecrypted stream."
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "whether or not this stream is enabled."
+                },
+                "limits": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.Limits",
+                    "additionalProperties": false,
+                    "description": "stream limits"
+                },
+                "linked_stream": {
+                    "type": "string",
+                    "description": "null for source streamsconstraints: general name constraint"
+                },
+                "tags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array",
+                    "description": "tags are meant for customers to tag their streams"
+                },
+                "credentials": {
+                    "items": {
+                        "$ref": "#/definitions/strmprivacy.api.entities.v1.Credentials"
+                    },
+                    "additionalProperties": false,
+                    "type": "array"
+                },
+                "masked_fields": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.MaskedFields",
+                    "additionalProperties": false,
+                    "description": "field masking is defined per OUTPUT stream and event-contract ref. combinationThe default empty map means no masking. Otherwise, the algorithm in the decrypter is as follows. A source stream is (partially) decrypted, and events that don't have enough permissions are dropped. the event contract ref string is used to find a MaskedFields instance. if present, for all field patterns in the MaskedFields instance, the hash with the specified seed is applied."
+                },
+                "kafka_topic": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Stream",
+            "description": "Streams are source or derived streams depending on whether or not linked_stream is null.Key streams are a separate entity in the api."
+        },
+        "strmprivacy.api.entities.v1.StreamRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the streamconstraints: generic name"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Stream Ref",
+            "description": "refers to a event stream."
+        }
+    }
+}

@@ -1,0 +1,133 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/ExtendedBatchExporter",
+    "definitions": {
+        "ExtendedBatchExporter": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                },
+                "topic": {
+                    "type": "string"
+                },
+                "exporter": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.BatchExporter",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Extended Batch Exporter"
+        },
+        "strmprivacy.api.entities.v1.BatchExporter": {
+            "properties": {
+                "ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.BatchExporterRef",
+                    "additionalProperties": false
+                },
+                "stream_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.StreamRef",
+                    "additionalProperties": false
+                },
+                "key_stream_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.KeyStreamRef",
+                    "additionalProperties": false
+                },
+                "interval": {
+                    "pattern": "^([0-9]+\\.?[0-9]*|\\.[0-9]+)s$",
+                    "type": "string",
+                    "description": "constraints:interval \u003e 30sinterval \u003c TBD  (-- api-linter: core::0122::name-suffix=disabled     aip.dev/not-precedent: We refer to the sink by name. --)",
+                    "format": "regex"
+                },
+                "sink_name": {
+                    "type": "string",
+                    "description": "constraints: generic name constraints"
+                },
+                "path_prefix": {
+                    "type": "string",
+                    "description": "constraints:Total key size on S3 is 1024 unicode characters max. The export filenames arecreated from the stream name suffixed with partition numbers and a timestamp.Suggestion: generic name constraint"
+                },
+                "include_existing_events": {
+                    "type": "boolean"
+                },
+                "data_connector_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.DataConnectorRef",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Batch Exporter",
+            "description": "A batch exporter."
+        },
+        "strmprivacy.api.entities.v1.BatchExporterRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: generic name constraint"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Batch Exporter Ref"
+        },
+        "strmprivacy.api.entities.v1.DataConnectorRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Data Connector Ref"
+        },
+        "strmprivacy.api.entities.v1.KeyStreamRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the stream"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Key Stream Ref",
+            "description": "refers to a key stream."
+        },
+        "strmprivacy.api.entities.v1.StreamRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the streamconstraints: generic name"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Stream Ref",
+            "description": "refers to a event stream."
+        }
+    }
+}

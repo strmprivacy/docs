@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/Limits",
+    "definitions": {
+        "Limits": {
+            "properties": {
+                "event_rate": {
+                    "type": "string",
+                    "description": "filled in from customer profile"
+                },
+                "event_count": {
+                    "type": "string",
+                    "description": "filled in from customer profile"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Limits"
+        }
+    }
+}

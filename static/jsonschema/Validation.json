@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/Validation",
+    "definitions": {
+        "Validation": {
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "description": "constraint: valid field path, follows avro constraints + slashes"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "constraint: one of the validator types. handled by codeThis should become an enum"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "constraint: a type specific definition"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Validation"
+        }
+    }
+}

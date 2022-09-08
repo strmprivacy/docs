@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/KafkaExporterRef",
+    "definitions": {
+        "KafkaExporterRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "default value  \u003ccluster-name\u003e-\u003cstream-name\u003econstraints: generic name constraint"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Kafka Exporter Ref"
+        }
+    }
+}

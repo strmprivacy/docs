@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/WindowedEventCount",
+    "definitions": {
+        "WindowedEventCount": {
+            "properties": {
+                "start_time": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "end_time": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "event_count": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Windowed Event Count"
+        }
+    }
+}

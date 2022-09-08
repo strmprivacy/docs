@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/MaskedFields",
+    "definitions": {
+        "MaskedFields": {
+            "properties": {
+                "hash_type": {
+                    "type": "string",
+                    "description": "default Murmurhash3 for empty string"
+                },
+                "seed": {
+                    "type": "string",
+                    "description": "hashing seedconstraints: size \u003c 1000, unicode"
+                },
+                "field_patterns": {
+                    "additionalProperties": {
+                        "$ref": "#/definitions/strmprivacy.api.entities.v1.MaskedFields.PatternList",
+                        "additionalProperties": false
+                    },
+                    "type": "object",
+                    "description": "map of event-contract-ref vs field patternsconstraints: event-contract-refs should be existing event contracts field_patterns should be valid values (checked by event-core) the field_patterns list should have no duplicates."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Masked Fields"
+        },
+        "strmprivacy.api.entities.v1.MaskedFields.PatternList": {
+            "properties": {
+                "field_patterns": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Pattern List"
+        }
+    }
+}

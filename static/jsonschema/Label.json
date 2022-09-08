@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/Label",
+    "definitions": {
+        "Label": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The key of the label."
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The (optional) value of the label. An empty string means there is no value."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Label"
+        }
+    }
+}

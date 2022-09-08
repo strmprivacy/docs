@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/KafkaExporterTarget",
+    "definitions": {
+        "KafkaExporterTarget": {
+            "properties": {
+                "cluster_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.KafkaClusterRef",
+                    "additionalProperties": false,
+                    "description": "what cluster to produce to"
+                },
+                "topic": {
+                    "type": "string",
+                    "description": "the topic this exporter produces toconstraints: access checked on creation of kafka exporter"
+                },
+                "client_id": {
+                    "type": "string",
+                    "description": "used to access the target Kafka Cluster in case of OAuth based authentication"
+                },
+                "client_secret": {
+                    "type": "string",
+                    "description": "used to access the target Kafka Cluster in case of OAuth based authentication"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Kafka Exporter Target"
+        },
+        "strmprivacy.api.entities.v1.KafkaClusterRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string",
+                    "description": "(-- streammachine for the default export cluster --)"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: generic name constraint"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Kafka Cluster Ref",
+            "description": "How to refer to a certain Kafka cluster."
+        }
+    }
+}

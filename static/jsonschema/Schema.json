@@ -1,0 +1,252 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/Schema",
+    "definitions": {
+        "Schema": {
+            "properties": {
+                "ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.SchemaRef",
+                    "additionalProperties": false
+                },
+                "state": {
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        0,
+                        "DRAFT",
+                        1,
+                        "ACTIVE",
+                        2,
+                        "ARCHIVED",
+                        3,
+                        "IN_REVIEW",
+                        4,
+                        "INCOMPLETE",
+                        5
+                    ],
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "title": "State"
+                },
+                "is_public": {
+                    "type": "boolean",
+                    "description": "(-- 'is' is intentional here (see https://google.aip.dev/140#booleans) --)"
+                },
+                "definition": {
+                    "type": "string",
+                    "description": "constraints: is no longer required provided simple_schema is not empty."
+                },
+                "fingerprint": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.SchemaMetadata",
+                    "additionalProperties": false
+                },
+                "simple_schema": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.Schema.SimpleSchemaDefinition",
+                    "additionalProperties": false
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The UUID of this schema"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Schema"
+        },
+        "strmprivacy.api.entities.v1.Label": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The key of the label."
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The (optional) value of the label. An empty string means there is no value."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Label"
+        },
+        "strmprivacy.api.entities.v1.Schema.SimpleSchemaDefinition": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "constraints:https://avro.apache.org/docs/current/spec.html#namesstart with [A-Za-z_]subsequently contain only [A-Za-z0-9_]"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "constraints:dot separated sequence of name constraintsmust be Avro compatible. When absent becomes \u003chandle\u003e.\u003cname\u003e.v\u003cversion\u003e"
+                },
+                "doc": {
+                    "type": "string",
+                    "description": "constraints:size \u003c 5000"
+                },
+                "nodes": {
+                    "items": {
+                        "$ref": "#/definitions/strmprivacy.api.entities.v1.SimpleSchemaNode"
+                    },
+                    "additionalProperties": false,
+                    "type": "array"
+                },
+                "avro_name": {
+                    "type": "string",
+                    "description": "avro compatible name set by creator OR derived from name"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Simple Schema Definition",
+            "description": "constraints: overall size \u003c 100000 TBD"
+        },
+        "strmprivacy.api.entities.v1.SchemaMetadata": {
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "The human readable title of this Schema. Used in the Portal. Defaults to the Schema name. This field can be modified.constraints: size \u003c 500"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The (optional) description of this Schema. Used in the Portal. Markdown syntax is supported. This field can be modified.constraints: size \u003c 5000"
+                },
+                "create_time": {
+                    "type": "string",
+                    "description": "The timestamp when this Schema was created.",
+                    "format": "date-time"
+                },
+                "icon_uri": {
+                    "type": "string",
+                    "description": "The (optional) URI to the icon used with this Schema. This always an absolute URI, with the https scheme. Used in the Portal."
+                },
+                "labels": {
+                    "items": {
+                        "$ref": "#/definitions/strmprivacy.api.entities.v1.Label"
+                    },
+                    "additionalProperties": false,
+                    "type": "array",
+                    "description": "Generic (key/value) labels for this Schema."
+                },
+                "domains": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "industries": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Schema Metadata"
+        },
+        "strmprivacy.api.entities.v1.SchemaRef": {
+            "properties": {
+                "handle": {
+                    "type": "string",
+                    "description": "constraints: generic name constraint"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: generic name constraint"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "constraints: `\\d+\\.\\d+\\.\\d+"
+                },
+                "schema_type": {
+                    "enum": [
+                        "SCHEMA_TYPE_UNSPECIFIED",
+                        0,
+                        "AVRO",
+                        1,
+                        "JSONSCHEMA",
+                        2
+                    ],
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "title": "Schema Type"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Schema Ref"
+        },
+        "strmprivacy.api.entities.v1.SimpleSchemaNode": {
+            "properties": {
+                "type": {
+                    "enum": [
+                        "SIMPLE_SCHEMA_NODE_TYPE_UNSPECIFIED",
+                        0,
+                        "STRING",
+                        1,
+                        "BOOLEAN",
+                        2,
+                        "FLOAT",
+                        3,
+                        "INTEGER",
+                        4,
+                        "LONG",
+                        5,
+                        "NODE",
+                        10
+                    ],
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "title": "Simple Schema Node Type"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: same as SimpleSchemaDefinition"
+                },
+                "avro_name": {
+                    "type": "string",
+                    "description": "avro compatible name set by creator OR derived from name"
+                },
+                "repeated": {
+                    "type": "boolean"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "nodes": {
+                    "items": {
+                        "$ref": "#/definitions/strmprivacy.api.entities.v1.SimpleSchemaNode"
+                    },
+                    "additionalProperties": false,
+                    "type": "array"
+                },
+                "doc": {
+                    "type": "string",
+                    "description": "constraints:size \u003c 5000"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Simple Schema Node"
+        }
+    }
+}

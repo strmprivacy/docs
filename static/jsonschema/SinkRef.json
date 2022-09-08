@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/SinkRef",
+    "definitions": {
+        "SinkRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: generic name"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Sink Ref"
+        }
+    }
+}
