@@ -13,8 +13,11 @@ offering.
 ## Step 1: Follow along with the general steps for Customer Cloud Deployment
 
 Before you can launch your AWS Marketplace STRM Privacy Installation, you need to follow along
-with [step 1](./self-hosted.md#step1) and [step 2](./self-hosted.md#step2)
-from the general steps section.
+with [step 1](./01-pre-requisites.md#step1) and [step 2](./01-pre-requisites.md#step2)
+from the pre-requisites section.
+
+Additionally, to the tools mentioned in [step 2](./01-pre-requisites.md#step2), you'll need to install:
+* [`eksctl`][https://eksctl.io/]: a CLI to easily manage EKS clusters (unifies a lot of `aws` CLI and `kubectl` commands).
 
 ## Step 2: Setup a Kubernetes cluster with AWS EKS
 
@@ -49,8 +52,8 @@ follow the following steps.
     :::
     
     :::important
-    The `eksctl` command in the launch instructions is incorrect, it is missing the policies that should be attached to
-    the service account. The correct command is:
+    The `eksctl` command in _Step 1_ of the launch instructions is incorrect, it is missing the policies that should be
+    attached to the service account. The correct command is:
     ```bash
     eksctl create iamserviceaccount \
        --name <SERVICE_ACCOUNT_NAME> \
@@ -65,18 +68,33 @@ follow the following steps.
     :::
 4. Follow _Step 2_ of the launch instructions, making sure to replace the values in the `helm install` command with
    the values specific for your installation, which can be found in
-   your [installation configuration](https://console.strmprivacy.io/installation/configuration).
+   your [installation configuration](https://console.strmprivacy.io/installation/configuration). It is recommended
+   to use a `values.yaml`, as this prevents secrets from ending up in your terminal history. 
    :::note
    If you plan to use a `values.yaml` instead of the inline Helm values (with `--set`):
    1. make sure to set the `license.installationType` to `AWS_MARKETPLACE`
    2. the `registry.imagePullSecret` can be omitted / left blank, as this is facilitated by your AWS Marketplace
    deployment
+   
+   Run the following command to install the Helm chart (ensure that your working directory is `awsmp-chart` as
+   specified in the launch instructions:
+   ```shell
+   helm install strmprivacy --namespace strmprivacy ./* --values values.yaml
+   ```
    :::
    :::note
    The Helm chart includes `ClusterIP` Kubernetes services by default to route traffic to. If you need to route traffic
-   from outside the cluster to one of the STRM Privacy applications, please set `services.loadbalancer.enabled` to
-   `true` to create a `LoadBalancer` Kubernetes service. If needed, set `services.loadbalancer.internal` to `true` to
-   add the cloud platform specific annotation to ensure that the `LoadBalancer` is of type internal.
+   from outside the cluster to one of the STRM Privacy applications, set `services.loadbalancer.enabled` to
+   `true` to create a `LoadBalancer` Kubernetes service.
+   Arbitrary annotations can be added with `services.loadbalancer.annotations`, which allows you to configure
+   the Network Load Balancer to fit your needs ([view all annotations here](https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/guide/service/annotations/#subnets)):
+   ```yaml
+   services:
+     loadbalancer:
+       enabled: true
+       annotations:
+         service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+   ```
    :::
 
 After these steps, you should end up with a namespace `strmprivacy` with, by default, [all components](./index.md#components) enabled. If you
@@ -117,7 +135,7 @@ remarks considering the database:
 To be able to run any streaming tasks, a Kafka (or Kafka API compatible) cluster is required. Please follow the steps
 from the [AWS MSK for Apache Kafka guide](https://docs.aws.amazon.com/msk/latest/developerguide/create-cluster.html) to
 setup a managed Kafka cluster in your AWS account. Take note of the private bootstrap servers (and
-possibly [credentials](./authenticated.md)) and set the value in the `values.yaml`.
+possibly [credentials](./06-authenticated.md)) and set the value in the `values.yaml`.
 
 #### AWS ElastiCache for Redis
 
@@ -132,5 +150,5 @@ possibly credentials) and set the value in the `values.yaml`.
 You've installed a STRM Privacy Data Plane via the AWS Marketplace. If you have had any issues during your
 installation, please let us know, or create a pull request on GitHub to improve these docs.
 
-Now that you are done with the setup, follow the docs on [how to interact with your cluster](./interacting.md) to start
+Now that you are done with the setup, follow the docs on [how to interact with your cluster](./04-interacting.md) to start
 using it.
