@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/Project",
+    "definitions": {
+        "Project": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "organization_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Project"
+        }
+    }
+}

@@ -1,0 +1,156 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/KafkaExporter",
+    "definitions": {
+        "KafkaExporter": {
+            "properties": {
+                "ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.KafkaExporterRef",
+                    "additionalProperties": false
+                },
+                "stream_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.StreamRef",
+                    "additionalProperties": false
+                },
+                "target": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.KafkaExporterTarget",
+                    "additionalProperties": false
+                },
+                "users": {
+                    "items": {
+                        "$ref": "#/definitions/strmprivacy.api.entities.v1.KafkaUser"
+                    },
+                    "additionalProperties": false,
+                    "type": "array"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Kafka Exporter"
+        },
+        "strmprivacy.api.entities.v1.KafkaClusterRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string",
+                    "description": "(-- streammachine for the default export cluster --)"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: generic name constraint"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Kafka Cluster Ref",
+            "description": "How to refer to a certain Kafka cluster."
+        },
+        "strmprivacy.api.entities.v1.KafkaExporterRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "default value  \u003ccluster-name\u003e-\u003cstream-name\u003econstraints: generic name constraint"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Kafka Exporter Ref"
+        },
+        "strmprivacy.api.entities.v1.KafkaExporterTarget": {
+            "properties": {
+                "cluster_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.KafkaClusterRef",
+                    "additionalProperties": false,
+                    "description": "what cluster to produce to"
+                },
+                "topic": {
+                    "type": "string",
+                    "description": "the topic this exporter produces toconstraints: access checked on creation of kafka exporter"
+                },
+                "client_id": {
+                    "type": "string",
+                    "description": "used to access the target Kafka Cluster in case of OAuth based authentication"
+                },
+                "client_secret": {
+                    "type": "string",
+                    "description": "used to access the target Kafka Cluster in case of OAuth based authentication"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Kafka Exporter Target"
+        },
+        "strmprivacy.api.entities.v1.KafkaUser": {
+            "properties": {
+                "ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.KafkaUserRef",
+                    "additionalProperties": false
+                },
+                "kafka_exporter_name": {
+                    "type": "string",
+                    "description": "(-- api-linter: core::0122::name-suffix=disabled     aip.dev/not-precedent: We refer to the kafka exporter by name. --)"
+                },
+                "topic": {
+                    "type": "string"
+                },
+                "client_id": {
+                    "type": "string"
+                },
+                "client_secret": {
+                    "type": "string"
+                },
+                "cluster_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.KafkaClusterRef",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Kafka User",
+            "description": "User credentials to consume from topic produced by Kafka Exporter.The kafka exporter is linked to a certain cluster, so this entity is bound to a certainkafka cluster."
+        },
+        "strmprivacy.api.entities.v1.KafkaUserRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: generic name constraint"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Kafka User Ref"
+        },
+        "strmprivacy.api.entities.v1.StreamRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the streamconstraints: generic name"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Stream Ref",
+            "description": "refers to a event stream."
+        }
+    }
+}

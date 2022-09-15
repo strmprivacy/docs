@@ -1,0 +1,77 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/EncryptionKeysData",
+    "definitions": {
+        "EncryptionKeysData": {
+            "properties": {
+                "target": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.DataConnectorAndType",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Encryption Keys Data"
+        },
+        "strmprivacy.api.entities.v1.CsvConfig": {
+            "properties": {
+                "charset": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Csv Config"
+        },
+        "strmprivacy.api.entities.v1.DataConnectorAndType": {
+            "properties": {
+                "data_connector_ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.DataConnectorRef",
+                    "additionalProperties": false
+                },
+                "path_prefix": {
+                    "type": "string",
+                    "description": "If omitted, files are read from the root of the bucket."
+                },
+                "file_name": {
+                    "type": "string",
+                    "description": "(-- api-linter: core::0122::name-suffix=disabled     aip.dev/not-precedent: We think file_name is a better name. --)"
+                },
+                "data_type": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.DataType",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Data Connector And Type"
+        },
+        "strmprivacy.api.entities.v1.DataConnectorRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Data Connector Ref"
+        },
+        "strmprivacy.api.entities.v1.DataType": {
+            "properties": {
+                "csv": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.CsvConfig",
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Data Type"
+        }
+    }
+}

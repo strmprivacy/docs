@@ -19,7 +19,7 @@ This hands-on session shows how to get up-and-running with your Customer Cloud D
 Cluster_ that uses [SASL/PLAIN over TLS][sasl-plain] authentication.
 
 It's probably a good idea to first run the getting started with the unauthenticated demo Kafka detailed in
-the [self-hosted section](./self-hosted.md) to make sure you have all the tools configured correctly and understand how
+the [self-hosted section](./02-self-hosted.md) to make sure you have all the tools configured correctly and understand how
 it should work.
 
 ### TLS truststore
@@ -52,7 +52,7 @@ encrypted, this can not be intercepted.
 ### `values.yaml`
 
 The `values.yaml` file you download from the [console][console] adds a `kafka.enabled: true` override, so the helm chart
-will actuall deploy a Kafka instance inside your k8s namespace. Make sure you have in your `values.yaml`
+will actually deploy a Kafka instance inside your k8s namespace. Make sure you have in your `values.yaml`
 
     kafka:
       enabled: false

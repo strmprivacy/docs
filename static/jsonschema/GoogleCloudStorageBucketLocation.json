@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/GoogleCloudStorageBucketLocation",
+    "definitions": {
+        "GoogleCloudStorageBucketLocation": {
+            "properties": {
+                "bucket_name": {
+                    "type": "string",
+                    "description": "(-- api-linter: core::0122::name-suffix=disabled     aip.dev/not-precedent: We refer to a bucket name. --)"
+                },
+                "credentials": {
+                    "type": "string",
+                    "description": "The Google Cloud Service Account credentials JSON that is used to access the Google Cloud Storage bucket. We do not support credentials in P12 format."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Google Cloud Storage Bucket Location"
+        }
+    }
+}

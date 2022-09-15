@@ -1,0 +1,63 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/KafkaCluster",
+    "definitions": {
+        "KafkaCluster": {
+            "properties": {
+                "ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.KafkaClusterRef",
+                    "additionalProperties": false
+                },
+                "bootstrap_servers": {
+                    "type": "string"
+                },
+                "auth_mechanism": {
+                    "enum": [
+                        "AUTH_MECHANISM_UNSPECIFIED",
+                        0,
+                        "SASL_PLAIN",
+                        1,
+                        "SASL_SSL",
+                        2
+                    ],
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "integer"
+                        }
+                    ],
+                    "title": "Auth Mechanism",
+                    "description": "(-- TODO align values with JAAS. see https://docs.confluent.io/platform/current/kafka/overview-authentication-methods.html --)     also see the Kafka exporter to determine the correct terminology here     SASL_SSL should probably be SASL_OAUTHBEARER --)"
+                },
+                "token_uri": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Kafka Cluster",
+            "description": "Currently only our internal shared export cluster."
+        },
+        "strmprivacy.api.entities.v1.KafkaClusterRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string",
+                    "description": "(-- streammachine for the default export cluster --)"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "constraints: generic name constraint"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Kafka Cluster Ref",
+            "description": "How to refer to a certain Kafka cluster."
+        }
+    }
+}

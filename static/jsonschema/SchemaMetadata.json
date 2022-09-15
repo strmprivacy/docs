@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/SchemaMetadata",
+    "definitions": {
+        "SchemaMetadata": {
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "The human readable title of this Schema. Used in the Portal. Defaults to the Schema name. This field can be modified.constraints: size \u003c 500"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The (optional) description of this Schema. Used in the Portal. Markdown syntax is supported. This field can be modified.constraints: size \u003c 5000"
+                },
+                "create_time": {
+                    "type": "string",
+                    "description": "The timestamp when this Schema was created.",
+                    "format": "date-time"
+                },
+                "icon_uri": {
+                    "type": "string",
+                    "description": "The (optional) URI to the icon used with this Schema. This always an absolute URI, with the https scheme. Used in the Portal."
+                },
+                "labels": {
+                    "items": {
+                        "$ref": "#/definitions/strmprivacy.api.entities.v1.Label"
+                    },
+                    "additionalProperties": false,
+                    "type": "array",
+                    "description": "Generic (key/value) labels for this Schema."
+                },
+                "domains": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "industries": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Schema Metadata"
+        },
+        "strmprivacy.api.entities.v1.Label": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The key of the label."
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The (optional) value of the label. An empty string means there is no value."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Label"
+        }
+    }
+}

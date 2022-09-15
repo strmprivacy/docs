@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/ConsentLevelMapping",
+    "definitions": {
+        "ConsentLevelMapping": {
+            "properties": {
+                "ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.ConsentLevelMappingRef",
+                    "additionalProperties": false
+                },
+                "name": {
+                    "type": "string",
+                    "description": "some text like 'analytics'constraints: generic name constraint"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Consent Level Mapping",
+            "description": "for descriptive purposes only."
+        },
+        "strmprivacy.api.entities.v1.ConsentLevelMappingRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "level": {
+                    "type": "integer",
+                    "description": "the typically small integer value that we use in the events."
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Consent Level Mapping Ref"
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$ref": "#/definitions/KeyStream",
+    "definitions": {
+        "KeyStream": {
+            "properties": {
+                "ref": {
+                    "$ref": "#/definitions/strmprivacy.api.entities.v1.KeyStreamRef",
+                    "additionalProperties": false
+                },
+                "status": {
+                    "type": "string",
+                    "description": "-- TODO: this field is not used --"
+                },
+                "kafka_topic": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Key Stream",
+            "description": "A Stream of key-link, encryption-key messages created from a source streamwith the same `name`."
+        },
+        "strmprivacy.api.entities.v1.KeyStreamRef": {
+            "properties": {
+                "billing_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the name of the stream"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "title": "Key Stream Ref",
+            "description": "refers to a key stream."
+        }
+    }
+}
