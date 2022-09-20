@@ -38,6 +38,7 @@ const sidebars = {
       },
       items: [
         'concepts/core-concepts',
+        'concepts/data-subjects',
         'concepts/batch-vs-streaming',
         'concepts/batch-jobs',
         'concepts/data-connectors',
