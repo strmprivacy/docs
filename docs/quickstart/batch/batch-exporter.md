@@ -82,11 +82,6 @@ Output:
     2021-03-26 10:57:01     275726 2021-03-26T09:57:00-stream-151daf78-eb70-4b6a-aeb4-578edc32bee6---0-1-2-3-4.jsonl
     2021-03-26 10:57:31     277399 2021-03-26T09:57:30-stream-151daf78-eb70-4b6a-aeb4-578edc32bee6---0-1-2-3-4.jsonl
 
-:::note
-In a future version, these filenames will show the *stream name*,
-instead of a uuid that we use internally.
-:::
-
 And having a look inside one of the files.
 
 ```bash

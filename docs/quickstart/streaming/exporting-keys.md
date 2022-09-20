@@ -126,47 +126,25 @@ You can have a look at the output:
 ```bash
 gsutil ls gs://strm-demo/demo-keys/
 
-gs://strm-demo/demo-keys/2021-08-18T12:09:00-keys-3b398d5c-2d7c-4673-9f73-3693e137ddbb---0-1-2-3-4.jsonl
-gs://strm-demo/demo-keys/2021-08-18T12:09:30-keys-3b398d5c-2d7c-4673-9f73-3693e137ddbb---0-1-2-3-4.jsonl
+gs://strm-demo/demo-keys/2021-08-18T12:09:00-keys-3b398d5c-2d7c-4673-9f73-3693e137ddbb---0-1-2-3-4.csv
+gs://strm-demo/demo-keys/2021-08-18T12:09:30-keys-3b398d5c-2d7c-4673-9f73-3693e137ddbb---0-1-2-3-4.csv
 
-gsutil cat gs://strm-demo/demo-keys/2021-08-18T12:09:30-keys-3b398d5c-2d7c-4673-9f73-3693e137ddbb---0-1-2-3-4.jsonl | tail -1
-{
-  "keyLink": "d478e24c-d12d-466e-80dd-055736bba704",
-  "tinkKey": {
-    "primaryKeyId": 2140201303,
-    "key": [
-      {
-        "keyData": {
-          "typeUrl": "type.googleapis.com/google.crypto.tink.AesSivKey",
-          "keyMaterialType": "SYMMETRIC",
-          "value": "EkAho6Jgghn8m//At...."
-        },
-        "outputPrefixType": "TINK",
-        "keyId": 2140201303,
-        "status": "ENABLED"
-      }
-    ]
-  }
-}
+gsutil cat gs://strm-demo/demo-keys/2021-08-18T12:09:30-keys-3b398d5c-2d7c-4673-9f73-3693e137ddbb---0-1-2-3-4.csv | tail -1
+"b15bca55-3a4c-4e49-b8ab-f702de632c06","{""primaryKeyId"":79082719,""key"":[{""keyData"":{""typeUrl"":""type.googleapis.com/google.crypto.tink.AesSivKey"",""value"":""EkDZZDHV5UnICX/N6G..."",""keyMaterialType"":""SYMMETRIC""},""status"":""ENABLED"",""keyId"":79082719,""outputPrefixType"":""TINK""}]}
 ```
 You can do exactly the same for an AWS S3 bucket. Inspect the keys like so:
 ```bash
 aws s3 ls strmprivacy-export-demo/perf-test-keys/
 2021-05-04 15:41:37          0 .strm_test...95-dfec21be8251.jsonl #(1)
-2021-05-04 16:13:01     166008 2021-05-04T14:13:00-keys-e1...-7-8-9.jsonl #(2)
-2021-05-04 16:13:31     701824 2021-05-04T14:13:30-keys-e1...-7-8-9.jsonl
+2021-05-04 16:13:01     166008 2021-05-04T14:13:00-keys-e1...-7-8-9.csv #(2)
+2021-05-04 16:13:31     701824 2021-05-04T14:13:30-keys-e1...-7-8-9.csv
 
 aws s3 cp \
-  s3://strmprivacy-export-demo/perf-test-keys/2021-05-04T14:13:00-keys-e1...-7-8-9.jsonl \
-  - | head -1
+  s3://strmprivacy-export-demo/perf-test-keys/2021-05-04T14:13:00-keys-e1...-7-8-9.csv \
+  - | head -2
 
-{ "keyLink": "44861053-6a95-4ec6-8b33-96fd1f748402", #(3)
-  "tinkKey": {"primaryKeyId":84683988,"key":[
-    {"keyData":{"typeUrl":"type.googleapis.com/google.crypto.tink.AesSivKey",
-    "keyMaterialType":"SYMMETRIC",
-      "value":"EkDzauIHozdnF.....WkpB8Xu"}, #(4)
-      "outputPrefixType":"TINK","keyId":84683988,"status":"ENABLED"}]}
-}
+"keyLink","encryptionKey"
+"b15bca55-3a4c-4e49-b8ab-f702de632c06","{""primaryKeyId"":79082719,""key"":[{""keyData"":{""typeUrl"":""type.googleapis.com/google.crypto.tink.AesSivKey"",""value"":""EkDZZDHV5UnICX..."",""keyMaterialType"":""SYMMETRIC""},""status"":""ENABLED"",""keyId"":79082719,""outputPrefixType"":""TINK""}]}
 ```
 1. This is a test file created by STRM Privacy to verify that we can
     actually write in this bucket. Because it starts with a `.` it is
