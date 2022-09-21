@@ -17,35 +17,32 @@ directive. Its scope is determined by the non-equivalent concept of
 [*personal
 data*](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&qid=1620048611044&from=EN#d1e1489-1-1).
 
-> _Art. 4(1)_
+> _Article 4(1)_
 >
 > 'personal data' means any information relating to an identified or identifiable natural person ('data subject')
 
 This breaks down into the following:
 - _Personal Data_: any information, directly or indirectly, that can be traced back to an individual.
-- _Data Subject_: the person to whom the data belongs and who should determine what happens with the data.
-
-
+- [_Data Subject_](/02-concepts/02-data-contracts/05-data-subjects.md): the person to whom the data belongs and who should determine what happens with the data.
 
 # Processing of data
 
-Correctly executing
-the [Principles relating to the processing of personal data](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&qid=1620048611044&from=EN#d1e1807-1-1)
-is at the origin of all the privacy related design decisions of STRM
-Privacy.
+Correctly executing the [Principles relating to the processing of personal data](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&qid=1620048611044&from=EN#d1e1807-1-1)
+is at the heart of all the privacy related design decisions of STRM Privacy.
 
-This article states that:
+The following article of the GDPR states:
 
-## 1(a) lawful processing
+## Lawful processing
 
-Article 5.1(a)  
-Personal data shall be processed lawfully, fairly and in a transparent
-manner in relation to the data subject (‘lawfulness, fairness and
-transparency’);
+> _Article 5.1(a)_
+> 
+> Personal data shall be processed lawfully, fairly and in a transparent
+> manner in relation to the data subject (‘lawfulness, fairness and
+> transparency’);
 
-This is the responsibility of the DPO of the customer. STRM Privacy can
-not identify the purposes and transparency associated with *what
-purposes* the customer has for collecting personal data. The DPO of the
+This is the responsibility of the Data Protection Officer (DPO) of a company.
+STRM Privacy can not identify the purposes and transparency associated with *what
+purposes* our customers have for collecting personal data. The DPO of the
 customer shall identify the purpose(s) for which certain personal data
 is collected and assign *consent-levels* to these purposes. These
 consent-levels link data processing goals with personal data attributes
