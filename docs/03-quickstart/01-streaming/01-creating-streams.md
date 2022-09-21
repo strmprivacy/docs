@@ -1,10 +1,10 @@
 ---
-title: Creating Streams with the Command Line Interface 
+title: Creating Streams 
 description: Streams are the start of sending and receiving data with STRM Privacy
 hide_table_of_contents: false
 ---
 
-See [Authentication with the CLI](/03-quickstart/04-authentication-cli.md)
+See [Authentication with the CLI](/03-quickstart/05-authentication-cli.md)
 page on how to authenticate.
 
 ## Creating a stream
@@ -37,7 +37,7 @@ identifies your stream when you send data to STRM Privacy. STRM Privacy
 uses the OAuth 2.0 client credentials flow to generate a *bearer token*
 that needs to be provided with each HTTP request. Our drivers have
 tooling to create and refresh these tokens, but nothing prevents you
-from creating the headers by hand (see [the page about sending data by hand](sending-curl.md) 
+from creating the headers by hand (see [the page about sending data by hand](docs/03-quickstart/01-streaming/03-sending-data/02-sending-curl.md) 
 to do this manually).
 
 :::tip
@@ -51,7 +51,7 @@ the same credentials you can connect to the [web-socket
 endpoint](https://websocket.strmprivacy.io) with a websocket client to
 receive the events as you send them. Use
 `strm listen web-socket <stream-name> [--client-id .. --client-secret ..]`.
-See [here](listen-web-socket.md) for details.
+See [here](./02-listen-web-socket.md) for details.
 
 ## Listing streams
 

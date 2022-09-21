@@ -5,7 +5,7 @@ hide_table_of_contents: false
 
 # Exporting encryption keys
 
-The [output streams](./01-creating-streams.md#outputStreams) feature
+The [output streams](docs/03-quickstart/01-streaming/01-creating-streams.md#outputStreams) feature
 manages the decryption of data for you. The keys exist only within the
 STRM Privacy keys database, for a duration a little longer than the keys
 rotation period [^1]. The output streams have a default retention of 7
@@ -45,7 +45,7 @@ using service account credentials created via the [the Google Cloud
 console](https://console.cloud.google.com/iam-admin/serviceaccounts/create).
 
 When using an AWS S3 data connector, the mechanism is similar and described
-[here](docs/03-quickstart/02-batch/batch-exporter.md).
+[here](/03-quickstart/01-streaming/04-exporting-data/01-batch-export.md).
 
 The bucket's contents can be accessed with the [aws cli
 tool](https://aws.amazon.com/cli/) for S3 or the [gsutil Google Cloud
@@ -55,7 +55,7 @@ Cloud, or their respective cloud consoles.
 ## Creating an exporter
 
 Currently, we only provide batch exporters for the encryption keys, that
-work very similar to the [events batch exporters](docs/03-quickstart/02-batch/batch-exporter.md).
+work very similar to the [events batch exporters](/03-quickstart/01-streaming/04-exporting-data/01-batch-export.md).
 So you need the same mechanism with authenticated and authorized IAM
 users.
 

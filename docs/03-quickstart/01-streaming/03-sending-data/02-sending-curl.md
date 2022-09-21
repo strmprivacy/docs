@@ -45,7 +45,7 @@ $ strm create stream by-hand --save
 ```
 
 :::tip
-Use [strm listen web-socket by-hand](./listen-web-socket.md) to get
+Use [strm listen web-socket by-hand](docs/03-quickstart/01-streaming/02-listen-web-socket.md) to get
 some feedback on the events you're sending.
 :::
 
@@ -209,4 +209,4 @@ strm delete stream by-hand --recursive
 
 If you want to retrieve json serialized events *without using the strm
 listen web-socket tool*, do [these
-steps](./listen-web-socket.md#wscat).
+steps](docs/03-quickstart/01-streaming/02-listen-web-socket.md#wscat).

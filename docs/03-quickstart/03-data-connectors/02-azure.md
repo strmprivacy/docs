@@ -1,7 +1,6 @@
 ---
 title: Microsoft Azure
 hide_table_of_contents: false
-sidebar_position: 3
 ---
 
 [service-principal]: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal

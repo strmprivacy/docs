@@ -1,7 +1,6 @@
 ---
 title: Google Cloud in S3 mode
 hide_table_of_contents: false
-sidebar_position: 2
 ---
 
 [gcloud-s3]: https://cloud.google.com/storage/docs/aws-simple-migration

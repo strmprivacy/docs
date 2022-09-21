@@ -65,7 +65,7 @@ We don’t have to use the `strm` command, we can use any websocket client
 to interact with the STRM Privacy web-socket endpoint.
 
 First generate an OAuth2 `idToken` as described
-[here](./sending-curl.md#idToken).
+[here](docs/03-quickstart/01-streaming/03-sending-data/02-sending-curl.md#idToken).
 
 Here we use [wscat](https://www.npmjs.com/package/wscat) to connect to
 the websocket endpoint.

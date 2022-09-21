@@ -1,18 +1,18 @@
 ---
-title: Batch Exporter
+title: Batch Export Events
 hide_table_of_contents: false
 ---
 
-# Exporting data to S3, Gcloud or Azure
+# Exporting data to AWS S3, Google Cloud Storage or Azure Blob Storage
 
 If you want to export stream data to AWS S3 or other storage solutions like
 Google Cloud Storage or Azure Blob Storage, you first need to create a
 `Data Connector` pointing to a specific instance thereof (the *target storage*).
-See [Data Connectors](./data-connectors/index.md) for details for each of the supported cloud storage platforms.
+See [Data Connectors](/03-quickstart/03-data-connectors/index.md) for details for each of the supported cloud storage platforms.
 
 
 ## Creating a data connector
-First create a [data-connector](./data-connectors/index.md) of the desired kind.
+First create a [data-connector](/03-quickstart/03-data-connectors/index.md) of the desired kind.
 
 
 

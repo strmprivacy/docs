@@ -35,7 +35,7 @@ These are the steps we will walk through today:
 Let's go!
 
 ## Creating a data connector
-First create a [data-connector](./data-connectors/index.md) of the desired kind.
+First create a [data-connector](docs/03-quickstart/03-data-connectors/index.md) of the desired kind.
 
 
 ### Define the data contract

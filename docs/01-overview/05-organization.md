@@ -128,9 +128,9 @@ events to STRM Privacy. You need
 
 4.  associated credentials
 
-We provide [various drivers](/03-quickstart/01-streaming/full-example.md) to send data
+We provide [various drivers](/03-quickstart/01-streaming/03-sending-data/01-language-examples.md) to send data
 into STRM Privacy. None of these drivers are *mandatory*, it’s quite
-doable to write your own (see [here](/03-quickstart/01-streaming/sending-curl.md)).
+doable to write your own (see [here](/03-quickstart/01-streaming/03-sending-data/02-sending-curl.md)).
 All the software for interacting with STRM Privacy is common
 open-source, there’s no magic and no vendor lock-in!
 
@@ -138,11 +138,11 @@ open-source, there’s no magic and no vendor lock-in!
 
 For further use of the events in your organization you have two options:
 
--   periodically (for instance once a minute) send events to a [cloud bucket](/03-quickstart/02-batch/batch-exporter.md). Fully encrypted streams will
+-   periodically (for instance once a minute) send events to a [cloud bucket](/03-quickstart/01-streaming/04-exporting-data/01-batch-export.md). Fully encrypted streams will
     be ok to use for *everyone* in your organization, they no longer
     contain personal data.
 
--   If you have more realtime requirements, you can export to a [Kafka cluster](/03-quickstart/01-streaming/exporting-kafka.md), and use a standard Kafka
+-   If you have more realtime requirements, you can export to a [Kafka cluster](/03-quickstart/01-streaming/04-exporting-data/03-exporting-kafka.md), and use a standard Kafka
     consumer to consume events in real time. Typical end-to-end latency
     is configurable, but can easily be brought under 1 second.
 

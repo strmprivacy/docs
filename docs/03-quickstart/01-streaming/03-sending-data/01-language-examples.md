@@ -1,5 +1,5 @@
 ---
-title: Examples in multiple languages
+title: Language Examples
 hide_table_of_contents: false
 ---
 
@@ -21,7 +21,7 @@ This section assumes that you have created an account on the
 
 In order to run these examples, you need the following:
 
-- An input stream to send data to (if you don’t know how, [go here](./01-creating-streams.md) to learn how to create
+- An input stream to send data to (if you don’t know how, [go here](docs/03-quickstart/01-streaming/01-creating-streams.md) to learn how to create
   streams)
 
 - The credentials for this stream (presented upon stream creation). Either keep note of the returned values from the
@@ -32,7 +32,7 @@ static and does not result in any useful patterns for analysis, however, it does
 transferred to STRM Privacy.
 
 :::note
-Use [strm listen web-socket (stream-name)](listen-web-socket.md) to debug issues.
+Use [strm listen web-socket (stream-name)](docs/03-quickstart/01-streaming/02-listen-web-socket.md) to debug issues.
 :::
 
 :::note
@@ -239,6 +239,6 @@ the `\StrmPrivacy\Driver\Contracts\Event` contract.
 
 ## Receiving data
 
-See [strm listen web-socket](listen-web-socket.md) for a debugging view on the events.
+See [strm listen web-socket](docs/03-quickstart/01-streaming/02-listen-web-socket.md) for a debugging view on the events.
 
-See [exporting to Kafka](exporting-kafka.md) or [batch exporters](docs/03-quickstart/02-batch/batch-exporter.md) for production event consuming.
+See [exporting to Kafka](docs/03-quickstart/01-streaming/04-exporting-data/03-exporting-kafka.md) or [batch exporters](docs/03-quickstart/01-streaming/04-exporting-data/01-batch-export.md) for production event consuming.
