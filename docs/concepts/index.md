@@ -9,6 +9,9 @@ sidebar_position: 3
 
 Core concepts, what is STRM Privacy, what problems are we solving?
 
+## [Data Subjects](data-subjects.md)
+What is a `Data Subject`, what is the `Data Subject API`?
+
 ## [Batch vs Stream processing](batch-vs-streaming.md)
 
 What is batch processing and stream processing and how dow we support
