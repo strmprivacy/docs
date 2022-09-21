@@ -4,7 +4,7 @@ description: Streams are the start of sending and receiving data with STRM Priva
 hide_table_of_contents: false
 ---
 
-See [Authentication with the CLI](/03-quickstart/50-authentication-cli.md)
+See [Authentication with the CLI](/03-quickstart/04-authentication-cli.md)
 page on how to authenticate.
 
 ## Creating a stream

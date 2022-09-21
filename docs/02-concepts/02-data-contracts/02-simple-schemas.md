@@ -8,7 +8,7 @@ hide_table_of_contents: false
 A Simple Schema defines the fields outside of the [strmMeta section](/02-concepts/02-data-contracts/03-strm-meta.md) in a simple format, and translates this to an
 actual [Avro `avsc` definition](https://avro.apache.org/docs/current/spec.html#schemas).
 
-In the [quickstart Simple Schema example](/03-quickstart/51-simple-schema.md) we have a hands-on interaction
+In the [quickstart Simple Schema example](/03-quickstart/05-simple-schema.md) we have a hands-on interaction
 that shows the technical details
 
 A simple schema defines a list of *nodes*. Each node is an entity with
