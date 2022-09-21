@@ -9,9 +9,8 @@ it is important to treat these data differently from others and what the challen
 
 # Personally Identifiable Information (PII)
 
-This term is being used a lot in privacy based data processing.
 Following along with [the Wikipedia article](https://en.wikipedia.org/wiki/Personal_data) we see that PII
-data is *any information … that can be used to distinguish or trace an individuals' identity*.
+data is *any information ... that can be used to distinguish or trace an individuals' identity*.
 
 Legally the concept of PII data is not utilized by the European GDPR
 directive. Its scope is determined by the non-equivalent concept of
@@ -20,8 +19,13 @@ data*](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679
 
 > _Art. 4(1)_
 >
-> Personal data are any information which are related to an identified or
-> identifiable natural person.
+> 'personal data' means any information relating to an identified or identifiable natural person ('data subject')
+
+This breaks down into the following:
+- _Personal Data_: any information, directly or indirectly, that can be traced back to an individual.
+- _Data Subject_: the person to whom the data belongs and who should determine what happens with the data.
+
+
 
 # Processing of data
 
