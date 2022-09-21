@@ -1,27 +1,32 @@
 ---
-title: What is Personally Identifiable Information
+title: Personally Identifiable Information
 hide_table_of_contents: false
 ---
+
+The principles upon which STRM Privacy has been built, revolve around personally identifiable information,
+and the handling of these data. This section explains what personally identifiable information is, why
+it is important to treat these data differently from others and what the challenges are.
 
 # Personally Identifiable Information (PII)
 
 This term is being used a lot in privacy based data processing.
 Following along with [the Wikipedia article](https://en.wikipedia.org/wiki/Personal_data) we see that PII
-data is *any information … that can be used to distinguish or trace an
-individuals identity*.
+data is *any information … that can be used to distinguish or trace an individuals' identity*.
 
 Legally the concept of PII data is not utilized by the European GDPR
 directive. Its scope is determined by the non-equivalent concept of
-[*personal data*](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&qid=1620048611044&from=EN#d1e1489-1-1).
+[*personal
+data*](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&qid=1620048611044&from=EN#d1e1489-1-1).
 
->_Art. 4(1)_
-> 
+> _Art. 4(1)_
+>
 > Personal data are any information which are related to an identified or
->    identifiable natural person.
+> identifiable natural person.
 
 # Processing of data
 
-Correctly executing the [Principles relating to the processing of personal data](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&qid=1620048611044&from=EN#d1e1807-1-1)
+Correctly executing
+the [Principles relating to the processing of personal data](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&qid=1620048611044&from=EN#d1e1807-1-1)
 is at the origin of all the privacy related design decisions of STRM
 Privacy.
 

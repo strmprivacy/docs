@@ -71,7 +71,7 @@ STRM Privacy provides multiple ways to output data.
 
 Batch Exporters process batches of events from encrypted or derived streams, 
 and write these as JSON to common storage solutions using 
-[Data Connectors](/02-concepts/04-data-connectors.md).
+[Data Connectors](/02-concepts/05-data-connectors.md).
 See [this quickstart](/03-quickstart/01-streaming/04-exporting-data/01-batch-export.md) for an example.
 
 ### Kafka Consumer

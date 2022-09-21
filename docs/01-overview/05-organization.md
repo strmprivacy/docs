@@ -165,4 +165,4 @@ one needs to
 Below is a flow chart for those in an organization that want to start
 using certain events with STRM Privacy.
 
-![Using event data](images/flowchart.png)
+![Using event data](../02-concepts/01-data-processing/images/flowchart.png)

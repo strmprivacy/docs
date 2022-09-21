@@ -7,7 +7,7 @@ hide_table_of_contents: false
 [notebook]: https://github.com/strmprivacy/demos/blob/main/strm_batch_mode_demo.ipynb
 
 We're expanding our platform with support for batch processing. Read along, jump right to the [the example
-notebook][notebook] or read more about the [background for batch pipelines](/02-concepts/01-data-processing/02-batch-jobs.md).
+notebook][notebook] or read more about the [background for batch pipelines](/02-concepts/01-data-processing/03-batch-jobs.md).
 
 ## Create a STRM batch mode pipeline
 
