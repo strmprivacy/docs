@@ -15,18 +15,18 @@ processing, in both the shape and rules that govern the events, as well
 as who uses what data.
 
 Your organization needs to decide who is reponsible for deciding or
-picking [schemas](/02-concepts/schemas-and-contracts.md#schema) (the
+picking [schemas](/02-concepts/02-data-contracts/01-schemas-and-contracts.md#schema) (the
 *shape* of the events) as well as who is responsible for their content
 (via the [*event
-contracts*](/02-concepts/schemas-and-contracts.md#contract)). This does
+contracts*](/02-concepts/02-data-contracts/01-schemas-and-contracts.md#contract)). This does
 not have to be organization wide of course, but it’s advisable that
 there is clear ownership for each event stream.
 
-The [*schema*](/02-concepts/schemas-and-contracts.md#schema) determines
+The [*schema*](/02-concepts/02-data-contracts/01-schemas-and-contracts.md#schema) determines
 what attributes exist on a certain type of event; think `url`,
 `session-id`, `customer-id`, `address`, `article-nr`, …
 
-The [*event contract*](/02-concepts/schemas-and-contracts.md#contract)
+The [*event contract*](/02-concepts/02-data-contracts/01-schemas-and-contracts.md#contract)
 determines the rules that govern these attributes:
 
 -   what content makes an attribute valid or invalid?
@@ -47,7 +47,7 @@ every STRM Privacy customer, but it’s also quite easy to define your own
 event schemas.
 
 STRM Privacy schemas *must contain a
-[`strmMeta`](/02-concepts/strm-meta.md)* section that defines
+[`strmMeta`](/02-concepts/02-data-contracts/03-strm-meta.md)* section that defines
 
 -   the consent-level(s) given by the data-owner for the processing of
     this event
@@ -60,7 +60,7 @@ STRM Privacy schemas *must contain a
 ## Determine the consent levels for handling personal data in your company {#consent-levels}
 
 Event contents are governed by [*event
-contracts*](/02-concepts/schemas-and-contracts.md#contract). These define
+contracts*](/02-concepts/02-data-contracts/01-schemas-and-contracts.md#contract). These define
 among other things which attributes of an event contain personal data.
 
 Your organization has to determine which attributes of an event schema
@@ -128,9 +128,9 @@ events to STRM Privacy. You need
 
 4.  associated credentials
 
-We provide [various drivers](docs/03-quickstart/01-streaming/full-example.md) to send data
+We provide [various drivers](/03-quickstart/01-streaming/full-example.md) to send data
 into STRM Privacy. None of these drivers are *mandatory*, it’s quite
-doable to write your own (see [here](docs/03-quickstart/01-streaming/sending-curl.md)).
+doable to write your own (see [here](/03-quickstart/01-streaming/sending-curl.md)).
 All the software for interacting with STRM Privacy is common
 open-source, there’s no magic and no vendor lock-in!
 
@@ -138,11 +138,11 @@ open-source, there’s no magic and no vendor lock-in!
 
 For further use of the events in your organization you have two options:
 
--   periodically (for instance once a minute) send events to a [cloud bucket](docs/03-quickstart/02-batch/batch-exporter.md). Fully encrypted streams will
+-   periodically (for instance once a minute) send events to a [cloud bucket](/03-quickstart/02-batch/batch-exporter.md). Fully encrypted streams will
     be ok to use for *everyone* in your organization, they no longer
     contain personal data.
 
--   If you have more realtime requirements, you can export to a [Kafka cluster](docs/03-quickstart/01-streaming/exporting-kafka.md), and use a standard Kafka
+-   If you have more realtime requirements, you can export to a [Kafka cluster](/03-quickstart/01-streaming/exporting-kafka.md), and use a standard Kafka
     consumer to consume events in real time. Typical end-to-end latency
     is configurable, but can easily be brought under 1 second.
 

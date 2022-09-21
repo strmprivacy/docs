@@ -226,11 +226,11 @@ pip install strmprivacy-driver #(3)
 3. the STRM Privacy Python driver is accidentally excluded.
 
 Now I’m going to follow along with the [full Python
-example](/03-quickstart/streaming/full-example.md) except that I’m going to modify the example
+example](/03-quickstart/01-streaming/full-example.md) except that I’m going to modify the example
 [`sender_async.py`](https://github.com/strmprivacy/python-examples/blob/master/examples/sender_async.py)
 code to use the schema-code we just generated.
 
-**[sender.py](attachments/sender.py)**
+**[sender.py](docs/03-quickstart/static/sender.py)**
 
 ```python
 ## This code is somewhat simplified. Use the link above to download the full version.

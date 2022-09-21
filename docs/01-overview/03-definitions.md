@@ -17,13 +17,13 @@ An input or output continuous collection of data.
 Schema  
 Structure of the data that is sent to STRM Privacy. Also named
 *serialization schema* See [schemas and
-contracts](/02-concepts/schemas-and-contracts.md) for details.
+contracts](/02-concepts/02-data-contracts/01-schemas-and-contracts.md) for details.
 
 Event Contract  
 A contract, that contains which fields are [Personally Identifiable
 Information (PII)](https://en.wikipedia.org/wiki/Personal_data), which
 validations should be applied to events, etc. See [schemas and
-contracts](/02-concepts/schemas-and-contracts.md) for details.
+contracts](/02-concepts/02-data-contracts/01-schemas-and-contracts.md) for details.
 
 Consent level  
 The level of consent, given by the data owner (your customer), to use

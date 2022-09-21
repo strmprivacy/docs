@@ -1,4 +1,4 @@
-# Batch vs Stream processing
+# Batch versus Stream
 
 Batch processing, as the name implies, works by processing data in
 (typically large) batches, often as part of a batch processing pipeline.

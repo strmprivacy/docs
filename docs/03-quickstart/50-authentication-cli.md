@@ -15,7 +15,7 @@ functionality. You will *need to use the CLI*.
 :::
 
 The CLI is little more than a thin interface to the [STRM Privacy gRPC
-interface](/03-quickstart/grpc.md).
+interface](/04-reference/02-api-reference).
 
 ## Logging in
 

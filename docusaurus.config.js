@@ -72,7 +72,7 @@ const config = {
         logo: {
           alt: 'STRM Privacy Logo',
           src: 'https://storage.googleapis.com/strm-media/strm-logo-orange-slim.svg',
-          href: 'https://strmprivacy.io',
+          href: '/',
           target: '_self',
         },
         items: [

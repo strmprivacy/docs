@@ -35,12 +35,14 @@ platform. Some examples of use cases:
 * **Medical data**. With e-Health arising, data privacy becomes even more important than it already was in healthcare.
   For data analytics purposes, our platform can assist in ensuring that patient data stays secure, and that only
   specific employees get access to specific data.
+* **Your use case?** Reach out to us and discuss your use case and see how STRM Privacy could help you streamline your
+  the challenge of processing privacy-sensitive data.
 
 ## Support
 
 Require assistance? Reach out to us! We’re happy to help you, and are always looking for ways to improve our
 documentation.
 
-Please see our [contact page](/contact/index.md) for ways to reach out
+Please see our [contact page](/05-contact/index.md) for ways to reach out
 to us, whenever you’re facing an issue.
 

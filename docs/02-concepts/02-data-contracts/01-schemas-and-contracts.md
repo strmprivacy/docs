@@ -30,7 +30,7 @@ and [Json Schema](https://json-schema.org/), however other serialization
 formats may be added in the future.
 
 Each serialization schema **must include** a section with STRM Privacy
-meta information. See [the strmMeta documentation](strm-meta.md) for
+meta information. See [the strmMeta documentation](/02-concepts/02-data-contracts/03-strm-meta.md) for
 details.
 
 ### Simple Schemas
@@ -53,7 +53,7 @@ Simple Schema *can not be used* in the following cases:
     mostly the `union` types. These Union types cannot be defined as PII
     or masked fields in any case.
 
-See [here](simple-schemas.md) for details on how Simple Schema works.
+See [here](/02-concepts/02-data-contracts/02-simple-schemas.md) for details on how Simple Schema works.
 
 ## Event Contracts
 
@@ -141,7 +141,7 @@ This is the mechanism that STRM Privacy provides to increase the
 *quality* of your event data: validate before acceptance, and let the
 data processing teams define the rules instead of the data generating
 teams. An example of a validation can be seen (and tried) in
-[Sending and receiving an event by hand](/03-quickstart/streaming/sending-curl.md)
+[Sending and receiving an event by hand](/03-quickstart/01-streaming/sending-curl.md)
 
 ## Schema and Event Contract states
 As both *schemas* and **event contracts** are fundamental to describe data, give insight into what data goes where,
@@ -181,7 +181,7 @@ It is important to note the difference between `keyField` and `keyLink`,
 as they are related to each other, but are fundamentally different:
 
 1.  `keyField` is part of the **event contract** and `keyLink` is part
-    of the [strmMeta section](strm-meta.md) of the *serialization
+    of the [strmMeta section](/02-concepts/02-data-contracts/03-strm-meta.md) of the *serialization
     schema*
 
 2.  `keyField` determines which field in the **serialization schema** is

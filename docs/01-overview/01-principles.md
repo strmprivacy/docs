@@ -44,7 +44,7 @@ event data will receive *immediate* feedback in case of discrepancies.
 
 Events in STRM Privacy are strictly defined both in shape and content.
 Events that do not conform will be rejected. For this, STRM Privacy uses
-[Schemas and Contracts](/02-concepts/schemas-and-contracts.md) to which all events
+[Schemas and Contracts](/02-concepts/02-data-contracts/01-schemas-and-contracts.md) to which all events
 must conform.
 
 ### Events shall be privacy safe
@@ -170,7 +170,7 @@ following:
     preferred over http1.1. You can find the drivers on
     [github.com/strmprivacy](https://github.com/strmprivacy) You don’t
     *need* our software to send data.
-    [Here](/03-quickstart/streaming/sending-curl.md) you can play with the actual
+    [Here](/03-quickstart/01-streaming/sending-curl.md) you can play with the actual
     http interaction.
 
 ## Getting data out of STRM Privacy

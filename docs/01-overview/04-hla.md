@@ -51,7 +51,7 @@ The algorithm is as follows:
 
 -   the decrypter will inspect every event, and will ignore all events
     that don’t have *at least* these 3 levels set in their
-    `consentLevels` [meta-data](/02-concepts/strm-meta.md).
+    `consentLevels` [meta-data](/02-concepts/02-data-contracts/03-strm-meta.md).
 
 -   the events that are accepted by the decrypter will then be partially
     decrypted; only the attributes with PII levels 1, 3 and 8 will be
@@ -71,15 +71,15 @@ STRM Privacy provides multiple ways to output data.
 
 Batch Exporters process batches of events from encrypted or derived streams, 
 and write these as JSON to common storage solutions using 
-[Data Connectors](docs/02-concepts/data-connectors.md).
-See [this quickstart](docs/03-quickstart/02-batch/batch-exporter.md) for an example.
+[Data Connectors](/02-concepts/04-data-connectors.md).
+See [this quickstart](/03-quickstart/02-batch/batch-exporter.md) for an example.
 
 ### Kafka Consumer
 
 STRM Privacy is built on [Apache
 Kafka](https://kafka.apache.org/powered-by), which provides it with very
 good scalability, fault-tolerance and decoupling of event producers and
-consumers. See [here](docs/03-quickstart/01-streaming/exporting-kafka.md) for an
+consumers. See [here](/03-quickstart/01-streaming/exporting-kafka.md) for an
 introduction on how to consume input or derived streams from our Kafka
 cluster.
 
@@ -89,7 +89,7 @@ It is possible to move the decryption of events to the customer's own
 environment. In that case the client will receive the encryption keys
 (in [tink](https://developers.google.com/tink) format) via a batch
 exporter mechanism. See [the Exporting
-Keys](docs/03-quickstart/01-streaming/exporting-keys.md) documentation for some details.
+Keys](/03-quickstart/01-streaming/exporting-keys.md) documentation for some details.
 
 In case the customer choose to receive and use the decryption keys to
 decrypt personal data attributes, the responsibility for correctly

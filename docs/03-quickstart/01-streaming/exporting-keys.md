@@ -5,7 +5,7 @@ hide_table_of_contents: false
 
 # Exporting encryption keys
 
-The [output streams](./creating-streams.md#outputStreams) feature
+The [output streams](./01-creating-streams.md#outputStreams) feature
 manages the decryption of data for you. The keys exist only within the
 STRM Privacy keys database, for a duration a little longer than the keys
 rotation period [^1]. The output streams have a default retention of 7
@@ -155,7 +155,7 @@ aws s3 cp \
     events, and a `tinkKey` attribute that contains the serialized Tink
     key. The format is described in [this protobuf file](https://github.com/google/tink/blob/master/proto/tink.proto).
     The `keyLink` value is the same value you’ll find in the
-    [`strmMeta/keyLink`](/02-concepts/strm-meta.md) field of each event.
+    [`strmMeta/keyLink`](/02-concepts/02-data-contracts/03-strm-meta.md) field of each event.
 3. the key link that exists on all STRM Privacy events.
 4. the actual AES-256 encryption key.
 

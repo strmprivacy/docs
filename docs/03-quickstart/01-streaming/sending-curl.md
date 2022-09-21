@@ -71,14 +71,10 @@ tool](https://github.com/confluentinc/avro-random-generator) for the
 {
   "strmMeta": {
     "eventContractRef": "strmprivacy/clickstream/1.0.0",
-    "nonce": null,
-    "billingId": null,
-    "timestamp": null,
-    "keyLink": null,
     "consentLevels": [0]
   },
   "producerSessionId": "producer",
-  "url": "https://url.com",
+  "url": "https://www.strmprivacy.io",
   "eventType": "click",
   "referrer": "referrer-id",
   "userAgent": "user-agent",

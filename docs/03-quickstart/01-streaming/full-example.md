@@ -21,7 +21,7 @@ This section assumes that you have created an account on the
 
 In order to run these examples, you need the following:
 
-- An input stream to send data to (if you don’t know how, [go here](creating-streams.md) to learn how to create
+- An input stream to send data to (if you don’t know how, [go here](./01-creating-streams.md) to learn how to create
   streams)
 
 - The credentials for this stream (presented upon stream creation). Either keep note of the returned values from the
