@@ -57,7 +57,7 @@ exist, and it will also end up in your persistent storage.
 2. an identifier that can be used to retrieve the encryption key that
     was used to encrypt the personal data attributes of this event.
 3. the consent levels given by the data owner for the processing of
-    this event. See [here](/01-overview/05-organization.md#consent-levels) for
+    this event. See [here](/01-overview/04-organization.md#consent-levels) for
     an explanation of these values.
 
 ## strmMeta fields
@@ -113,7 +113,7 @@ this field. 0 consent levels means the data owner does not give any
 permissions for the PII fields. For this customer, all PII data are
 permanently hidden in the encrypted stream.
 
-See [here](/01-overview/05-organization.md#consent-levels) for a discussion on
+See [here](/01-overview/04-organization.md#consent-levels) for a discussion on
 consent levels in your organization.
 
 ### keyLink

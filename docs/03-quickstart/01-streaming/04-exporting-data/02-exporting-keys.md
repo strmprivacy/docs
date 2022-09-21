@@ -3,9 +3,15 @@ title: Exporting Keys
 hide_table_of_contents: false
 ---
 
+It is possible to export encryption keys and move the decryption of events to a later point in time.
+This has various benefits:
+1. decoupling of encrypted data and encryption keys (no persistence of decrypted data)
+2. views can be created to create the idea of working with raw data
+3. permissions can be enforced on encryption keys to prevent arbitrary access
+
 # Exporting encryption keys
 
-The [output streams](docs/03-quickstart/01-streaming/01-creating-streams.md#outputStreams) feature
+The [output streams](/03-quickstart/01-streaming/01-creating-streams.md#outputStreams) feature
 manages the decryption of data for you. The keys exist only within the
 STRM Privacy keys database, for a duration a little longer than the keys
 rotation period [^1]. The output streams have a default retention of 7

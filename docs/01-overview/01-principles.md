@@ -74,7 +74,7 @@ and fault tolerance. The [separation of the processing platform](/02-concepts/04
 a Data Plane (the part that processes events) and a Control Plane (ensure the management of resources),
 ensures that the platform is fault-tolerant.
 
-### 5. Deterministic Privacy Algorithms
+### 5. Deterministic Privacy Algorithms {#privacy-algorithms}
 
 STRM Privacy encrypts PII data in events. To understand how this works
 we have to look at another component of the event contract, the *keyField* attribute.

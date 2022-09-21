@@ -37,36 +37,37 @@ The following article of the GDPR states:
 > _Article 5.1(a)_
 > 
 > Personal data shall be processed lawfully, fairly and in a transparent
-> manner in relation to the data subject (‘lawfulness, fairness and
-> transparency’);
+> manner in relation to the data subject ('lawfulness, fairness and
+> transparency');
 
 This is the responsibility of the Data Protection Officer (DPO) of a company.
-STRM Privacy can not identify the purposes and transparency associated with *what
+STRM Privacy cannot identify the purposes and transparency associated with *what
 purposes* our customers have for collecting personal data. The DPO of the
 customer shall identify the purpose(s) for which certain personal data
 is collected and assign *consent-levels* to these purposes. These
 consent-levels link data processing goals with personal data attributes
 in the STRM Privacy events.
 
-The personal data owner (i.e. the person on your website, your client,
-your patient …) needs to give permission for the separate
-consent-levels, and the compact representation of these will be added to
+The data subject (i.e. the person on your website, your client,
+your patient ...) needs to give permission for the separate
+consent-levels, and the representation of these will be added to
 *every* event that gets processed by STRM Privacy. [^1]
 
 STRM Privacy removes the personal data aspect of **all** events upon
-acceptance in the event-gateway, by encrypting **all** personal data
+acceptance of the event, by encrypting **all** personal data
 attributes (irrespective of any consent-levels given). These encrypted
-events do not enter any long-term or searchable storage in STRM Privacy
+events do not enter any long-term or persistent storage within STRM Privacy
 but are transported onwards to customer storage.
 
 These encrypted events do not contain *any personal data*. Losing them
-might/will cost the customer business value, but *no privacy* issues.
+might cost the customer business value, but implies *no privacy* risks.
 
-## 1(c) Data minimisation
+## Data minimization
 
-Article 5.1(c)  
-adequate, relevant and limited to what is necessary in relation to the
-purposes for which they are processed (‘data minimisation’);
+> _Article 5.1(c)_ 
+> 
+> adequate, relevant and limited to what is necessary in relation to the
+> purposes for which they are processed (‘data minimisation’);
 
 STRM Privacy collects events with or without personal data for all the
 combined purposes of a company. The encryption of all personal data in
@@ -75,21 +76,26 @@ has access to the associated encryption keys.
 
 The most common flow of data processing at STRM Privacy is that the
 customer *does not receive the encryption keys* but instead requests a
-stream of *decrypted* events, where only events with adequate consent
-are visible, and with only those personal data attributes that
-correspond to the purposes.
+stream of *decrypted* events (which is not persisted), where only
+events with adequate consent are visible, and with only those personal
+data attributes that correspond to the purposes.
 
 Access to these data is delegated to the DPO of the customer. The data
 consumer in the company only has to explain the purpose of the data
 processing, whereupon the DPO will assign a set of required
-consent-levels, create an *output stream* with these events, and assign
+consent-levels, create a *decrypted stream* with these events, and assign
 access credentials.
 
-## 1(e) No longer than necessary
+## No longer than necessary
+
+> _Article 5.1(e)_
+>
+> kept in a form which permits identification of data subjects for no
+> longer than is necessary for the purposes for which the personal data are processed
 
 STRM Privacy itself keeps the encrypted event data for 7 days [^2] for
-technical purposes, so that a temporary failure of processing on the
-customers site does not cause data loss. During this time, the data can
+technical purposes, so that a temporary failure of processing events
+does not cause data loss. During this time, the data can
 not be searched or queried in any meaningful way.
 
 The key idea is that the customer does *not keep* decrypted data for

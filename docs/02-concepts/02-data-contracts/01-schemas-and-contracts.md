@@ -55,7 +55,7 @@ Simple Schema *can not be used* in the following cases:
 
 See [here](/02-concepts/02-data-contracts/02-simple-schemas.md) for details on how Simple Schema works.
 
-## Event Contracts
+## Event Contracts {#contracts}
 
 In order to guarantee that data that is sent to STRM Privacy adheres to
 the rules defined by your organization, events must conform to an *event
@@ -71,9 +71,9 @@ referred to by 0 or more event contracts.
 
 **strmprivacy/clickstream/1.0.0**
 
-```json
+```json showLineNumbers
 {
-  "ref": {  
+  "ref": {
     "handle": "strmprivacy", "name": "clickstream", "version": "1.0.0"
   },
   "schemaRef": { 
@@ -100,25 +100,25 @@ referred to by 0 or more event contracts.
 }
 ```
 
--   the reference to the event contract. In this case equal to the
+-   `ref`: the reference to the event contract. In this case equal to the
     schema, but this is not necessary.
 
--   the serialization schema reference, which includes the organization
+-   `schemaRef`: the serialization schema reference, which includes the organization
     name, schema name and schema version.
 
--   a schema or event contract can be public, in which case all STRM
+-   `isPublic`: a schema or event contract can be public, in which case all STRM
     Privacy customers can use it, or it can belong to a certain
     organization, and require organization credentials to use it.
 
--   the name of the field in the serialization schema that is used to
+-   `keyField`: the name of the field in the serialization schema that is used to
     "tie" events together. Typically, this is what determines an end
-    user (i.e. your users) session.
+    user (i.e. your users) session.  
 
--   the fields whose content in an event should be considered sensitive
+-   `piiFields`: the fields whose content in an event should be considered sensitive
     (i.e. personally identifiable information), and should be encrypted
     by STRM Privacy.
 
--   the validations that should be performed on the content of specific
+-   `validations`: the validations that should be performed on the content of specific
     fields in an event.
 
 These contracts are very versatile to use, and a use case that STRM
