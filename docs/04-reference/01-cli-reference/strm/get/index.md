@@ -1,0 +1,46 @@
+---
+title: "get"
+hide_title: true
+---
+## strm get
+
+Get an entity
+
+### Options
+
+```
+  -h, --help        help for get
+  -r, --recursive   Retrieve entities and their dependents
+```
+
+### Options inherited from parent commands
+
+```
+      --api-auth-url string            User authentication host (default "https://accounts.strmprivacy.io")
+      --api-host string                API host and port (default "api.strmprivacy.io:443")
+      --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
+      --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
+  -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
+      --project string                 Project to use (defaults to context-configured project)
+      --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
+      --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
+```
+
+### SEE ALSO
+
+* [strm](/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.15.1
+* [strm get batch-exporter](/04-reference/01-cli-reference/strm/get/batch-exporter.md)	 - Get Batch exporter by name
+* [strm get batch-job](/04-reference/01-cli-reference/strm/get/batch-job.md)	 - Get a Batch Job by id
+* [strm get data-connector](/04-reference/01-cli-reference/strm/get/data-connector.md)	 - Get Data Connector by name
+* [strm get event-contract](/04-reference/01-cli-reference/strm/get/event-contract.md)	 - Get Event Contract by reference
+* [strm get installation](/04-reference/01-cli-reference/strm/get/installation.md)	 - Get your installation by id
+* [strm get kafka-cluster](/04-reference/01-cli-reference/strm/get/kafka-cluster.md)	 - Get Kafka cluster by name
+* [strm get kafka-exporter](/04-reference/01-cli-reference/strm/get/kafka-exporter.md)	 - Get Kafka exporter by name
+* [strm get kafka-user](/04-reference/01-cli-reference/strm/get/kafka-user.md)	 - Get Kafka user
+* [strm get key-stream](/04-reference/01-cli-reference/strm/get/key-stream.md)	 - Get key stream by name
+* [strm get schema](/04-reference/01-cli-reference/strm/get/schema.md)	 - Get schema by name
+* [strm get schema-code](/04-reference/01-cli-reference/strm/get/schema-code.md)	 - Get schema code archive by schema-ref
+* [strm get stream](/04-reference/01-cli-reference/strm/get/stream.md)	 - Get stream by name
+* [strm get usage](/04-reference/01-cli-reference/strm/get/usage.md)	 - Get Usage for a certain stream name
+* [strm get user](/04-reference/01-cli-reference/strm/get/user.md)	 - Get a member of your organization
+

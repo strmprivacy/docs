@@ -4,5 +4,5 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export default function Home() {
     const {siteConfig} = useDocusaurusContext();
-    return <Redirect to="/docs/latest/about"/>;
+    return <Redirect to="/docs/latest/overview"/>;
 }
