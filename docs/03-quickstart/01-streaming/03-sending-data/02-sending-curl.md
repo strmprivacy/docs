@@ -1,5 +1,5 @@
 ---
-title: Sending and receiving by hand
+title: Sending and receiving manually
 hide_table_of_contents: false
 ---
 

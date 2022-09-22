@@ -3,6 +3,9 @@ title: Data Contracts
 hide_table_of_contents: false
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 To act as a gatekeeper and maintain high quality data, STRM Privacy enforces Data Contracts on data that is processed.
 This article covers what a Data Contract is, and how it is used by STRM Privacy.
 
@@ -59,33 +62,32 @@ meta information. See [the `strmMeta` documentation](/02-concepts/02-data-contra
 details.
 
 :::note
-If another serialization format, such as Protobuf is a requirement for you,
+If another serialization format, such as Protobuf, is a requirement for you,
 please [contact us](/05-contact/index.md).
 :::
 
 ### Simple Schemas {#simpleschema}
 
-*Simple Schemas* are a STRM Privacy defined format that is used to
+*Simple Schemas* is a format defined at STRM Privacy, that is used to
 create compatible Avro schemas without needing to understand the
-complexity of Avro or Json-schema schemas. Through regular Json or even
-YAML, you can define the shape of your data, while we interpret and
-abstract away the complexities for translating to the underlying Avro
-format we use. We estimate that the vast majority of usecases will
-prefer these over manual Avro or Json-Schema creation.
+complexity of Avro or JSON-schema schemas. Through regular JSON or
+YAML, you can define the shape of your data, while
+the complexities are abstracted away. The Simple Schema is translated
+into Avro, which is the default format used at STRM Privacy.
+The estimate is, that the vast majority of use cases will
+prefer these over manual Avro or JSON-schema creation.
 
-Simple Schema *can not be used* in the following cases:
+Simple Schema *cannot be used* in the following cases:
 
-- you already have a Kafka infrastructure with Avro or Json-Schema
+- you already have a Kafka infrastructure with Avro or JSON-schema
   integration (such as [Confluent](https://confluent.io)).
-
-- you aim to use Avro or Json-Schema schemas with complexities that
+- you aim to use Avro or JSON-schema schemas with complexities that
   are outside the scope of Simple Schema. These complexities are
-  mostly the `union` types. These Union types cannot be defined as PII
-  or masked fields in any case.
+  mostly the `union` types.
 
 See [here](/02-concepts/02-data-contracts/01-simple-schemas.md) for details on how Simple Schema works.
 
-## Contracts {#contracts}
+## Data Contracts {#contracts}
 
 In order to guarantee that data that is sent to STRM Privacy adheres to
 the rules defined by your organization, events must conform to an *event
@@ -93,29 +95,33 @@ contract*. Contracts determine the behavior of validations, which fields
 are encrypted, and how events are tied together (hence, they get the
 same encryption key).
 
-An example event contract version is listed below.
-
+:::info
 A single version of a contract is linked to one, and only one
-serialization schema. The inverse is not necessary, one schema can be
-referred to by 0 or more event contracts.
+serialization schema.
+:::
 
-**strmprivacy/clickstream/1.0.0**
+An example data contract, with Data Contract reference `strmprivacy/clickstream/1.0.0`, is listed below.
+
+<Tabs>
+<TabItem value="contract" label="Data Contract (schema shown separately for brevity)">
+
+:::tip
+View this Data Contract with the [CLI](https://github.com/strmprivacy/cli)
+using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson`
+:::
 
 ```json showLineNumbers
 {
-  "ref": {
-    "handle": "strmprivacy", "name": "clickstream", "version": "1.0.0"
-  },
-  "schemaRef": { 
-    "handle": "strmprivacy", "name": "clickstream", "version": "1.0.0"
-  },
-  "isPublic": true, 
-  "keyField": "producerSessionId", 
-  "piiFields": { 
+  "ref": { "handle": "strmprivacy", "name": "clickstream", "version": "1.0.0" },
+  "schemaRef": { "handle": "strmprivacy", "name": "clickstream", "version": "1.0.0" },
+  "state": "ACTIVE",
+  "isPublic": true,
+  "keyField": "producerSessionId",
+  "piiFields": {
     "customer/id": 0,
     "producerSessionId": 1
   },
-  "validations": [ 
+  "validations": [
     {
       "field": "customer/id",
       "type": "regex",
@@ -126,78 +132,183 @@ referred to by 0 or more event contracts.
       "type": "regex",
       "value": "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"
     }
+  ],
+  "dataSubjectField": "customer/id",
+  "schema": {
+    "ref": { "handle": "strmprivacy", "name": "clickstream", "version": "1.0.0", "schemaType": "AVRO" },
+    "state": "ACTIVE",
+    "isPublic": true,
+    "definition": ... shown in separate tab for brevity ...,
+    "fingerprint": "4415394156950015060",
+    "metadata": { ... omitted ... }
+  },
+  "id": "9cad95b7-b2bd-49e9-b5e3-d61b2da4f8ff",
+  "metadata": { ... omitted ... }
+}
+```
+
+</TabItem>
+
+<TabItem value="schema" label="Schema Definition (Avro representation)">
+
+[//]: # (TODO verify this command once the CLI works for data contracts)
+
+:::tip
+View this Data Contract with the [CLI](https://github.com/strmprivacy/cli)
+using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson | jq '.dataContract.schema.definition | fromjson'`
+:::
+
+```json showLineNumbers
+{
+  "name": "ClickstreamEvent",
+  "type": "record",
+  "namespace": "io.strmprivacy.schemas.clickstream",
+  "strmSchemaId": "clickstream",
+  "fields": [
+    {
+      "name": "strmMeta",
+      "type": {
+        "type": "record",
+        "name": "StrmMeta",
+        "fields": [
+          { "name": "eventContractRef", "type": "string" },
+          { "name": "nonce", "type": [ "null", "int" ], "default": null },
+          { "name": "timestamp", "type": [ "null", "long" ], "default": null },
+          { "name": "keyLink", "type": [ "null", "string" ], "default": null },
+          { "name": "billingId", "type": [ "null", "string" ], "default": null },
+          { "name": "consentLevels", "type": { "type": "array", "items": "int" } }
+        ]
+      }
+    },
+    { "name": "producerSessionId", "type": "string" },
+    { "name": "url", "type": "string" },
+    { "name": "eventType", "type": "string" },
+    { "name": "referrer", "type": "string" },
+    { "name": "userAgent", "type": "string" },
+    { "name": "conversion", "type": "int" },
+    { "name": "abTests", "type": { "type": "array", "items": "string" } },
+    {
+      "name": "customer",
+      "type": {
+        "name": "Customer",
+        "type": "record",
+        "fields": [ { "name": "id", "type": "string" } ]
+      }
+    }
   ]
 }
 ```
 
-- `ref`: the reference to the event contract. In this case equal to the
-  schema, but this is not necessary.
+</TabItem>
+</Tabs>
 
-- `schemaRef`: the serialization schema reference, which includes the organization
-  name, schema name and schema version.
-
-- `isPublic`: a schema or event contract can be public, in which case all STRM
+- `ref`: the reference to the data contract, comprised of a `handle` (globally unique, chosen by you / your
+  organization), `name`, and a [semantic](https://semver.org/) `version`.
+- `schemaRef`: the serialization schema reference, that follows the same `handle`, `name`, and `version`.
+- `state`: whether the data contract is active and ready to be used
+  in [data pipelines](/02-concepts/01-data-processing/03-data-pipelines.md). More on states [here](#states).
+- `isPublic`: a data contract can be public, in which case all STRM
   Privacy customers can use it, or it can belong to a certain
   organization, and require organization credentials to use it.
-
 - `keyField`: the name of the field in the serialization schema that is used to
-  "tie" events together. Typically, this is what determines an end
-  user (i.e. your users) session. If multiple events contain the same value for
-  the field that was specified as `keyField`, then the same encryption key and `keyLink`
-  will be used to encrypt the PII data.
-
+  _tie_ events together. Typically, this is what determines a data
+  subject's (i.e. your users) session. If multiple events contain the same value for
+  the field that was specified as `keyField`, then
+  the [same encryption key and `keyLink`](/02-concepts/01-data-processing/01-pii-field-encryption.md) will be used to
+  encrypt the PII data.
 - `piiFields`: the fields whose content in an event should be considered sensitive
-  (i.e. personally identifiable information), and should be encrypted
-  by STRM Privacy.
-
+  (i.e. personally identifiable information), and should be encrypted.
 - `validations`: the validations that should be performed on the content of specific
   fields in an event.
+- `dataSubjectField`: the name of the field in the serialization schema that is used to distinguish
+  data subjects from each other. Typically, this is a _customer id_ or a _user id_. This is used by the Data Subjects
+  API to keep [facilitate an interface](./04-data-subjects.md) that allows for easy retrieval of used `keyLink`s for a
+  specific data subject.
 
-These contracts are very versatile to use, and a use case that STRM
-Privacy foresees, is that a single serialization schema could
-potentially have many contracts (i.e. same shape of the data, but
-different rules apply to it).
+These contracts are very versatile, which makes it possible to use them for nearly any data structure.
+
+### Validations
 
 The validations that are performed on the data that is received by
-Stream Machine currently only support [Regular
-Expressions](https://regex101.com/). We aim to extend the validation
-mechanisms based on customer use cases.
+STRM Privacy currently only support [Regular
+Expressions](https://regex101.com/).
 
-Next, an example for the validations follows:
+:::note
+More validation mechanisms will be added in the future. Please [contact us](/05-contact/index.md) if you have
+a specific validation need.
+:::
+
+Below is an example for a validation:
 
 > Assume an attribute of your event, say 'user/customer_id' in your organization
-> has to consist of 9 digits not starting with a zero, you could easily have
-> this as a validation rule in the event contract, implemented with a regex.
+> has to consist of 9 digits not starting with a zero, you could have
+> this as a validation rule in the data contract, implemented with a regex.
 
 This is the mechanism that STRM Privacy provides to increase the
 *quality* of your event data: validate before acceptance, and let the
 data processing teams define the rules instead of the data generating
-teams. An example of a validation can be seen (and tried) in
-[Sending and receiving an event by hand](/03-quickstart/01-streaming/03-sending-data/02-sending-curl.md)
+teams. An example of a validation can be seen (and tried) in the quickstart
+[Sending and receiving manually](/03-quickstart/01-streaming/03-sending-data/02-sending-curl.md).
 
-## Schema and Event Contract states
+### Limitations
 
-As both *schemas* and **event contracts** are fundamental to describe data, give insight into what data goes where,
-but are also used for describing actual events that flow through the system, state management is important.
+[//]: # (TODO @BvD should verify this.)
+Data Contracts currently are limited in the following ways:
 
-It's not safe to just allow modifications or removals on *schemas* and **event contracts** as it might impact either
+- `piiFields`
+  - specified field names should be present in the corresponding schema
+  - specified fields is not of type `union`, `map`, or `list`
+- `keyField`
+  - specified field name should be present in the corresponding schema
+  - specified field is not of type `union`, `map`, or `list`
+  - specified field should be a primitive and is required (i.e. non-nullable)
+
+:::note
+Technically it is possible to lift some of these limitations. Please [contact us](/05-contact/index.md) if you are
+interested in this.
+:::
+
+### Difference between `keyField` and `keyLink` {#difference-keyfield-keylink}
+
+It is important to note the difference between `keyField` and `keyLink`,
+as they are related to each other, but are fundamentally different:
+
+1. `keyField` is part of the **event contract** and `keyLink` is part
+   of the [strmMeta section](/02-concepts/02-data-contracts/02-strm-meta.md) of the *serialization
+   schema*
+2. `keyField` determines which field in the **serialization schema** is
+   used for considering whether events belong to the same sequence (for
+   example a session)
+3. `keyLink` *links* a single event to an encryption key
+4. The value for `keyField` is determined by you
+5. The value for `keyLink` is determined by STRM Privacy
+6. The value of `keyField` is used when creating a `keyLink`
+
+As you can see, the two have a strong relationship, but they are
+different.
+
+
+## Data Contract states {#states}
+
+As data contracts are fundamental to describe data and give insight into what data goes where, state management is
+important.
+
+It's not safe to allow modifications or removals on data contracts as it might impact either
 the workings of the streams, but it also hinders traceability.
 
-Both *schemas* and **event contracts** can be in one of 3 states. See the image below:
+Data contracts can be in one of three states. See the image below:
 
-<img class="schema-event-contract-states" alt="Schema and Event Contract states" src="/img/entity_states.svg"/>
-
-See below a description of each state.
+<img class="data-contract-states" alt="Data Contract states" src="/img/entity_states.svg"/>
 
 ### DRAFT
 
-This entity is still in development and can thus still be modified.
-It has not yet been accepted by someone responsible. And because of this, it cannot yet be used for processing events.
+This entity is still in development and thus can still be modified.
+It has not yet been accepted yet, and because of this, it cannot yet be used for processing events.
 
 ### ACTIVE
 
-This entity has been accepted and from now on, its properties are frozen; it cannot be modified anymore.
-From now on, it can be used for processing events.
+This entity has been accepted and from now on, its properties are frozen; it cannot be modified anymore (except for the
+metadata). From now on, it can be used for processing events.
 
 ### ARCHIVED
 
@@ -210,27 +321,3 @@ It can also still be viewed, for example for traceability purposes. If needed, i
 At the moment, entities can be archived and reactivated freely, so in a way, archival is just a convenience.
 This may change in the future though.
 :::
-
-## Difference between `keyField` and `keyLink` {#difference-keyfield-keylink}
-
-It is important to note the difference between `keyField` and `keyLink`,
-as they are related to each other, but are fundamentally different:
-
-1. `keyField` is part of the **event contract** and `keyLink` is part
-   of the [strmMeta section](/02-concepts/02-data-contracts/02-strm-meta.md) of the *serialization
-   schema*
-
-2. `keyField` determines which field in the **serialization schema** is
-   used for considering whether events belong to the same sequence (for
-   example a session)
-
-3. `keyLink` *links* a single event to an encryption key
-
-4. The value for `keyField` is determined by you
-
-5. The value for `keyLink` is determined by STRM Privacy
-
-6. The value of `keyField` is used when creating a `keyLink`
-
-As you can see, the two have a strong relationship, but they are
-different.

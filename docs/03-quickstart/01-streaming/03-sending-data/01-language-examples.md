@@ -5,10 +5,10 @@ hide_table_of_contents: false
 
 import CodeBlock from '@theme/CodeBlock';
 import {ExternalCodeBlock} from '/full-example.js';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Complete examples
-
-import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
 This section helps you to set up a stream and start sending data to STRM Privacy.
 
