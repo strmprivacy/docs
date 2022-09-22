@@ -112,7 +112,9 @@ referred to by 0 or more event contracts.
 
 -   `keyField`: the name of the field in the serialization schema that is used to
     "tie" events together. Typically, this is what determines an end
-    user (i.e. your users) session.  
+    user (i.e. your users) session. If multiple events contain the same value for
+    the field that was specified as `keyField`, then the same encryption key and `keyLink`
+    will be used to encrypt the PII data.
 
 -   `piiFields`: the fields whose content in an event should be considered sensitive
     (i.e. personally identifiable information), and should be encrypted
@@ -175,7 +177,7 @@ At the moment, entities can be archived and reactivated freely, so in a way, arc
 This may change in the future though.
 :::
 
-## Difference between `keyField` and `keyLink`
+## Difference between `keyField` and `keyLink` {#difference-keyfield-keylink}
 
 It is important to note the difference between `keyField` and `keyLink`,
 as they are related to each other, but are fundamentally different:

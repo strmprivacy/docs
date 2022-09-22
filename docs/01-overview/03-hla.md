@@ -9,7 +9,7 @@ This section shows a high level architecture of STRM Privacy. It shows
 how data is processed, before it is exposed to an application consuming
 the data.
 
-## Overview
+## Overview {#overview}
 
 When sending data or receiving data to/from STRM Privacy, your
 application must identify itself using client credentials. These

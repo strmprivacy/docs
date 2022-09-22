@@ -1,3 +1,11 @@
+---
+title: Batch versus Stream
+hide_table_of_contents: false
+---
+
+As data processing can be done in various ways, it is important to know the difference. This article covers
+the differences between Batch and Stream processing of data.
+
 # Batch versus Stream
 
 Batch processing, as the name implies, works by processing data in
@@ -5,16 +13,17 @@ Batch processing, as the name implies, works by processing data in
 Very often these run at designated times, like some time during the
 night. While easy to reason about and relatively simple to implement,
 this automatically implies that there will be (potentially big) delays.
-The opposite is stream processing, where every piece of data (which we
-call an event) is processed directly, minimizing delays.
+The opposite is stream processing, where every piece of data (which is
+called an event in STRM Privacy) is processed directly, minimizing delays.
 
 Both approaches have upsides and downsides and these are also dependent
 on the context. If the context is an existing, maybe complex, batch
 flow, it often makes little sense to add a streaming component, unless
 this is a first step towards a fully streaming process.
 
-STRM provides Batch as well as Streaming support on both the input and
-output side, to support fully streamed pipelines, batch pipelines and a
+STRM Privacy provides [Batch](/03-quickstart/02-batch/index.md) as well
+as [Streaming](/03-quickstart/01-streaming/index.md)
+support on both the input and output side, to support fully streamed pipelines, batch pipelines and a
 hybrid where data is streamed to STRM and batched downstream.
 
 See the table below for an overview:
@@ -44,35 +53,34 @@ See the table below for an overview:
 </tbody>
 </table>
 
-Currently, we don’t have a way to have batch input combined with
-streaming output, but we’re planning to have this in the future.
+:::note
+Currently, batch input to streaming output is not (yet) supported. Please [contact us](/05-contact/index.md) if you are
+interested in this.
+:::
 
-## Batch processing by STRM
+## Batch processing
 
 Batch Processing is currently supported by Batch Jobs. A Batch Job has
 the same features as streams:
 
--   It encrypts data, based on what is declared PII.
+- It encrypts data, based on what is declared PII.
+- It can decrypt data, based on consent.
+- It can mask data.
+- It can export data to a cloud bucket.
+- It can export the generated encryption keys to blob storage.
 
--   It can decrypt data, based on consent.
+## Stream processing
 
--   It can mask data.
-
--   It can export data to a cloud bucket.
-
--   It can export the generated encryption keys to a cloud bucket.
-
-## Stream processing by STRM
-
-Historically, STRM has been all about privacy-safe streaming data. This
+Historically, STRM Privacy has been all about privacy-safe _streaming_ data. This
 can be seen in the concepts of an input stream and derived streams.
-Events sent to STRM (typically using one of our drivers) are encrypted
+Events sent to STRM Privacy are encrypted
 and the data is put in a Kafka topic. This is then immediately processed
 (ignoring [Kafka
-Batching](https://docs.confluent.io/platform/current/installation/configuration/producer-configs.html#producerconfigs_batch.size),
+Batching](https://docs.confluent.io/platform/current/installation/configuration/producer-configs.html#producerconfigs_batch.size)
+,
 which we use as an optimization) and the data (encrypted or derived
-data) is available for consumers in near-real-time.
+data) is available for consumers in near real-time.
 
 For streaming consumption of data, we currently provide a way to connect
-a Kafka Consumer to our streams, which allows downstream streaming
-processing. We are planning for more integrations.
+a Kafka Consumer to your streams, which allows downstream stream
+processing.
