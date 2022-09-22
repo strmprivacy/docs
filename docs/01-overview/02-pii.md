@@ -23,7 +23,7 @@ data*](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679
 
 This breaks down into the following:
 - _Personal Data_: any information, directly or indirectly, that can be traced back to an individual.
-- [_Data Subject_](/02-concepts/02-data-contracts/05-data-subjects.md): the person to whom the data belongs and who should determine what happens with the data.
+- [_Data Subject_](/02-concepts/02-data-contracts/04-data-subjects.md): the person to whom the data belongs and who should determine what happens with the data.
 
 # Processing of data
 

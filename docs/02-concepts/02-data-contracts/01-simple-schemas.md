@@ -5,7 +5,7 @@ hide_table_of_contents: false
 
 # Simple Schemas
 
-A Simple Schema defines the fields outside of the [strmMeta section](/02-concepts/02-data-contracts/03-strm-meta.md) in a simple format, and translates this to an
+A Simple Schema defines the fields outside of the [strmMeta section](/02-concepts/02-data-contracts/02-strm-meta.md) in a simple format, and translates this to an
 actual [Avro `avsc` definition](https://avro.apache.org/docs/current/spec.html#schemas).
 
 In the [quickstart Simple Schema example](/03-quickstart/03-data-contracts/01-simple-schema.md) we have a hands-on interaction

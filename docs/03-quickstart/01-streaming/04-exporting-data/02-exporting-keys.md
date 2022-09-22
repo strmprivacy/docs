@@ -161,7 +161,7 @@ aws s3 cp \
     events, and a `tinkKey` attribute that contains the serialized Tink
     key. The format is described in [this protobuf file](https://github.com/google/tink/blob/master/proto/tink.proto).
     The `keyLink` value is the same value you’ll find in the
-    [`strmMeta/keyLink`](/02-concepts/02-data-contracts/03-strm-meta.md) field of each event.
+    [`strmMeta/keyLink`](/02-concepts/02-data-contracts/02-strm-meta.md) field of each event.
 3. the key link that exists on all STRM Privacy events.
 4. the actual AES-256 encryption key.
 

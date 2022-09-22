@@ -1,21 +1,46 @@
 ---
-title: Schemas and Contracts
+title: Data Contracts
 hide_table_of_contents: false
 ---
 
-# Schemas and contracts
+To act as a gatekeeper and maintain high quality data, STRM Privacy enforces Data Contracts on data that is processed.
+This article covers what a Data Contract is, and how it is used by STRM Privacy.
 
-All events sent to STRM Privacy adhere to the following:
+# The Data Contract
 
-*Serialization Schema*  
-This is the blueprint of the data that is sent, hence, this is about the
-**shape** of the data.
+The Data Contract defines:
 
-*Event Contract*  
-This defines the **content** that is sent, and is composed of the
-verifications that should be done for the received content.
+- **Schema**. This is the blueprint of the data that is sent, hence, this is about the
+  **shape** of the data.
 
-## Serialization Schemas
+- **Contract details**. This defines the **content** that is sent, and is composed of the
+  verifications that should be done for the received content.
+
+A Data Contract is composed
+of [various elements](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L711)
+,
+of which a few are of key importance:
+
+- [`schema`](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L721):
+  the schema used when serializing and deserializing data.
+- [`key_field`](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L717):
+  the name of the data field used for determining which events [belong to the same sequence](#contracts).
+- [`pii_fields`](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L718):
+  a map of field names to integers specifying the fields that should be considered as PII data and the
+  consent level that it belongs to.
+
+Other elements are discussed later in this article, but the three mentioned above are of crucial importance for STRM
+Privacy to apply the Privacy Algorithm.
+
+:::info
+In the past, STRM Privacy offered Event Contracts. They share similarity with the current Data Contract, however,
+they differ from Data Contracts in sense that Event Contracts were separated from the Schema, which is not the case
+for Data Contracts. Data Contracts are tightly coupled with the Schema, which is why the Schema is embedded in the Data
+Contract.
+Event Contracts will be removed in a future API version.
+:::
+
+## Schema
 
 In order to guarantee the integrity of the data that is sent to STRM
 Privacy, all events must conform to a *serialization schema*. These
@@ -26,14 +51,19 @@ The serialization schema defines how an event is turned into bytes and
 vice versa.
 
 Currently, STRM Privacy supports [Apache Avro](http://avro.apache.org/)
-and [Json Schema](https://json-schema.org/), however other serialization
+and [JSON Schema](https://json-schema.org/) and [Simple Schema](#simpleschema), however other serialization
 formats may be added in the future.
 
 Each serialization schema **must include** a section with STRM Privacy
-meta information. See [the strmMeta documentation](/02-concepts/02-data-contracts/03-strm-meta.md) for
+meta information. See [the `strmMeta` documentation](/02-concepts/02-data-contracts/02-strm-meta.md) for
 details.
 
-### Simple Schemas
+:::note
+If another serialization format, such as Protobuf is a requirement for you,
+please [contact us](/05-contact/index.md).
+:::
+
+### Simple Schemas {#simpleschema}
 
 *Simple Schemas* are a STRM Privacy defined format that is used to
 create compatible Avro schemas without needing to understand the
@@ -45,17 +75,17 @@ prefer these over manual Avro or Json-Schema creation.
 
 Simple Schema *can not be used* in the following cases:
 
--   you already have a Kafka infrastructure with Avro or Json-Schema
-    integration (such as [Confluent](https://confluent.io)).
+- you already have a Kafka infrastructure with Avro or Json-Schema
+  integration (such as [Confluent](https://confluent.io)).
 
--   you aim to use Avro or Json-Schema schemas with complexities that
-    are outside the scope of Simple Schema. These complexities are
-    mostly the `union` types. These Union types cannot be defined as PII
-    or masked fields in any case.
+- you aim to use Avro or Json-Schema schemas with complexities that
+  are outside the scope of Simple Schema. These complexities are
+  mostly the `union` types. These Union types cannot be defined as PII
+  or masked fields in any case.
 
-See [here](/02-concepts/02-data-contracts/02-simple-schemas.md) for details on how Simple Schema works.
+See [here](/02-concepts/02-data-contracts/01-simple-schemas.md) for details on how Simple Schema works.
 
-## Event Contracts {#contracts}
+## Contracts {#contracts}
 
 In order to guarantee that data that is sent to STRM Privacy adheres to
 the rules defined by your organization, events must conform to an *event
@@ -100,28 +130,28 @@ referred to by 0 or more event contracts.
 }
 ```
 
--   `ref`: the reference to the event contract. In this case equal to the
-    schema, but this is not necessary.
+- `ref`: the reference to the event contract. In this case equal to the
+  schema, but this is not necessary.
 
--   `schemaRef`: the serialization schema reference, which includes the organization
-    name, schema name and schema version.
+- `schemaRef`: the serialization schema reference, which includes the organization
+  name, schema name and schema version.
 
--   `isPublic`: a schema or event contract can be public, in which case all STRM
-    Privacy customers can use it, or it can belong to a certain
-    organization, and require organization credentials to use it.
+- `isPublic`: a schema or event contract can be public, in which case all STRM
+  Privacy customers can use it, or it can belong to a certain
+  organization, and require organization credentials to use it.
 
--   `keyField`: the name of the field in the serialization schema that is used to
-    "tie" events together. Typically, this is what determines an end
-    user (i.e. your users) session. If multiple events contain the same value for
-    the field that was specified as `keyField`, then the same encryption key and `keyLink`
-    will be used to encrypt the PII data.
+- `keyField`: the name of the field in the serialization schema that is used to
+  "tie" events together. Typically, this is what determines an end
+  user (i.e. your users) session. If multiple events contain the same value for
+  the field that was specified as `keyField`, then the same encryption key and `keyLink`
+  will be used to encrypt the PII data.
 
--   `piiFields`: the fields whose content in an event should be considered sensitive
-    (i.e. personally identifiable information), and should be encrypted
-    by STRM Privacy.
+- `piiFields`: the fields whose content in an event should be considered sensitive
+  (i.e. personally identifiable information), and should be encrypted
+  by STRM Privacy.
 
--   `validations`: the validations that should be performed on the content of specific
-    fields in an event.
+- `validations`: the validations that should be performed on the content of specific
+  fields in an event.
 
 These contracts are very versatile to use, and a use case that STRM
 Privacy foresees, is that a single serialization schema could
@@ -146,6 +176,7 @@ teams. An example of a validation can be seen (and tried) in
 [Sending and receiving an event by hand](/03-quickstart/01-streaming/03-sending-data/02-sending-curl.md)
 
 ## Schema and Event Contract states
+
 As both *schemas* and **event contracts** are fundamental to describe data, give insight into what data goes where,
 but are also used for describing actual events that flow through the system, state management is important.
 
@@ -159,14 +190,17 @@ Both *schemas* and **event contracts** can be in one of 3 states. See the image 
 See below a description of each state.
 
 ### DRAFT
+
 This entity is still in development and can thus still be modified.
 It has not yet been accepted by someone responsible. And because of this, it cannot yet be used for processing events.
 
 ### ACTIVE
+
 This entity has been accepted and from now on, its properties are frozen; it cannot be modified anymore.
 From now on, it can be used for processing events.
 
 ### ARCHIVED
+
 This entity has reached its end-of-life state and is not used anymore.
 It cannot be used for processing *new* events, but since it is not physically deleted, it can still be referenced,
 for example by in-flight events.
@@ -182,21 +216,21 @@ This may change in the future though.
 It is important to note the difference between `keyField` and `keyLink`,
 as they are related to each other, but are fundamentally different:
 
-1.  `keyField` is part of the **event contract** and `keyLink` is part
-    of the [strmMeta section](/02-concepts/02-data-contracts/03-strm-meta.md) of the *serialization
-    schema*
+1. `keyField` is part of the **event contract** and `keyLink` is part
+   of the [strmMeta section](/02-concepts/02-data-contracts/02-strm-meta.md) of the *serialization
+   schema*
 
-2.  `keyField` determines which field in the **serialization schema** is
-    used for considering whether events belong to the same sequence (for
-    example a session)
+2. `keyField` determines which field in the **serialization schema** is
+   used for considering whether events belong to the same sequence (for
+   example a session)
 
-3.  `keyLink` *links* a single event to an encryption key
+3. `keyLink` *links* a single event to an encryption key
 
-4.  The value for `keyField` is determined by you
+4. The value for `keyField` is determined by you
 
-5.  The value for `keyLink` is determined by STRM Privacy
+5. The value for `keyLink` is determined by STRM Privacy
 
-6.  The value of `keyField` is used when creating a `keyLink`
+6. The value of `keyField` is used when creating a `keyLink`
 
 As you can see, the two have a strong relationship, but they are
 different.

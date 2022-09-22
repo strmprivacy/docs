@@ -6,7 +6,7 @@ hide_table_of_contents: false
 [//]: # (TODO write this page)
 
 STRM Privacy aims to protect [PII](/01-overview/02-pii.md) data, by encrypting content specified in event fields,
-that are marked as sensitive in the [event contract](/02-concepts/02-data-contracts/01-schemas-and-contracts.md).
+that are marked as sensitive in the [event contract](/02-concepts/02-data-contracts/index.md).
 
 ## Privacy Algorithm {#algorithm}
 
@@ -16,7 +16,7 @@ The process of encrypting PII data according to the time-based Privacy Algorithm
 
 1. An event is sent to the STRM Privacy Event Gateway
 2. An HTTP Header specifies the reference to the schema that was used to serialize the message. The schema is retrieved
-   from the Data Contracts API and the message can be deserialized. Next, the [`strmMeta`](02-concepts/02-data-contracts/03-strm-meta.md)
+   from the Data Contracts API and the message can be deserialized. Next, the [`strmMeta`](02-concepts/02-data-contracts/02-strm-meta.md)
    section is extracted from the event data.
 3. The reference to the Data Contract that should be applied to this event is extracted from `strmMeta`.
 4. The Data Contract is retrieved and the names of the PII fields and the name of the `keyField` are extracted from the Data Contract.
@@ -27,7 +27,7 @@ The process of encrypting PII data according to the time-based Privacy Algorithm
 
 :::warning
 As can be seen, the `keyLink` and the `keyField` are closely related, but different.
-Read more about the [differences here](/02-concepts/02-data-contracts/01-schemas-and-contracts.md#difference-keyfield-keylink).
+Read more about the [differences here](/02-concepts/02-data-contracts/index.md#difference-keyfield-keylink).
 :::
 
 :::info

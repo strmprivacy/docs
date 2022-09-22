@@ -64,8 +64,9 @@ exist, and it will also end up in your persistent storage.
 
 The `strmMeta` definition contains the following fields
 
-eventContractRef  
-the reference to the [event contract](/02-concepts/02-data-contracts/01-schemas-and-contracts.md) that
+[//]: # (TODO add note regarding legacy, this is the data contract ref)
+eventContractRef
+the reference to the [event contract](/02-concepts/02-data-contracts/index.md) that
 governs the privacy and validation rules. The sending application **must
 set this field** to a (handle/name/version) reference of an event
 contract that refers to this serialization schema. 

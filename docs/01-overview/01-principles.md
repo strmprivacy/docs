@@ -14,7 +14,7 @@ has been founded are discussed in this section.
 - **PII Data Compliance**. Handle processing of data that contain [personally
   identifiable information](./02-pii.md) in a privacy regulations compliant way.
 - **Low Event Data Quality**. Improve the quality of event data by separating the rules that govern
-  the [shape and content of the event data](/02-concepts/02-data-contracts/01-schemas-and-contracts.md)
+  the [shape and content of the event data](/02-concepts/02-data-contracts/index.md)
   from the teams that generate the data. So in essence, the Data Scientists and
   Data Analysts determine the rules, and not the front-end teams where the
   data originates.
@@ -44,7 +44,7 @@ so that those entities that produce event data will receive *immediate* feedback
 
 Events in STRM Privacy are strictly defined corresponding to a shape and content restrictions.
 Events that do not conform are rejected. For this, STRM Privacy uses
-[Schemas and Contracts](/02-concepts/02-data-contracts/01-schemas-and-contracts.md) to which all events
+[Schemas and Contracts](/02-concepts/02-data-contracts/index.md) to which all events
 must conform.
 
 ### 2. Events shall be privacy safe
