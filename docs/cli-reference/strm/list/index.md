@@ -28,10 +28,11 @@ List entities
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.15.1
+* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.16.0
 * [strm list batch-exporters](/cli-reference/strm/list/batch-exporters.md)	 - List Batch exporters
 * [strm list batch-jobs](/cli-reference/strm/list/batch-jobs.md)	 - List Batch Jobs
 * [strm list data-connectors](/cli-reference/strm/list/data-connectors.md)	 - List Data Connectors
+* [strm list data-contracts](/cli-reference/strm/list/data-contracts.md)	 - List Data Contracts
 * [strm list data-subject-keylinks](/cli-reference/strm/list/data-subject-keylinks.md)	 - List data subjects keylinks
 * [strm list data-subjects](/cli-reference/strm/list/data-subjects.md)	 - List a page of data subjects
 * [strm list event-contracts](/cli-reference/strm/list/event-contracts.md)	 - List Event Contracts

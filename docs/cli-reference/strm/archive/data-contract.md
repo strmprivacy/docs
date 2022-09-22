@@ -1,15 +1,23 @@
 ---
-title: "manage"
+title: "data-contract"
 hide_title: true
 ---
-## strm manage
+## strm archive data-contract
 
-Manage a project or organization
+Set the state of an Data Contract to ARCHIVED
+
+### Synopsis
+
+### Usage
+
+```
+strm archive data-contract (handle/name/version) [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for manage
+  -h, --help   help for data-contract
 ```
 
 ### Options inherited from parent commands
@@ -27,7 +35,5 @@ Manage a project or organization
 
 ### SEE ALSO
 
-* [strm](/cli-reference/strm/index.md)	 - STRM Privacy CLI 2.16.0
-* [strm manage project](/cli-reference/strm/manage/project.md)	 - Manage a project: add or remove members. Defaults to active project
-* [strm manage user-roles](/cli-reference/strm/manage/user-roles.md)	 - Change user roles.
+* [strm archive](/cli-reference/strm/archive/index.md)	 - Set the state of an entity to ARCHIVED
 
