@@ -38,7 +38,7 @@ strm create data-connector azure-blob-storage azure strmprivacy-export-demo \
   --client-secret "<the service principal's secret>"
 ```
 
-```json
+```json showLineNumbers
 {
   "ref": {
     "name": "azure",

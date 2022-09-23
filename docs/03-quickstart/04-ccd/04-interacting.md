@@ -132,9 +132,10 @@ sort of includes your computer within the Kubernetes dns.
     Connected to context kubernetes-admin@...
 ```
 
-    strm list streams
 
 ```
+$ strm list streams
+
  STREAM   DERIVED   CONSENT LEVEL TYPE   CONSENT LEVELS   ENABLED   KAFKA TOPIC
 
  test     false                          []               true      stream-e379c8e5-0e25-4b95-b1f4-c5ceb20a233f

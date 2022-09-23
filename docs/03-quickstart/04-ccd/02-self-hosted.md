@@ -19,7 +19,7 @@ functionality.
 
 The `values.yaml` file should be similar to this:
 
-```yaml
+```yaml showLineNumbers
   registry:
     imagePullSecret: "ewogIC...."
 
@@ -46,14 +46,14 @@ Add the [gcs plugin][helm-gcs] to helm `helm plugin install https://github.com/h
 
 First, add the helm repo:
 
-```
-helm repo add strmrepo gs://stream-machine-production-helm-chart/data-plane
+```bash
+$ helm repo add strmrepo gs://stream-machine-production-helm-chart/data-plane
 ```
 
 Install _all_ the STRM components inside the `strmprivacy` namespace.
-
-    helm install strmprivacy strmrepo/strm --values values.yaml
-
+```bash
+$ helm install strmprivacy strmrepo/strm --values values.yaml
+```
 `kubectl get pods --watch` or `k9s` provides nice feedback to see how the
 installation is progressing. We see that some supporting infrastructure like Redis, Postgresql and Kafka are also
 installed. The creation of these components can be disabled, in which case configuration to the actual components will

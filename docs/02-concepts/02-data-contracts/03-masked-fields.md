@@ -10,33 +10,44 @@ streams in order to hide their actual plaintext value.
 
 Imagine you have a privacy stream in your company that contains a
 customer id. This *personal data* field will be encrypted in the privacy
-stream, but in case the data owner (the customer) has given permission,
+stream, but in case the data subject has given permission,
 teams (or algorithms) can be used for instance to give personalized
 recommendations.
 
 Without the masking mechanism this would mean that for a certain
-customer that has given full permissions for instance the personal
+data subject that has given full permissions, for instance the personal
 history would be fully visible within the recommendations team or
-models. *The data scientist would be able to look up someones personal
+models. *The data scientist would be able to look up someone's personal
 history, when having access to the company customer database*.
 
-We can do better!
-
-In order to hide the actual customer id, we created a *masked field*
-mechanism. This mechanism applies a masking function [^1] on the
+In order to hide the actual customer id, you can use the concept of *masked fields*.
+This mechanism applies a masking function [^1] on the
 decrypted field value, before putting it into the derived stream. This
 masking function is *deterministic* so a decrypted field value will
 always map to the same masked field value. The same data scientist and
 the same recommender model can work with the customer data *just as
 effectively*, but without being able to link this to a person.
 
+## Mask seed
+
+The masking uses a standard hashing algorithm [^2]. Assuming someone has
+access to the customer database it would be easy to generate hash values
+for all customer ids, and create a so-called [rainbow
+table](https://en.wikipedia.org/wiki/Rainbow_table). By adding a *seed*
+to the unmasked value, we make this mechanism unfeasible. The
+`mask-seed` is given during creation of a masked stream.
+
+:::note
+The mask seed is hidden when listing or getting streams.
+:::
+
 ## An example
 
-I’ve created a source stream `example` and two derived streams:
-`example-3` and `example-M3`. I’m running
-`strm simulate random-events example` to generate some data.
+In the following example, a source stream `example` and two derived streams are created:
+`example-3` and `example-M3`. In order to generate some data, you can execute
+`strm simulate random-events example` to simulate random data and send it to the input stream.
 
-```bash
+```bash showLineNumbers
 strm create stream example
 strm create stream --derived-from example \ 
   --levels 3 --masked-fields \
@@ -45,22 +56,19 @@ strm create stream --derived-from example \
 strm create stream --derived-from example --levels 3 
 ```
 
--   creates stream named `example-M3` because we didn’t provide an
-    explicit derived stream name.
-
--   for events with contract strmprivacy/example/1.3.0 mask fields
+-   Creates stream named `example-M3` because no
+    explicit derived stream name was specified.
+-   For events with data contract `strmprivacy/example/1.3.0` mask fields
     `uniqueIdentifier`, `notSensitiveValue`, `someSensitiveValue` and
     `consistentValue`.
+-   The `mask-seed` attribute is explained in the previous section.
+-   Creates stream named `example-3`
 
--   The `mask-seed` attribute is explained below.
+### Events in the encrypted privacy stream
 
--   creates stream named `example-3`
+Below, a single event in the privacy stream `example` can be seen (omitting some less significant fields for brevity here):
 
-### the privacy stream events
-
-One event in the privacy stream `example` [^2]
-
-```json
+```json showLineNumbers
 {
   "strmMeta": {
     "eventContractRef": "strmprivacy/example/1.3.0",
@@ -76,20 +84,20 @@ One event in the privacy stream `example` [^2]
 }
 ```
 
-We can generally recognize the encrypted values by looking at the
+Encrypted values can be generally recognized by looking at the
 trailing `=` character. The fields `uniqueIdentifier`, `consistentValue`
 and `someSensitiveValue` are defined to be personal data through the
 event contract.
 
-### the derived stream events with no masking
+### Events in the derived stream without masking
 
-You can see in the event from the stream `example-3` that all PII fields
-have been decrypted. We see their original *plaintext* value. If one of
+In events from stream `example-3`, all PII fields
+have been decrypted. Their original *plaintext* value is shown here. If one of
 these contained a customer id, every data scientist with access to this
 stream *and* access to the company customer database would be able to
-link the history in this stream to a *person*!
+link the history in this stream to an individual *person*.
 
-```json
+```json showLineNumbers
 {
   "strmMeta": {
     "eventContractRef": "strmprivacy/example/1.3.0",
@@ -105,22 +113,20 @@ link the history in this stream to a *person*!
 }
 ```
 
--   values are from the simulator that is available in the cli tool.
+### Events in the derived stream **with** masking
 
-### the derived stream events **with** masking
-
-Assuming we want to train a recommendation engine of a customer with
-full permissions, it would still be great if the actual customer id *was
+Assuming that a recommendation engine is to be trained on data of a data subject
+that has provided full consent, it would still be great if the actual customer id *is
 not being used*.
 
-We can do this with **masked fields**. The stream with masked fields
+This can be done using **masked fields**. The stream with masked fields
 contains values that are always the same for the same source value. In
 this example, the plaintext `uniqueIdentifier` has the value `unique-5`
 with a corresponding masked value of `1083e8169d7138e990cc30095578452`.
 
-Event from the `example-M3` stream
+Below, a single event from the `example-M3` stream can be seen:
 
-```json
+```json showLineNumbers
 {
   "strmMeta": {
     "eventContractRef": "strmprivacy/example/1.3.0",
@@ -136,8 +142,8 @@ Event from the `example-M3` stream
 }
 ```
 
-You can see we even masked the `notSensitiveValue` attribute, that no
-longer contains the "not-sensitive-6" value. You could use this for
+You can see even the `notSensitiveValue` attribute has been masked, that no
+longer contains the `"not-sensitive-6"` value. You could use this for
 instance to provide downstream data consumers maybe outside your
 company with values that are not personal, but that you still want to
 keep inside your company.
@@ -148,18 +154,5 @@ You could train a personalized model on a derived masked stream, and
 then you could *recommend* on the same stream. This way you could have a
 very personalized model, without ever exposing sensitive personal data.
 
-## The seed.
-
-The masking uses a standard hashing algorithm [^3]. Assuming someone has
-access to the customer database it would be easy to generate hash values
-for all customer id’s, a so-called [rainbow
-table](https://en.wikipedia.org/wiki/Rainbow_table). By adding a *seed*
-to the unmasked value, we make this mechanism unfeasible. The
-`mask-seed` is given during creation of a masked stream.
-
-NOTE: the mask seed is hidden on readback of stream definitions from the
-database.
-
 [^1]: technically a hashing function
-[^2]: I’ve removed some less interesting attributes
-[^3]: currently MurmurHash3
+[^2]: currently MurmurHash3

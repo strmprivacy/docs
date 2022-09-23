@@ -64,7 +64,7 @@ With the data connection and contract defined, we can now define the batch job i
 In this early release this is done by providing a config JSON through our CLI:
 
 ```bash
-❯ strm create batch-job --help
+$ strm create batch-job --help
 Create a Batch Job
 
 Usage:
@@ -95,7 +95,7 @@ In the definition file you need to set these three values:
 About the default consent: It's safest to keep this to int 0. It just means the data was collected under the most basic
 consent or legal ground you use.
 
-```json5
+```json5 showLineNumbers
 {
   // partial excerpt
   "consent": {
@@ -166,7 +166,7 @@ before. Finally, the snippet also shows the `masked_fields`. Within the event-co
 `"databert-handle/batch_job_public/1.0.1"{ ... }` you can find the column names or `field_patterns` of the fields to
 mask.
 
-```json
+```json showLineNumbers
 {
   // partial excerpt
   "derived_data": [

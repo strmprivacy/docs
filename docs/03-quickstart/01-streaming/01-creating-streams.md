@@ -10,8 +10,8 @@ page on how to authenticate.
 ## Creating a stream
 
 A stream can be created as follows:
-```json
-strm create stream demo -o json
+```json showLineNumbers
+$ strm create stream demo -o json
 {
   "ref": {
     "name": "demo",
@@ -66,7 +66,7 @@ $ strm list streams
 
 To show more info, use the `--output` flag, and try out different
 formats, such as `json`.
-```json
+```json showLineNumbers
 $ strm list streams --output json
 {
     "streams": [
@@ -119,7 +119,7 @@ Flags:
 
 So let’s create one, with two consent levels, and a *granular* consent
 level type interpretation.
-```json
+```json showLineNumbers
 $ strm create stream --derived-from demo --levels 0,1 --consent-type GRANULAR -o json
 {
   "stream": {
@@ -157,7 +157,7 @@ with just one consent level, and it will accept all events that have at
 least that consent level. It will decrypt PII fields up to and including
 the decrypted stream consent level. *Cumulative* is the default for
 creating derived streams.
-```json
+```json showLineNumbers
 $ strm delete stream demo-0-1 -o json
 {
   "streamTree": {
@@ -177,8 +177,8 @@ $ strm delete stream demo-0-1 -o json
 
 Note the `streamTree` field might also contain all the items derived
 from a source stream, like exporters.
-```json
-$strm create stream --derived-from demo --levels 1 -o json
+```json showLineNumbers
+$ strm create stream --derived-from demo --levels 1 -o json
 {
   "ref": { "name": "demo-1", "projectId": "30fcd008-9696-...." },
   "consentLevels": [ 1 ],
@@ -196,7 +196,7 @@ events as `demo-0-1`
 
 Delete a stream, all its dependents and all its data (that hasn’t been
 exported yet)
-```json
+```json showLineNumbers
 $ strm delete stream demo --recursive -o json
 {
   "streamTree": {

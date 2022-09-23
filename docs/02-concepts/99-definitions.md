@@ -3,6 +3,10 @@ title: Definitions
 hide_table_of_contents: false
 ---
 
+- Field masking / masked fields
+- Input / Source / Encrypted stream
+- Derived stream
+
 # Commonly used definitions
 
 GDPR defines an official set of definitions, which you can find on the

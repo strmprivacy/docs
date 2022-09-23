@@ -35,7 +35,7 @@ the command below:
 strm create data-connector s3 my-s3 strmprivacy-export-demo --credentials-file=s3.json
 ```
 
-```json
+```json showLineNumbers
 {
   "ref": {
     "name": "my-s3",

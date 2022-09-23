@@ -84,8 +84,8 @@ Flags:
 We’re looking for the `--export-keys` option. Provided key exporting is
 enabled for your account, you can do the following:
 
-```bash
-strm create batch-exporter demo --export-keys \
+```bash showLineNumbers
+$ strm create batch-exporter demo --export-keys \
   --interval 30 --path-prefix demo-keys --data-connector demo
 {
   "ref": { #(1)

@@ -67,7 +67,7 @@ tool](https://github.com/confluentinc/avro-random-generator) for the
 
 **demo.json**
 
-```json
+```json showLineNumbers
 {
   "strmMeta": {
     "eventContractRef": "strmprivacy/clickstream/1.0.0",
@@ -151,7 +151,7 @@ curl -v https://events.strmprivacy.io/event \
 
 First, create a decrypted stream:
 
-```bash
+```bash showLineNumbers
 strm create stream --derived-from by-hand --levels 2 --save
 {
   "ref": { "name": "by-hand-2", "projectId": "30fcd008-9696-...." },
@@ -171,7 +171,7 @@ strm create stream --derived-from by-hand --levels 2 --save
 Send an event as describe above with curl or httpie. Observe the
 decrypted attributes in the events received from the web-socket.
 
-```bash
+```bash showLineNumbers
 $ strm listen web-socket by-hand-2
 
 {

@@ -21,7 +21,7 @@ for writing to the bucket.
 
 The contents should look something like:
 
-```json title=gcs.json
+```json title=gcs.json showLineNumbers
 {
   "type": "service_account",
   "project_id": "***",
@@ -35,6 +35,7 @@ The contents should look something like:
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/***.iam.gserviceaccount.com"
 }
 ```
+
 ### Create the data connector {#create-data-connector}
 
 You can create the data connector with the following command, pointing to the
@@ -44,7 +45,7 @@ credentials file:
 strm create data-connector gcs my-gcs strmprivacy-export-demo --credentials-file=gcs.json
 ```
 
-```json
+```json showLineNumbers
 {
   "ref": {
     "name": "my-gcs",

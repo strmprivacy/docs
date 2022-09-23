@@ -29,8 +29,8 @@ provide the name of the existing data connector you want to use. Here
 we also provide a path prefix `events`, meaning that the batch exporter
 will prepend file names with this prefix.
 
-```bash
-strm create batch-exporter demo --data-connector s3 --path-prefix events
+```bash showLineNumbers
+$ strm create batch-exporter demo --data-connector s3 --path-prefix events
 {
   "ref": { #(1)
     "name": "s3-demo" ,
@@ -90,7 +90,7 @@ $ aws s3 cp s3://strmprivacy-export-demo/encrypted-events/2021-03-26T09:56:30-st
 
 Output:
 
-```json
+```json showLineNumbers
 {
   "strmMeta": {
     "schemaId": "clickstream",

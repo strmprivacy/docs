@@ -83,7 +83,7 @@ In the little sample below, Trivial identities have been added for the various c
 for
 every one of them, but they must be defined separately.
 
-```
+```yaml showLineNumbers
 components:
   eventGateway:
     configuration:
@@ -163,7 +163,7 @@ lang="yaml"
 Modify the `client.props` section to use your credentials (the truststore password and the principal username/password
 pair)
 
-```
+```properties showLineNumbers
   client.props: |
     security.protocol=SASL_SSL
     ssl.truststore.location=/tmp/truststore/client.truststore.jks
@@ -179,11 +179,10 @@ make sure you keep the `sasl.jaas.config` on one line and don't forget the semi-
 You can now interact with the Kafka cluster from within the pod.
 
 ```
-kubectl apply -f kafka-tls-test-client
-# use tab-completion to get the name of the pod
-kubectl exec -ti kafka-tls-test-client-... -- bash
+$ kubectl apply -f kafka-tls-test-client
+$ kubectl exec -ti kafka-tls-test-client-... -- bash
 
-kafka-topics.sh --bootstrap-server <your-bootstrap-server> --list \
+$ kafka-topics.sh --bootstrap-server <your-bootstrap-server> --list \
      --command-config /tmp/client.props
 __consumer_offsets
 billing

@@ -11,8 +11,8 @@ Data connectors are a generic mechanism to interact with cloud storage.
 
 When you've created one or more, you can all of them via
 
-```bash
-strm list data-connectors -o json
+```bash showLineNumbers
+$ strm list data-connectors -o json
 {
   "dataConnectors": [
     {

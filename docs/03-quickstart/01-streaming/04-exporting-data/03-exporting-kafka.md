@@ -15,7 +15,7 @@ and one associated `kafka-user`. The user credentials can be used to
 access the topic.
 
 ```bash
-strm create kafka-exporter demo -o json
+$ strm create kafka-exporter demo -o json
 {
   "ref": {
     "name": "kafka-exporter-a9e83206-96e6-463c-8163-3f4493b3ddb7",
@@ -72,7 +72,7 @@ Kafka users are entities that can consume from a Kafka Cluster. They
 have credentials, and a Kafka topic that they can consume from.
 
 ```bash
-strm list kafka-users shared-export-demo -o json
+$ strm list kafka-users shared-export-demo -o json
 {
   "kafkaUsers": [
     {
@@ -118,7 +118,7 @@ Generate some data in a separate terminal:
     strm simulate random-events demo
 
 And run the consumer:
-```json
+```json showLineNumbers
 $ python consumer.py
 
 {'strmMeta': {

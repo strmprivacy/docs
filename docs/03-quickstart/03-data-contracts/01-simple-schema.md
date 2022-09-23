@@ -23,7 +23,7 @@ schema that I want to use.
 
 **[simple-schema.yaml](/files/simple-schema.yaml)**
 
-```yaml
+```yaml showLineNumbers
 name: Clicks
 nodes:
   - name: SessionId
@@ -43,7 +43,7 @@ nodes:
     nodes:
       - name: x
         type: INTEGER
-      - name: "y"  ## warning. Put quotes around y, or it is a boolean true
+      - name: "y"
         type: INTEGER
 ```
 
@@ -55,7 +55,7 @@ To install this schema into STRM Privacy [^1] we execute the following
 command:
 
 ```bash
-strm create schema \
+$ strm create schema \
   --definition=simple-schema.yaml  \ #(2)
   quickstart/demo/1.0.0 #(1)
 SCHEMA                  TYPE   PUBLIC   FINGERPRINT
@@ -68,8 +68,8 @@ quickstart/demo/1.0.0   AVRO   false    5923838772183777456
 
 We can read back the schema as follows:
 
-```json
-strm get schema quickstart/demo/1.0.0 -o json
+```json showLineNumbers
+$ strm get schema quickstart/demo/1.0.0 -o json
 {
     "schema": {
         "ref": {
@@ -134,7 +134,7 @@ If we’re interested in the actual Avro Schema we can make it a little
 more visible by using some `jq` magic.
 
 ```bash
-strm get schema quickstart/demo/1.0.0 -o json | jq -r .schema.definition | jq .fields[1]
+$ strm get schema quickstart/demo/1.0.0 -o json | jq -r .schema.definition | jq .fields[1]
 {
   "name": "SessionId",
   "type": [
@@ -156,7 +156,7 @@ attribute.
 :::
 
 ```bash
-strm get schema quickstart/demo/1.0.0 -o json | jq -r .schema.definition | jq .namespace
+$ strm get schema quickstart/demo/1.0.0 -o json | jq -r .schema.definition | jq .namespace
 "quickstart.demo.v1_0_0"
 ```
 
@@ -188,7 +188,7 @@ create.
 **[event-contract.json](/files/event-contract.json)**
 
 
-```json
+```json showLineNumbers
 {
   "keyField" : "SessionId",
   "piiFields" : { "UserName": 1 }
@@ -231,7 +231,7 @@ code to use the schema-code we just generated.
 
 **[sender.py](docs/03-quickstart/static/sender.py)**
 
-```python
+```python showLineNumbers
 ## This code is somewhat simplified. Use the link above to download the full version.
 
 ...
@@ -314,8 +314,8 @@ on our 204 empty response. This is annoying but no more.
 
 And receive some data on the input stream.
 
-```bash
-strm listen web-socket demo | jq 
+```bash showLineNumbers
+$ strm listen web-socket demo | jq 
 {
   "strmMeta": {
     "eventContractRef": "quickstart/demo-event-contract/2.0.0",
@@ -335,7 +335,6 @@ strm listen web-socket demo | jq
 
 -   we don’t need explicit credentials because we used the `--save`
     option to create the streams.
-
 -   `UserName` is encrypted.
 
 we receive the `avroName` attributes, and not our original `name`. A
@@ -350,7 +349,7 @@ We can also listen on the derived stream with consent level 1. We will
 receive only events with *at least* consent level 1 in them.
 
 ```bash
-strm listen web-socket demo-1
+$ strm listen web-socket demo-1
 
 {
   "strmMeta": {
@@ -376,7 +375,7 @@ strm listen web-socket demo-1
 A simple schema is defined via the following
 [Protobuf](https://developers.google.com/protocol-buffers) definitions.
 
-```
+```protobuf showLineNumbers
 message SimpleSchemaDefinition {
   string name #(1)
   string avro_name #(2) 
