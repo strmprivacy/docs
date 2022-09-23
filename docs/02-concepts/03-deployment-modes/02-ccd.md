@@ -1,6 +1,7 @@
 ---
 title: Customer Cloud Deployments
 hide_table_of_contents: false
+description: Don't want end-user data leaving your infrastructure? Host your own Data Plane.
 ---
 [console]: https://console.strmprivacy.io
 [cli]: /cli-index/
@@ -22,7 +23,7 @@ are therefore indirectly controlled via user actions in the [STRM Privacy Consol
 
 # CCD explained
 
-![ccd infra](/img/ccd-infra.png)
+![ccd infra](./images/ccd.svg#fullwidth)
 
 ## CCD infrastructure
 
@@ -62,7 +63,8 @@ This pattern is very robust, handles failures and dependencies between resources
 is relatively easy to implement on your side. The only requirement is that outgoing traffic to `api.strmprivacy.io` on
 port 443 is allowed. No need for incoming port forwarding rules, DMZ, etc.
 
-:::note All communication to and from the STRM SAAS is TLS encrypted, and defined by a [public gRPC protocol][api].
+:::note
+All communication to and from the STRM SAAS is TLS encrypted, and defined by a [public gRPC protocol][api].
 :::
 
 ## Deployment in your infrastructure

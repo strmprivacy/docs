@@ -5,7 +5,7 @@ hide_table_of_contents: false
 
 ## Goal
 
-A Customer Cloud Deployment (or Self-Hosted Data Plane) is set of software components created by STRM Privacy, deployed
+A Customer Cloud Deployment (or Self-Hosted Installation) is set of software components created by STRM Privacy, deployed
 in your infrastructure. The goal is for your data and encryption keys, **never** having to leave your infrastructure,
 strengthening security even further regarding data owner privacy.
 

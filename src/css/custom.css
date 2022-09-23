@@ -150,3 +150,9 @@ img[src*="#fullwidth"] {
   color: #333333;
   background-color: #FEAB7C;
 }
+
+article .text--truncate {
+  overflow: hidden;
+  text-overflow: unset;
+  white-space: break-spaces;
+}
