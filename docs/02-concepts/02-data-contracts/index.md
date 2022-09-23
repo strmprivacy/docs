@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 To act as a gatekeeper and maintain high quality data, STRM Privacy enforces Data Contracts on data that is processed.
 This article covers what a Data Contract is, and how it is used by STRM Privacy.
 
-# The Data Contract
+# The Data Contract {#data-contract}
 
 The Data Contract defines:
 

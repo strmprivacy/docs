@@ -3,39 +3,46 @@ title: Simple Schemas
 hide_table_of_contents: false
 ---
 
+To simplify the complexity of creating schemas in formats such as Avro (`.avsc`) or JSON-schemas, a new format has been
+created at STRM Privacy, called Simple Schemas. It is a YAML based format[^1], which allows for readability and
+understandability by many people in your organization.
+
 # Simple Schemas
 
-A Simple Schema defines the fields outside of the [strmMeta section](/02-concepts/02-data-contracts/02-strm-meta.md) in a simple format, and translates this to an
-actual [Avro `avsc` definition](https://avro.apache.org/docs/current/spec.html#schemas).
+A Simple Schema is composed of only the data fields that you require.
+The [strmMeta section](/02-concepts/02-data-contracts/02-strm-meta.md) in
+is omitted in the Simple Schema representation, as it is translated into an
+[Avro `avsc` definition](https://avro.apache.org/docs/current/spec.html#schemas) for you to use when serializing data.
+Since Avro is well-equipped for serializing and deserializing data, there was no need to create yet another
+serialization format.
 
-In the [quickstart Simple Schema example](/03-quickstart/03-data-contracts/01-simple-schema.md) we have a hands-on interaction
-that shows the technical details
+:::note
+Simple Schema is a _representation_ of your schema, it is <u>not</u> a serialization format.
+:::
 
-A simple schema defines a list of *nodes*. Each node is an entity with
-the following attributes:
+In the [quickstart Simple Schema example](/03-quickstart/03-data-contracts/01-simple-schema.md), you'll be guided
+through a hands-on
+interaction that shows the technical details when using Simple Schemas.
 
--   `name` (required) that you can use to access the entity.
+A [simple schema](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L436)
+defines a list of *nodes*. Each node is an entity with the following attributes:
 
--   `avro_name` (optional) conforms to [the naming rules for Avro](https://avro.apache.org/docs/current/spec.html#names). Is
-    derived from `name` *unless* it was explicitly set.
-
--   `type` (required) an integer, string, float or a `node`
-
--   `repeated` (optional) that defines whether or not the field can
-    occur more than once. Defaults to false.
-
--   `required` (optional) that defines whether or not the sender must
-    fill in this field value. Defaults to false.
-
--   `doc` (optional) documents the purpose of the field.
-
--   `nodes` (optional) holds *child-nodes* for nested data structure.
-    This is only valid when the `type` is `NODE`
+- `name` (required) that you can use to access the entity.
+- `avro_name` (optional) conforms to [the naming rules for Avro](https://avro.apache.org/docs/current/spec.html#names).
+  Is derived from `name` *unless* it was explicitly set. **Only** use if you need to override the Avro name; as this needs
+  to be an Avro compatible name, this needs to be correct.
+- `type` (required) an `integer`, `string`, `float` or a `node`
+- `repeated` (optional) defines whether the field can
+  occur more than once (i.e. is a list). Defaults to `false`.
+- `required` (optional) defines whether the sender must
+  fill in this field value. Defaults to `false`.
+- `doc` (optional) documents the purpose of the field.
+- `nodes` (optional) holds *child-nodes* for nested data structure.
+  This is only valid when the `type` is `NODE`
 
 An example of a simple schema:
 
-**simple
-```yaml
+```yaml showLineNumbers
 name: Clicks
 nodes:
   - name: SessionId
@@ -55,6 +62,14 @@ nodes:
     nodes:
       - name: x
         type: INTEGER
-      - name: "y"  ## warning. Put quotes around y, or it is a boolean true
+      - name: "y"
         type: INTEGER
 ```
+
+:::caution
+YAML [allows for many variations](https://yaml.org/type/bool.html) to indicate the boolean value `true`. The reason `"y"` is quoted in the example above,
+is since YAML otherwise would resolve `y` to `true`.
+:::
+
+[^1] the shortcomings and challenges of YAML [are well-known](https://en.wikipedia.org/wiki/YAML#Criticism), though
+readability and simplicity was the major motivation to use YAML for Simple Schemas.

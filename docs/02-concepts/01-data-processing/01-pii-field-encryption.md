@@ -3,8 +3,6 @@ title: PII Field Encryption
 hide_table_of_contents: false
 ---
 
-[//]: # (TODO write this page)
-
 STRM Privacy aims to protect [PII](/01-overview/02-pii.md) data, by encrypting content specified in event fields,
 that are marked as sensitive in the [event contract](/02-concepts/02-data-contracts/index.md).
 

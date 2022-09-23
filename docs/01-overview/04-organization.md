@@ -70,8 +70,8 @@ of a non-technical nature, and often correspond closely to the rules around
 
 _Example 1. Example consent levels_
 <div class="boxBorder">
-<i>level 0</i>
 
+_level 0_  
 The data owner does not allow any processing of personal data. STRM
 Privacy removes the *personal* aspect of personal data attributes by
 encryption, and in this case, the encryption key will not be used for
@@ -79,20 +79,16 @@ decryption, and will be discarded as specified by the [privacy algorithm](./01-p
 This means that the event data can still be used for some aggregated information (like a
 customer journey) but it is impossible to relate these events to an individual person.
 
-<i>level 1</i>
-
+_level 1_  
 Customer allows recommendations based on an average over all customers
 
-<i>level 2</i>
-
+_level 2_  
 Customer allows personalized recommendations
 
-<i>level 3</i>  
-
+_level 3_  
 Customer allows personalized email marketing
 
-<i>level 4</i>  
-
+_level 4_  
 Customer allows contact by phone
 
 This is just an example; STRM Privacy allows for very fine-grained consent configurations.
