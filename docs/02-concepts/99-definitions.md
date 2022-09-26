@@ -3,9 +3,12 @@ title: Definitions
 hide_table_of_contents: false
 ---
 
+[//]: # (TODO update definition page)
+
 - Field masking / masked fields
 - Input / Source / Encrypted stream
 - Derived stream
+- data pipelines
 
 # Commonly used definitions
 

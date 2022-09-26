@@ -3,13 +3,16 @@ title: Role-Based Access Control (RBAC)
 hide_table_of_contents: false
 ---
 
-# RBAC
+This article covers what Role-Based Access Control is, how it is used within STRM Privacy, and provides an overview
+of all permissions and roles.
+
+# Role-Based Access Control (RBAC)
 
 In practice, not all users should be able to view or manage the same resources.
 Employees working one department, shouldn't automatically be granted access to all data streams within an organization.
-In order to grant permissions to users, we integrated a Role-Based Access Control (RBAC) system.
+In order to grant permissions to users, STRM Privacy offers a Role-Based Access Control (RBAC) system.
 This system should help organizations to manage resources and be more easily compliant with privacy regulations.
-We defined 4 roles: `admin` , `project_admin` , `approver` and `member`.
+Currently, four basic roles exist: `admin` , `project_admin` , `approver` and `member`.
 Users can have one or more roles and are always assigned at least the `member` role.
 The user creating an organization is automatically assigned the `admin` role.
 When a user is [invited](docs/04-reference/01-cli-reference/strm/invite/users.md) to your organization, only the `member` role is assigned.
