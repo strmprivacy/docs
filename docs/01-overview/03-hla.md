@@ -16,7 +16,7 @@ application must identify itself using client credentials. These
 credentials are provided through the [Console](https://console.strmprivacy.io) or via the
 [`strm` command line interface](https://github.com/strmprivacy/cli).
 
-All events that are sent to STRM Privacy (regardless of [deployment mode](/02-concepts/03-deployment-modes/index.md))
+All events that are sent to STRM Privacy (regardless of [deployment mode](docs/02-concepts/03-deployment-modes/index.md))
 have schema reference (provided through an HTTP header) that defines the structure and contents of the event.
 
 The STRM Privacy *Event Gateway* will verify that the data:
@@ -27,7 +27,7 @@ The STRM Privacy *Event Gateway* will verify that the data:
 2.  ...is a valid serialized message
 
 3.  ...complies to the pre-defined validation rules, as specified in the
-    Event Contract (the contract reference is embedded in the mandatory [`strmMeta`](/02-concepts/02-data-contracts/02-strm-meta.md)
+    Event Contract (the contract reference is embedded in the mandatory [`strmMeta`](docs/02-concepts/02-data-contracts/02-strm-meta.md)
     section of the event)
 
 ![High Level Architecture](images/hla.svg)
@@ -35,12 +35,12 @@ The STRM Privacy *Event Gateway* will verify that the data:
 Upon accepting an event, the *Event Gateway* will use the *Encrypter* to
 encrypt **all** defined [Personally Identifiable Information (PII)](./02-pii.md)
 attributes of the event. Which fields are PII is defined in the [event
-contract](/02-concepts/02-data-contracts/index.md). The
+contract](docs/02-concepts/02-data-contracts/index.md). The
 schema can have multiple levels of PII attributes but all of them are
-encrypted with the same encryption key that is linked to the [`keyField`](/02-concepts/02-data-contracts/index.md#contracts).
+encrypted with the same encryption key that is linked to the [`keyField`](docs/02-concepts/02-data-contracts/index.md#contracts).
 
 You can create decrypted streams that contain a subset of the
-encrypted stream (more specifically, only the events of [data subjects](/02-concepts/02-data-contracts/04-data-subjects.md)
+encrypted stream (more specifically, only the events of [data subjects](docs/02-concepts/02-data-contracts/04-data-subjects.md)
 that provided consent to be used for that purpose), with only those PII
 fields decrypted that you have requested. It is **not** required to create decrypted streams.
 
@@ -51,7 +51,7 @@ The algorithm is as follows:
 
 -   the decrypter will inspect every event, and will ignore all events
     that don’t have *at least* these 3 levels set in the
-    [`strmMeta.consentLevels`](/02-concepts/02-data-contracts/02-strm-meta.md).
+    [`strmMeta.consentLevels`](docs/02-concepts/02-data-contracts/02-strm-meta.md).
 
 -   the events that are accepted by the decrypter will then be partially
     decrypted; only the encrypted data fields with PII levels 1, 3 and 8 will be
@@ -65,4 +65,4 @@ The algorithm is as follows:
 
 ## Outputs
 
-STRM Privacy provides multiple ways to output data. Read more on exporting data [here](/03-quickstart/01-streaming/04-exporting-data/index.md).
+STRM Privacy provides multiple ways to output data. Read more on exporting data [here](docs/03-quickstart/01-streaming/04-exporting-data/index.md).

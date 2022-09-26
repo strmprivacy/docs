@@ -43,6 +43,6 @@ platform. Some examples of use cases:
 Require assistance? Reach out to us! We’re happy to help you, and are always looking for ways to improve our
 documentation.
 
-Please see our [contact page](/05-contact/index.md) for ways to reach out
+Please see our [contact page](docs/05-contact/index.md) for ways to reach out
 to us, whenever you’re facing an issue.
 

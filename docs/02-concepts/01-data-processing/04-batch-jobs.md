@@ -20,7 +20,7 @@ Job cannot be reinstantiated for a second run.
 
 :::note
 Batch Jobs currently support one file per job, but could be extended to support multiple files per job.
-Please [contact us](/05-contact/index.md) if you are interested in this.
+Please [contact us](docs/05-contact/index.md) if you are interested in this.
 :::
 
 # Encryption
@@ -72,7 +72,7 @@ Just as with streaming, this window is 24 hours.
 :::info
 Persisting encryption keys is a crucial responsibility. What needs to happen with the encryption keys,
 after batch jobs have been executed greatly depends on the use case. Currently, no APIs exist that allow
-for the management of the encryption keys. Please [contact us](/05-contact/index.md) if you are
+for the management of the encryption keys. Please [contact us](docs/05-contact/index.md) if you are
 interested in this.
 :::
 
@@ -85,7 +85,7 @@ you’d like to have a fluent transition at time window boundaries.
 
 # Data Connectors
 
-A Batch Job reads data from and sends data to a [Data Connector](/02-concepts/04-data-connectors.md),
+A Batch Job reads data from and sends data to a [Data Connector](docs/02-concepts/04-data-connectors.md),
 which provides read and/or write access to e.g. an AWS S3 or GCS bucket.
 
 For a Batch Job, three or more Data Connectors need to be specified,
@@ -130,7 +130,7 @@ extract the consent from the source data:
 
 :::note
 There are more ways to extract consent than a fixed mapping, like User Defined Functions (UDFs). This is not planned
-in the near future, but please [contact us](/05-contact/index.md) if you are interested in this.
+in the near future, but please [contact us](docs/05-contact/index.md) if you are interested in this.
 :::
 
 # Batch Job states

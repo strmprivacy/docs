@@ -40,9 +40,9 @@ have its  _key link_ stored by the Data Subjects API, together with its validity
 
 The Data Subjects API can be accessed from the CLI with the following commands:
 
-* [`strm list data-subjects`](/04-reference/01-cli-reference/strm/list/data-subjects.md)
-* [`strm delete data-subjects`](/04-reference/01-cli-reference/strm/delete/data-subjects.md)
-* [`strm list data-subject-keylinks`](/04-reference/01-cli-reference/strm/list/data-subject-keylinks.md)
+* [`strm list data-subjects`](docs/04-reference/01-cli-reference/strm/list/data-subjects.md)
+* [`strm delete data-subjects`](docs/04-reference/01-cli-reference/strm/delete/data-subjects.md)
+* [`strm list data-subject-keylinks`](docs/04-reference/01-cli-reference/strm/list/data-subject-keylinks.md)
 
 A [recent blog-post](https://strmprivacy.io/posts/batchjobs-and-datasubjects/#dss) walks through a hands-on session with the Data
 Subjects API.

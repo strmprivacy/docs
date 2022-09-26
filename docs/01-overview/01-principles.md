@@ -14,7 +14,7 @@ has been founded are discussed in this section.
 - **PII Data Compliance**. Handle processing of data that contain [personally
   identifiable information](./02-pii.md) in a privacy regulations compliant way.
 - **Low Event Data Quality**. Improve the quality of event data by separating the rules that govern
-  the [shape and content of the event data](/02-concepts/02-data-contracts/index.md)
+  the [shape and content of the event data](docs/02-concepts/02-data-contracts/index.md)
   from the teams that generate the data. So in essence, the Data Scientists and
   Data Analysts determine the rules, and not the front-end teams where the
   data originates.
@@ -44,7 +44,7 @@ so that those entities that produce event data will receive *immediate* feedback
 
 Events in STRM Privacy are strictly defined corresponding to a shape and content restrictions.
 Events that do not conform are rejected. For this, STRM Privacy uses
-[Schemas and Contracts](/02-concepts/02-data-contracts/index.md) to which all events
+[Schemas and Contracts](docs/02-concepts/02-data-contracts/index.md) to which all events
 must conform.
 
 ### 2. Events shall be privacy safe
@@ -56,7 +56,7 @@ accepted by STRM Privacy will have these attributes encrypted before
 entering progressing through the data processing platform. The encryption key is linked to a value of a field in the
 event that defines its *event sequence*, i.e. the attribute that ties
 the events together as a sequence belonging to one entity (read more
-about [PII Field Encryption](/02-concepts/01-data-processing/01-pii-field-encryption.md))
+about [PII Field Encryption](docs/02-concepts/01-data-processing/01-pii-field-encryption.md))
 
 ### 3. Latency shall be low
 
@@ -70,7 +70,7 @@ easily doable.
 ### 4. Fault tolerance and horizontal scalability
 
 STRM Privacy was designed from the ground up for horizontal scalability
-and fault tolerance. The [separation of the processing platform](/02-concepts/03-deployment-modes/index.md) into
+and fault tolerance. The [separation of the processing platform](docs/02-concepts/03-deployment-modes/index.md) into
 a Data Plane (the part that processes events) and a Control Plane (ensure the management of resources),
 ensures that the platform is fault-tolerant.
 
@@ -86,7 +86,7 @@ encryption key is generated in STRM Privacy which is decoupled from the event by
 `keyLink` is included in each event, in the `strmMeta/keyLink` field.
 
 The way PII data is encrypted, follows a Privacy Algorithm. Currently, the Privacy Algorithm is time-based, yet others
-might be added in the future. Read more about the current Privacy Algorithm [here](/02-concepts/01-data-processing/01-pii-field-encryption.md).
+might be added in the future. Read more about the current Privacy Algorithm [here](docs/02-concepts/01-data-processing/01-pii-field-encryption.md).
 
 [^1]: Current implementation uses HTTP/2 for
 ingest, with typical 99 percentile latencies well below 10ms (excluding internet roundtrip time)

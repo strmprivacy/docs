@@ -36,5 +36,5 @@ strm auth login [flags]
 
 ### SEE ALSO
 
-* [strm auth](/04-reference/01-cli-reference/strm/auth/index.md)	 - Authentication command
+* [strm auth](docs/04-reference/01-cli-reference/strm/auth/index.md)	 - Authentication command
 

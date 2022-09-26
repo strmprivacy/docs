@@ -40,5 +40,5 @@ strm get data-connector [name] [flags]
 
 ### SEE ALSO
 
-* [strm get](/04-reference/01-cli-reference/strm/get/index.md)	 - Get an entity
+* [strm get](docs/04-reference/01-cli-reference/strm/get/index.md)	 - Get an entity
 

@@ -20,4 +20,4 @@ You might consider [hosting your own Data Plane](./02-ccd.md), if:
 2. You require encryption keys never leaving your (cloud) infrastructure
 3. You can benefit from (sustained) discounts for running your infrastructure resources
 
-To start using the Data Plane in SaaS, follow along with the [language examples](/03-quickstart/01-streaming/03-sending-data/01-language-examples.md) in the quickstart section.  
+To start using the Data Plane in SaaS, follow along with the [language examples](docs/03-quickstart/01-streaming/03-sending-data/01-language-examples.md) in the quickstart section.  

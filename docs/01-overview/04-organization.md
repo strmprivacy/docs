@@ -15,18 +15,18 @@ processing, in both the shape and rules that govern the events, as well
 as who uses what data.
 
 Your organization needs to decide who is responsible for deciding over
-[schemas](/02-concepts/02-data-contracts/index.md#schema) (the
+[schemas](docs/02-concepts/02-data-contracts/index.md#schema) (the
 *shape* of the events) as well as who is responsible for their content
 (the [*event
-contract*](/02-concepts/02-data-contracts/index.md#contract)). This does
+contract*](docs/02-concepts/02-data-contracts/index.md#contract)). This does
 not have to be organization wide of course, but it’s advisable that
 there is clear ownership for each event stream.
 
-The [*schema*](/02-concepts/02-data-contracts/index.md#schema) determines
+The [*schema*](docs/02-concepts/02-data-contracts/index.md#schema) determines
 what attributes exist on a certain type of event; think `url`,
 `session-id`, `customer-id`, `address`, `article-nr`, …
 
-The [*event contract*](/02-concepts/02-data-contracts/index.md#contract)
+The [*event contract*](docs/02-concepts/02-data-contracts/index.md#contract)
 determines the rules that govern these attributes:
 
 -   what content makes an attribute valid or invalid?
@@ -48,7 +48,7 @@ every STRM Privacy customer, but it’s also very easy to define your own
 event schemas.
 
 STRM Privacy schemas *must contain a
-[`strmMeta`](/02-concepts/02-data-contracts/02-strm-meta.md)* section that defines
+[`strmMeta`](docs/02-concepts/02-data-contracts/02-strm-meta.md)* section that defines
 
 -   the consent-level(s) given by the data-owner for the processing of
     this event (`strmMeta.consentLevels`)
@@ -59,7 +59,7 @@ STRM Privacy schemas *must contain a
 ## Determine the consent levels for handling personal data in your company {#consent-levels}
 
 Event contents are governed by [*event
-contracts*](/02-concepts/02-data-contracts/index.md#contract). These define
+contracts*](docs/02-concepts/02-data-contracts/index.md#contract). These define
 among other things which attributes of an event contain personal data.
 
 Your organization has to determine which attributes of an event schema
@@ -122,10 +122,10 @@ events to STRM Privacy. You need
 
 4.  stream credentials
 
-We provide [various drivers](/03-quickstart/01-streaming/03-sending-data/01-language-examples.md) to send data
+We provide [various drivers](docs/03-quickstart/01-streaming/03-sending-data/01-language-examples.md) to send data
 to STRM Privacy. None of these drivers are mandatory, it is possible to
-write your own (see [here](/03-quickstart/01-streaming/03-sending-data/02-sending-curl.md)). In case a language is missing,
-feel free to create your own driver or [contact us](/05-contact/index.md) for assistance.
+write your own (see [here](docs/03-quickstart/01-streaming/03-sending-data/02-sending-curl.md)). In case a language is missing,
+feel free to create your own driver or [contact us](docs/05-contact/index.md) for assistance.
 All the software for interacting with STRM Privacy is 
 open-source, there’s no magic and no vendor lock-in.
 
@@ -133,10 +133,10 @@ open-source, there’s no magic and no vendor lock-in.
 
 For further use of the events in your organization you have two options:
 
--   periodically (for instance once a minute) export events to [blob storage](/03-quickstart/01-streaming/04-exporting-data/01-batch-export.md). Fully encrypted streams will
+-   periodically (for instance once a minute) export events to [blob storage](docs/03-quickstart/01-streaming/04-exporting-data/01-batch-export.md). Fully encrypted streams will
     be fine to use for *everyone* in your organization, as they no longer contain personal data.
 
--   If you have more real-time requirements, you can create a [Kafka export](/03-quickstart/01-streaming/04-exporting-data/03-exporting-kafka.md), to allow using a standard Kafka
+-   If you have more real-time requirements, you can create a [Kafka export](docs/03-quickstart/01-streaming/04-exporting-data/03-exporting-kafka.md), to allow using a standard Kafka
     consumer to consume events in real-time. Typical end-to-end latency is configurable, but can easily be brought under 1 second.
 
 ## Decrypted streams

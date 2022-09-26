@@ -27,9 +27,9 @@ Authentication command
 
 ### SEE ALSO
 
-* [strm](/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.15.1
-* [strm auth login](/04-reference/01-cli-reference/strm/auth/login.md)	 - Login
-* [strm auth print-access-token](/04-reference/01-cli-reference/strm/auth/print-access-token.md)	 - Print your current access-token to stdout
-* [strm auth revoke](/04-reference/01-cli-reference/strm/auth/revoke.md)	 - Revoke
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.15.1
+* [strm auth login](docs/04-reference/01-cli-reference/strm/auth/login.md)	 - Login
+* [strm auth print-access-token](docs/04-reference/01-cli-reference/strm/auth/print-access-token.md)	 - Print your current access-token to stdout
+* [strm auth revoke](docs/04-reference/01-cli-reference/strm/auth/revoke.md)	 - Revoke
 * [strm auth show](/04-reference/01-cli-reference/strm/auth/show.md)	 - Show your current login credentials
 

@@ -25,7 +25,7 @@ Privacy Event Gateway. The serialization schema defines the shape of the
 event, and is the first way that STRM Privacy helps in maintaining the
 quality of event data.
 
-Once deserialized, STRM Privacy needs to [apply rules to](/02-concepts/01-data-processing/01-pii-field-encryption.md):
+Once deserialized, STRM Privacy needs to [apply rules to](docs/02-concepts/01-data-processing/01-pii-field-encryption.md):
 
 1. validate event attribute contents
 2. apply encryption to personal data attributes
@@ -117,7 +117,7 @@ using: `strm get data-contract strmprivacy/example/1.3.0 -ojson | jq '.dataContr
 </Tabs>
 
 1. `eventContractRef` <div class="chip"> <div class="chip-content">required</div> </div>: the reference to the [<u>**
-   data**</u> contract](/02-concepts/02-data-contracts/index.md) that
+   data**</u> contract](docs/02-concepts/02-data-contracts/index.md) that
    governs the privacy and validation rules. The sending application **must
    set this field** to a (handle/name/version) reference of an event
    contract that refers to this serialization schema.
@@ -135,11 +135,11 @@ using: `strm get data-contract strmprivacy/example/1.3.0 -ojson | jq '.dataContr
 6. `consentLevels` <div class="chip"> <div class="chip-content">required</div> </div>: 0 or more *consents* that were
    given by the data subject for the further
    use of this event. The sending application **must set this field**. Read more on consent
-   levels [here](/01-overview/04-organization.md#consent-levels).
+   levels [here](docs/01-overview/04-organization.md#consent-levels).
 
 :::info
 The fact that the `strmMeta` section does not use `dataContractRef`, but `eventContractRef`,
-is [due to legacy](/02-concepts/01-data-processing/01-pii-field-encryption.md#data-contract).
+is [due to legacy](docs/02-concepts/01-data-processing/01-pii-field-encryption.md#data-contract).
 This will be changed in a backwards compatible way in the future, though the two references can be considered identical.
 :::
 
@@ -153,7 +153,7 @@ data.
 Once deserialized, the event gateway will look for the value of
 `strmMeta/eventContractRef` (inside the deserialized event) to determine
 the rules to be applied to this event. More details on this
-process [here](/02-concepts/01-data-processing/01-pii-field-encryption.md#algorithm).
+process [here](docs/02-concepts/01-data-processing/01-pii-field-encryption.md#algorithm).
 
 ### Data Subject provided consent (consentLevels)
 
@@ -168,15 +168,15 @@ this field. 0 consent levels means the data subject does not give any
 permissions for the PII fields. For this customer, all PII data are
 permanently hidden in the encrypted stream.
 
-See [here](/01-overview/04-organization.md#consent-levels) for a discussion on
+See [here](docs/01-overview/04-organization.md#consent-levels) for a discussion on
 consent levels in your organization.
 
 ### Reference to the used encryption key (keyLink)
 
 When the STRM Privacy Event Gateway determines that an event belongs to
-a new sequence (via the value of the [`keyField`](/02-concepts/02-data-contracts/index.md#contracts)
+a new sequence (via the value of the [`keyField`](docs/02-concepts/02-data-contracts/index.md#contracts)
 in the data contract), or that an existing sequence has lasted longer than 24 hours (or as the
-[Privacy Algorithm](/02-concepts/01-data-processing/01-pii-field-encryption.md#algorithm) dictates), it will
+[Privacy Algorithm](docs/02-concepts/01-data-processing/01-pii-field-encryption.md#algorithm) dictates), it will
 generate a new encryption key for the personal data attributes.
 
 This `keyLink` field provides a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) value that is used to look up

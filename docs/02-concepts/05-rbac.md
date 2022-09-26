@@ -12,8 +12,8 @@ This system should help organizations to manage resources and be more easily com
 We defined 4 roles: `admin` , `project_admin` , `approver` and `member`.
 Users can have one or more roles and are always assigned at least the `member` role.
 The user creating an organization is automatically assigned the `admin` role.
-When a user is [invited](/04-reference/01-cli-reference/strm/invite/users.md) to your organization, only the `member` role is assigned.
-Roles can be managed via the [`manage` command in the cli](/04-reference/01-cli-reference/strm/manage/user-roles.md).
+When a user is [invited](docs/04-reference/01-cli-reference/strm/invite/users.md) to your organization, only the `member` role is assigned.
+Roles can be managed via the [`manage` command in the cli](docs/04-reference/01-cli-reference/strm/manage/user-roles.md).
 
 ## Permissions
 

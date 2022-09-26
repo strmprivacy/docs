@@ -3,8 +3,8 @@ title: PII Field Encryption
 hide_table_of_contents: false
 ---
 
-STRM Privacy aims to protect [PII](/01-overview/02-pii.md) data, by encrypting content specified in event fields,
-that are marked as sensitive in the [event contract](/02-concepts/02-data-contracts/index.md).
+STRM Privacy aims to protect [PII](docs/01-overview/02-pii.md) data, by encrypting content specified in event fields,
+that are marked as sensitive in the [event contract](docs/02-concepts/02-data-contracts/index.md).
 
 ## Privacy Algorithm {#algorithm}
 
@@ -25,11 +25,11 @@ The process of encrypting PII data according to the time-based Privacy Algorithm
 
 :::warning
 As can be seen, the `keyLink` and the `keyField` are closely related, but different.
-Read more about the [differences here](/02-concepts/02-data-contracts/index.md#difference-keyfield-keylink).
+Read more about the [differences here](docs/02-concepts/02-data-contracts/index.md#difference-keyfield-keylink).
 :::
 
 :::info
-If the time-based Privacy Algorithm does not match your needs, please [contact us](/05-contact/index.md) to think of other algorithms. 
+If the time-based Privacy Algorithm does not match your needs, please [contact us](docs/05-contact/index.md) to think of other algorithms. 
 :::
 
 ## Using the encrypted data

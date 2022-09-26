@@ -21,8 +21,8 @@ on the context. If the context is an existing, maybe complex, batch
 flow, it often makes little sense to add a streaming component, unless
 this is a first step towards a fully streaming process.
 
-STRM Privacy provides [Batch](/03-quickstart/02-batch/index.md) as well
-as [Streaming](/03-quickstart/01-streaming/index.md)
+STRM Privacy provides [Batch](docs/03-quickstart/02-batch/index.md) as well
+as [Streaming](docs/03-quickstart/01-streaming/index.md)
 support on both the input and output side, to support fully streamed pipelines, batch pipelines and a
 hybrid where data is streamed to STRM and batched downstream.
 
@@ -54,7 +54,7 @@ See the table below for an overview:
 </table>
 
 :::note
-Currently, batch input to streaming output is not (yet) supported. Please [contact us](/05-contact/index.md) if you are
+Currently, batch input to streaming output is not (yet) supported. Please [contact us](docs/05-contact/index.md) if you are
 interested in this.
 :::
 

@@ -10,7 +10,7 @@ understandability by many people in your organization.
 # Simple Schemas
 
 A Simple Schema is composed of only the data fields that you require.
-The [strmMeta section](/02-concepts/02-data-contracts/02-strm-meta.md) in
+The [strmMeta section](docs/02-concepts/02-data-contracts/02-strm-meta.md) in
 is omitted in the Simple Schema representation, as it is translated into an
 [Avro `avsc` definition](https://avro.apache.org/docs/current/spec.html#schemas) for you to use when serializing data.
 Since Avro is well-equipped for serializing and deserializing data, there was no need to create yet another
@@ -20,7 +20,7 @@ serialization format.
 Simple Schema is a _representation_ of your schema, it is <u>not</u> a serialization format.
 :::
 
-In the [quickstart Simple Schema example](/03-quickstart/03-data-contracts/01-simple-schema.md), you'll be guided
+In the [quickstart Simple Schema example](docs/03-quickstart/03-data-contracts/01-simple-schema.md), you'll be guided
 through a hands-on
 interaction that shows the technical details when using Simple Schemas.
 

@@ -58,12 +58,12 @@ and [JSON Schema](https://json-schema.org/) and [Simple Schema](#simpleschema), 
 formats may be added in the future.
 
 Each serialization schema **must include** a section with STRM Privacy
-meta information. See [the `strmMeta` documentation](/02-concepts/02-data-contracts/02-strm-meta.md) for
+meta information. See [the `strmMeta` documentation](docs/02-concepts/02-data-contracts/02-strm-meta.md) for
 details.
 
 :::note
 If another serialization format, such as Protobuf, is a requirement for you,
-please [contact us](/05-contact/index.md).
+please [contact us](docs/05-contact/index.md).
 :::
 
 ### Simple Schemas {#simpleschema}
@@ -85,7 +85,7 @@ Simple Schema *cannot be used* in the following cases:
   are outside the scope of Simple Schema. These complexities are
   mostly the `union` types.
 
-See [here](/02-concepts/02-data-contracts/01-simple-schemas.md) for details on how Simple Schema works.
+See [here](docs/02-concepts/02-data-contracts/01-simple-schemas.md) for details on how Simple Schema works.
 
 ## Data Contracts {#contracts}
 
@@ -206,7 +206,7 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson | jq '.dataC
   organization), `name`, and a [semantic](https://semver.org/) `version`.
 - `schemaRef`: the serialization schema reference, that follows the same `handle`, `name`, and `version`.
 - `state`: whether the data contract is active and ready to be used
-  in [data pipelines](/02-concepts/01-data-processing/03-data-pipelines.md). More on states [here](#states).
+  in [data pipelines](docs/02-concepts/01-data-processing/03-data-pipelines.md). More on states [here](#states).
 - `isPublic`: a data contract can be public, in which case all STRM
   Privacy customers can use it, or it can belong to a certain
   organization, and require organization credentials to use it.
@@ -214,7 +214,7 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson | jq '.dataC
   _tie_ events together. Typically, this is what determines a data
   subject's (i.e. your users) session. If multiple events contain the same value for
   the field that was specified as `keyField`, then
-  the [same encryption key and `keyLink`](/02-concepts/01-data-processing/01-pii-field-encryption.md) will be used to
+  the [same encryption key and `keyLink`](docs/02-concepts/01-data-processing/01-pii-field-encryption.md) will be used to
   encrypt the PII data.
 - `piiFields`: the fields whose content in an event should be considered sensitive
   (i.e. personally identifiable information), and should be encrypted.
@@ -234,7 +234,7 @@ STRM Privacy currently only support [Regular
 Expressions](https://regex101.com/).
 
 :::note
-More validation mechanisms will be added in the future. Please [contact us](/05-contact/index.md) if you have
+More validation mechanisms will be added in the future. Please [contact us](docs/05-contact/index.md) if you have
 a specific validation need.
 :::
 
@@ -248,7 +248,7 @@ This is the mechanism that STRM Privacy provides to increase the
 *quality* of your event data: validate before acceptance, and let the
 data processing teams define the rules instead of the data generating
 teams. An example of a validation can be seen (and tried) in the quickstart
-[Sending and receiving manually](/03-quickstart/01-streaming/03-sending-data/02-sending-curl.md).
+[Sending and receiving manually](docs/03-quickstart/01-streaming/03-sending-data/02-sending-curl.md).
 
 ### Limitations
 
@@ -264,7 +264,7 @@ Data Contracts currently are limited in the following ways:
   - specified field should be a primitive and is required (i.e. non-nullable)
 
 :::note
-Technically it is possible to lift some of these limitations. Please [contact us](/05-contact/index.md) if you are
+Technically it is possible to lift some of these limitations. Please [contact us](docs/05-contact/index.md) if you are
 interested in this.
 :::
 
@@ -274,7 +274,7 @@ It is important to note the difference between `keyField` and `keyLink`,
 as they are related to each other, but are fundamentally different:
 
 1. `keyField` is part of the **event contract** and `keyLink` is part
-   of the [strmMeta section](/02-concepts/02-data-contracts/02-strm-meta.md) of the *serialization
+   of the [strmMeta section](docs/02-concepts/02-data-contracts/02-strm-meta.md) of the *serialization
    schema*
 2. `keyField` determines which field in the **serialization schema** is
    used for considering whether events belong to the same sequence (for
