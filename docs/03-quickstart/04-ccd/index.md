@@ -3,25 +3,13 @@ title: Customer Cloud Deployments
 hide_table_of_contents: false
 ---
 
-## Goal
+## Installation
 
-A Customer Cloud Deployment (or Self-Hosted Installation) is set of software components created by STRM Privacy, deployed
-in your infrastructure. The goal is for your data and encryption keys, **never** having to leave your infrastructure,
-strengthening security even further regarding data owner privacy.
-
-## Terminology
-
-Various terms are used interchangeably, among which:
-
-- _Data Plane_ | _STRM Privacy Data Plane_  
-  The set of software components, installed through a Helm Chart, facilitating batch and streaming data tasks, among
-  which encryption and decryption of data.
-- _Customer Cloud Deployment_ | _Self-Hosted Installation_  
-  Your installation of the deployed Data Plane
-- _License Type_  
-  A license is required in order to install and operate a self-hosted installation. Currently, we
-  support `SELF_HOSTED` (used for arbitrary Kubernetes clusters; tested in various managed Kubernetes offerings),
-  and `AWS_MARKETPLACE`.
+The installation of the Data Plane is always done through
+the [Helm Chart](https://github.com/strmprivacy/data-plane-helm-chart)
+that is provided and maintained by STRM Privacy. This allows for easy installation, upgrades, and since the chart is
+open source, you could make modifications if required. Furthermore, the Helm Chart allows you to enable/disable
+various [components](#components).
 
 ## Communication
 

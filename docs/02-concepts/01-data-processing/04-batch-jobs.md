@@ -85,7 +85,7 @@ you’d like to have a fluent transition at time window boundaries.
 
 # Data Connectors
 
-A Batch Job reads data from and sends data to a [Data Connector](/02-concepts/05-data-connectors.md),
+A Batch Job reads data from and sends data to a [Data Connector](/02-concepts/04-data-connectors.md),
 which provides read and/or write access to e.g. an AWS S3 or GCS bucket.
 
 For a Batch Job, three or more Data Connectors need to be specified,

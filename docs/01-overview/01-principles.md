@@ -70,7 +70,7 @@ easily doable.
 ### 4. Fault tolerance and horizontal scalability
 
 STRM Privacy was designed from the ground up for horizontal scalability
-and fault tolerance. The [separation of the processing platform](/02-concepts/04-data-plane-control-plane.md) into
+and fault tolerance. The [separation of the processing platform](/02-concepts/03-deployment-modes/index.md) into
 a Data Plane (the part that processes events) and a Control Plane (ensure the management of resources),
 ensures that the platform is fault-tolerant.
 

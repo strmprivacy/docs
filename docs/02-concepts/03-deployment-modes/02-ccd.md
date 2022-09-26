@@ -3,55 +3,56 @@ title: Customer Cloud Deployments
 hide_table_of_contents: false
 description: Don't want end-user data leaving your infrastructure? Host your own Data Plane.
 ---
-[console]: https://console.strmprivacy.io
-[cli]: /cli-index/
+
 [api]: https://github.com/strmprivacy/api-definitions/tree/master/protos/strmprivacy
 
-# Summary
+A Customer Cloud Deployment (CCD) is set of software components created by STRM Privacy, deployed
+in your infrastructure. The goal is for your data and encryption keys, **never** having to leave your infrastructure,
+strengthening security even further regarding data subject privacy. Since data subject information never leaves your
+infrastructure, you have full control over the
+data, where it's stored, how long it's stored, who can access it, etc.
 
-In a Customer Cloud Deployment (CCD), _all event processing takes place in a Kubernetes cluster specified by the
-customer_. **Your sensitive events never leave your own cluster.**
-
-The entities doing the processing get configured by STRM Privacy configurations _outside that cluster_, stored in the
-STRM Privacy _control plane_. Inside the _customer data plane_, several _agents_ run that frequently poll
-`api.strmprivacy.io`. Based on the configuration provided by the control plane, the agents determine whether any new
-entities (e.g. a stream, a batch exporter, ...) are needed, or existing ones should be updated or removed. The agents
-are therefore indirectly controlled via user actions in the [STRM Privacy Console][console] and/or the [cli][cli].
-
-:::note CCDs were successfully tested on multiple Kubernetes implementations: local (K3S), GKE, EKS, AKS, OVHcloud.
+:::note
+Data Planes were successfully tested on various (managed) Kubernetes implementations: local ([K3S](https://k3s.io/))
+, [GKE](https://cloud.google.com/kubernetes-engine), [EKS](https://aws.amazon.com/eks/)
+, [AKS](https://learn.microsoft.com/en-us/azure/aks/), [OVHcloud](https://www.ovhcloud.com/en/public-cloud/kubernetes/).
 :::
 
-# CCD explained
+# Overview
+
+In the diagram below, you can see where all software runs in a CCD setup:
+
+- On the left is your infrastructure (e.g. an AWS EKS cluster in your account).
+- On the right is the STRM Privacy Control Plane (managed by STRM Privacy), which is accessible by gRPC services over
+  the internet.
 
 ![ccd infra](./images/ccd.svg#fullwidth)
 
-## CCD infrastructure
+:::tip
+With the [Helm Chart](docs/03-quickstart/04-ccd/index.md#installation) that is used to install the Data Plane in your
+infrastructure, you can enable/disable various
+components (e.g. disable streaming and only keep batch if only batch jobs are required).
+:::
 
-In the graphic above, you can see where all software runs in a CCD setup.
+## Supporting the Control Plane
 
-- On the left is your infrastructure (e.g. AWS account).
-- On the right is our SAAS, which is accessible by gRPC services over the internet. We call this the "control plane".
+The entities doing the data processing receive their configuration from the STRM Privacy Control Plane, which is not
+part of
+your cluster. Inside your Data Plane, several _agents_ run that frequently poll
+the STRM Privacy API. Based on the configuration provided by the control plane, the agents determine whether any new
+entities (e.g. a stream, a batch exporter, ...) are needed, or existing ones should be updated or removed. The agents
+are therefore indirectly controlled via user actions in the [STRM Privacy Console](https://console.strmprivacy.io)
+and/or the [CLI](docs/04-reference/01-cli-reference/index.md). Furthermore, the agents automatically keep the resources
+running in your Data Plane up-to-date.
 
-## Customer infrastructure
+:::important
+All components part of the Data Plane directly (i.e. part of
+the [Helm Chart](docs/03-quickstart/04-ccd/index.md#installation)), are not updated automatically. For updating your
+Data Plane, please see the [updating docs](docs/03-quickstart/04-ccd/99-updating.md).
+:::
 
-Logically, your infrastructure is divided into multiple parts:
-
-- The "data plane", which is the software where all data processing takes place.
-- A part of the "control plane", which runs in your infrastructure, responsible for managing the data plane.
-
-The idea is that with a CCD, none of your data leaves your infrastructure to our SAAS, giving you full control over the
-data, where it's stored, how long it's stored, who can access it, etc.
-
-Additionally, you can choose which parts of the STRM data plane you'd like to run on your infrastructure, either just
-the streaming engine, or the batch engine, or both.
-
-## Control plane at customer
-
-In your infrastructure, we install some "agents". Agents are our software components, running in Kubernetes, which
-manage the software in the data planes. They automatically keep your data plane in sync when for example you create a 
-stream or exporter.
-
-The agents are an implementation of the "desired state" approach, which is used by many other popular tools. Basically,
+The agents are an implementation of the [_desired state_](https://branislavjenco.github.io/desired-state-systems/)
+approach, which is used by many other popular tools (such as Kubernetes itself). Basically,
 it comes down to three steps:
 
 1. Retrieve the desired state from a central configuration location.
@@ -59,31 +60,38 @@ it comes down to three steps:
 3. Compare the two and make the necessary changes to the actual running state make it equal to the desired state.
 4. Repeat.
 
-This pattern is very robust, handles failures and dependencies between resources very well and, from a CCD perspective
-is relatively easy to implement on your side. The only requirement is that outgoing traffic to `api.strmprivacy.io` on
-port 443 is allowed. No need for incoming port forwarding rules, DMZ, etc.
+This pattern is very robust, handles failures and dependencies between resources very well. The only requirement is that
+outgoing traffic to `https://api.strmprivacy.io` is allowed. No need for incoming port forwarding rules, DMZ, etc.
 
 :::note
-All communication to and from the STRM SAAS is TLS encrypted, and defined by a [public gRPC protocol][api].
+All communication to and from the STRM Privacy Control Plane is TLS encrypted, and defined by
+an [open-source gRPC protocol][api].
 :::
 
 ## Deployment in your infrastructure
 
-The parts are deployed in two ways:
-- First, the control plane is deployed by you, using our Helm chart. Here you can customize your cluster. This has to
-  be done once at the start and if you'd like to install new versions of the STRM software. It's your cluster, so we
-  don't auto-update anything. You decide if you'd like to upgrade and when it happens.
-- The third party components in the data plane is also deployed by you, using our Helm chart. You can choose if you'd
+The process of installing the STRM Privacy in your infrastructure is as follows:
+
+- First, the data plane is deployed by you, using the [Helm Chart](docs/03-quickstart/04-ccd/index.md#installation).
+  Here you can customize your cluster. This has to
+  be done once at the start and if you'd like to install new versions of the Data Plane. It's your cluster, so we
+  don't auto-update anything that is **part of the Helm Chart**. You decide if you'd like to upgrade and when it happens.
+  The Helm Chart installs all components that are required to run streaming and batch data pipelines within your own
+  infrastructure.
+- <div class="chip-optional"> <div class="chip-content">optional</div> </div> The third party components in the Data Plane are also deployed by you, using our Helm chart. You can choose if you'd
   like to use our pre-packaged versions of Kafka, Redis and Postgres, or if you'd like to connect to an external
-  Kafka, Redis and/or Postgres. For example RDS, ElastiCache or Confluent. Note that our pre-packaged versions have
-  simple configurations and are not meant for production usage
-- The generic STRM software, like the Event Gateway are also deployed through the Helm chart.
-- All the rest is deployed by the STRM agents, using the desired state approach, as described before.
+  Kafka, Redis and/or Postgres. For example RDS, ElastiCache or Confluent. **Note the remark below.**
+- The rest is deployed by the STRM Privacy agents, using the desired state approach, as described before.
 
-You can choose what you'd like to run, but there are two major categories:
+:::danger
+The Kafka, Redis and Postgres deployments that are included in the Helm Chart are not configured for, nor should be used
+for a production setting. Please refer to the products offered by your Cloud Vendor to see the offering for these
+requirements.
+:::
 
-- The streaming engine, which requires Kafka, Redis, Event Gateway, Streams Agent, Data Connectors Agent and Exporters
+You can choose what components you want to enable, there are two major categories:
+- **Stream Processing**. requires Kafka, Redis, Event Gateway, Streams Agent, Data Connectors Agent and Exporters
   Agent.
-- The batch engine, which requires Postgresql, Data Connectors Agent and Batch Jobs Agent. 
+- **Batch Processing**. requires Postgres, Data Connectors Agent and Batch Jobs Agent.
 
-You can choose to deploy just one of these or both.
+Both can be enabled simultaneously if the requirement is to run both stream and batch data pipelines.
