@@ -38,5 +38,5 @@ strm create data-connector gcs [data-connector-name] [bucket-name] [flags]
 
 ### SEE ALSO
 
-* [strm create data-connector](/04-reference/01-cli-reference/strm/create/data-connector/index.md)	 - Create a Data Connector
+* [strm create data-connector](docs/04-reference/01-cli-reference/strm/create/data-connector/index.md)	 - Create a Data Connector
 

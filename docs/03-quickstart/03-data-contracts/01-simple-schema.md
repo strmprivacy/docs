@@ -21,7 +21,7 @@ instance a csv file.
 I have created the following yaml file that defines a simple event
 schema that I want to use.
 
-**[simple-schema.yaml](/files/simple-schema.yaml)**
+**[simple-schema.yaml](docs/files/simple-schema.yaml)**
 
 ```yaml showLineNumbers
 name: Clicks
@@ -185,7 +185,7 @@ schema.
 Checking `strm create event-contract --help` tells us what we need to
 create.
 
-**[event-contract.json](/files/event-contract.json)**
+**[event-contract.json](docs/files/event-contract.json)**
 
 
 ```json showLineNumbers
@@ -225,13 +225,11 @@ pip install strmprivacy-driver #(3)
 3. the STRM Privacy Python driver is accidentally excluded.
 
 Now I’m going to follow along with the [full Python
-example](/03-quickstart/01-streaming/03-sending-data/01-language-examples.md) except that I’m going to modify the example
+example](docs/03-quickstart/01-streaming/03-sending-data/01-language-examples.md) except that I’m going to modify the example
 [`sender_async.py`](https://github.com/strmprivacy/python-examples/blob/master/examples/sender_async.py)
 code to use the schema-code we just generated.
 
-**[sender.py](docs/03-quickstart/static/sender.py)**
-
-```python showLineNumbers
+```python showLineNumbers title=sender.py class=with-footer
 ## This code is somewhat simplified. Use the link above to download the full version.
 
 ...
@@ -278,6 +276,7 @@ if __name__ == '__main__':
   logging.basicConfig(stream=sys.stderr)
   asyncio.run(main())
 ```
+<div class="codeblock-footer"><a target="_blank" href="pathname:///files/sender.py">Download file</a></div>
 
 Create two streams
 

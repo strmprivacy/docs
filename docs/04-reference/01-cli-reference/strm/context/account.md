@@ -31,5 +31,5 @@ strm context account [flags]
 
 ### SEE ALSO
 
-* [strm context](/04-reference/01-cli-reference/strm/context/index.md)	 - Print the CLI context
+* [strm context](docs/04-reference/01-cli-reference/strm/context/index.md)	 - Print the CLI context
 

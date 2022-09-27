@@ -39,5 +39,5 @@ strm manage user-roles [flags]
 
 ### SEE ALSO
 
-* [strm manage](/04-reference/01-cli-reference/strm/manage/index.md)	 - Manage a project or organization
+* [strm manage](docs/04-reference/01-cli-reference/strm/manage/index.md)	 - Manage a project or organization
 

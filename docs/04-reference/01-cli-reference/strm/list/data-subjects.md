@@ -43,5 +43,5 @@ strm list data-subjects [flags]
 
 ### SEE ALSO
 
-* [strm list](/04-reference/01-cli-reference/strm/list/index.md)	 - List entities
+* [strm list](docs/04-reference/01-cli-reference/strm/list/index.md)	 - List entities
 

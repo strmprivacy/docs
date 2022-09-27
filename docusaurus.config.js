@@ -4,6 +4,7 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+// TODO remove the redirects from the old pages, we should update all GH repositories to link to new docs.
 // This ensures URLs to our old Antora-based docs are successfully redirected to Docusaurus-based URLs
 let oldVersions = ["latest", "0.21.0", "0.20.1", "0.20.0", "0.19.0", "0.18.0", "0.17.0", "0.16.0", "0.15.0", "0.14.0", "0.13.2", "0.13.1", "0.13.0", "0.12.0", "0.11.0", "0.10.0", "0.9.0", "0.8.0", "0.7.0", "0.6.0", "0.5.1", "0.5.0", "0.4.1"]
 let oldOverviewPages = ["about", "pii", "organization", "hla", "definitions"];
@@ -87,18 +88,17 @@ const config = {
             position: 'left',
             to: 'https://join.strm.team/',
           },
-          // TODO this is versioning. For now switched off
-          // {
-          //   type: 'docsVersionDropdown',
-          //   position: 'left',
-          //   dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
-          //   dropdownActiveClassDisabled: true,
-          // },
+          {
+            href: 'https://github.com/strmprivacy',
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
+          }
         ],
       },
       footer: {
         style: 'dark',
-        copyright: `Copyright (C) 2020-2022 STRM Privacy`,
+        copyright: `Copyright (C) 2020-${(new Date().getFullYear())} STRM Privacy`,
       },
       prism: {
         theme: lightCodeTheme,

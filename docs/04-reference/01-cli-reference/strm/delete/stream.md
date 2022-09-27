@@ -51,5 +51,5 @@ strm delete stream [name ...] [flags]
 
 ### SEE ALSO
 
-* [strm delete](/04-reference/01-cli-reference/strm/delete/index.md)	 - Delete an entity
+* [strm delete](docs/04-reference/01-cli-reference/strm/delete/index.md)	 - Delete an entity
 

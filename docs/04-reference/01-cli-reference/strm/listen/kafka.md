@@ -34,5 +34,5 @@ strm listen kafka (kafka-exporter-name) [flags]
 
 ### SEE ALSO
 
-* [strm listen](/04-reference/01-cli-reference/strm/listen/index.md)	 - Listen for events on a stream
+* [strm listen](docs/04-reference/01-cli-reference/strm/listen/index.md)	 - Listen for events on a stream
 

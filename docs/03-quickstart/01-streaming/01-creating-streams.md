@@ -4,7 +4,7 @@ description: Streams are the start of sending and receiving data with STRM Priva
 hide_table_of_contents: false
 ---
 
-See [Authentication with the CLI](/03-quickstart/05-authentication-cli.md)
+See [Authentication with the CLI](docs/03-quickstart/05-authentication-cli.md)
 page on how to authenticate.
 
 ## Creating a stream
@@ -51,7 +51,7 @@ the same credentials you can connect to the [web-socket
 endpoint](https://websocket.strmprivacy.io) with a websocket client to
 receive the events as you send them. Use
 `strm listen web-socket <stream-name> [--client-id .. --client-secret ..]`.
-See [here](./02-listen-web-socket.md) for details.
+See [here](docs/03-quickstart/01-streaming/04-receiving-data/04-listen-web-socket.md) for details.
 
 ## Listing streams
 

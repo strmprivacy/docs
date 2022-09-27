@@ -41,5 +41,5 @@ strm invite users [first-email,second-email,...] [flags]
 
 ### SEE ALSO
 
-* [strm invite](/04-reference/01-cli-reference/strm/invite/index.md)	 - Invite users to your organization
+* [strm invite](docs/04-reference/01-cli-reference/strm/invite/index.md)	 - Invite users to your organization
 

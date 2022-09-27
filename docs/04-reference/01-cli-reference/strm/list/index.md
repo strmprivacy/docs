@@ -28,20 +28,20 @@ List entities
 
 ### SEE ALSO
 
-* [strm](/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.15.1
-* [strm list batch-exporters](/04-reference/01-cli-reference/strm/list/batch-exporters.md)	 - List Batch exporters
-* [strm list batch-jobs](/04-reference/01-cli-reference/strm/list/batch-jobs.md)	 - List Batch Jobs
-* [strm list data-connectors](/04-reference/01-cli-reference/strm/list/data-connectors.md)	 - List Data Connectors
-* [strm list data-subject-keylinks](/04-reference/01-cli-reference/strm/list/data-subject-keylinks.md)	 - List data subjects keylinks
-* [strm list data-subjects](/04-reference/01-cli-reference/strm/list/data-subjects.md)	 - List a page of data subjects
-* [strm list event-contracts](/04-reference/01-cli-reference/strm/list/event-contracts.md)	 - List Event Contracts
-* [strm list installations](/04-reference/01-cli-reference/strm/list/installations.md)	 - List your installations
-* [strm list kafka-clusters](/04-reference/01-cli-reference/strm/list/kafka-clusters.md)	 - List Kafka clusters
-* [strm list kafka-exporters](/04-reference/01-cli-reference/strm/list/kafka-exporters.md)	 - List Kafka exporters
-* [strm list kafka-users](/04-reference/01-cli-reference/strm/list/kafka-users.md)	 - List Kafka users
-* [strm list key-streams](/04-reference/01-cli-reference/strm/list/key-streams.md)	 - List key streams
-* [strm list members](/04-reference/01-cli-reference/strm/list/members.md)	 - List all members of your organization or active project
-* [strm list projects](/04-reference/01-cli-reference/strm/list/projects.md)	 - List all projects you have access to
-* [strm list schemas](/04-reference/01-cli-reference/strm/list/schemas.md)	 - List schemas
-* [strm list streams](/04-reference/01-cli-reference/strm/list/streams.md)	 - List streams
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.15.1
+* [strm list batch-exporters](docs/04-reference/01-cli-reference/strm/list/batch-exporters.md)	 - List Batch exporters
+* [strm list batch-jobs](docs/04-reference/01-cli-reference/strm/list/batch-jobs.md)	 - List Batch Jobs
+* [strm list data-connectors](docs/04-reference/01-cli-reference/strm/list/data-connectors.md)	 - List Data Connectors
+* [strm list data-subject-keylinks](docs/04-reference/01-cli-reference/strm/list/data-subject-keylinks.md)	 - List data subjects keylinks
+* [strm list data-subjects](docs/04-reference/01-cli-reference/strm/list/data-subjects.md)	 - List a page of data subjects
+* [strm list event-contracts](docs/04-reference/01-cli-reference/strm/list/event-contracts.md)	 - List Event Contracts
+* [strm list installations](docs/04-reference/01-cli-reference/strm/list/installations.md)	 - List your installations
+* [strm list kafka-clusters](docs/04-reference/01-cli-reference/strm/list/kafka-clusters.md)	 - List Kafka clusters
+* [strm list kafka-exporters](docs/04-reference/01-cli-reference/strm/list/kafka-exporters.md)	 - List Kafka exporters
+* [strm list kafka-users](docs/04-reference/01-cli-reference/strm/list/kafka-users.md)	 - List Kafka users
+* [strm list key-streams](docs/04-reference/01-cli-reference/strm/list/key-streams.md)	 - List key streams
+* [strm list members](docs/04-reference/01-cli-reference/strm/list/members.md)	 - List all members of your organization or active project
+* [strm list projects](docs/04-reference/01-cli-reference/strm/list/projects.md)	 - List all projects you have access to
+* [strm list schemas](docs/04-reference/01-cli-reference/strm/list/schemas.md)	 - List schemas
+* [strm list streams](docs/04-reference/01-cli-reference/strm/list/streams.md)	 - List streams
 

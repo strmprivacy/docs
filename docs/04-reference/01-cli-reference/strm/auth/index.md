@@ -31,5 +31,5 @@ Authentication command
 * [strm auth login](docs/04-reference/01-cli-reference/strm/auth/login.md)	 - Login
 * [strm auth print-access-token](docs/04-reference/01-cli-reference/strm/auth/print-access-token.md)	 - Print your current access-token to stdout
 * [strm auth revoke](docs/04-reference/01-cli-reference/strm/auth/revoke.md)	 - Revoke
-* [strm auth show](/04-reference/01-cli-reference/strm/auth/show.md)	 - Show your current login credentials
+* [strm auth show](docs/04-reference/01-cli-reference/strm/auth/show.md)	 - Show your current login credentials
 

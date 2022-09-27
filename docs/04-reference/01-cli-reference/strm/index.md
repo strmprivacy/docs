@@ -22,18 +22,18 @@ STRM Privacy CLI 2.15.1
 
 ### SEE ALSO
 
-* [strm activate](/04-reference/01-cli-reference/strm/activate/index.md)	 - Set the state of an entity to ACTIVATED
-* [strm archive](/04-reference/01-cli-reference/strm/archive/index.md)	 - Set the state of an entity to ARCHIVED
-* [strm auth](/04-reference/01-cli-reference/strm/auth/index.md)	 - Authentication command
-* [strm completion](/04-reference/01-cli-reference/strm/completion.md)	 - Generate completion script
-* [strm context](/04-reference/01-cli-reference/strm/context/index.md)	 - Print the CLI context
-* [strm create](/04-reference/01-cli-reference/strm/create/index.md)	 - Create an entity
-* [strm delete](/04-reference/01-cli-reference/strm/delete/index.md)	 - Delete an entity
-* [strm get](/04-reference/01-cli-reference/strm/get/index.md)	 - Get an entity
-* [strm invite](/04-reference/01-cli-reference/strm/invite/index.md)	 - Invite users to your organization
-* [strm list](/04-reference/01-cli-reference/strm/list/index.md)	 - List entities
-* [strm listen](/04-reference/01-cli-reference/strm/listen/index.md)	 - Listen for events on a stream
-* [strm manage](/04-reference/01-cli-reference/strm/manage/index.md)	 - Manage a project or organization
-* [strm simulate](/04-reference/01-cli-reference/strm/simulate/index.md)	 - Send simulated events with a predefined demo schema (not for production purposes)
-* [strm version](/04-reference/01-cli-reference/strm/version.md)	 - Print CLI version
+* [strm activate](docs/04-reference/01-cli-reference/strm/activate/index.md)	 - Set the state of an entity to ACTIVATED
+* [strm archive](docs/04-reference/01-cli-reference/strm/archive/index.md)	 - Set the state of an entity to ARCHIVED
+* [strm auth](docs/04-reference/01-cli-reference/strm/auth/index.md)	 - Authentication command
+* [strm completion](docs/04-reference/01-cli-reference/strm/completion.md)	 - Generate completion script
+* [strm context](docs/04-reference/01-cli-reference/strm/context/index.md)	 - Print the CLI context
+* [strm create](docs/04-reference/01-cli-reference/strm/create/index.md)	 - Create an entity
+* [strm delete](docs/04-reference/01-cli-reference/strm/delete/index.md)	 - Delete an entity
+* [strm get](docs/04-reference/01-cli-reference/strm/get/index.md)	 - Get an entity
+* [strm invite](docs/04-reference/01-cli-reference/strm/invite/index.md)	 - Invite users to your organization
+* [strm list](docs/04-reference/01-cli-reference/strm/list/index.md)	 - List entities
+* [strm listen](docs/04-reference/01-cli-reference/strm/listen/index.md)	 - Listen for events on a stream
+* [strm manage](docs/04-reference/01-cli-reference/strm/manage/index.md)	 - Manage a project or organization
+* [strm simulate](docs/04-reference/01-cli-reference/strm/simulate/index.md)	 - Send simulated events with a predefined demo schema (not for production purposes)
+* [strm version](docs/04-reference/01-cli-reference/strm/version.md)	 - Print CLI version
 

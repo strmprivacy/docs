@@ -13,7 +13,7 @@ A Batch Exporter listens to a stream and writes all events to files using a Data
 
 Each file follows the JSON Lines format, which is one full JSON document per line.
 
-A [Data Connector](/04-reference/01-cli-reference/strm/create/data-connector/index.md) is a configuration
+A [Data Connector](docs/04-reference/01-cli-reference/strm/create/data-connector/index.md) is a configuration
 entity that comprises a location (GCS bucket, AWS S3 bucket, ...) and associated credentials.
 
 A Data Connector must be created *before* you can create a batch exporter that uses it.
@@ -47,5 +47,5 @@ strm delete batch-exporter [name ...] [flags]
 
 ### SEE ALSO
 
-* [strm delete](/04-reference/01-cli-reference/strm/delete/index.md)	 - Delete an entity
+* [strm delete](docs/04-reference/01-cli-reference/strm/delete/index.md)	 - Delete an entity
 

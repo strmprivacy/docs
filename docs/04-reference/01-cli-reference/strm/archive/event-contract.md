@@ -63,5 +63,5 @@ strm archive event-contract (reference) [flags]
 
 ### SEE ALSO
 
-* [strm archive](/04-reference/01-cli-reference/strm/archive/index.md)	 - Set the state of an entity to ARCHIVED
+* [strm archive](docs/04-reference/01-cli-reference/strm/archive/index.md)	 - Set the state of an entity to ARCHIVED
 

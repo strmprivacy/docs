@@ -16,7 +16,7 @@ After creation, the CLI exposes the authentication information that is needed to
 Consumer.
 
 In case your data are Avro encoded, the Kafka exporter provides a *json format* conversion of your data for easier
-downstream processing. See the [exporting Kafka](/03-quickstart/01-streaming/04-exporting-data/03-exporting-kafka.md) page for how to consume from the
+downstream processing. See the [exporting Kafka](docs/03-quickstart/01-streaming/04-receiving-data/03-exporting-kafka.md) page for how to consume from the
 exporter.
 
 If a kafka-exporter has dependents (like Kafka users), you can use
@@ -51,5 +51,5 @@ strm list kafka-exporters [flags]
 
 ### SEE ALSO
 
-* [strm list](/04-reference/01-cli-reference/strm/list/index.md)	 - List entities
+* [strm list](docs/04-reference/01-cli-reference/strm/list/index.md)	 - List entities
 

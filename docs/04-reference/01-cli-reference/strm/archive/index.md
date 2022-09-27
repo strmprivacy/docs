@@ -27,7 +27,7 @@ Set the state of an entity to ARCHIVED
 
 ### SEE ALSO
 
-* [strm](/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.15.1
-* [strm archive event-contract](/04-reference/01-cli-reference/strm/archive/event-contract.md)	 - Set the state of an Event Contract to ARCHIVED
-* [strm archive schema](/04-reference/01-cli-reference/strm/archive/schema.md)	 - Set the state of a Schema to ARCHIVED
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.15.1
+* [strm archive event-contract](docs/04-reference/01-cli-reference/strm/archive/event-contract.md)	 - Set the state of an Event Contract to ARCHIVED
+* [strm archive schema](docs/04-reference/01-cli-reference/strm/archive/schema.md)	 - Set the state of a Schema to ARCHIVED
 

@@ -3,20 +3,16 @@ title: Sending and receiving manually
 hide_table_of_contents: false
 ---
 
-# Sending and receiving an event by hand
-
-This page aims to clarify how to send and receive data to STRM Privacy
+This quickstart aims to clarify how to send and receive data to STRM Privacy
 with the Avro serialization wire format, without any STRM Privacy
 specific code.
 
-STRM Privacy uses only *standard* open-source formats (like Avro and
-Json-schema), authentication systems (OAuth2) and transport layers
-(http/2 and websocket and grpc).
-
+STRM Privacy uses _standard_ open-source formats (like Avro and
+JSON-schema), authentication systems (OAuth2.0) and transport layers
+(HTTP/2 and websocket and gRPC).
 
 :::tip
-This tutorial uses [httpie](https://httpie.io/) as a convenient
-substitute for curl.
+This quickstart uses both cURL and [httpie](https://httpie.io/), which often is easier to use.
 :::
 
 First create a stream.
@@ -45,12 +41,14 @@ $ strm create stream by-hand --save
 ```
 
 :::tip
-Use [strm listen web-socket by-hand](docs/03-quickstart/01-streaming/02-listen-web-socket.md) to get
+Use [strm listen web-socket by-hand](docs/03-quickstart/01-streaming/04-receiving-data/04-listen-web-socket.md) to get
 some feedback on the events you're sending.
 :::
 
-Request an OAuth 2.0 access token that you need to be able to send events to
-a certain stream.
+Request an OAuth 2.0 access token with
+the [Client Credentials Grant](https://oauth.net/2/grant-types/client-credentials/)
+that you need for sending events to a certain stream. In the code block below, the user (`-u`) is configured as
+`clientId:clientSecret`. This translates into an `Authorization: Basic <base64 encoded username + password>` header.
 
 ```bash
 accessToken=$(curl -X POST -u "stream-w0qu00hwl644b...:OygfdpwBqoekL..." \
@@ -58,16 +56,14 @@ accessToken=$(curl -X POST -u "stream-w0qu00hwl644b...:OygfdpwBqoekL..." \
   "https://accounts.strmprivacy.io/auth/realms/streams/protocol/openid-connect/token" | jq -r .access_token)
 ```
 
-You can inspect the resulting `$accessToken` in [jwt.io](https://jwt.io) to
-see what we store inside it.
+You can inspect the resulting `accessToken` in [jwt.io](https://jwt.io) to
+see what is stored inside the claims.
 
-We’ve generated some random data with [this
-tool](https://github.com/confluentinc/avro-random-generator) for the
+With help of [this
+tool](https://github.com/confluentinc/avro-random-generator), it's possible to easily generate some random data for the
 [clickstream](https://console.strmprivacy.io/schemas/) demo schema.
 
-**demo.json**
-
-```json showLineNumbers
+```json showLineNumbers title=demo.json class=with-footer
 {
   "strmMeta": {
     "eventContractRef": "strmprivacy/clickstream/1.0.0",
@@ -86,17 +82,19 @@ tool](https://github.com/confluentinc/avro-random-generator) for the
 }
 ```
 
+<div class="codeblock-footer"><a target="_blank" href="pathname:///files/demo.json" download>Download file</a></div>
+
 :::note
-This is the json serialization format of Avro. Our client drivers use
+This is the JSON serialization format of Avro. The client drivers use
 the **much faster** and more compact Avro binary format.
 :::
 
-And use it to post some random data:
+To use the random data and send it to the `/event` endpoint:
 
 ```bash
 cat demo.json | http post https://events.strmprivacy.io/event\
   authorization:"Bearer $accessToken" \
-  Strm-Schema-Id:strmprivacy/clickstream/1.0.0
+  Strm-Schema-Ref:strmprivacy/clickstream/1.0.0
 
 HTTP/1.1 400 Bad Request
 
@@ -106,8 +104,8 @@ Field: 'url' in event with schema: 'strmprivacy/clickstream/1.0.0' with value: '
 
 This is *as expected*. STRM Privacy gives an indication that a
 validation failed. This is an example of the mechanism that STRM Privacy
-provides to indicate to the *data producers* that their data doesn’t
-conform to the rules of the Event Contract.
+provides to indicate to the _data producers_ that their data does not
+conform to the rules of the Data Contract.
 
 Modify the `url` field in `demo.json` to become any valid url (like
 `https://strmprivacy.io`, and try to send it again:
@@ -115,23 +113,23 @@ Modify the `url` field in `demo.json` to become any valid url (like
 ```bash
 cat demo.json | http post https://events.strmprivacy.io/event\
   authorization:"Bearer $accessToken" \
-  Strm-Schema-Id:strmprivacy/clickstream/1.0.0
+  Strm-Schema-Ref:strmprivacy/clickstream/1.0.0
 HTTP/1.1 204 No Content
 ```
 
-`204` is the http status code that STRM Privacy returns when the event
+The HTTP status code `204` is returned by the Event Gateway when the event
 has been accepted and processed.
 
-# Curl instead of httpie
+# cURL instead of httpie
 
 When using `curl` instead of `httpie` it is possible to observe the
-http/2 response, indicating the use of http/2 with its **much** higher
+HTTP/2 response, indicating the use of HTTPS/2 with its much higher
 throughput.
 
 ```bash
 curl -v https://events.strmprivacy.io/event \
     -H "authorization: Bearer $accessToken" \
-    -H "Strm-Schema-Id:strmprivacy/clickstream/1.0.0" --data-binary @demo.json
+    -H "Strm-Schema-Ref:strmprivacy/clickstream/1.0.0" --data-binary @demo.json
 
 ...
 * Using HTTP2, server supports multiplexing
@@ -140,7 +138,7 @@ curl -v https://events.strmprivacy.io/event \
 > POST /event HTTP/2
 > Host: events.strmprivacy.io
 ...
-> strm-schema-id:strmprivacy/clickstream/1.0.0
+> Strm-Schema-Ref:strmprivacy/clickstream/1.0.0
 > content-length: 434
 >
 ...
@@ -151,7 +149,7 @@ curl -v https://events.strmprivacy.io/event \
 
 First, create a decrypted stream:
 
-```bash showLineNumbers
+```bash
 strm create stream --derived-from by-hand --levels 2 --save
 {
   "ref": { "name": "by-hand-2", "projectId": "30fcd008-9696-...." },
@@ -168,10 +166,10 @@ strm create stream --derived-from by-hand --levels 2 --save
 }
 ```
 
-Send an event as describe above with curl or httpie. Observe the
+Send an event as described above with cURL or httpie. Observe the
 decrypted attributes in the events received from the web-socket.
 
-```bash showLineNumbers
+```bash
 $ strm listen web-socket by-hand-2
 
 {
@@ -190,10 +188,11 @@ $ strm listen web-socket by-hand-2
 ```
 
 :::note
-That most fields are decrypted, but the `someSensitiveValue` field is
-**not** because that is of consent level 3 (see the event contract). If
+That most fields are decrypted, but the `someSensitiveValue` field
+**not**, is because of consent level 3 (see the event contract). If
 the event had not contained `2` in its consent levels, we wouldn't even
-have seen the event in this decrypted stream.
+have seen the event in this decrypted stream. Read more on field
+decryption [here](docs/02-concepts/01-data-processing/01-pii-field-encryption.md#consent-level-types).
 :::
 
 And finally, to clean up the resources:
@@ -204,9 +203,8 @@ strm delete stream by-hand --recursive
 # note that everything that has been deleted is returned from this call.
 ```
 
-
 # Receiving from the websocket without the strm cli.
 
 If you want to retrieve json serialized events *without using the strm
-listen web-socket tool*, do [these
-steps](docs/03-quickstart/01-streaming/02-listen-web-socket.md#wscat).
+listen web-socket tool*, follow [these
+steps](docs/03-quickstart/01-streaming/04-receiving-data/04-listen-web-socket.md#wscat).

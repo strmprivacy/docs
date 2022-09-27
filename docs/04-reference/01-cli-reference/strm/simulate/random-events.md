@@ -45,5 +45,5 @@ strm simulate random-events [stream-name] [flags]
 
 ### SEE ALSO
 
-* [strm simulate](/04-reference/01-cli-reference/strm/simulate/index.md)	 - Send simulated events with a predefined demo schema (not for production purposes)
+* [strm simulate](docs/04-reference/01-cli-reference/strm/simulate/index.md)	 - Send simulated events with a predefined demo schema (not for production purposes)
 

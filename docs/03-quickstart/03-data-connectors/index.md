@@ -3,11 +3,12 @@ title: Data Connectors
 hide_table_of_contents: false
 ---
 
+[//]: # (TODO extend a bit, this is not much)
 Data connectors are a generic mechanism to interact with cloud storage.
 
-* [AWS S3](/03-quickstart/03-data-connectors/01-s3.md)
-* [Microsoft Azure](/03-quickstart/03-data-connectors/02-azure.md)
-* [Google Cloud](/03-quickstart/03-data-connectors/03-gcloud.md)
+* [AWS S3](docs/03-quickstart/03-data-connectors/01-s3.md)
+* [Microsoft Azure](docs/03-quickstart/03-data-connectors/02-azure.md)
+* [Google Cloud](docs/03-quickstart/03-data-connectors/03-gcloud.md)
 
 When you've created one or more, you can all of them via
 

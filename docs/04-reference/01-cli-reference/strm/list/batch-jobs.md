@@ -12,7 +12,7 @@ List Batch Jobs
 A Batch Job reads all events from a Data Connector and writes them to one or more Data Connectors,
 applying our privacy algorithm as defined by the job's configuration file.
 
-A [Data Connector](/04-reference/01-cli-reference/strm/create/data-connector/index.md) is a configuration
+A [Data Connector](docs/04-reference/01-cli-reference/strm/create/data-connector/index.md) is a configuration
 entity that comprises a location (GCS bucket, AWS S3 bucket, ...) and associated credentials.
 
 A Data Connector must be created *before* you can create a batch job that uses it.
@@ -46,5 +46,5 @@ strm list batch-jobs [flags]
 
 ### SEE ALSO
 
-* [strm list](/04-reference/01-cli-reference/strm/list/index.md)	 - List entities
+* [strm list](docs/04-reference/01-cli-reference/strm/list/index.md)	 - List entities
 

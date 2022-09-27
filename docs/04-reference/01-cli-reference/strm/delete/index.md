@@ -28,14 +28,14 @@ Delete an entity
 
 ### SEE ALSO
 
-* [strm](/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.15.1
-* [strm delete batch-exporter](/04-reference/01-cli-reference/strm/delete/batch-exporter.md)	 - Delete one or more Batch exporters by name
-* [strm delete batch-job](/04-reference/01-cli-reference/strm/delete/batch-job.md)	 - Delete on or more Batch Jobs by id
-* [strm delete data-connector](/04-reference/01-cli-reference/strm/delete/data-connector.md)	 - Delete Data Connectors
-* [strm delete data-subjects](/04-reference/01-cli-reference/strm/delete/data-subjects.md)	 - Delete data subjects
-* [strm delete event-contract](/04-reference/01-cli-reference/strm/delete/event-contract.md)	 - Delete Event Contract by reference
-* [strm delete kafka-exporter](/04-reference/01-cli-reference/strm/delete/kafka-exporter.md)	 - Delete a Kafka exporter
-* [strm delete kafka-user](/04-reference/01-cli-reference/strm/delete/kafka-user.md)	 - Delete one or more Kafka users
-* [strm delete schema](/04-reference/01-cli-reference/strm/delete/schema.md)	 - Delete Schema by reference
-* [strm delete stream](/04-reference/01-cli-reference/strm/delete/stream.md)	 - Delete one or more streams
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.15.1
+* [strm delete batch-exporter](docs/04-reference/01-cli-reference/strm/delete/batch-exporter.md)	 - Delete one or more Batch exporters by name
+* [strm delete batch-job](docs/04-reference/01-cli-reference/strm/delete/batch-job.md)	 - Delete on or more Batch Jobs by id
+* [strm delete data-connector](docs/04-reference/01-cli-reference/strm/delete/data-connector.md)	 - Delete Data Connectors
+* [strm delete data-subjects](docs/04-reference/01-cli-reference/strm/delete/data-subjects.md)	 - Delete data subjects
+* [strm delete event-contract](docs/04-reference/01-cli-reference/strm/delete/event-contract.md)	 - Delete Event Contract by reference
+* [strm delete kafka-exporter](docs/04-reference/01-cli-reference/strm/delete/kafka-exporter.md)	 - Delete a Kafka exporter
+* [strm delete kafka-user](docs/04-reference/01-cli-reference/strm/delete/kafka-user.md)	 - Delete one or more Kafka users
+* [strm delete schema](docs/04-reference/01-cli-reference/strm/delete/schema.md)	 - Delete Schema by reference
+* [strm delete stream](docs/04-reference/01-cli-reference/strm/delete/stream.md)	 - Delete one or more streams
 

@@ -12,7 +12,7 @@ Delete on or more Batch Jobs by id
 A Batch Job reads all events from a Data Connector and writes them to one or more Data Connectors,
 applying our privacy algorithm as defined by the job's configuration file.
 
-A [Data Connector](/04-reference/01-cli-reference/strm/create/data-connector/index.md) is a configuration
+A [Data Connector](docs/04-reference/01-cli-reference/strm/create/data-connector/index.md) is a configuration
 entity that comprises a location (GCS bucket, AWS S3 bucket, ...) and associated credentials.
 
 A Data Connector must be created *before* you can create a batch job that uses it.
@@ -46,5 +46,5 @@ strm delete batch-job [id ...] [flags]
 
 ### SEE ALSO
 
-* [strm delete](/04-reference/01-cli-reference/strm/delete/index.md)	 - Delete an entity
+* [strm delete](docs/04-reference/01-cli-reference/strm/delete/index.md)	 - Delete an entity
 

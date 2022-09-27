@@ -8,39 +8,48 @@ import {ExternalCodeBlock} from '/full-example.js';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Complete examples
+This article helps you to set up a stream and start sending data to STRM Privacy, using your language of preference.
 
-This section helps you to set up a stream and start sending data to STRM Privacy.
+:::note
+Missing your language of preference? Please [contact us](docs/05-contact/index.md), and let us know which language is
+missing.
+:::
+:::tip
+Start your own driver if it doesn't exist yet, with the details of the
+quickstart [Sending and receiving manually](02-sending-curl.md)
+and the [existing open-source drivers](https://github.com/search?q=user%3Astrmprivacy+topic%3Adriver&type=Repositories).
+:::
 
 ## Setting up a stream
 
-This section assumes that you have created an account on the
-[console](https://console.strmprivacy.io).
+This quickstart assumes that you have created an account on the [console](https://console.strmprivacy.io).
 
-## Using the programming language examples.
+## Using the language examples
 
 In order to run these examples, you need the following:
 
-- An input stream to send data to (if you don’t know how, [go here](docs/03-quickstart/01-streaming/01-creating-streams.md) to learn how to create
+- An input stream to send data to (if you don’t know
+  how, [learn](docs/03-quickstart/01-streaming/01-creating-streams.md) how to create
   streams)
-
-- The credentials for this stream (presented upon stream creation). Either keep note of the returned values from the
-  `strm create stream` command, or use `--save` flag to store them in the `~/.config/strmprivacy/Stream` directory.
+- The credentials for this stream.
 
 The following demo applications show how dummy data can be sent with a certain frequency. The data that is sent is quite
 static and does not result in any useful patterns for analysis, however, it does show how data can be constructed and
 transferred to STRM Privacy.
 
 :::note
-Use [strm listen web-socket (stream-name)](docs/03-quickstart/01-streaming/02-listen-web-socket.md) to debug issues.
+Use [strm listen web-socket (stream-name)](docs/03-quickstart/01-streaming/04-receiving-data/04-listen-web-socket.md) to inspect the data
+that is being sent and to debug issues.
 :::
 
 :::note
- Currently (Aug. 2021) every example language has a different configuration file format. This is inconvenient and will be fixed. We aim to standardize this to the format created with
+Currently (Aug. 2021) every example language has a different configuration file format. This is inconvenient and will be
+fixed. We aim to standardize this to the format created with
 `strm create stream (stream-name) --save`, so that getting up-and-running becomes easier.
 :::
 
 
+[//]: # (FIXME examples still contain billing id)
 
 <Tabs>
   <TabItem value="java" label="Java" default>
@@ -77,11 +86,10 @@ io.strmprivacy.examples.Sender            - 204
 ...
 ```
 
-[//]: # (TODO: create live links to code)
-<ExternalCodeBlock 
-  url="https://raw.githubusercontent.com/strmprivacy/java-examples/master/src/main/java/io/strmprivacy/examples/Sender.java"
-  title="Sender.java"
-  lang="java"
+<ExternalCodeBlock
+url="https://raw.githubusercontent.com/strmprivacy/java-examples/master/src/main/java/io/strmprivacy/examples/Sender.java"
+title="Sender.java"
+lang="java"
 />
 
 </TabItem>
@@ -95,6 +103,7 @@ also [available on GitHub](https://github.com/strmprivacy/python-examples/blob/m
 see the [repository](https://github.com/strmprivacy/python-examples) for the readme.
 
 Short steps to start sending data
+
 ```bash
 git clone https://github.com/strmprivacy/python-examples
 cd python-examples
@@ -109,6 +118,7 @@ clientSecret=$(cat $f | jq -r '.credentials[0].clientSecret')
 python3 examples/sender_async.py --billing-id $billingId\
   --client-id $clientId --client-secret $clientSecret
 ```
+
 ```
     DEBUG:strmprivacy.driver.client.auth:Initializing a new Auth Provider for SenderService
     DEBUG:strmprivacy.driver.client.auth:authenticate
@@ -136,6 +146,7 @@ also [available on GitHub](https://github.com/strmprivacy/rust-examples/blob/mai
 see the [repository](https://github.com/strmprivacy/rust-examples) for the readme.
 
 Short steps to start sending data
+
 ```bash
 git clone git@github.com:strmprivacy/rust-examples.git
 cd rust-examples
@@ -146,6 +157,7 @@ clientId=$(cat $f | jq -r '.credentials[0].clientId')
 clientSecret=$(cat $f | jq -r '.credentials[0].clientSecret')
 cargo run $billingId $clientId $clientSecret
 ```
+
 ```
 initializing client
 sending events..
@@ -187,6 +199,7 @@ cat $( strm context info Stream/demo ) | jq \
 npm i
 npm run sender
 ```
+
 ```
 > nodejs-driver-example@1.0.0 sender
 > ts-node ./src/sender.ts
@@ -235,10 +248,11 @@ the `\StrmPrivacy\Driver\Contracts\Event` contract.
 
 </Tabs>
 
-
-
 ## Receiving data
 
-See [strm listen web-socket](docs/03-quickstart/01-streaming/02-listen-web-socket.md) for a debugging view on the events.
+See [strm listen web-socket](docs/03-quickstart/01-streaming/04-receiving-data/04-listen-web-socket.md) for a debugging view on the
+events.
 
-See [exporting to Kafka](docs/03-quickstart/01-streaming/04-exporting-data/03-exporting-kafka.md) or [batch exporters](docs/03-quickstart/01-streaming/04-exporting-data/01-batch-export.md) for production event consuming.
+See [exporting to Kafka](docs/03-quickstart/01-streaming/04-receiving-data/03-exporting-kafka.md)
+or [batch exporters](docs/03-quickstart/01-streaming/04-receiving-data/01-batch-export.md) for production event
+consuming.

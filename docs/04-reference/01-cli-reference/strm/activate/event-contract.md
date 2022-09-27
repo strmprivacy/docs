@@ -63,5 +63,5 @@ strm activate event-contract (reference) [flags]
 
 ### SEE ALSO
 
-* [strm activate](/04-reference/01-cli-reference/strm/activate/index.md)	 - Set the state of an entity to ACTIVATED
+* [strm activate](docs/04-reference/01-cli-reference/strm/activate/index.md)	 - Set the state of an entity to ACTIVATED
 

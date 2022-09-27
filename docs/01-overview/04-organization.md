@@ -133,10 +133,10 @@ open-source, there’s no magic and no vendor lock-in.
 
 For further use of the events in your organization you have two options:
 
--   periodically (for instance once a minute) export events to [blob storage](docs/03-quickstart/01-streaming/04-exporting-data/01-batch-export.md). Fully encrypted streams will
+-   periodically (for instance once a minute) export events to [blob storage](docs/03-quickstart/01-streaming/04-receiving-data/01-batch-export.md). Fully encrypted streams will
     be fine to use for *everyone* in your organization, as they no longer contain personal data.
 
--   If you have more real-time requirements, you can create a [Kafka export](docs/03-quickstart/01-streaming/04-exporting-data/03-exporting-kafka.md), to allow using a standard Kafka
+-   If you have more real-time requirements, you can create a [Kafka export](docs/03-quickstart/01-streaming/04-receiving-data/03-exporting-kafka.md), to allow using a standard Kafka
     consumer to consume events in real-time. Typical end-to-end latency is configurable, but can easily be brought under 1 second.
 
 ## Decrypted streams
