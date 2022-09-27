@@ -11,8 +11,8 @@ description: Data Connector for Microsoft Azure Blob Storage
 First, create a new Blob Storage Container from the [Azure Portal](https://portal.azure.com/)
 or [using the Azure CLI](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli).
 
-The STRM Privacy data connector for Azure Blob Storage currently supports Client Secret Credentials.
-We recommend [creating a new Application with Service Principal][service-principal],
+The STRM Privacy Data Connector for Azure Blob Storage currently supports Client Secret Credentials.
+It is recommended to [create a new Application with Service Principal][service-principal],
 *including a client secret*.
 
 Next, assign the `Storage Blob Data Contributor` role to this service principal, specifically for
@@ -26,9 +26,9 @@ To create a data connector for your Blob Storage Container, you will need the fo
 3. The **client (application) ID** of the Azure AD application used to access the container.
 4. The **client secret** of the service principal used to authenticate with the AAD application.
 
-### Create the data connector {#create-data-connector}
+### Create the data connector
 
-You can create the data connector with the following command, providing a name, the
+An Azure Blob Storage Data Connector can be created with the following command, providing a name, the
 container name, and the other required flags:
 
 ```bash

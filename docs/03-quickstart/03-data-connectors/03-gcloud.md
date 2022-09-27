@@ -6,17 +6,17 @@ description: Data Connector for Google Cloud Storage
 
 ### Prepare the storage
 
-1. First, create a new service account, for example in
-   the [Cloud Console](https://console.cloud.google.com/iam-admin/serviceaccounts).
-2. Then grant write permissions on the bucket to this service account. You can do this under the
-   `PERMISSIONS` tab on the bucket's details page. Choose for example `Storage Legacy Bucket Writer`
-   as role and the newly created service account as principal.
-3. On the details page of the service account, under the `KEYS` tab, select `ADD KEY`, `Create new key`
-   and choose key type `JSON`. After creation, the JSON credentials file is downloaded. These are the
-   credentials required when creating the data connector in the next section.
+First, create a new service account, for example in
+the [Cloud Console](https://console.cloud.google.com/iam-admin/serviceaccounts).
+Then grant write permissions on the bucket to this service account. This can be done under the
+`PERMISSIONS` tab on the bucket's details page. Choose for example `Storage Legacy Bucket Writer`
+as role and the newly created service account as principal.
 
+On the details page of the service account, under the `KEYS` tab, select `ADD KEY`, `Create new key`
+and choose key type `JSON`. After creation, the JSON credentials file is downloaded. These are the
+credentials required when creating the data connector in the next section.
 
-First, make sure you have a file named `gcs.json` in your current directory,
+Make sure you have a file named `gcs.json` in your current directory,
 containing the service account credentials of the service account to use
 for writing to the bucket.
 
@@ -37,9 +37,9 @@ The contents should look something like:
 }
 ```
 
-### Create the data connector {#create-data-connector}
+### Create the data connector
 
-You can create the data connector with the following command, pointing to the
+A Google Cloud Storage Data Connector can be created with the following command, pointing to the
 credentials file:
 
 ```bash
