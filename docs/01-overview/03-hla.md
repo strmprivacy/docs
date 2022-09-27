@@ -27,14 +27,14 @@ The STRM Privacy *Event Gateway* will verify that the data:
 2.  ...is a valid serialized message
 
 3.  ...complies to the pre-defined validation rules, as specified in the
-    Event Contract (the contract reference is embedded in the mandatory [`strmMeta`](docs/02-concepts/02-data-contracts/02-strm-meta.md)
+    Data Contract (the contract reference is embedded in the mandatory [`strmMeta`](docs/02-concepts/02-data-contracts/02-strm-meta.md)
     section of the event)
 
 ![High Level Architecture](images/hla.svg)
 
 Upon accepting an event, the *Event Gateway* will use the *Encrypter* to
 encrypt **all** defined [Personally Identifiable Information (PII)](./02-pii.md)
-attributes of the event. Which fields are PII is defined in the [event
+attributes of the event. Which fields are PII is defined in the [data
 contract](docs/02-concepts/02-data-contracts/index.md). The
 schema can have multiple levels of PII attributes but all of them are
 encrypted with the same encryption key that is linked to the [`keyField`](docs/02-concepts/02-data-contracts/index.md#contracts).

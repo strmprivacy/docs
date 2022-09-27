@@ -49,7 +49,7 @@ must conform.
 
 ### 2. Events shall be privacy safe
 
-The events conform to a certain schema and to an event contract. The event contract defines which
+The events conform to a certain data contract that defines the shape and privacy implications. The data contract defines which
 event attributes contain [Personally Identifiable Information
 (PII)](./02-pii.md). Events that are
 accepted by STRM Privacy will have these attributes encrypted before
@@ -77,7 +77,7 @@ ensures that the platform is fault-tolerant.
 ### 5. Deterministic Privacy Algorithms {#privacy-algorithms}
 
 STRM Privacy encrypts PII data in events. To understand how this works
-we have to look at another component of the event contract, the *keyField* attribute.
+we have to look at another component of the data contract, the *keyField* attribute.
 The value of this _field_ (hence, the value of this field in an event) defines
 whether events belong to the same sequence. This might be webshop session id,
 or maybe a device id of a car sending location data, or anything else that is typically used to "tie" events together.

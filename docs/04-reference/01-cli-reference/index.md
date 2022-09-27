@@ -96,7 +96,7 @@ The following entities are available in the CLI:
 
 - batch-exporter
 - data-connector
-- event contract
+- data contract
 - kafka-cluster
 - kafka-exporter
 - kafka-user

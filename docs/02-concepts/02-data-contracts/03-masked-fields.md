@@ -87,7 +87,7 @@ Below, a single event in the privacy stream `example` can be seen (omitting some
 Encrypted values can be generally recognized by looking at the
 trailing `=` character. The fields `uniqueIdentifier`, `consistentValue`
 and `someSensitiveValue` are defined to be personal data through the
-event contract.
+data contract.
 
 ### Events in the derived stream without masking
 

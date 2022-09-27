@@ -90,7 +90,7 @@ See [here](docs/02-concepts/02-data-contracts/01-simple-schemas.md) for details 
 ## Data Contracts {#contracts}
 
 In order to guarantee that data that is sent to STRM Privacy adheres to
-the rules defined by your organization, events must conform to an *event
+the rules defined by your organization, events must conform to a *data
 contract*. Contracts determine the behavior of validations, which fields
 are encrypted, and how events are tied together (hence, they get the
 same encryption key).
@@ -273,7 +273,7 @@ interested in this.
 It is important to note the difference between `keyField` and `keyLink`,
 as they are related to each other, but are fundamentally different:
 
-1. `keyField` is part of the **event contract** and `keyLink` is part
+1. `keyField` is part of the **data contract** and `keyLink` is part
    of the [strmMeta section](docs/02-concepts/02-data-contracts/02-strm-meta.md) of the *serialization
    schema*
 2. `keyField` determines which field in the **serialization schema** is

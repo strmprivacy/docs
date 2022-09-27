@@ -33,7 +33,7 @@ nodes:
     repeated: false
   - name: User Name
     type: STRING
-    doc:  we use an event contract to define that this is private
+    doc:  we use a data contract to define that this is private
   - name: url
     type: STRING
     doc:  the URL of the current page
@@ -94,7 +94,7 @@ $ strm get schema quickstart/demo/1.0.0 -o json
                     "type": "STRING",
                     "name": "User Name",
                     "avroName": "UserName",
-                    "doc": "we use an event contract to define that this is private"
+                    "doc": "we use a data contract to define that this is private"
                 },
                 {
                     "type": "STRING",
@@ -161,20 +161,19 @@ $ strm get schema quickstart/demo/1.0.0 -o json | jq -r .schema.definition | jq 
 ```
 
 You *can* set this in the Simple Schema yaml file, but when absent it
-will be created from the event contracts `<handle>/<name>/<version>`
-triple. Its value will generally only be interesting when you want to
+will be created from the data contracts' `<handle>/<name>/<version>`.
+Its value will generally only be interesting when you want to
 use generated programming language code to create events [^3]. In the
 example that follows we will use Python generated code to create some
 events.
 
-## Creating an associated Event Contract
+## Creating an associated Data Contract
 
-We want to create an event contract on this schema that will define
+We want to create a Data contract with this schema that will define
 that:
 
 -   `SessionId` is the event sequence identifier, the attribute that
     ties events together.
-
 -   `UserName` is a PII field, level 1
 
 :::important
@@ -182,30 +181,29 @@ these names currently are the `avroNames`, not the names in the simple
 schema.
 :::
 
-Checking `strm create event-contract --help` tells us what we need to
+Checking `strm create data-contract --help` tells us what we need to
 create.
 
-**[event-contract.json](docs/files/event-contract.json)**
+[//]: # (TODO data-contract definition files)
 
-
-```json showLineNumbers
+```json showLineNumbers title=event-contract.json class=with-footer
 {
   "keyField" : "SessionId",
   "piiFields" : { "UserName": 1 }
 }
 ```
+<div class="codeblock-footer"><a target="_blank" href="pathname:///files/event-contract.json">Download file</a></div>
 
+
+[//]: # (TODO switch to data-contract command)
 ```bash
 strm create event-contract \
-  -S quickstart/demo/1.0.0  \ #(1)
-  -F event-contract.json  \  #(2)
-  quickstart/demo-event-contract/2.0.0 #(3)
+  -S quickstart/demo/1.0.0  \
+  -F event-contract.json  \
+  quickstart/demo-event-contract/2.0.0
 ```
-1. the schema that we want to refer to in this eventcontract
-2. the definition of the eventcontract
-3. I want to demonstrate that the eventcontract reference does *not*
-    have to be equal to the schema reference. You can have as many
-    eventcontracts as you need on one schema.
+1. `-S`: the schema that we want to refer to in this data contract
+2. `-F`: the definition of the data contract
 
 ## Send some data with Python
 

@@ -47,7 +47,7 @@ First create a [data-connector](docs/03-quickstart/03-data-connectors/index.md) 
 
 The next step is to instruct STRM Privacy what your data looks like. This is done in the _data contract_, which combines
 the data
-shape (your fields) with the privacy implications. In this quickstart, the [privacy demo event
+shape (your fields) with the privacy implications. In this quickstart, the [privacy demo data
 contract](https://strmprivacy.io/schemas/strmprivacy/example/1.3.0/) is used:
 
 <Tabs>

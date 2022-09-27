@@ -189,7 +189,7 @@ $ strm listen web-socket by-hand-2
 
 :::note
 That most fields are decrypted, but the `someSensitiveValue` field
-**not**, is because of consent level 3 (see the event contract). If
+**not**, is because of consent level 3 (see the data contract). If
 the event had not contained `2` in its consent levels, we wouldn't even
 have seen the event in this decrypted stream. Read more on field
 decryption [here](docs/02-concepts/01-data-processing/01-pii-field-encryption.md#consent-level-types).

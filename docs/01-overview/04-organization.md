@@ -17,7 +17,7 @@ as who uses what data.
 Your organization needs to decide who is responsible for deciding over
 [schemas](docs/02-concepts/02-data-contracts/index.md#schema) (the
 *shape* of the events) as well as who is responsible for their content
-(the [*event
+(the [*data
 contract*](docs/02-concepts/02-data-contracts/index.md#contract)). This does
 not have to be organization wide of course, but it’s advisable that
 there is clear ownership for each event stream.
@@ -26,13 +26,10 @@ The [*schema*](docs/02-concepts/02-data-contracts/index.md#schema) determines
 what attributes exist on a certain type of event; think `url`,
 `session-id`, `customer-id`, `address`, `article-nr`, …
 
-The [*event contract*](docs/02-concepts/02-data-contracts/index.md#contract)
+The [*data contract*](docs/02-concepts/02-data-contracts/index.md#contract)
 determines the rules that govern these attributes:
-
 -   what content makes an attribute valid or invalid?
-
 -   which attribute indicates that events belong to a same entity?
-
 -   which attributes contain personal data, and what consent needs to be
     given to use the attribute.
 
@@ -58,7 +55,7 @@ STRM Privacy schemas *must contain a
 
 ## Determine the consent levels for handling personal data in your company {#consent-levels}
 
-Event contents are governed by [*event
+Event contents are governed by [*data
 contracts*](docs/02-concepts/02-data-contracts/index.md#contract). These define
 among other things which attributes of an event contain personal data.
 

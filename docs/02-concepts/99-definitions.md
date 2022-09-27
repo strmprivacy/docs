@@ -26,7 +26,7 @@ Structure of the data that is sent to STRM Privacy. Also named
 *serialization schema* See [schemas and
 contracts](docs/02-concepts/02-data-contracts/index.md) for details.
 
-Event Contract  
+Data Contract  
 A contract, that contains which fields are [Personally Identifiable
 Information (PII)](https://en.wikipedia.org/wiki/Personal_data), which
 validations should be applied to events, etc. See [schemas and

@@ -31,8 +31,8 @@ Once deserialized, STRM Privacy needs to [apply rules to](docs/02-concepts/01-da
 2. apply encryption to personal data attributes
 3. determine if events belong to the same data owner
 
-In order to be able to do that, events are assigned an event contract,
-and the event contract defines the rules.
+In order to be able to do that, events are assigned a data contract,
+and the data contract defines the rules.
 
 ## An event example
 

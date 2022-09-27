@@ -52,7 +52,7 @@ nodes:
     repeated: false
   - name: User Name
     type: STRING
-    doc:  we use an event contract to define that this is private
+    doc:  we use a data contract to define that this is private
   - name: url
     type: STRING
     doc:  the URL of the current page
