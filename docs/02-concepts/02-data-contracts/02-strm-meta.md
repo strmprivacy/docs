@@ -49,11 +49,17 @@ Below is an example event, based on the schema that is shown in the tabs, as con
 ```json showLineNumbers
 {
   "strmMeta": {
+    // callout-1
     "eventContractRef": "strmprivacy/example/1.3.0",
+    // callout-2
     "nonce": 15082564,
+    // callout-3
     "timestamp": 1629192833072,
+    // callout-4
     "keyLink": "55c2f72b-cff8-4814-ae33-e125c77e50f9",
+    // callout-5
     "billingId": "demo8542234275",
+    // callout-6
     "consentLevels": [ 0, 1, 2, 3 ]
   },
   "uniqueIdentifier": "unique-14",
@@ -84,11 +90,17 @@ using: `strm get data-contract strmprivacy/example/1.3.0 -ojson | jq '.dataContr
         "type": "record",
         "name": "StrmMeta",
         "fields": [
+          // callout-1
           { "name": "eventContractRef", "type": "string" },
+          // callout-2
           { "name": "nonce", "type": [ "null", "int" ], "default": null },
+          // callout-3
           { "name": "timestamp", "type": [ "null", "long" ], "default": null },
+          // callout-4
           { "name": "keyLink", "type": [ "null", "string" ], "default": null },
+          // callout-5
           { "name": "billingId", "type": [ "null", "string" ], "default": null },
+          // callout-6
           { "name": "consentLevels", "type": { "type": "array", "items": "int" } }
         ]
       }

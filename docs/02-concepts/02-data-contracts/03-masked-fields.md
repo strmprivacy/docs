@@ -49,20 +49,23 @@ In the following example, a source stream `example` and two derived streams are 
 
 ```bash showLineNumbers
 strm create stream example
-strm create stream --derived-from example \ 
+# callout-1
+strm create stream --derived-from example \
+  # callout-2 
   --levels 3 --masked-fields \
-    strmprivacy/example/1.3.0:uniqueIdentifier,notSensitiveValue,someSensitiveValue,consistentValue 
+    strmprivacy/example/1.3.0:uniqueIdentifier,notSensitiveValue,someSensitiveValue,consistentValue
+  # callout-3 
   --mask-seed=hi-there 
+# callout-4
 strm create stream --derived-from example --levels 3 
 ```
 
--   Creates stream named `example-M3` because no
-    explicit derived stream name was specified.
--   For events with data contract `strmprivacy/example/1.3.0` mask fields
+1.   Creates stream named `example-M3` because no explicit derived stream name was specified.
+2.   For events with data contract `strmprivacy/example/1.3.0` mask fields
     `uniqueIdentifier`, `notSensitiveValue`, `someSensitiveValue` and
     `consistentValue`.
--   The `mask-seed` attribute is explained in the previous section.
--   Creates stream named `example-3`
+3.   The `mask-seed` attribute is explained in the previous section.
+4.   Creates stream named `example-3`
 
 ### Events in the encrypted privacy stream
 

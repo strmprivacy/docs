@@ -3,14 +3,18 @@ title: Data Connectors
 hide_table_of_contents: false
 ---
 
-[//]: # (TODO extend a bit, this is not much)
-Data connectors are a generic mechanism to interact with cloud storage.
+import DocCardList from '@theme/DocCardList';
 
-* [AWS S3](docs/03-quickstart/03-data-connectors/01-s3.md)
-* [Microsoft Azure](docs/03-quickstart/03-data-connectors/02-azure.md)
-* [Google Cloud](docs/03-quickstart/03-data-connectors/03-gcloud.md)
+# Data Connectors
 
-When you've created one or more, you can all of them via
+Before data can be read and written to various data locations, you'll need to configure Data Connectors.
+Data connectors are a generic mechanism to interact with cloud storage. Currently, the following
+Data Connectors are supported:
+
+<DocCardList />
+
+## Managing Data Connectors
+If you have created multiple Data Connectors, they can be listed with the following CLI command:
 
 ```bash showLineNumbers
 $ strm list data-connectors -o json
@@ -33,7 +37,7 @@ $ strm list data-connectors -o json
 }
 ```
 
-:::note
-the different types of `data-connector`. This mechanism is _open ended_ and will be expanded for future
-storage classes.
+:::info
+Not seeing the required Data Connector for your cloud? Please [contact us](docs/05-contact/index.md) and let us know
+what Data Connector you are missing.
 :::

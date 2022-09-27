@@ -112,15 +112,22 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson`
 
 ```json showLineNumbers
 {
+  // callout-1
   "ref": { "handle": "strmprivacy", "name": "clickstream", "version": "1.0.0" },
+  // callout-2
   "schemaRef": { "handle": "strmprivacy", "name": "clickstream", "version": "1.0.0" },
+  // callout-3
   "state": "ACTIVE",
+  // callout-4
   "isPublic": true,
+  // callout-5
   "keyField": "producerSessionId",
+  // callout-6
   "piiFields": {
     "customer/id": 0,
     "producerSessionId": 1
   },
+  // callout-7
   "validations": [
     {
       "field": "customer/id",
@@ -133,6 +140,7 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson`
       "value": "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"
     }
   ],
+  // callout-8
   "dataSubjectField": "customer/id",
   "schema": {
     "ref": { "handle": "strmprivacy", "name": "clickstream", "version": "1.0.0", "schemaType": "AVRO" },
@@ -202,25 +210,25 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson | jq '.dataC
 </TabItem>
 </Tabs>
 
-- `ref`: the reference to the data contract, comprised of a `handle` (globally unique, chosen by you / your
+1. `ref`: the reference to the data contract, comprised of a `handle` (globally unique, chosen by you / your
   organization), `name`, and a [semantic](https://semver.org/) `version`.
-- `schemaRef`: the serialization schema reference, that follows the same `handle`, `name`, and `version`.
-- `state`: whether the data contract is active and ready to be used
+2. `schemaRef`: the serialization schema reference, that follows the same `handle`, `name`, and `version`.
+3. `state`: whether the data contract is active and ready to be used
   in [data pipelines](docs/02-concepts/01-data-processing/03-data-pipelines.md). More on states [here](#states).
-- `isPublic`: a data contract can be public, in which case all STRM
+4. `isPublic`: a data contract can be public, in which case all STRM
   Privacy customers can use it, or it can belong to a certain
   organization, and require organization credentials to use it.
-- `keyField`: the name of the field in the serialization schema that is used to
+5. `keyField`: the name of the field in the serialization schema that is used to
   _tie_ events together. Typically, this is what determines a data
   subject's (i.e. your users) session. If multiple events contain the same value for
   the field that was specified as `keyField`, then
   the [same encryption key and `keyLink`](docs/02-concepts/01-data-processing/01-pii-field-encryption.md) will be used to
   encrypt the PII data.
-- `piiFields`: the fields whose content in an event should be considered sensitive
+6. `piiFields`: the fields whose content in an event should be considered sensitive
   (i.e. personally identifiable information), and should be encrypted.
-- `validations`: the validations that should be performed on the content of specific
+7. `validations`: the validations that should be performed on the content of specific
   fields in an event.
-- `dataSubjectField`: the name of the field in the serialization schema that is used to distinguish
+8. `dataSubjectField`: the name of the field in the serialization schema that is used to distinguish
   data subjects from each other. Typically, this is a _customer id_ or a _user id_. This is used by the Data Subjects
   API to keep [facilitate an interface](./04-data-subjects.md) that allows for easy retrieval of used `keyLink`s for a
   specific data subject.

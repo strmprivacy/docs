@@ -219,3 +219,44 @@ article .text--truncate {
 [data-theme='dark'] .codeblock-footer {
   background-color: #282A36;
 }
+
+.callout:after {
+  border: 1px solid;
+  border-radius: 100%;
+  display: inline-block;
+  font-family: var(--body-font-family);
+  font-size: calc(13.5/var(--rem-base)*1rem);
+  font-style: normal;
+  line-height: 1.2;
+  text-align: center;
+  width: 1.25em;
+  height: 1.25em;
+  letter-spacing: -.25ex;
+  text-indent: -.25ex;
+}
+
+.callout-1:after { content: "1"; }
+.callout-2:after { content: "2"; }
+.callout-3:after { content: "3"; }
+.callout-4:after { content: "4"; }
+.callout-5:after { content: "5"; }
+.callout-6:after { content: "6"; }
+.callout-7:after { content: "7"; }
+.callout-8:after { content: "8"; }
+.callout-9:after { content: "9"; }
+.callout-10:after { content: "10"; }
+.callout-11:after { content: "11"; }
+.callout-12:after { content: "12"; }
+.callout-13:after { content: "13"; }
+.callout-14:after { content: "14"; }
+.callout-15:after { content: "15"; }
+.callout-16:after { content: "16"; }
+.callout-17:after { content: "17"; }
+.callout-18:after { content: "18"; }
+.callout-19:after { content: "19"; }
+.callout-20:after { content: "20"; }
+
+.explanation {
+  margin-left: 5px;
+  vertical-align: middle;
+}

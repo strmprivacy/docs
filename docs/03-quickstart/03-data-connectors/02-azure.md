@@ -1,6 +1,7 @@
 ---
-title: Microsoft Azure
+title: Microsoft Azure Blob Storage
 hide_table_of_contents: false
+description: Data Connector for Microsoft Azure Blob Storage
 ---
 
 [service-principal]: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal

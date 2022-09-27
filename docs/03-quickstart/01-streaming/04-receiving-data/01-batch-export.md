@@ -38,14 +38,17 @@ meaning that the batch exporter will prepend blobs with this prefix.
 ```bash showLineNumbers
 $ strm create batch-exporter demo --data-connector s3 --path-prefix events
 {
+  # callout-1
   "ref": {
     "name": "s3-demo" ,
     "projectId": "30fcd008-9696-...."
   }, 
+  # callout-2
   "streamRef": {
     "name": "demo" ,
     "projectId": "30fcd008-9696-...."
   }, 
+  # callout-3
   "dataConnectorRef": {
     "name": "s3" ,
     "projectId": "30fcd008-9696-...."

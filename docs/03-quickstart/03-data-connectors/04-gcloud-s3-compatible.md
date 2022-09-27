@@ -1,6 +1,7 @@
 ---
 title: Google Cloud in S3 mode
 hide_table_of_contents: false
+description: Data Connector for Google Cloud in S3 compatible mode
 ---
 
 [gcloud-s3]: https://cloud.google.com/storage/docs/aws-simple-migration

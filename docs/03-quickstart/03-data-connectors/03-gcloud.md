@@ -1,6 +1,7 @@
 ---
 title: Google Cloud
 hide_table_of_contents: false
+description: Data Connector for Google Cloud Storage
 ---
 
 ### Prepare the storage
