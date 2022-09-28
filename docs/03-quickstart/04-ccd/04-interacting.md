@@ -7,11 +7,11 @@ hide_table_of_contents: false
 
 [github]: https://github.com/strmprivacy/data-plane-helm-chart/tree/master
 
-[batch-exporter]: /quickstart/batch/batch-exporter
+[batch-exporter]: docs/03-quickstart/01-streaming/04-receiving-data/01-batch-export.md
 
-[exporting-keys]: /quickstart/streaming/exporting-keys/
+[exporting-keys]: docs/03-quickstart/01-streaming/04-receiving-data/02-exporting-keys.md
 
-[data-connector]: /quickstart/batch/batch-exporter/#creating-a-data-connector
+[data-connector]: docs/03-quickstart/01-streaming/04-receiving-data/01-batch-export.md#creating-a-data-connector
 
 [ovh-ingress]: https://docs.ovh.com/au/en/kubernetes/installing-nginx-ingress/
 
@@ -247,7 +247,7 @@ For more information, see our [quickstart on exporting keys][exporting-keys].
 
 ## Python Example
 
-[python]: /quickstart/streaming/full-example/
+[python]: docs/03-quickstart/01-streaming/03-sending-data/01-language-examples.md
 
 The [Python example][python] needs a small modification in order to work. In the `client_builder.py` file change the
 `config` for

@@ -20,7 +20,7 @@ the Data Plane will keep on running, however, any changes to resources won't be 
 is restored or the service disruption has been resolved.
 
 For more information on the tasks of the Control Plane and the Data Plane, please read the [concepts section about
-Customer Cloud Deployments](docs/02-concepts/ccd).
+Customer Cloud Deployments](docs/02-concepts/03-deployment-modes/index.md).
 
 ## Data Plane Components {#components}
 
