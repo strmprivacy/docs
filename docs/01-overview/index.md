@@ -35,7 +35,23 @@ platform. Some examples of use cases:
 * **Medical data**. With e-Health arising, data privacy becomes even more important than it already was in healthcare.
   For data analytics purposes, our platform can assist in ensuring that patient data stays secure, and that only
   specific employees get access to specific data.
-* **Your use case?** [Reach out to us](docs/05-contact/index.md) and discuss your use case and see how STRM Privacy could help you streamline your
+* **Structure data privacy throughout your organization and enforce ownership, by purpose binding data throughout your
+  ecosystem**. Privacy is hard. What STRM Privacy is all about, is making it as easy as possible to put privacy policies
+  in
+  operation. With STRM Privacy, you use a clear and scalable process that uses the privacy policies you already have,
+  and make sure the agreements made there, are enforced on all data flowing through data pipelines.
+* **Safe data transfer with third parties**. When you transfer your data to third parties the data moves, but the
+  liability does not. Because of this, there is
+  great reluctance around sharing your sensitive data. This is a shame, as there is a lot of value in collaboration,
+  e.g. in research and in product development. STRM Privacy allows you to set clear conditions between the parties
+  involved in the data sharing, and allows you to perform audits, if you need to show the correct measures are put in
+  place.
+* **Privacy-transformed data as base for machine learning models and analytics**. In the end, machine learning is
+  statistics on large scale data systems. Hence, often personal data is not required for
+  good result, what matters is the underlying distribution of the data. Using STRM Privacy streams as the basis for your
+  models, you keep the links within your data intact while discarding the personal aspect of it.
+* **Your use case?** [Reach out to us](docs/05-contact/index.md) and discuss your use case and see how STRM Privacy
+  could help you streamline your
   the challenge of processing privacy-sensitive data.
 
 ## Support
