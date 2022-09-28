@@ -4,6 +4,31 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+// TODO remove the redirects from the old pages, we should update all GH repositories to link to new docs.
+// This ensures URLs to our old Antora-based docs are successfully redirected to Docusaurus-based URLs
+let oldVersions = ["latest", "0.21.0", "0.20.1", "0.20.0", "0.19.0", "0.18.0", "0.17.0", "0.16.0", "0.15.0", "0.14.0", "0.13.2", "0.13.1", "0.13.0", "0.12.0", "0.11.0", "0.10.0", "0.9.0", "0.8.0", "0.7.0", "0.6.0", "0.5.1", "0.5.0", "0.4.1"]
+let oldOverviewPages = ["pii", "organization", "hla"];
+let replacements = [];
+
+for (let oldVersion of oldVersions) {
+  for (let oldOverviewPage of oldOverviewPages) {
+    replacements.push({
+      from: `/docs/${oldVersion}/${oldOverviewPage}.html`,
+      to: `/docs/latest/overview/${oldOverviewPage}`,
+    });
+  }
+
+  replacements.push({
+    from: `/docs/${oldVersion}/about.html`,
+    to: `/docs/latest/overview/`,
+  });
+
+  replacements.push({
+    from: `/docs/${oldVersion}/definitions.html`,
+    to: `/docs/latest/concepts/definitions`,
+  });
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'STRM Privacy Documentation',
@@ -122,6 +147,13 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
+        redirects: [
+          ...replacements,
+          {
+            from: '/docs/latest',
+            to: '/docs/latest/overview'
+          }
+        ]
       },
     ],
   ],
