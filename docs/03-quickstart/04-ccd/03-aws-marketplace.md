@@ -29,6 +29,18 @@ the [AWS EKS getting started guide](https://docs.aws.amazon.com/eks/latest/userg
 Ensure that the EKS cluster you create, is <u>**not**</u> a Fargate EKS cluster
 :::
 
+## Troubleshooting
+it might be the persistent storage add-on is not enabled.
+
+```sh
+# check
+eksctl get addon --name aws-ebs-csi-driver --cluster ccd-2 --region eu-central-1
+# create if failure
+aws eks create-addon --cluster-name ccd-2 --addon-name aws-ebs-csi-driver \
+  --region eu-central-1  \
+  --service-account-role-arn arn:aws:iam::079646392542:role/AmazonEKS_EBS_CSI_DriverRole
+```
+
 ## Step 3: Subscribe to the STRM Privacy Data Plane
 
 Navigate to the [STRM Privacy AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-2ekyuezbwmiak) listing and
