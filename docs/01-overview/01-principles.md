@@ -44,7 +44,7 @@ so that those entities that produce event data will receive *immediate* feedback
 
 Events in STRM Privacy are strictly defined corresponding to a shape and content restrictions.
 Events that do not conform are rejected. For this, STRM Privacy uses
-[Schemas and Contracts](docs/02-concepts/02-data-contracts/index.md) to which all events
+[Data Contracts](docs/02-concepts/02-data-contracts/index.md) to which all events
 must conform.
 
 ### 2. Events shall be privacy safe

@@ -17,7 +17,7 @@ with [step 1](./01-pre-requisites.md#step1) and [step 2](./01-pre-requisites.md#
 from the pre-requisites section.
 
 Additionally, to the tools mentioned in [step 2](./01-pre-requisites.md#step2), you'll need to install:
-* [`eksctl`][https://eksctl.io/]: a CLI to easily manage EKS clusters (unifies a lot of `aws` CLI and `kubectl` commands).
+* [`eksctl`](https://eksctl.io/): a CLI to easily manage EKS clusters (unifies a lot of `aws` CLI and `kubectl` commands).
 
 ## Step 2: Setup a Kubernetes cluster with AWS EKS
 

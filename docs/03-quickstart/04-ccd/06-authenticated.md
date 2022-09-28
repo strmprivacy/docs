@@ -153,7 +153,6 @@ Troubleshooting with a Kafka test-client.
 
 Use this Kubernetes manifest to interact with the Kafka cluster.
 
-[//]: # (TODO: create live links to code)
 <ExternalCodeBlock
 url="https://raw.githubusercontent.com/strmprivacy/data-plane-helm-chart/master/test-utils/kafka-tls-client.yaml"
 title="kafka-tls-client.yaml"

@@ -27,17 +27,17 @@ interaction that shows the technical details when using Simple Schemas.
 A [simple schema](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L436)
 defines a list of *nodes*. Each node is an entity with the following attributes:
 
-- `name` (required) that you can use to access the entity.
-- `avro_name` (optional) conforms to [the naming rules for Avro](https://avro.apache.org/docs/current/spec.html#names).
+- `name` <div class="chip"> <div class="chip-content">required</div> </div> that you can use to access the entity.
+- `avro_name` <div class="chip-optional"> <div class="chip-content">optional</div> </div> conforms to [the naming rules for Avro](https://avro.apache.org/docs/current/spec.html#names).
   Is derived from `name` *unless* it was explicitly set. **Only** use if you need to override the Avro name; as this needs
   to be an Avro compatible name, this needs to be correct.
-- `type` (required) an `integer`, `string`, `float` or a `node`
-- `repeated` (optional) defines whether the field can
+- `type` <div class="chip"> <div class="chip-content">required</div> </div> an `integer`, `string`, `float` or a `node`
+- `repeated` <div class="chip-optional"> <div class="chip-content">optional</div> </div> defines whether the field can
   occur more than once (i.e. is a list). Defaults to `false`.
-- `required` (optional) defines whether the sender must
+- `required` <div class="chip-optional"> <div class="chip-content">optional</div> </div> defines whether the sender must
   fill in this field value. Defaults to `false`.
-- `doc` (optional) documents the purpose of the field.
-- `nodes` (optional) holds *child-nodes* for nested data structure.
+- `doc` <div class="chip-optional"> <div class="chip-content">optional</div> </div> documents the purpose of the field.
+- `nodes` <div class="chip-optional"> <div class="chip-content">optional</div> </div> holds *child-nodes* for nested data structure.
   This is only valid when the `type` is `NODE`
 
 An example of a simple schema:

@@ -38,11 +38,17 @@ The `values.yaml` file should be similar to this:
     enabled: true
 ```
 
-:::note
-Add the [gcs plugin][helm-gcs] to helm `helm plugin install https://github.com/hayorov/helm-gcs.git`
+:::important
+Keep your `values.yaml` somewhere safe, especially if you have made configurations that differ from the default pre-populated
+version from the [console][values].
 :::
 
 ## Step 2: Install the Helm chart
+
+Start by adding the [GCS plugin][helm-gcs] for Helm, as the Helm Chart Repository for STRM Privacy resides in Google Cloud Storage:
+```bash
+$ helm plugin install https://github.com/hayorov/helm-gcs.git
+```
 
 First, add the helm repo:
 
