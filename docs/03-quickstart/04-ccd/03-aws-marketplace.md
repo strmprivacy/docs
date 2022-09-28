@@ -25,6 +25,10 @@ One of the pre-requisites for the STRM Privacy Data Plane is an operational Kube
 cluster yet, please follow the instructions on how to setup an EKS cluster in
 the [AWS EKS getting started guide](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html).
 
+:::important
+Ensure that the EKS cluster you create, is <u>**not**</u> a Fargate EKS cluster
+:::
+
 ## Step 3: Subscribe to the STRM Privacy Data Plane
 
 Navigate to the [STRM Privacy AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-2ekyuezbwmiak) listing and
@@ -59,6 +63,7 @@ follow the following steps.
        --name <SERVICE_ACCOUNT_NAME> \
        --namespace strmprivacy \
        --cluster <CLUSTER_NAME> \
+       --region <CLUSTER_REGION> \
        --override-existing-serviceaccounts \
        --attach-policy-arn arn:aws:iam::aws:policy/AWSMarketplaceMeteringFullAccess \
        --attach-policy-arn arn:aws:iam::aws:policy/AWSMarketplaceMeteringRegisterUsage \
