@@ -1,16 +1,23 @@
 ---
-title: "simulate"
+title: "data-contract"
 hide_title: true
 ---
-## strm simulate
+## strm delete data-contract
 
-Send simulated events with a predefined demo schema (not for production purposes)
+Delete Data Contract by reference
+
+### Synopsis
+
+### Usage
+
+```
+strm delete data-contract (handle/name/version) [flags]
+```
 
 ### Options
 
 ```
-  -h, --help            help for simulate
-      --schema string   Which schema to use for creating simulated events (default "strmprivacy/demo/1.0.2")
+  -h, --help   help for data-contract
 ```
 
 ### Options inherited from parent commands
@@ -22,12 +29,12 @@ Send simulated events with a predefined demo schema (not for production purposes
       --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
   -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
       --project string                 Project to use (defaults to context-configured project)
+  -r, --recursive                      Retrieve entities and their dependents
       --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
       --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
 ```
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.17.0
-* [strm simulate random-events](docs/04-reference/01-cli-reference/strm/simulate/random-events.md)	 - Run a simulator that will send random events to a stream
+* [strm delete](docs/04-reference/01-cli-reference/strm/delete/index.md)	 - Delete an entity
 
