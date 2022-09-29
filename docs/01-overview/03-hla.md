@@ -11,7 +11,7 @@ the data.
 
 ## Overview {#overview}
 
-When sending data or receiving data to/from STRM Privacy, your
+When sending data to, or receiving data from STRM Privacy, your
 application must identify itself using client credentials. These
 credentials are provided through the [Console](https://console.strmprivacy.io) or via the
 [`strm` command line interface](https://github.com/strmprivacy/cli).
@@ -40,8 +40,8 @@ schema can have multiple levels of PII attributes but all of them are
 encrypted with the same encryption key that is linked to the [`keyField`](docs/02-concepts/02-data-contracts/index.md#contracts).
 
 You can create decrypted streams that contain a subset of the
-encrypted stream (more specifically, only the events of [data subjects](docs/02-concepts/02-data-contracts/04-data-subjects.md)
-that provided consent to be used for that purpose), with only those PII
+encrypted stream (more specifically, **only** the events of [data subjects](docs/02-concepts/02-data-contracts/04-data-subjects.md)
+that provided consent for the desired purposes), with only those PII
 fields decrypted that you have requested. It is **not** required to create decrypted streams.
 
 The algorithm is as follows:

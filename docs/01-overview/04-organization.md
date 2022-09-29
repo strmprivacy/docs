@@ -110,8 +110,8 @@ back-end system, another mechanism has to be created.
 Once you’ve determined all of the above, you are ready to start sending
 events to STRM Privacy. You need
 
-1.  Software that collects events and creates a STRM Privacy compatible
-    event.
+1.  software that collects events and creates a STRM Privacy compatible
+    event
 
 2.  a [console](https://console.strmprivacy.io) account
 
@@ -130,7 +130,7 @@ open-source, there’s no magic and no vendor lock-in.
 
 For further use of the events in your organization you have two options:
 
--   periodically (for instance once a minute) export events to [blob storage](docs/03-quickstart/01-streaming/04-receiving-data/01-batch-export.md). Fully encrypted streams will
+-   Periodically (for instance once a minute) export events to [blob storage](docs/03-quickstart/01-streaming/04-receiving-data/01-batch-export.md). Fully encrypted streams will
     be fine to use for *everyone* in your organization, as they no longer contain personal data.
 
 -   If you have more real-time requirements, you can create a [Kafka export](docs/03-quickstart/01-streaming/04-receiving-data/03-exporting-kafka.md), to allow using a standard Kafka
@@ -141,11 +141,11 @@ For further use of the events in your organization you have two options:
 Assume a part of your organization requires personal data to operate. In that case
 one needs to
 
-1.  create a decrypted stream with the required consent levels.
+1.  create a decrypted stream with the required consent levels
 
 2.  create (batch)exporters for these streams
 
 3.  provide those that have a need for these data with necessary
-    credentials.
+    credentials
 
 4.  start processing
