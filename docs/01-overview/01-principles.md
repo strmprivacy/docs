@@ -51,9 +51,8 @@ must conform.
 
 The events conform to a certain data contract that defines the shape and privacy implications. The data contract defines which
 event attributes contain [Personally Identifiable Information
-(PII)](./02-pii.md). Events that are
-accepted by STRM Privacy will have these attributes encrypted before
-entering progressing through the data processing platform. The encryption key is linked to a value of a field in the
+(PII)](./02-pii.md). When STRM Privacy accepts an event, it encrypts these attributes _before_
+proceeding with further processing in its data platform. The encryption key is linked to a value of a field in the
 event that defines its *event sequence*, i.e. the attribute that ties
 the events together as a sequence belonging to one entity (read more
 about [PII Field Encryption](docs/02-concepts/01-data-processing/01-pii-field-encryption.md))
@@ -65,14 +64,14 @@ built to provide low latency[^1].
 
 Internally, STRM Privacy is built using [Kafka](https://kafka.apache.org/) for high throughput
 fault-tolerant pipelines. With the correct configuration, getting data to your own Kafka consumer within 1 second is
-easily doable.
+easily achievable.
 
 ### 4. Fault tolerance and horizontal scalability
 
 STRM Privacy was designed from the ground up for horizontal scalability
 and fault tolerance. The [separation of the processing platform](docs/02-concepts/03-deployment-modes/index.md) into
 a Data Plane (the part that processes events) and a Control Plane (ensure the management of resources),
-ensures that the platform is fault-tolerant.
+ensures that the platform is fault-tolerant and scalable.
 
 ### 5. Deterministic Privacy Algorithms {#privacy-algorithms}
 
