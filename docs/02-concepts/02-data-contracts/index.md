@@ -159,8 +159,6 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson`
 
 <TabItem value="schema" label="Schema Definition (Avro representation)">
 
-[//]: # (TODO verify this command once the CLI works for data contracts)
-
 :::tip
 View this Data Contract with the [CLI](https://github.com/strmprivacy/cli)
 using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson | jq '.dataContract.schema.definition | fromjson'`
@@ -260,7 +258,6 @@ teams. An example of a validation can be seen (and tried) in the quickstart
 
 ### Limitations
 
-[//]: # (TODO @BvD should verify this.)
 Data Contracts currently are limited in the following ways:
 
 - `piiFields`

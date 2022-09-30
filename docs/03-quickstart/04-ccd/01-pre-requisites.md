@@ -1,6 +1,7 @@
 ---
 title: Pre-requisites
 hide_table_of_contents: false
+description: Installation of necessary tools.
 ---
 
 import CodeBlock from '@theme/CodeBlock';

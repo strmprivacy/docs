@@ -1,6 +1,7 @@
 ---
 title: Self-Hosted Installation
 hide_table_of_contents: false
+description: For any Kubernetes cluster (non-marketplace versions).
 ---
 
 [helm-gcs]: https://github.com/hayorov/helm-gcs

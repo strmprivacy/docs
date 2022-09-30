@@ -1,6 +1,7 @@
 ---
 title: Authenticated Kafka
 hide_table_of_contents: false
+description: Configure your Data Plane with authenticated Kafka.
 ---
 
 import CodeBlock from '@theme/CodeBlock';
