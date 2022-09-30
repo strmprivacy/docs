@@ -49,8 +49,6 @@ fixed. We aim to standardize this to the format created with
 :::
 
 
-[//]: # (FIXME examples still contain billing id)
-
 <Tabs>
   <TabItem value="java" label="Java" default>
 
@@ -66,14 +64,12 @@ Short steps to start sending data:
 ```bash
 git clone https://github.com/strmprivacy/java-examples
 cd java-examples
-strm create stream demo --save
-f=$( strm context info Stream/demo )
-billingId=$(cat $f | jq -r '.ref.billingId')
-clientId=$(cat $f | jq -r '.credentials[0].clientId')
-clientSecret=$(cat $f | jq -r '.credentials[0].clientSecret')
+strm create stream demo
+clientId=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientId')
+clientSecret=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientSecret')
 mvn package
 java -jar target/java-examples-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
-  $billingId $clientId $clientSecret
+  $clientId $clientSecret
 ```
 
 ```
@@ -110,13 +106,10 @@ cd python-examples
 python3 -m venv .venv
 . .venv/bin/activate
 python3 -m pip install -r requirements.txt
-strm create stream demo --save
-f=$( strm context info Stream/demo )
-billingId=$(cat $f | jq -r '.ref.billingId')
-clientId=$(cat $f | jq -r '.credentials[0].clientId')
-clientSecret=$(cat $f | jq -r '.credentials[0].clientSecret')
-python3 examples/sender_async.py --billing-id $billingId\
-  --client-id $clientId --client-secret $clientSecret
+strm create stream demo
+clientId=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientId')
+clientSecret=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientSecret')
+python3 examples/sender_async.py --client-id $clientId --client-secret $clientSecret
 ```
 
 ```
@@ -150,12 +143,10 @@ Short steps to start sending data
 ```bash
 git clone git@github.com:strmprivacy/rust-examples.git
 cd rust-examples
-strm create stream demo --save
-f=$( strm context info Stream/demo )
-billingId=$(cat $f | jq -r '.ref.billingId')
-clientId=$(cat $f | jq -r '.credentials[0].clientId')
-clientSecret=$(cat $f | jq -r '.credentials[0].clientSecret')
-cargo run $billingId $clientId $clientSecret
+strm create stream demo
+clientId=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientId')
+clientSecret=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientSecret')
+cargo run $clientId $clientSecret
 ```
 
 ```
@@ -190,12 +181,10 @@ Quick steps getting started:
 ```bash
 git clone https://github.com/strmprivacy/nodejs-examples
 cd nodejs-examples
-strm create stream demo --save
-cat $( strm context info Stream/demo ) | jq \
-    '{billingId:.ref.billingId,
-      clientId:.credentials[0].clientId,
-      clientSecret:.credentials[0].clientSecret}' \
-      > assets/credentials.json
+strm create stream demo
+clientId=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientId')
+clientSecret=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientSecret')
+strm get stream demo --output json | jq '.streamTree.stream.credentials[0]' > assets/credentials.json
 npm i
 npm run sender
 ```
@@ -228,10 +217,12 @@ Quick steps getting started:
 ```bash
 git clone https://github.com/strmprivacy/php-examples
 cd php-examples
-strm create stream demo --save
+strm create stream demo
+clientId=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientId')
+clientSecret=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientSecret')
 composer install
 ## send one DemoEvent to STRM Privacy:
-php examples/send.php <billingId> <clientId> <clientSecret>
+php examples/send.php $clientId $clientSecret
 ```
 
 <ExternalCodeBlock
