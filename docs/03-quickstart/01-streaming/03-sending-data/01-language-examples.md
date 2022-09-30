@@ -207,7 +207,7 @@ lang="typescript"
 </TabItem>
 <TabItem value="php" label="Php">
 
-[![php-driver](https://img.shields.io/npm/v/@strmprivacy/schemas-demo-avro.svg?label=Avro+demo+schema&color=F25C03)](https://packagist.org/packages/strmprivacy/php-driver)
+[![php-driver](https://img.shields.io/packagist/v/strmprivacy/php-driver.svg?label=PHP+Driver&color=F25C03)](https://packagist.org/packages/strmprivacy/php-driver)
 
 This example is also [available on GitHub](https://github.com/strmprivacy/php-examples/blob/master/examples/send.php).
 Please see the [repository](https://github.com/strmprivacy/php-examples) for the readme.
