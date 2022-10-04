@@ -21,14 +21,14 @@ Delete an entity
       --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
       --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
   -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
-      --project string                 Project to use (defaults to context-configured project)
+  -p, --project string                 Project to use (defaults to context-configured project)
       --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
       --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
 ```
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.17.5
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.18.0
 * [strm delete batch-exporter](docs/04-reference/01-cli-reference/strm/delete/batch-exporter.md)	 - Delete one or more Batch exporters by name
 * [strm delete batch-job](docs/04-reference/01-cli-reference/strm/delete/batch-job.md)	 - Delete on or more Batch Jobs by id
 * [strm delete data-connector](docs/04-reference/01-cli-reference/strm/delete/data-connector.md)	 - Delete Data Connectors
@@ -37,6 +37,7 @@ Delete an entity
 * [strm delete event-contract](docs/04-reference/01-cli-reference/strm/delete/event-contract.md)	 - Delete Event Contract by reference
 * [strm delete kafka-exporter](docs/04-reference/01-cli-reference/strm/delete/kafka-exporter.md)	 - Delete a Kafka exporter
 * [strm delete kafka-user](docs/04-reference/01-cli-reference/strm/delete/kafka-user.md)	 - Delete one or more Kafka users
+* [strm delete project](docs/04-reference/01-cli-reference/strm/delete/project.md)	 - Delete a project and all associated resources
 * [strm delete schema](docs/04-reference/01-cli-reference/strm/delete/schema.md)	 - Delete Schema by reference
 * [strm delete stream](docs/04-reference/01-cli-reference/strm/delete/stream.md)	 - Delete one or more streams
 
