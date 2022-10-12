@@ -262,12 +262,15 @@ Data Contracts currently are limited in the following ways:
 
 - `piiFields`
   - specified field names should be present in the corresponding schema
-  - specified fields is not of type `union`, `map`, or `list`
+  - specified fields should be (optional) string or list of string.
 - `keyField`
   - specified field name should be present in the corresponding schema
-  - specified field is not of type `union`, `map`, or `list`
-  - specified field should be a primitive and is required (i.e. non-nullable)
+  - specified field should be an (optional) string
+  - note that our `event-gateway` requires that the key-field of an event is not empty in order to accept it.
 
+<!--
+  look in events-core for `validPiiFieldTypes` and the method `validateContract()`
+-->
 :::note
 Technically it is possible to lift some of these limitations. Please [contact us](docs/05-contact/index.md) if you are
 interested in this.
