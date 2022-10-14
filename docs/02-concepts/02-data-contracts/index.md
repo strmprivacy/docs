@@ -266,7 +266,7 @@ Data Contracts currently are limited in the following ways:
 - `keyField`
   - specified field name should be present in the corresponding schema
   - specified field should be an (optional) string
-  - note that our `event-gateway` requires that the key-field of an event is not empty in order to accept it.
+  - note that the Event Gateway requires that the key field of an event is not empty in order to accept it.
 
 <!--
   look in events-core for `validPiiFieldTypes` and the method `validateContract()`
