@@ -1,6 +1,7 @@
 ---
 title: Metrics and Monitoring
 hide_table_of_contents: false
+description: Monitor your Data Plane with Prometheus and Grafana.
 ---
 
 [prometheus]: https://prometheus.io/

@@ -8,11 +8,11 @@ hide_table_of_contents: false
 STRM Privacy is a privacy-focused data processing platform, that ensures that collected
 data from a source is of a strictly defined shape and content (the Data Contract), and that
 it is compliant with all well known privacy regulations, such as
-[GDPR](https://gdpr.eu/). We strive to help you to collect customer data
+[GDPR](https://gdpr.eu/). We strive to help you collect customer data
 in real-time or process data in batch with privacy and usability built-in.
 
-Data can be consumed through multiple channels, which then can be used
-by you for analytics, data science, machine learning, or for storing it
+You can consume data through multiple channels and use it
+for analytics, data science, machine learning, or store it
 in your data lake. If you'd like to jump right in:
 
 <div>
@@ -50,8 +50,7 @@ platform. Some examples of use cases:
   statistics on large scale data systems. Hence, often personal data is not required for
   good result, what matters is the underlying distribution of the data. Using STRM Privacy streams as the basis for your
   models, you keep the links within your data intact while discarding the personal aspect of it.
-* **Your use case?** [Reach out to us](docs/05-contact/index.md) and discuss your use case and see how STRM Privacy
-  could help you streamline your
+* **Your use case?** [Reach out to us](docs/05-contact/index.md) and discuss your use case and see how STRM Privacy could help you streamline your
   the challenge of processing privacy-sensitive data.
 
 ## Support

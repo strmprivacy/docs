@@ -1,19 +1,23 @@
 ---
-title: "config"
+title: "data-contract"
 hide_title: true
 ---
-## strm context config
+## strm activate data-contract
 
-Shows the config path and preferences
+Set the state of a Data Contract to ACTIVATED
+
+### Synopsis
+
+### Usage
 
 ```
-strm context config [flags]
+strm activate data-contract (handle/name/version) [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help   help for config
+  -h, --help   help for data-contract
 ```
 
 ### Options inherited from parent commands
@@ -31,5 +35,5 @@ strm context config [flags]
 
 ### SEE ALSO
 
-* [strm context](docs/04-reference/01-cli-reference/strm/context/index.md)	 - Print the CLI context
+* [strm activate](docs/04-reference/01-cli-reference/strm/activate/index.md)	 - Set the state of an entity to ACTIVATED
 

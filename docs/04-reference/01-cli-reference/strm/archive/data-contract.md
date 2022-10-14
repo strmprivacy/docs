@@ -1,19 +1,23 @@
 ---
-title: "config"
+title: "data-contract"
 hide_title: true
 ---
-## strm context config
+## strm archive data-contract
 
-Shows the config path and preferences
+Set the state of an Data Contract to ARCHIVED
+
+### Synopsis
+
+### Usage
 
 ```
-strm context config [flags]
+strm archive data-contract (handle/name/version) [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help   help for config
+  -h, --help   help for data-contract
 ```
 
 ### Options inherited from parent commands
@@ -31,5 +35,5 @@ strm context config [flags]
 
 ### SEE ALSO
 
-* [strm context](docs/04-reference/01-cli-reference/strm/context/index.md)	 - Print the CLI context
+* [strm archive](docs/04-reference/01-cli-reference/strm/archive/index.md)	 - Set the state of an entity to ARCHIVED
 

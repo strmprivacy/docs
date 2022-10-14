@@ -1,6 +1,7 @@
 ---
 title: AWS Marketplace Installation
 hide_table_of_contents: false
+description: Subscribe to the AWS Marketplace version to keep using the products you already know.
 ---
 
 This section describes how to get up and running with a Customer Cloud Deployment through the AWS Marketplace.

@@ -1,6 +1,7 @@
 ---
 title: Upgrading
 hide_table_of_contents: false
+description: How to upgrade your Data Plane.
 ---
 
 import Tabs from '@theme/Tabs';

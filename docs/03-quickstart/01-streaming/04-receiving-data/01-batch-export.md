@@ -21,7 +21,7 @@ storage platforms.
 
 ## Creating a data connector
 
-First create a [data-connector](docs/03-quickstart/03-data-connectors/index.md) of the desired kind.
+First create a [data connector](docs/03-quickstart/03-data-connectors/index.md) of the desired kind.
 
 ## Create a batch exporter
 

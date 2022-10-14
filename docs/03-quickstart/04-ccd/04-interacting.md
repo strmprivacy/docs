@@ -1,6 +1,7 @@
 ---
-title: Interacting with a Customer Cloud Deployment
+title: Interacting with your Data Plane
 hide_table_of_contents: false
+description: Using your own Data Plane to send and receive data.
 ---
 
 [cli]: https://github.com/strmprivacy/cli
