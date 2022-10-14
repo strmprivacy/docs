@@ -6,14 +6,13 @@ hide_table_of_contents: false
 This quickstart guides you through creating a Simple Schema and see how
 it can be used. Simple Schemas are a much easier way of defining serialization
 schemas, as they can be based on widely adopted and probably familiar
-formats over the (complex) Avro and Json-schema formats. Especially for
+formats (though complex) Avro and Json-schema. Especially for
 large schemas, Simple Schemas help to define your data shape much
 quicker.
 
-## Creating a Simple Schema
+## Defining a Simple Schema
 
-I have created the following yaml file that defines a simple event
-schema that I want to use.
+For this quickstart, the following `yaml` file that defines the simple schema will be used.
 
 ```yaml showLineNumbers title=simple-schema.yaml class=with-footer 
 name: Clicks
@@ -47,40 +46,63 @@ Note `Session Id` has two additional arguments: `required` and `repeated`. This 
 the `keyField`.
 :::
 
-To install this schema into STRM Privacy [^1] we execute the following
-command:
+To install this schema into STRM Privacy, it needs to be attached to a Data Contract.
 
-```bash showLineNumbers
-$ strm create schema \
-  # callout-2
-  --definition=simple-schema.yaml  \
-  # callout-1
-  quickstart/demo/1.0.0
+## Creating a Data Contract
 
-SCHEMA                  TYPE   PUBLIC   FINGERPRINT
-quickstart/demo/1.0.0   AVRO   false    5923838772183777456
+This quickstart requires a Data Contract with this schema that will define
+that:
+
+- `SessionId` is the `keyField`, the attribute that
+  ties events together.
+- `UserName` is a PII field, level 1
+
+:::important
+These names currently are the [`avroName`](#name-and-avroname)s, not the names in the simple
+schema.
+:::
+
+Checking `strm create data-contract --help` tells us what we need to
+create.
+
+```json showLineNumbers title=contract.json class=with-footer
+{
+  "keyField" : "SessionId",
+  "piiFields" : { "UserName": 1 }
+}
 ```
 
-1. the simple schema file
-2. the schema reference which is `<handle>/<schema-name>/<schema-version>`. You need to set your
-   `handle` in the [STRM Privacy
-   console](https://console.strmprivacy.io/profile)
+<div class="codeblock-footer"><a target="_blank" href="pathname:///files/contract.json">Download file</a></div>
 
-To get the schema, execute the following command:
 
-[//]: # (TODO update to data contract)
+```bash
+$ strm create data-contract quickstart/demo-data-contract/1.0.0 \
+  --schema-definition simple-schema.yaml  \
+  --contract-definition contract.json
+
+DATA CONTRACT                          STATE   PUBLIC   KEY FIELD   # PII FIELDS   # VALIDATIONS
+
+quickstart/demo-data-contract/1.0.0    DRAFT   false    SessionId              1               0
+```
+
+1. `--schema-definition`: the schema definition file that was defined in the previous section
+2. `--contract-definition`: the definition of the data contract
+
+### Inspecting the schema
+
+To get the schema from the Data Contract, execute the following command:
 
 ```json showLineNumbers
-$ strm get schema quickstart/demo/1.0.0 -o json
+$ strm get data-contract quickstart/demo-data-contract/1.0.0 --output json | jq '.dataContract.schema'
 {
     "schema": {
         "ref": {
             "handle": "quickstart",
-            "name": "demo",
+            "name": "demo-data-contract",
             "version": "1.0.0",
             "schemaType": "AVRO"
         },
-        "state": "PENDING",
+        "state": "DRAFT",
         "definition": "{\"type\":\"record\",\"name\":\"Clicks\",\"namespace\":\"com.....
         "simpleSchema": {
             "name": "Clicks",
@@ -128,50 +150,51 @@ $ strm get schema quickstart/demo/1.0.0 -o json
 ...
 ```
 
-:::info
+#### Name and `avroName`
+
 The `avroName` fields look similar to the
 original `name`. These names however, are subject to the [Avro name
 constraints](https://avro.apache.org/docs/current/spec.html#names)
-whereas the `name` attributes in a Simple Schema are not [^1]
-:::
+whereas the `name` attributes in a Simple Schema are not [^1].
 
-### The generated schema
+#### The generated schema
 
 The schema response, contains an actual [Avro avsc
 definition
 string](https://avro.apache.org/docs/current/spec.html#schemas), which has been generated from the provided Simple
 Schema.
-This definition is what is actually being used by the STRM Privacy engine,
+This definition is what is actually being used by STRM Privacy,
 the Simple Schema is *only a way to create it*.
 
 If you're interested in the actual Avro Schema, you can make it a little
 more visible by using some `jq` magic.
 
 ```bash
-$ strm get schema quickstart/demo/1.0.0 -o json | jq -r .schema.definition | jq .fields[1]
+$ strm get data-contract quickstart/demo-data-contract/1.0.0 --output json | jq '.dataContract.schema.definition | fromjson | .fields[1]'
 {
   "name": "SessionId",
-  "type": [
-    "null",
-    "string"
-  ],
-  "doc": "the string value that connects events to a single sequence",
-  "default": null
+  "type": "string",
+  "doc": "the string value that connects events to a single sequence"
 }
 ```
+
+:::tip
+View the entire generated Avro schema
+with `strm get data-contract quickstart/demo-data-contract/1.0.0 --output json | jq '.dataContract.schema.definition | fromjson'`
+:::
 
 Avoiding this complexity is exactly why we created Simple Schema. We expect that
 a large majority of use cases on STRM Privacy will use Simple Schemas.
 
-### Avro namespace
+#### Avro namespace
 
 The Avro definition contains a
 [`namespace`](https://avro.apache.org/docs/current/spec.html#schema_complex)
 attribute, which can be extracted with the following command:
 
 ```bash
-$ strm get schema quickstart/demo/1.0.0 -o json | jq -r .schema.definition | jq .namespace
-"quickstart.demo.v1_0_0"
+$ strm get data-contract quickstart/demo-data-contract/1.0.0 --output json | jq '.dataContract.schema.definition | fromjson | .namespace'
+"quickstart.DemoDataContract.v1_0_0"
 ```
 
 It is possible to override this in the Simple Schema `yaml` file, but when it is absent, it
@@ -181,55 +204,14 @@ use [generated programming language code](docs/04-reference/01-cli-reference/str
 In the example that follows, Python generated code is used to create some
 events.
 
-## Creating a Data Contract
-
-This quickstart requires a Data Contract with this schema that will define
-that:
-
-- `SessionId` is the `keyField`, the attribute that
-  ties events together.
-- `UserName` is a PII field, level 1
-
-:::important
-these names currently are the `avroNames`, not the names in the simple
-schema.
-:::
-
-Checking `strm create data-contract --help` tells us what we need to
-create.
-
-[//]: # (TODO data-contract definition files)
-
-```json showLineNumbers title=event-contract.json class=with-footer
-{
-  "keyField" : "SessionId",
-  "piiFields" : { "UserName": 1 }
-}
-```
-
-<div class="codeblock-footer"><a target="_blank" href="pathname:///files/event-contract.json">Download file</a></div>
-
-
-[//]: # (TODO switch to data-contract command)
-
-```bash
-strm create event-contract \
-  -S quickstart/demo/1.0.0  \
-  -F event-contract.json  \
-  quickstart/demo-event-contract/2.0.0
-```
-
-1. `-S`: the schema that we want to refer to in this data contract
-2. `-F`: the definition of the data contract
-
 ## Send some data with Python
 
 ```bash showLineNumbers
 python3 -m venv venv
 . venv/bin/activate
 # callout-1
-strm get schema-code quickstart/demo/1.0.0 --language=python
-unzip python-avro-demo-1.0.0.zip
+strm get schema-code quickstart/demo-data-contract/1.0.0 --language=python
+unzip python-avro-demo-data-contract-1.0.0.zip
 cd python-avro-demo-1.0.0/
 # callout-2
 make install
@@ -243,8 +225,10 @@ pip install strmprivacy-driver
 3. the STRM Privacy Python driver is accidentally excluded.
 
 Next, follow along with the [full Python
-example](docs/03-quickstart/01-streaming/03-sending-data/01-language-examples.md). The difference in this quickstart however,
-is that the example [`sender_async.py`](https://github.com/strmprivacy/python-examples/blob/master/examples/sender_async.py)
+example](docs/03-quickstart/01-streaming/03-sending-data/01-language-examples.md). The difference in this quickstart
+however,
+is that the
+example [`sender_async.py`](https://github.com/strmprivacy/python-examples/blob/master/examples/sender_async.py)
 code needs to be modified to use the schema-code that you just generated.
 
 ```python showLineNumbers title=sender.py class=with-footer
@@ -262,7 +246,7 @@ class Sender(object):
 def create_avro_event():
   event = Clicks()
 
-  event.strmMeta.eventContractRef = "quickstart/demo-event-contract/2.0.0"
+  event.strmMeta.eventContractRef = "quickstart/demo-data-contract/1.0.0"
   event.strmMeta.consentLevels = [random.randint(0, 3)]
 
   ## note the avro names instead of the Simple Schema names
@@ -307,11 +291,9 @@ strm create stream --derived-from demo --save --levels 1
 Create a few environment variables that can be used to start up the
 Python code.
 
-[//]: # (TODO do not use strm context to get credentials anymore)
 ```bash
-saveFile=$(strm context info Stream/demo)
-clientId=$(cat $saveFile | jq -r '.credentials[0].clientId')
-clientSecret=$(cat $saveFile | jq -r '.credentials[0].clientSecret')
+clientId=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientId')
+clientSecret=$(strm get stream demo --output json | jq -r '.streamTree.stream.credentials[0].clientSecret')
 ```
 
 Next, start sending events with this Python code. The [204 http status
@@ -319,7 +301,6 @@ code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204)
 indicates the event was accepted and processed by the STRM Privacy Event
 Gateway with no issues.
 
-[//]: # (TODO ensure that this send command works)
 ```bash
 python3 sender.py $clientId $clientSecret
 
@@ -327,35 +308,32 @@ INFO:__main__:Event sent, response 204
 INFO:__main__:Event sent, response 204
 ```
 
-Since Python 3.10, you'll encouter a warning from the HTTP client:
+Since Python 3.10, you'll encounter a warning from the HTTP client:
 `charset_normalizer:Encoding detection on empty bytes, assuming utf_8 intention.`
 on the 204 empty response. This is unfortunate, but can be safely ignored.
 
 With the Web Socket endpoint, it is possible to consume the events of the input stream.
 
-[//]: # (TODO the billing id needs to be removed)
 ```bash showLineNumbers
 $ strm listen web-socket demo | jq 
 {
   "strmMeta": {
-    "eventContractRef": "quickstart/demo-event-contract/2.0.0",
+    "eventContractRef": "quickstart/demo-data-contract/1.0.0",
     "nonce": 1606491963,
     "timestamp": 1640870686866,
     "keyLink": "08ad5b5c-f71a-46ea-88b3-41e2facb6211",
-    "billingId": "strmquickstart1585470330",
     "consentLevels": [ 3 ]
   },
   "SessionId": "session-0",
+  // callout-1
   "UserName": "ASSPO2VhVDtRvZD+8yDkrJwwm8wEvnuXtSD6", 
   "url": "url-0",
   "MousePositions": [ { "x": 353, "y": 188 }, { "x": 60, "y": 938 } ]
 }
 ```
 
-[//]: # (TODO this comment regarding save can be removed if this document is updated and verified that it works)
-- we don’t need explicit credentials because we used the `--save`
-  option to create the streams.
-- `UserName` is encrypted.
+1. The field `UserName` is encrypted in the events that are received here, as we are listening via web socket to
+the encrypted stream.
 
 :::note
 The data that is received contains the `avroName` attributes, and not the original `name`. If you are interested in
@@ -366,7 +344,7 @@ Regarding the derived stream, `UserName` is now decrypted, and
 it would only receive events with *at least* consent level 1 in the
 event.
 
-With the Web Socket endpoint, it is also possible to listen on the derived stream with consent level 1. Then,
+With the web xocket endpoint, it is also possible to listen on the derived stream with consent level 1. Then,
 only events with *at least* consent level 1 in them will be received.
 
 ```json showLineNumbers
@@ -374,7 +352,7 @@ $ strm listen web-socket demo-1
 
 {
   "strmMeta": {
-    "eventContractRef": "quickstart/demo-event-contract/2.0.0",
+    "eventContractRef": "quickstart/demo-data-contract/1.0.0",
     "nonce": -2105288911,
     "timestamp": 1640870774948,
     "keyLink": "08ad5b5c-f71a-46ea-88b3-41e2facb6211",
@@ -395,7 +373,8 @@ $ strm listen web-socket demo-1
 ## Simple Schema Reference
 
 A simple schema is defined via the following
-[Protobuf](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L436) definitions.
+[Protobuf](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L436)
+definitions.
 
 ```protobuf showLineNumbers
 message SimpleSchemaDefinition {
@@ -457,13 +436,9 @@ enum SimpleSchemaNodeType {
    nested structure. In that case the `nodes` field must hold **at
    least 1** child `SimpleSchemaNode`.
 7. the name of the attribute.
-8. whether or not the entry is repeated, so it is either a single node
+8. whether the entry is repeated, so it is either a single node
    or a list of nodes
-9. whether or not this attribute is required. When required your
+9. whether this attribute is required. When required your
    sending software *must* fill in this value.
 10. when `type` is equal to `SimpleSchemaNodeType` you can add 1 or more
     `SimpleSchemaNodes` here
-
-[^1]: the only constraint is that the names must not
-contain [Unicode control characters](https://en.wikipedia.org/wiki/Unicode_control_characters)
-
