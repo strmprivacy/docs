@@ -39,10 +39,17 @@ function placeholderInputs(children, placeholders, placeholderValues, handleChan
     const placeholderMatch = '$' + key;
 
     if (children.includes(placeholderMatch)) {
-      inputs.push(<div>
-        <label>{placeholders[key].description}: </label>
-        <input type="text" id={key} placeholder={prop.inputPlaceholder} value={inputValue}
-               onChange={(e) => handleChange(key, e)}></input>
+      inputs.push(<div className="code-block-placeholder">
+        <label className="code-block-placeholder-element"
+               for={key}
+        ><b>{placeholders[key].description}</b>
+          <input type="text"
+                 className="code-block-placeholder-element"
+                 id={key}
+                 placeholder={prop.inputPlaceholder}
+                 value={inputValue}
+                 onChange={(e) => handleChange(key, e)}/></label>
+
       </div>);
     }
   });
@@ -71,6 +78,7 @@ function removePlaceholdersFromProps(props, metaStringAfterPlaceholderMarker, me
     if (metaStringAfterPlaceholderMarker.includes(key)) delete cleanedProps[key];
   });
   cleanedProps['metastring'] = metaStringBeforePlaceholderMarker;
+  cleanedProps['className'] = cleanedProps['className'] + ' with-footer code-block-placeholder-contents';
   return cleanedProps;
 }
 
@@ -84,7 +92,7 @@ export default function CodeBlockWrapper({children: children, ...props}) {
       .map(pair => pair.split('='))
       .map(([key, value]) => [key, {
         description: value,
-        inputPlaceholder: `<${value.toUpperCase().replaceAll(/\s/g, "_")}>`
+        inputPlaceholder: `<${value.toUpperCase().replaceAll(/(?:^\s?|\s*?[.!?]+$)/g, '').replaceAll(/\s/g, "_")}>`
       }])
     );
 
@@ -95,10 +103,13 @@ export default function CodeBlockWrapper({children: children, ...props}) {
 
     return (
       <>
-        {inputs}
         <CodeBlock {...cleanedProps} >
           {childrenWithPlaceholdersReplaced}
         </CodeBlock>
+        <div className="code-block-footer">
+          <p><b>Placeholders</b></p>
+          {inputs}
+        </div>
       </>
     );
   } else {

@@ -260,3 +260,44 @@ article .text--truncate {
   margin-left: 5px;
   vertical-align: middle;
 }
+
+.code-block-footer {
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+  font-size: var(--ifm-code-font-size);
+  font-weight: 500;
+  padding: 0.75rem var(--ifm-pre-padding);
+  border-bottom-left-radius: var(--ifm-code-border-radius);
+  border-bottom-right-radius: var(--ifm-code-border-radius);
+  background-color: #f6f8fa;
+  margin-bottom: var(--ifm-leading);
+  padding-top: calc(0.75 * var(--ifm-pre-padding));
+  padding-bottom: calc(0.75 * var(--ifm-pre-padding));
+}
+
+[data-theme='dark'] .code-block-footer {
+  background-color: #282A36;
+}
+
+.code-block-placeholder-contents pre {
+  border-radius: unset;
+}
+
+.code-block-placeholder input {
+  display: block;
+  border-color: var(--ifm-color-content-secondary);
+  border-radius: var(--ifm-global-radius);
+  border-style: solid;
+  border-width: var(--ifm-global-border-width);
+  padding: 0.5rem;
+  width: 40%;
+  font-size: unset;
+}
+
+.code-block-placeholder {
+  margin-bottom: calc(0.5 * var(--ifm-leading));
+}
+
+.code-block-placeholder label {
+  display: block;
+  font-size: 85%;
+}
