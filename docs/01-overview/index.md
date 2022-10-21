@@ -5,6 +5,34 @@ hide_table_of_contents: false
 
 # STRM Privacy
 
+[//]: # (TODO Remove this, this is just an example!)
+```json title=aws-role-trust-policy.json placeholders oidc_id=OIDC ID, region=AWS Region, namespace=Kubernetes Namespace, serviceaccount=Kubernetes Service Account Name
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "ec2.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::047925648519:oidc-provider/oidc.eks.$region.amazonaws.com/id/$oidc_id"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "oidc.eks.$region.amazonaws.com/id/$oidc_id:sub": "system:serviceaccount:$namespace:$serviceaccount"
+                }
+            }
+        }
+    ]
+}
+```
+
 STRM Privacy is a privacy-focused data processing platform, that ensures that collected
 data from a source is of a strictly defined shape and content (the Data Contract), and that
 it is compliant with all well known privacy regulations, such as
