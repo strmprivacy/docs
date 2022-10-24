@@ -63,7 +63,14 @@ With help of [this
 tool](https://github.com/confluentinc/avro-random-generator), it's possible to easily generate some random data for the
 [clickstream](https://console.strmprivacy.io/schemas/) demo schema.
 
-```json showLineNumbers title=demo.json class=with-footer
+```json title=my-json.json placeholders my_placeholder=AWS Region, another_one=AWS Account ID
+{
+    "someKey": "Using placeholders is simple, just fill out a text in the input, and it'll be shown here: $my_placeholder",
+    "someOtherKey": "Did I say this already? Any user value is shown here = $another_one"
+}
+```
+
+```json showLineNumbers title=demo.json download=demo.json
 {
   "strmMeta": {
     "eventContractRef": "strmprivacy/clickstream/1.0.0",
@@ -81,8 +88,6 @@ tool](https://github.com/confluentinc/avro-random-generator), it's possible to e
   "abTests": ["a", "b"]
 }
 ```
-
-<div class="codeblock-footer"><a target="_blank" href="pathname:///files/demo.json" download>Download file</a></div>
 
 :::note
 This is the JSON serialization format of Avro. The client drivers use

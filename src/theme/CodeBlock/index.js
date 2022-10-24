@@ -78,7 +78,7 @@ function removePlaceholdersFromProps(props, metaStringAfterPlaceholderMarker, me
     if (metaStringAfterPlaceholderMarker.includes(key)) delete cleanedProps[key];
   });
   cleanedProps['metastring'] = metaStringBeforePlaceholderMarker;
-  cleanedProps['className'] = cleanedProps['className'] + ' with-footer code-block-placeholder-contents';
+  cleanedProps['className'] = cleanedProps['className'] + ' with-footer';
   return cleanedProps;
 }
 
@@ -111,6 +111,20 @@ export default function CodeBlockWrapper({children: children, ...props}) {
           <div className="code-block-placeholder-footer">
             {inputs}
           </div>
+        </div>
+      </>
+    );
+  } else if (props.download) {
+    const blob = new Blob([children], {type: 'text/plain'});
+
+    let cleanedProps = {...props};
+    cleanedProps['className'] = cleanedProps['className'] + ' with-footer';
+
+    return (
+      <>
+        <CodeBlock {...cleanedProps} >{children}</CodeBlock>
+        <div className="code-block-footer code-block-footer-download">
+          <a target="_blank" href={window.URL.createObjectURL(blob)} download={props.download}>Download file</a>
         </div>
       </>
     );
