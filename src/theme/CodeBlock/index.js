@@ -35,23 +35,26 @@ function stateManagement(placeholders) {
 function placeholderInputs(children, placeholders, placeholderValues, handleChange) {
   let inputs = [];
   Object.entries(placeholders).forEach(([key, prop]) => {
+    console.log(key);
     const inputValue = placeholderValues[key] === prop.inputPlaceholder ? "" : placeholderValues[key];
     const placeholderMatch = '$' + key;
 
-    if (children.includes(placeholderMatch)) {
-      inputs.push(<div className="code-block-placeholder">
-        <label className="code-block-placeholder-element"
-               for={key}
-        ><b>{placeholders[key].description}</b>
-          <input type="text"
-                 className="code-block-placeholder-element"
-                 id={key}
-                 placeholder={prop.inputPlaceholder}
-                 value={inputValue}
-                 onChange={(e) => handleChange(key, e)}/></label>
+    let containsPlaceholder = children.match(new RegExp('\\' + placeholderMatch + '\\b')) != null;
+    inputs.push(<div className="code-block-placeholder" key={key}>
+      <label className="code-block-placeholder-element"
+             for={key}
+      ><b>{placeholders[key].description}</b>
+        <input type="text"
+               className="code-block-placeholder-element"
+               id={key}
+               placeholder={containsPlaceholder ? prop.inputPlaceholder : "Unused placeholder. Use it with " + placeholderMatch + " in the code block."}
+               disabled={!containsPlaceholder}
+               value={inputValue}
+               onChange={(e) => handleChange(key, e)}/></label>
 
-      </div>);
-    }
+    </div>);
+
+    console.log(inputs);
   });
   return inputs;
 }
@@ -108,7 +111,9 @@ export default function CodeBlockWrapper({children: children, ...props}) {
         </CodeBlock>
         <div className="code-block-footer">
           <p><b>Placeholders</b></p>
-          {inputs}
+          <div className="code-block-placeholder-footer">
+            {inputs}
+          </div>
         </div>
       </>
     );
