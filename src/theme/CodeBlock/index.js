@@ -35,7 +35,6 @@ function stateManagement(placeholders) {
 function placeholderInputs(children, placeholders, placeholderValues, handleChange) {
   let inputs = [];
   Object.entries(placeholders).forEach(([key, prop]) => {
-    console.log(key);
     const inputValue = placeholderValues[key] === prop.inputPlaceholder ? "" : placeholderValues[key];
     const placeholderMatch = '$' + key;
 
@@ -53,8 +52,6 @@ function placeholderInputs(children, placeholders, placeholderValues, handleChan
                onChange={(e) => handleChange(key, e)}/></label>
 
     </div>);
-
-    console.log(inputs);
   });
   return inputs;
 }
