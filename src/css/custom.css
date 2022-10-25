@@ -356,3 +356,7 @@ article .text--truncate {
   display: block;
   font-size: 85%;
 }
+
+img[src*="#img-shield-vertical-align"] {
+  vertical-align: sub;
+}

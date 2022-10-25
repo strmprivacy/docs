@@ -5,7 +5,7 @@ description: Configure your Data Plane with authenticated Kafka.
 ---
 
 import CodeBlock from '@theme/CodeBlock';
-import {ExternalCodeBlock} from '/full-example.js';
+import {ExternalCodeBlock} from '/external-code-block.js';
 
 [sasl-plain]: https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html
 
