@@ -311,6 +311,7 @@ article .text--truncate {
   margin-bottom: var(--ifm-leading);
   padding-top: calc(0.75 * var(--ifm-pre-padding));
   padding-bottom: calc(0.75 * var(--ifm-pre-padding));
+  box-shadow: var(--ifm-global-shadow-lw);
 }
 
 .code-block-footer-download {
@@ -330,10 +331,13 @@ article .text--truncate {
 
 .with-footer {
   margin-bottom: unset !important;
+  border-bottom-left-radius: unset !important;
+  border-bottom-right-radius: unset !important;
 }
 
 .with-footer pre {
-  border-radius: unset;
+  border-bottom-left-radius: unset;
+  border-bottom-right-radius: unset;
 }
 
 .code-block-placeholder input {
