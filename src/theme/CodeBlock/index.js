@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CodeBlock from '@theme-original/CodeBlock';
+import BrowserOnly from "@docusaurus/core/lib/client/exports/BrowserOnly";
 
 /*
 Inspired by Google Cloud Documentation's 'Format Placeholders' (https://developers.google.com/style/placeholders)
@@ -199,13 +200,19 @@ export default function CodeBlockWrapper({children: children, ...props}) {
         <CodeBlock {...modifiedProps} >
           {childrenWithPlaceholdersReplaced}
         </CodeBlock>
-        <div className="code-block-footer">
-          <p><b>Placeholders</b></p>
-          <div className="code-block-placeholder-footer">
-            {inputs}
-          </div>
-          {downloadButton(props, childrenWithPlaceholdersReplaced)}
-        </div>
+        <BrowserOnly fallback={<div>Loading...</div>}>
+          {() => {
+            return (
+              <div className="code-block-footer">
+                <p><b>Placeholders</b></p>
+                <div className="code-block-placeholder-footer">
+                  {inputs}
+                </div>
+                {downloadButton(props, childrenWithPlaceholdersReplaced)}
+              </div>
+            );
+          }}
+        </BrowserOnly>
       </>
     );
   } else if (props.download) {
@@ -215,9 +222,15 @@ export default function CodeBlockWrapper({children: children, ...props}) {
     return (
       <>
         <CodeBlock {...modifiedProps} >{children}</CodeBlock>
-        <div className="code-block-footer">
-          {downloadButton(props, children)}
-        </div>
+        <BrowserOnly fallback={<div>Loading...</div>}>
+          {() => {
+            return (
+              <div className="code-block-footer">
+                {downloadButton(props, children)}
+              </div>
+            );
+          }}
+        </BrowserOnly>
       </>
     );
   } else {
