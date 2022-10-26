@@ -4,7 +4,7 @@ hide_table_of_contents: false
 ---
 
 import CodeBlock from '@theme/CodeBlock';
-import {ExternalCodeBlock} from '/full-example.js';
+import {ExternalCodeBlock} from '/external-code-block.js';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

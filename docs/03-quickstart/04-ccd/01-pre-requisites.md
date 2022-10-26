@@ -5,7 +5,7 @@ description: Installation of necessary tools.
 ---
 
 import CodeBlock from '@theme/CodeBlock';
-import {ExternalCodeBlock} from '/full-example.js';
+import {ExternalCodeBlock} from '/external-code-block.js';
 
 [cli]: https://github.com/strmprivacy/cli
 

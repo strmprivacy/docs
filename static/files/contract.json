@@ -1,6 +1,0 @@
-{
-  "keyField" : "SessionId",
-  "piiFields" : {
-    "UserName": 1
-  }
-}
