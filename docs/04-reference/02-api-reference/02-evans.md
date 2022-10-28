@@ -55,4 +55,4 @@ To exit the `repeated` entries in Evans, type <kbd>CTRL</kbd>+<kbd>D</kbd>.
 :::
 
 The entire STRM Privacy API can be accessed this way. The `CLI` however, offers a way more convenient way to access the
-CLI.
+API.
