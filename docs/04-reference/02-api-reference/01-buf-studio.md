@@ -11,7 +11,7 @@ it is also possible to use [Buf Studio][BSR].
 
 ![BSR](images/bsr.png)
 
-This does however require authentication. STRM Privacy leverages [Auth 2.0](https://oauth.net/2/), more specifically,
+This does however require authentication. STRM Privacy leverages [OAuth 2.0](https://oauth.net/2/), more specifically,
 the [authorization code flow](https://oauth.net/2/grant-types/authorization-code/), which means that multiple steps need
 to be taken to retrieve a valid access token that can be passed with each API request. While possible to perform all
 these steps yourselves, it does require quite some OAuth 2.0 knowledge. For simplicity,
