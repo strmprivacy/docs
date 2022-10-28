@@ -30,7 +30,7 @@ Legal Grounds:
 State: STATE_ACTIVE
 ```
 
-**name**: The name of the policy. This has to be unique with your organization. Preferably choose a short word or sentence. This
+**name**: The name of the policy. This has to be unique within your organization. Preferably choose a short word or sentence. This
 name can be used to interact with policies via the cli and the console id
 
 **id**: This [uuid][uuid] is assigned at random upon creation of a policy. It is required when _updating_ policy
@@ -48,14 +48,18 @@ in the `active` state.  Policy attributes can be modified as long as its state i
 `draft` or `archived` state.
 
 ## Outputs
-Whereas the previous batch key export (for the streams) and the keys csv files for the batch jobs had only two columns
-(`keyLink` and `encryptionKey`), they now have 2 more:
+The batch key export (for the streams) and the keys csv files for the
+batch jobs have 4 columns[^3].
 
+* `keyLink`: the key link that gets inserted into every data point that is tied to the encryption key that was used
+* `encryptionKey`: the encryption key that was used to encrypt the data point. This can also be used to restore the
+  orignal value of attributes.
 * `policyId`: the id of the policy that was applicable when the key was created.
 * `expiresAt`: the key was used from a certain moment[^1], and this moment plus the number of retention days[^2].
 
 [^1]: the actual moment the key was created in a stream, or the first second of a certain date for a batch-job.
 [^2]: stored as [epoch milliseconds](https://www.epochconverter.com/)
+[^3]: before the Policy service came into existence one had only the first two columns.
 
 Example `keys.csv`
 
@@ -70,8 +74,7 @@ This 1 years policy was applied and the 1354233600000 translates to Friday, 30 N
 
 ## The default policy
 
-Currently, since organizations on StrmPrivacy don't really have policies yet, we have the following default policy in
-the PRIvacy MEtadata server
+Currently, since organizations on STRM Privacy don't really have policies yet, we have the following default policy.
 
 **policy** with **no name** and **no id**. This happens when you don't fill in a policy in a stream or a batch-job. In that case the
 policy server will provide the `no-name` policy with a retention of 7 years [^3]. You would see this in the exported
