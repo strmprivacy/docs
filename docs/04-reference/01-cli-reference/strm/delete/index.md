@@ -28,16 +28,14 @@ Delete an entity
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 2.19.0
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.0.0
 * [strm delete batch-exporter](docs/04-reference/01-cli-reference/strm/delete/batch-exporter.md)	 - Delete one or more Batch exporters by name
 * [strm delete batch-job](docs/04-reference/01-cli-reference/strm/delete/batch-job.md)	 - Delete on or more Batch Jobs by id
 * [strm delete data-connector](docs/04-reference/01-cli-reference/strm/delete/data-connector.md)	 - Delete Data Connectors
 * [strm delete data-contract](docs/04-reference/01-cli-reference/strm/delete/data-contract.md)	 - Delete Data Contract by reference
 * [strm delete data-subjects](docs/04-reference/01-cli-reference/strm/delete/data-subjects.md)	 - Delete data subjects
-* [strm delete event-contract](docs/04-reference/01-cli-reference/strm/delete/event-contract.md)	 - Delete Event Contract by reference
 * [strm delete kafka-exporter](docs/04-reference/01-cli-reference/strm/delete/kafka-exporter.md)	 - Delete a Kafka exporter
 * [strm delete kafka-user](docs/04-reference/01-cli-reference/strm/delete/kafka-user.md)	 - Delete one or more Kafka users
 * [strm delete project](docs/04-reference/01-cli-reference/strm/delete/project.md)	 - Delete a project and all associated resources
-* [strm delete schema](docs/04-reference/01-cli-reference/strm/delete/schema.md)	 - Delete Schema by reference
 * [strm delete stream](docs/04-reference/01-cli-reference/strm/delete/stream.md)	 - Delete one or more streams
 

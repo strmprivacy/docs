@@ -4,7 +4,7 @@ hide_title: true
 ---
 ## strm get schema-code
 
-Get schema code archive by schema-ref
+Get schema code archive by data-contract-ref
 
 ### Synopsis
 
@@ -21,7 +21,7 @@ A Schema MUST have the state ACTIVE to be used for processing events.
 ### Usage
 
 ```
-strm get schema-code (schema-ref) [flags]
+strm get schema-code (data-contract-ref) [flags]
 ```
 
 ### Options
