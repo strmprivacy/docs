@@ -3,6 +3,7 @@ title: Exporting Keys
 hide_table_of_contents: false
 ---
 
+[policies]: ../../../02-concepts/01-data-processing/05-policies.md
 It is possible to export encryption keys and move the decryption of events to a later point in time.
 This has various benefits:
 1. decoupling of encrypted data and encryption keys (no persistence of decrypted data)
@@ -116,11 +117,14 @@ earlier [^3].
 ## Exported keys in the bucket
 
 :::note
+The keys csv files have 2 more columns related to the pipeline Policies. See [the Policies concept][policies]
+:::
+
+:::note
 For this quickstart, `strm simulate random-events demo` for a while, to ensure events, and thus encryption keys
 are present.
 :::
 
-[//]: # (@BvD please update the gsutil cat command below, as that now is csv?)
 You can have a look at the output:
 ```bash
 $ gsutil ls gs://strm-demo/demo-keys/
@@ -132,6 +136,7 @@ $ gsutil cat gs://strm-demo/demo-keys/2021-08-18T12:09:30-keys-3b398d5c-2d7c-467
 
 "b15bca55-3a4c-4e49-b8ab-f702de632c06","{""primaryKeyId"":79082719,""key"":[{""keyData"":{""typeUrl"":""type.googleapis.com/google.crypto.tink.AesSivKey"",""value"":""EkDZZDHV5UnICX/N6G..."",""keyMaterialType"":""SYMMETRIC""},""status"":""ENABLED"",""keyId"":79082719,""outputPrefixType"":""TINK""}]}
 ```
+
 You can do exactly the same for an AWS S3 bucket. Inspect the keys like so:
 ```bash
 $ aws s3 ls strmprivacy-export-demo/perf-test-keys/
