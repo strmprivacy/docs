@@ -28,7 +28,7 @@ Delete an entity
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.0.0
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.1.0
 * [strm delete batch-exporter](docs/04-reference/01-cli-reference/strm/delete/batch-exporter.md)	 - Delete one or more Batch exporters by name
 * [strm delete batch-job](docs/04-reference/01-cli-reference/strm/delete/batch-job.md)	 - Delete on or more Batch Jobs by id
 * [strm delete data-connector](docs/04-reference/01-cli-reference/strm/delete/data-connector.md)	 - Delete Data Connectors
@@ -36,6 +36,7 @@ Delete an entity
 * [strm delete data-subjects](docs/04-reference/01-cli-reference/strm/delete/data-subjects.md)	 - Delete data subjects
 * [strm delete kafka-exporter](docs/04-reference/01-cli-reference/strm/delete/kafka-exporter.md)	 - Delete a Kafka exporter
 * [strm delete kafka-user](docs/04-reference/01-cli-reference/strm/delete/kafka-user.md)	 - Delete one or more Kafka users
+* [strm delete policy](docs/04-reference/01-cli-reference/strm/delete/policy.md)	 - Delete Policy by name or id
 * [strm delete project](docs/04-reference/01-cli-reference/strm/delete/project.md)	 - Delete a project and all associated resources
 * [strm delete stream](docs/04-reference/01-cli-reference/strm/delete/stream.md)	 - Delete one or more streams
 

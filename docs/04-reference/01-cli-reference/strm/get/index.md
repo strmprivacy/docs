@@ -28,7 +28,7 @@ Get an entity
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.0.0
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.1.0
 * [strm get batch-exporter](docs/04-reference/01-cli-reference/strm/get/batch-exporter.md)	 - Get Batch exporter by name
 * [strm get batch-job](docs/04-reference/01-cli-reference/strm/get/batch-job.md)	 - Get a Batch Job by id
 * [strm get data-connector](docs/04-reference/01-cli-reference/strm/get/data-connector.md)	 - Get Data Connector by name
@@ -38,6 +38,7 @@ Get an entity
 * [strm get kafka-exporter](docs/04-reference/01-cli-reference/strm/get/kafka-exporter.md)	 - Get Kafka exporter by name
 * [strm get kafka-user](docs/04-reference/01-cli-reference/strm/get/kafka-user.md)	 - Get Kafka user
 * [strm get key-stream](docs/04-reference/01-cli-reference/strm/get/key-stream.md)	 - Get key stream by name
+* [strm get policy](docs/04-reference/01-cli-reference/strm/get/policy.md)	 - Get Policy by name or id
 * [strm get project](docs/04-reference/01-cli-reference/strm/get/project.md)	 - Get a project
 * [strm get schema-code](docs/04-reference/01-cli-reference/strm/get/schema-code.md)	 - Get schema code archive by data-contract-ref
 * [strm get stream](docs/04-reference/01-cli-reference/strm/get/stream.md)	 - Get stream by name

@@ -4,7 +4,7 @@ hide_title: true
 ---
 ## strm
 
-STRM Privacy CLI 3.0.0
+STRM Privacy CLI 3.1.0
 
 ### Options
 
@@ -35,5 +35,6 @@ STRM Privacy CLI 3.0.0
 * [strm listen](docs/04-reference/01-cli-reference/strm/listen/index.md)	 - Listen for events on a stream
 * [strm manage](docs/04-reference/01-cli-reference/strm/manage/index.md)	 - Manage a project or organization
 * [strm simulate](docs/04-reference/01-cli-reference/strm/simulate/index.md)	 - Send simulated events with a predefined demo schema (not for production purposes)
+* [strm update](docs/04-reference/01-cli-reference/strm/update/index.md)	 - Update an entity
 * [strm version](docs/04-reference/01-cli-reference/strm/version.md)	 - Print CLI version
 

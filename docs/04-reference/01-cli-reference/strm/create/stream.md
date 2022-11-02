@@ -43,6 +43,8 @@ strm create stream [name] [flags]
                                     
                                     Masks fields values in the output stream via hashing.
                                     	
+      --policy-id string            the uuid of the policy to attach
+      --policy-name string          the name of the policy to attach
       --save                        if true, save the result in the config directory (~/.config/strmprivacy/saved-entities). (default is true) (default true)
       --tags strings                tags
 ```

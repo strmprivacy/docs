@@ -20,7 +20,8 @@ strm delete data-subjects <data-subject-id>... [flags]
 ### Options
 
 ```
-  -h, --help   help for data-subjects
+  -h, --help            help for data-subjects
+  -o, --output string   output format [plain, json, json-raw] (default "plain")
 ```
 
 ### Options inherited from parent commands
@@ -30,7 +31,6 @@ strm delete data-subjects <data-subject-id>... [flags]
       --api-host string                API host and port (default "api.strmprivacy.io:443")
       --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
       --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
-  -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
   -p, --project string                 Project to use (defaults to context-configured project)
   -r, --recursive                      Retrieve entities and their dependents
       --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)

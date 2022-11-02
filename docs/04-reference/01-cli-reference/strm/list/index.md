@@ -28,7 +28,7 @@ List entities
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.0.0
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.1.0
 * [strm list batch-exporters](docs/04-reference/01-cli-reference/strm/list/batch-exporters.md)	 - List Batch exporters
 * [strm list batch-jobs](docs/04-reference/01-cli-reference/strm/list/batch-jobs.md)	 - List Batch Jobs
 * [strm list data-connectors](docs/04-reference/01-cli-reference/strm/list/data-connectors.md)	 - List Data Connectors
@@ -41,6 +41,7 @@ List entities
 * [strm list kafka-users](docs/04-reference/01-cli-reference/strm/list/kafka-users.md)	 - List Kafka users
 * [strm list key-streams](docs/04-reference/01-cli-reference/strm/list/key-streams.md)	 - List key streams
 * [strm list members](docs/04-reference/01-cli-reference/strm/list/members.md)	 - List all members of your organization or active project
+* [strm list policies](docs/04-reference/01-cli-reference/strm/list/policies.md)	 - List all policies belonging to this organization
 * [strm list projects](docs/04-reference/01-cli-reference/strm/list/projects.md)	 - List all projects you have access to
 * [strm list streams](docs/04-reference/01-cli-reference/strm/list/streams.md)	 - List streams
 

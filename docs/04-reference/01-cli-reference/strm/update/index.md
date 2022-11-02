@@ -1,36 +1,15 @@
 ---
-title: "batch-job"
+title: "update"
 hide_title: true
 ---
-## strm create batch-job
+## strm update
 
-Create a Batch Job
-
-### Synopsis
-
-
-A Batch Job reads all events from a Data Connector and writes them to one or more Data Connectors,
-applying our privacy algorithm as defined by the job's configuration file.
-
-A [Data Connector](docs/04-reference/01-cli-reference/strm/create/data-connector/index.md) is a configuration
-entity that comprises a location (GCS bucket, AWS S3 bucket, ...) and associated credentials.
-
-A Data Connector must be created *before* you can create a batch job that uses it.
-
-### Usage
-
-
-```
-strm create batch-job [flags]
-```
+Update an entity
 
 ### Options
 
 ```
-  -F, --file string          The path to the JSON file containing the batch job configuration
-  -h, --help                 help for batch-job
-      --policy-id string     the uuid of the policy to attach
-      --policy-name string   the name of the policy to attach
+  -h, --help   help for update
 ```
 
 ### Options inherited from parent commands
@@ -48,5 +27,6 @@ strm create batch-job [flags]
 
 ### SEE ALSO
 
-* [strm create](docs/04-reference/01-cli-reference/strm/create/index.md)	 - Create an entity
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.1.0
+* [strm update policy](docs/04-reference/01-cli-reference/strm/update/policy.md)	 - Update a Policy
 

@@ -1,31 +1,41 @@
 ---
-title: "data-subjects"
+title: "policy"
 hide_title: true
 ---
-## strm list data-subjects
+## strm update policy
 
-List a page of data subjects
+Update a Policy
 
 ### Synopsis
 
-Query the Data Subjects service for a list of data-subjects.
+Update the attributes of a policy
 
-Returns paginated data. If one page of data has following pages, its 'next_page_token'
-field must be added to the following call via the '--page-token' flag.
+Policies can only be updated while in draft state!
+The policy to be updated must be referenced by its id.
+You can change all other attributes of a policy.
+
+In order to make a policy active for pipeline processing, you must first 'activate' it.
 
 
 ```
-strm list data-subjects [flags]
+strm update policy policy-id [flags]
+```
+
+### Examples
+
+```
+strm update policy 34c4709e-b8bc-4b45-aa5a-883f471869e3 --legal-grounds "EU law x.y.z"
 ```
 
 ### Options
 
 ```
-  -h, --help                help for data-subjects
-  -o, --output string       output format [plain, plain0, json, json-raw] (default "plain")
-      --page-size int32     maximum number of items to be returned
-      --page-token string   page token to be entered for next page.
-                            Use the nextPageToken (if any) returned from the previous call
+      --description string     description of the policy
+  -h, --help                   help for policy
+      --legal-grounds string   legal grounds of this policy
+      --name string            name
+  -o, --output string          output format [plain, json, json-raw] (default "plain")
+      --retention int32        retention in days of this policy (default 365)
 ```
 
 ### Options inherited from parent commands
@@ -36,12 +46,11 @@ strm list data-subjects [flags]
       --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
       --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
   -p, --project string                 Project to use (defaults to context-configured project)
-  -r, --recursive                      Retrieve entities and their dependents
       --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
       --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
 ```
 
 ### SEE ALSO
 
-* [strm list](docs/04-reference/01-cli-reference/strm/list/index.md)	 - List entities
+* [strm update](docs/04-reference/01-cli-reference/strm/update/index.md)	 - Update an entity
 
