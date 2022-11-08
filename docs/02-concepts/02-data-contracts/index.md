@@ -20,17 +20,18 @@ The Data Contract defines:
   verifications that should be done for the received content.
 
 A Data Contract is composed
-of [various elements](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L711)
+of [various elements](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L762)
 ,
 of which a few are of key importance:
 
-- [`schema`](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L721):
+- [`schema`](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L774):
   the schema used when serializing and deserializing data.
-- [`key_field`](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L717):
+- [`key_field`](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L768):
   the name of the data field used for determining which events [belong to the same sequence](#contracts).
-- [`pii_fields`](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L718):
-  a map of field names to integers specifying the fields that should be considered as PII data and the
-  consent level that it belongs to.
+- [`field_metadata`](https://github.com/strmprivacy/api-definitions/blob/master/protos/strmprivacy/api/entities/v1/entities_v1.proto#L777):
+  a list of metadata including field names, personal data configuration specifying the fields that should be considered
+  as PII data and as Quasi-Identifier data and the
+  purpose level that it belongs to.
 
 Other elements are discussed later in this article, but the three mentioned above are of crucial importance for STRM
 Privacy to apply the Privacy Algorithm.
@@ -123,10 +124,24 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson`
   // callout-5
   "keyField": "producerSessionId",
   // callout-6
-  "piiFields": {
-    "customer/id": 0,
-    "producerSessionId": 1
-  },
+  "fieldMetadata": [
+    {
+      "fieldName": "customer/id",
+      "personalDataConfig": {
+        "isPii": true,
+        "isQuasiId": false,
+        "purposeLevel": 0
+      }
+    },
+    {
+      "fieldName": "producerSessionId",
+      "personalDataConfig": {
+        "isPii": true,
+        "isQuasiId": false,
+        "purposeLevel": 1
+      }
+    }
+  ], 
   // callout-7
   "validations": [
     {
@@ -209,27 +224,29 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson | jq '.dataC
 </Tabs>
 
 1. `ref`: the reference to the data contract, comprised of a `handle` (globally unique, chosen by you / your
-  organization), `name`, and a [semantic](https://semver.org/) `version`.
+   organization), `name`, and a [semantic](https://semver.org/) `version`.
 2. `schemaRef`: the serialization schema reference, that follows the same `handle`, `name`, and `version`.
 3. `state`: whether the data contract is active and ready to be used
-  in [data pipelines](docs/02-concepts/01-data-processing/03-data-pipelines.md). More on states [here](#states).
+   in [data pipelines](docs/02-concepts/01-data-processing/03-data-pipelines.md). More on states [here](#states).
 4. `isPublic`: a data contract can be public, in which case all STRM
-  Privacy customers can use it, or it can belong to a certain
-  organization, and require organization credentials to use it.
+   Privacy customers can use it, or it can belong to a certain
+   organization, and require organization credentials to use it.
 5. `keyField`: the name of the field in the serialization schema that is used to
-  _tie_ events together. Typically, this is what determines a data
-  subject's (i.e. your users) session. If multiple events contain the same value for
-  the field that was specified as `keyField`, then
-  the [same encryption key and `keyLink`](docs/02-concepts/01-data-processing/01-pii-field-encryption.md) will be used to
-  encrypt the PII data.
-6. `piiFields`: the fields whose content in an event should be considered sensitive
-  (i.e. personally identifiable information), and should be encrypted.
+   _tie_ events together. Typically, this is what determines a data
+   subject's (i.e. your users) session. If multiple events contain the same value for
+   the field that was specified as `keyField`, then
+   the [same encryption key and `keyLink`](docs/02-concepts/01-data-processing/01-pii-field-encryption.md) will be used
+   to
+   encrypt the PII data.
+6. `fieldMetadata`: description of the fields that should either be considered non-sensitive, QI or PII with
+   corresponding purpose level. This field identifies if a field should be encrypted. `fieldMetadata` is the replacement
+   of deprecated `piiFields`. In case both are filled, `fieldMetadata` takes precedence.
 7. `validations`: the validations that should be performed on the content of specific
-  fields in an event.
+   fields in an event.
 8. `dataSubjectField`: the name of the field in the serialization schema that is used to distinguish
-  data subjects from each other. Typically, this is a _customer id_ or a _user id_. This is used by the Data Subjects
-  API to keep [facilitate an interface](./04-data-subjects.md) that allows for easy retrieval of used `keyLink`s for a
-  specific data subject.
+   data subjects from each other. Typically, this is a _customer id_ or a _user id_. This is used by the Data Subjects
+   API to keep [facilitate an interface](./04-data-subjects.md) that allows for easy retrieval of used `keyLink`s for a
+   specific data subject.
 
 These contracts are very versatile, which makes it possible to use them for nearly any data structure.
 
@@ -260,9 +277,9 @@ teams. An example of a validation can be seen (and tried) in the quickstart
 
 Data Contracts currently are limited in the following ways:
 
-- `piiFields`
+- `fieldMetadata`
   - specified field names should be present in the corresponding schema
-  - specified fields should be (optional) string or list of string.
+  - specified pii fields should be (optional) string or list of string.
 - `keyField`
   - specified field name should be present in the corresponding schema
   - specified field should be an (optional) string
@@ -294,7 +311,6 @@ as they are related to each other, but are fundamentally different:
 
 As you can see, the two have a strong relationship, but they are
 different.
-
 
 ## Data Contract states {#states}
 
