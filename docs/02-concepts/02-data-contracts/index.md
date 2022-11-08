@@ -124,6 +124,8 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson`
   // callout-5
   "keyField": "producerSessionId",
   // callout-6
+  "piiFields": {}
+  // callout-7
   "fieldMetadata": [
     {
       "fieldName": "customer/id",
@@ -142,7 +144,7 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson`
       }
     }
   ], 
-  // callout-7
+  // callout-8
   "validations": [
     {
       "field": "customer/id",
@@ -155,7 +157,7 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson`
       "value": "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"
     }
   ],
-  // callout-8
+  // callout-9
   "dataSubjectField": "customer/id",
   "schema": {
     "ref": { "handle": "strmprivacy", "name": "clickstream", "version": "1.0.0", "schemaType": "AVRO" },
@@ -238,17 +240,21 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson | jq '.dataC
    the [same encryption key and `keyLink`](docs/02-concepts/01-data-processing/01-pii-field-encryption.md) will be used
    to
    encrypt the PII data.
-6. `fieldMetadata`: description of the fields that should either be considered non-sensitive, QI or PII with
-   corresponding purpose level. This field identifies if a field should be encrypted. `fieldMetadata` is the replacement
-   of deprecated `piiFields`. In case both are filled, `fieldMetadata` takes precedence.
-7. `validations`: the validations that should be performed on the content of specific
+6. `piiFields`: deprecated in favor of `fieldMetadata`
+7. `fieldMetadata`: description of the fields that should either be considered non-sensitive, QI or PII with
+   corresponding purpose level. This field identifies if a field should be encrypted. 
+8. `validations`: the validations that should be performed on the content of specific
    fields in an event.
-8. `dataSubjectField`: the name of the field in the serialization schema that is used to distinguish
+9. `dataSubjectField`: the name of the field in the serialization schema that is used to distinguish
    data subjects from each other. Typically, this is a _customer id_ or a _user id_. This is used by the Data Subjects
    API to keep [facilitate an interface](./04-data-subjects.md) that allows for easy retrieval of used `keyLink`s for a
    specific data subject.
 
 These contracts are very versatile, which makes it possible to use them for nearly any data structure.
+
+:::note
+`fieldMetadata` is the replacement of deprecated `piiFields`. In case both are filled, `fieldMetadata` takes precedence.
+:::
 
 ### Validations
 
