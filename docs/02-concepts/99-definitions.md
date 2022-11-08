@@ -75,6 +75,10 @@ Information that can be used to identify a person, directly (e.g. social securit
 name) or indirectly (e.g. IP address), or belongs to an identifiable
 person (e.g. gender, interests).
 
+**Quasi Identifier (QI)**  
+Information that on itself cannot be used to identify a person (e.g. zipcode), but in combination with other
+information (e.g. zipcode and house number) can be used to identify a single person.
+
 **Serialization Format**  
 This defines the way that an event is converted to and from bytes,
 so that they can be transported and/or stored.
