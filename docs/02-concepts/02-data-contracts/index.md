@@ -240,9 +240,11 @@ using: `strm get data-contract strmprivacy/clickstream/1.0.0 -ojson | jq '.dataC
    the [same encryption key and `keyLink`](docs/02-concepts/01-data-processing/01-pii-field-encryption.md) will be used
    to
    encrypt the PII data.
-6. `piiFields`: deprecated in favor of `fieldMetadata`
+6. <div class="chip-optional"> <div class="chip-content">optional</div> </div> `piiFields`: deprecated in favor
+   of `fieldMetadata`.
 7. `fieldMetadata`: description of the fields that should either be considered non-sensitive, QI or PII with
-   corresponding purpose level. This field identifies if a field should be encrypted. 
+   corresponding purpose level. This field identifies if a field should be encrypted if `isPii = true`
+   and `purposeLevel` is filled out.
 8. `validations`: the validations that should be performed on the content of specific
    fields in an event.
 9. `dataSubjectField`: the name of the field in the serialization schema that is used to distinguish
