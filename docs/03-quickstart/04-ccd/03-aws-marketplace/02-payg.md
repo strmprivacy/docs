@@ -72,6 +72,12 @@ add the `--profile your_profile` flag to the `aws` commands in the code blocks b
       :::tip
       Get the OIDC ID with the oneliner used in the previous step.
       :::
+      :::tip
+      Get your AWS account id with this oneliner:
+      ```
+      aws sts get-caller-identity --query "Account" --output text
+      ```
+      :::
       ```json title=strmprivacy-marketplace-role.json download=strmprivacy-marketplace-role.json placeholders account_id=AWS (EKS) Account ID, region=EKS Region, oidc_id=OIDC ID, namespace=Kubernetes Namespace for STRM Privacy
       {
         "Version": "2012-10-17",
@@ -99,11 +105,14 @@ add the `--profile your_profile` flag to the `aws` commands in the code blocks b
       ```shell placeholders role_name=Name of the role
       aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/AWSMarketplaceMeteringRegisterUsage --role-name $role_name
       ```
+   4. Get the Role ARN:
+      ```shell placeholders role_name=Name of the role
+      aws iam get-role --role-name $role_name | jq -r '.Role.Arn'
+      ```
 2. **Install
    the** [![data-plane-version](https://img.shields.io/github/v/release/strmprivacy/data-plane-helm-chart?label=Data%20Plane%20Helm%20Chart#img-shield-vertical-align)](https://github.com/strmprivacy/data-plane-helm-chart)  
    Run the following commands shown in the script below.
-
-   ```shell showLineNumbers placeholders version=https://api.github.com/repos/strmprivacy/data-plane-helm-chart/releases/latest#name, installation_id=Installation ID, client_id=Client ID of your installation, client_secret=Client Secret of your installation, role_arn=ARN of the role created in the previous step
+   ```shell showLineNumbers placeholders version=https://api.github.com/repos/strmprivacy/data-plane-helm-chart/releases/latest#name, installation_id=Installation ID, client_id=Client ID of your installation, client_secret=Client Secret of your installation, role_arn=ARN of the role created in the previous step, namespace=Kubernetes Namespace
    # Enables using Helm Charts in Open Container Image format
    export HELM_EXPERIMENTAL_OCI=1
    
@@ -122,11 +131,14 @@ add the `--profile your_profile` flag to the `aws` commands in the code blocks b
    # Untar the chart and remove the tarball
    tar xf $(pwd)/* && find $(pwd) -maxdepth 1 -type f -delete
    
+   # Create the namespace
+   kubectl create namespace $namespace
+   
    # Install the chart
    // callout-1
    helm install strmprivacy \
    // callout-2
-   --namespace strmprivacy ./* \
+   --namespace $namespace ./* \
    // callout-3
    --set license.installationType=AWS_MARKETPLACE_PAYG \
    --set license.installationId=$installation_id \
