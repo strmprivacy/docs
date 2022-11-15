@@ -8,6 +8,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 [notebook]: https://github.com/strmprivacy/demos/blob/main/strm_batch_mode_demo.ipynb
+[batch-job-apidocs]: https://buf.build/strmprivacy/apis/docs/main:strmprivacy.api.entities.v1#strmprivacy.api.entities.v1.BatchJob
+[batch-job-encryption-apidocs]: https://buf.build/strmprivacy/apis/docs/main:strmprivacy.api.entities.v1#strmprivacy.api.entities.v1.EncryptionConfig
+[batch-job-encryption-timestamp-config-apidocs]: https://buf.build/strmprivacy/apis/docs/main:strmprivacy.api.entities.v1#strmprivacy.api.entities.v1.TimestampConfig
 
 STRM Privacy offers support for batch processing. This quickstart helps you to get started with Batch Jobs. To read
 more about the background for batch data pipelines, go [here](docs/02-concepts/01-data-processing/04-batch-jobs.md).
@@ -151,8 +154,8 @@ underlying Avro serialization schema.
 ### Define a batch job via the CLI
 
 With the data connection and contract defined, the batch job itself can be defined.
-Batch jobs can be defined by providing a config JSON to the CLI. The file reference can be
-found [here](/jsonschema/BatchJob.json).
+Batch jobs can be defined by providing a config JSON to the CLI. The reference can be
+found [here](https://buf.build/strmprivacy/apis/docs/main:strmprivacy.api.entities.v1#strmprivacy.api.entities.v1.BatchJob).
 
 ```bash
 $ strm create batch-job --help
@@ -172,7 +175,7 @@ working to include GCP Storage, a visual interface and even a file upload in fol
 :::tip
 Configure your editor ([VS Code](https://code.visualstudio.com/docs/languages/json#_intellisense-and-validation),
 [IntelliJ](https://www.jetbrains.com/help/idea/json.html)) to validate the Batch Job JSON definition against
-the [JSON Schema](/jsonschema/BatchJob.json).
+the [JSON Schema](https://json-schema.api.strmprivacy.io/latest/strmprivacy.api.entities.v1.BatchJob.json).
 :::
 
 #### Indicate the consent field
@@ -214,6 +217,21 @@ the most basic consent or legal ground you use.
 [An example of the full definition file is included in the demo
 notebook][notebook]. Just swap the example values for
 your own data-connector names and preferred buckets.
+
+#### Indicate the timestamp config
+
+An important part of data that is processed in batch, is the time that belongs to an individual record in the data. This
+can be the time this data was recorded (i.e. the event time equivalent for streaming data), or the time that this data
+was processed. Regardless of the meaning, it is required to have a field in the CSV data that represents a date and time.
+As can be seen in the [Batch Job reference][batch-job-apidocs], the [EncryptionConfig][batch-job-encryption-apidocs]
+requires a [TimestampConfig][batch-job-encryption-timestamp-config-apidocs]. The TimestampConfig defines how data is encrypted
+with respect to time. The [privacy algorithm](/docs/02-concepts/01-data-processing/01-pii-field-encryption.md#privacy-algorithm-algorithm)
+we use, uses the concept of time to determine whether the same encryption key or a new one should be used.
+
+In the [TimestampConfig][batch-job-encryption-timestamp-config-apidocs], a format field defines the pattern that is used
+to parse the date and time that is specified in the time field (denoted by `field` in the TimestampConfig). To test the
+pattern, we advise to use the [following tool](https://javadevtools.com/datetimeformatterparse). Keep a reference
+to [the patterns](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#patterns) open as well.
 
 ### Define the derived data
 
