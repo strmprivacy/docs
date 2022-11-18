@@ -39,7 +39,7 @@ description: Using your own Data Plane to send and receive data.
 [telepresence]: https://www.telepresence.io/
 
 The following section will guide you through the setup required to interact with your STRM Privacy Data Plane. Make sure
-that all the required tools are installed as discussed [here](./02-self-hosted.md#step2).
+that all the required tools are installed as discussed [here](./02-self-hosted/index.md#step2).
 
 ## Setup port forwarding
 

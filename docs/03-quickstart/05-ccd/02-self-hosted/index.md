@@ -84,5 +84,5 @@ You've installed a STRM Privacy Data Plane in a Kubernetes cluster. If you have 
 installation, please let us know, or create a pull request
 on [GitHub](https://github.com/strmprivacy/data-plane-helm-chart) to improve these docs.
 
-Now that you are done with the setup, follow the docs on [how to interact with your cluster](./04-interacting.md) to start
+Now that you are done with the setup, follow the docs on [how to interact with your cluster](/docs/03-quickstart/05-ccd/04-interacting.md) to start
 using it.

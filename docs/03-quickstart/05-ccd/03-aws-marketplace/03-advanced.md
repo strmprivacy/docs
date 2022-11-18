@@ -20,7 +20,7 @@ helm install strmprivacy --namespace strmprivacy ./* --values values.yaml
 ```
 
 After these steps, you should end up with a namespace `strmprivacy` with, by
-default, [all components](docs/03-quickstart/04-ccd/index.md#components) enabled. If you
+default, [all components](docs/03-quickstart/05-ccd/index.md#components) enabled. If you
 wish otherwise, you can edit the `values.yaml` to match your needs.
 
 
@@ -59,7 +59,7 @@ remarks considering the database:
 To be able to run any streaming tasks, a Kafka (or Kafka API compatible) cluster is required. Please follow the steps
 from the [AWS MSK for Apache Kafka guide](https://docs.aws.amazon.com/msk/latest/developerguide/create-cluster.html) to
 setup a managed Kafka cluster in your AWS account. Take note of the private bootstrap servers (and
-possibly [credentials](docs/03-quickstart/04-ccd/06-authenticated.md)) and set the value in the `values.yaml`.
+possibly [credentials](docs/03-quickstart/05-ccd/06-authenticated.md)) and set the value in the `values.yaml`.
 
 ### AWS ElastiCache for Redis
 

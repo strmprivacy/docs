@@ -20,7 +20,7 @@ This hands-on session shows how to get up-and-running with your Customer Cloud D
 Cluster_ that uses [SASL/PLAIN over TLS][sasl-plain] authentication.
 
 It's probably a good idea to first run the getting started with the unauthenticated demo Kafka detailed in
-the [self-hosted section](./02-self-hosted.md) to make sure you have all the tools configured correctly and understand how
+the [self-hosted section](./02-self-hosted/index.md) to make sure you have all the tools configured correctly and understand how
 it should work.
 
 ### TLS truststore
