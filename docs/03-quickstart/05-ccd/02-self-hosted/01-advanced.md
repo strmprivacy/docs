@@ -13,17 +13,21 @@ easily mirror all STRM Privacy container images with the image pull secret crede
 configuration, which can be found [here](https://console.strmprivacy.io/settings/installation).
 
 ### Prerequisites
-Using this requires [`gcloud`](https://cloud.google.com/sdk/docs/install) and [`python3`](https://www.python.org/downloads) to be
+Using this requires [`gcloud`](https://cloud.google.com/sdk/docs) and [`python3`](https://www.python.org/downloads) to be
 installed.
 Furthermore, it uses [`gcrane`](https://github.com/google/go-containerregistry/tree/main/cmd/gcrane), which
 simplifies copying images between (authenticated) repositories. The
 authentication [commands](https://github.com/google/go-containerregistry/tree/main/cmd/gcrane) are similar to
 Docker. `gcloud` is used by gcrane to fetch an access token that allows for authentication with STRM Privacy's registry.
 
-### gcrane
+#### gcloud
+
+The CLI for Google Cloud can be installed with the [instructions shown here](https://cloud.google.com/sdk/docs/install-sdk). This will guide you through all the prerequisites there and make sure that `gcloud` is on your `PATH`.
+
+#### gcrane
 Install gcrane (as it's not distributed via package managers)
 ```shell showLineNumbers
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 curl -L https://github.com/google/go-containerregistry/releases/latest/download/go-containerregistry_Linux_x86_64.tar.gz -o go-containerregistry.tar.gz
 tar -zxvf go-containerregistry.tar.gz
 chmod +x gcrane
@@ -31,8 +35,8 @@ mv gcrane /usr/local/bin/
 ```
 
 Ensure that gcrane can access your private registry if it requires authentication for pushing images. A command to authenticate gcrane with access to a private registry would look similar to this:
-```shell 
-gcrane auth login "<TARGET_REGISTRY>" -u "<DOCKER_USERNAME>" -p "<DOCKER_PASSWORD>"
+```shell placeholders target_registry=Target Registry, username=Registry Username, password=Registry Password
+gcrane auth login "$target_registry" -u "$username" -p "$password"
 ```
 
 ### Mirror images
