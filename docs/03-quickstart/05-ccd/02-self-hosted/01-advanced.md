@@ -19,11 +19,14 @@ simplifies copying images between (authenticated) repositories.
 ```shell showLineNumbers placeholders image_pull_secret=Docker Image Pull Secret, target_registry=Your Private Registry Host, working_directory=Script Working Directory
 #!/usr/bin/env bash
 
-# This script assumes that gcrane is in your PATH, which allows for easy copying and replication of images
+# This script assumes that gcrane and gcloud are in your PATH. gcrane allows for easy copying and replication of images
 # between registries. Authentication commands are similar to Docker
-# https://github.com/google/go-containerregistry/tree/main/cmd/gcrane
+# https://github.com/google/go-containerregistry/tree/main/cmd/gcrane.
+# gcloud is used by gcrane to fetch an access token that allows for authentication with STRM Privacy's registry.
 
-# If not installed, the installation instructions are as follows (as it's not distributed via package managers)
+# Install gcloud: https://cloud.google.com/sdk/docs/install
+
+# Install gcrane (as it's not distributed via package managers): 
 curl -L https://github.com/google/go-containerregistry/releases/latest/download/go-containerregistry_Linux_x86_64.tar.gz -o go-containerregistry.tar.gz
 tar -zxvf go-containerregistry.tar.gz
 chmod +x gcrane
@@ -43,8 +46,8 @@ TARGET_REGISTRY="$target_registry"
 
 # The following command assumes that gcrane is now configured with access to both repositories
 STRM_PRIVACY_REGISTRY="europe-west4-docker.pkg.dev/stream-machine-production/docker-public/"
-# To prevent typos, we ensure that the registry has a / at the end
-STRM_PRIVACY_REGISTRY=$([[ "${STRM_PRIVACY_REGISTRY: -1}" == "/" ]] && echo "${STRM_PRIVACY_REGISTRY}" || echo "${STRM_PRIVACY_REGISTRY}/")
+# To prevent typos, we ensure that the registry does not have a / at the end
+STRM_PRIVACY_REGISTRY=$([[ "${STRM_PRIVACY_REGISTRY: -1}" == "/" ]] && echo "${STRM_PRIVACY_REGISTRY:: -1}" || echo "${STRM_PRIVACY_REGISTRY}")
 
 for image_uri in $(gcrane ls "$STRM_PRIVACY_REGISTRY" -r | grep --invert-match "sha256")
 do
