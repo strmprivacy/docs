@@ -35,16 +35,16 @@ mv gcrane /usr/local/bin/
 GOOGLE_APPLICATION_CREDENTIALS="$working_directory/image-pull-secret.json"
 echo "$image_pull_secret" | base64 --decode > "$GOOGLE_APPLICATION_CREDENTIALS"
 
+TARGET_REGISTRY="$target_registry"
+
 # Ensure that gcrane can access your private registry if it requires authentication for pushing images
 # A command to authenticate gcrane with access to a private registry would look similar to this:
-# gcrane auth login "<REGISTRY_URI>" -u "<DOCKER_USERNAME>" -p "<DOCKER_PASSWORD>"
+# gcrane auth login "$TARGET_REGISTRY" -u "<DOCKER_USERNAME>" -p "<DOCKER_PASSWORD>"
 
 # The following command assumes that gcrane is now configured with access to both repositories
 STRM_PRIVACY_REGISTRY="europe-west4-docker.pkg.dev/stream-machine-production/docker-public/"
 # To prevent typos, we ensure that the registry has a / at the end
 STRM_PRIVACY_REGISTRY=$([[ "${STRM_PRIVACY_REGISTRY: -1}" == "/" ]] && echo "${STRM_PRIVACY_REGISTRY}" || echo "${STRM_PRIVACY_REGISTRY}/")
-
-TARGET_REGISTRY="$target_registry"
 
 for image_uri in $(gcrane ls "$STRM_PRIVACY_REGISTRY" -r | grep --invert-match "sha256")
 do
