@@ -29,7 +29,7 @@ In the diagram below, you can see where all software runs in a CCD setup:
 ![ccd infra](./images/ccd.svg#fullwidth)
 
 :::tip
-With the [Helm Chart](docs/03-quickstart/04-ccd/index.md#installation) that is used to install the Data Plane in your
+With the [Helm Chart](docs/03-quickstart/05-ccd/index.md#installation) that is used to install the Data Plane in your
 infrastructure, you can enable/disable various
 components (e.g. disable streaming and only keep batch if only batch jobs are required).
 :::
@@ -47,8 +47,8 @@ running in your Data Plane up-to-date.
 
 :::important
 All components part of the Data Plane directly (i.e. part of
-the [Helm Chart](docs/03-quickstart/04-ccd/index.md#installation)), are not updated automatically. For updating your
-Data Plane, please see the [updating docs](docs/03-quickstart/04-ccd/99-updating.md).
+the [Helm Chart](docs/03-quickstart/05-ccd/index.md#installation)), are not updated automatically. For updating your
+Data Plane, please see the [updating docs](docs/03-quickstart/05-ccd/99-updating.md).
 :::
 
 The agents are an implementation of the [_desired state_](https://branislavjenco.github.io/desired-state-systems/)
@@ -72,7 +72,7 @@ an [open-source gRPC protocol][api].
 
 The process of installing the STRM Privacy in your infrastructure is as follows:
 
-- First, the data plane is deployed by you, using the [Helm Chart](docs/03-quickstart/04-ccd/index.md#installation).
+- First, the data plane is deployed by you, using the [Helm Chart](docs/03-quickstart/05-ccd/index.md#installation).
   Here you can customize your cluster. This has to
   be done once at the start and if you'd like to install new versions of the Data Plane. It's your cluster, so we
   don't auto-update anything that is **part of the Helm Chart**. You decide if you'd like to upgrade and when it happens.

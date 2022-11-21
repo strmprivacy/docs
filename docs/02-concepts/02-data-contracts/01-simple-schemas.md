@@ -20,7 +20,7 @@ serialization format.
 Simple Schema is a _representation_ of your schema, it is <u>not</u> a serialization format.
 :::
 
-In the [quickstart Simple Schema example](docs/03-quickstart/03-data-contracts/01-simple-schema.md), you'll be guided
+In the [quickstart Simple Schema example](docs/03-quickstart/04-data-contracts/01-simple-schema.md), you'll be guided
 through a hands-on
 interaction that shows the technical details when using Simple Schemas.
 

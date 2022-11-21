@@ -9,11 +9,11 @@ This section describes how to get up and running with a Customer Cloud Deploymen
 ## Step 1: Follow along with the general steps for Customer Cloud Deployment
 
 Before you can launch your AWS Marketplace STRM Privacy - Pay As You Go Installation, you need to follow along
-with [step 1](docs/03-quickstart/04-ccd/01-pre-requisites.md#step1)
-and [step 2](docs/03-quickstart/04-ccd/01-pre-requisites.md#step2)
+with [step 1](docs/03-quickstart/05-ccd/01-pre-requisites.md#step1)
+and [step 2](docs/03-quickstart/05-ccd/01-pre-requisites.md#step2)
 from the pre-requisites section.
 
-Additionally, to the tools mentioned in [step 2](docs/03-quickstart/04-ccd/01-pre-requisites.md#step2), you'll need to
+Additionally, to the tools mentioned in [step 2](docs/03-quickstart/05-ccd/01-pre-requisites.md#step2), you'll need to
 install:
 
 * [`eksctl`](https://eksctl.io/): a CLI to easily manage EKS clusters (unifies a lot of `aws` CLI and `kubectl`
@@ -162,7 +162,7 @@ add the `--profile your_profile` flag to the `aws` commands in the code blocks b
    are used, as they're not overridden).
 
 After these steps, you should end up with a namespace `strmprivacy` with, by
-default, [all components](docs/03-quickstart/04-ccd/index.md#components) enabled. If you
+default, [all components](docs/03-quickstart/05-ccd/index.md#components) enabled. If you
 wish otherwise, you can edit the `values.yaml` to match your needs.
 
 :::important
@@ -205,5 +205,5 @@ You've installed a STRM Privacy Data Plane via the AWS Marketplace. If you have 
 installation, please let us know, or create a pull request on GitHub to improve these docs.
 
 Now that you are done with the setup, follow the docs
-on [how to interact with your cluster](docs/03-quickstart/04-ccd/04-interacting.md) to start
+on [how to interact with your cluster](docs/03-quickstart/05-ccd/04-interacting.md) to start
 using it.
