@@ -73,9 +73,7 @@ healthy
 :::
 
 :::note Create in a different namespace
-Add `namespace: <your-namespace>` to the `values.yaml` file.
-The namespace needs to be created *manually* with `kubectl create namespace <your-namespace>`.
-With every `helm` command you should use the option `--values values.yaml`
+Add `--namespace <your-namespace>` to the `helm install` command.
 :::
 
 ## Wrap-up

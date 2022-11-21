@@ -177,7 +177,7 @@ encountered while setting up the STRM Privacy Data Plane - Pay As You Go variant
 
 - **Missing policy**: attach the policy `AWSMarketplaceMeteringRegisterUsage` to the role created for the Data Plane. 
   ```
-  User: arn:aws:sts::<account_id>>:assumed-role/... is not authorized to perform: aws-marketplace:RegisterUsage because
+  User: arn:aws:sts::<account_id>:assumed-role/... is not authorized to perform: aws-marketplace:RegisterUsage because
   no identity-based policy allows the aws-marketplace:RegisterUsage action (Service: MarketplaceMetering,
   Status Code: 400, Request ID: <uuid>)
   ```
