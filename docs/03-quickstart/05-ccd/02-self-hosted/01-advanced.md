@@ -41,6 +41,7 @@ gcrane auth login "$target_registry" -u "$username" -p "$password"
 
 ### Mirror images
 The following script can be used as an example and can be executed periodically to mirror the STRM Privacy Registry.
+The image pull secret can be found in the installation settings in the [Console](https://console.strmprivacy.io/settings/installation).
 
 ```shell showLineNumbers wordWrap=true placeholders image_pull_secret=Docker Image Pull Secret, target_registry=Your Private Registry Host, working_directory=Script Working Directory
 #!/usr/bin/env bash
