@@ -6,6 +6,11 @@ description: Billing via AWS
 
 This section describes how to get up and running with a Customer Cloud Deployment through the AWS Marketplace.
 
+:::tip
+Try out the STRM Privacy - Pay As You Go AWS Marketplace Installation for free for 7 days, with 10 containers.
+See the [pricing](#pricing) section for more details.
+:::
+
 ## Step 1: Follow along with the general steps for Customer Cloud Deployment
 
 Before you can launch your AWS Marketplace STRM Privacy - Pay As You Go Installation, you need to follow along
