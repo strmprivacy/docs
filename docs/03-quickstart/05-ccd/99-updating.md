@@ -22,6 +22,8 @@ to upgrade the Helm Chart. Furthermore, this also assumes that you have followed
 the [pre-requisites](docs/03-quickstart/05-ccd/01-pre-requisites.md) section and have installed the tools mentioned
 there.
 
+The `kubectl` commands below assume a default namespace of `strmprivacy` which you can set via `kubens strmprivacy`.
+
 ### Verifying cluster and namespace
 
 First, make sure you're connected to the correct cluster and namespace:

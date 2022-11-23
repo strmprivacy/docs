@@ -41,6 +41,7 @@ description: Using your own Data Plane to send and receive data.
 The following section will guide you through the setup required to interact with your STRM Privacy Data Plane. Make sure
 that all the required tools are installed as discussed [here](./02-self-hosted/index.md#step2).
 
+The commands below assume your default namespace is `strmprivacy`, which can be set with `kubens strmprivacy`
 ## Setup port forwarding
 
 To interact with the `event-gateway` and `web-socket` for testing purposes we will set up Kubernetes port-forwarding.

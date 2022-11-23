@@ -16,7 +16,7 @@ your terminal history and eases repeatability. If you plan to use a `values.yaml
 Run the following command to install the Helm chart (ensure that your working directory is `awsmp-chart` as
 also shown in the `--set` example above):
 ```shell
-helm install strmprivacy --namespace strmprivacy ./* --values values.yaml
+helm install strmprivacy --namespace strmprivacy --create-namespace ./* --values values.yaml
 ```
 
 After these steps, you should end up with a namespace `strmprivacy` with, by

@@ -38,8 +38,7 @@ follow the following steps.
 ![AWS Marketplace](images/byol.png)
 
 1. **Subscribe**  
-   Click `Continue to Subscribe`, follow the instructions and start your subscription. Come back to this guide after
-   you've finished subscribing.
+   Click `Continue to Subscribe`, and then `Accept license` to start your subscription. **Don't** click `Continue to the Configuration`, but follow along with the steps below.
    :::important
    The installation instructions in the AWS Marketplace after subscribing are quite unclear, as many details are left
    out.
@@ -73,7 +72,7 @@ follow the following steps.
    // callout-1
    helm install strmprivacy \
    // callout-2
-   --namespace strmprivacy ./* \
+   --namespace strmprivacy --create-namespace ./* \
    // callout-3
    --set license.installationType=AWS_MARKETPLACE \
    --set license.installationId=$installationId \
