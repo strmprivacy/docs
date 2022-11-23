@@ -16,7 +16,7 @@ configuration, which can be found [here](https://console.strmprivacy.io/settings
 Using this requires [`gcloud`](https://cloud.google.com/sdk/docs) and [`python3`](https://www.python.org/downloads) to be
 installed.
 Furthermore, it uses [`gcrane`](https://github.com/google/go-containerregistry/tree/main/cmd/gcrane), which
-simplifies copying images between (authenticated) repositories. The
+simplifies copying images between (authenticated) registries. The
 authentication [commands](https://github.com/google/go-containerregistry/tree/main/cmd/gcrane) are similar to
 Docker. `gcloud` is used by gcrane to fetch an access token that allows for authentication with STRM Privacy's registry.
 
