@@ -14,6 +14,8 @@ Most components of STRM Privacy expose [Prometheus][prometheus] metrics and we'v
 Operator][prom-helm] Helm chart. In order to define _scrape targets_ to Prometheus, we deploy  [Service
 Monitors][prom-sm] that expose the metrics endpoints in the Event Gateway.
 
+
+The `kubectl` commands below assume a default namespace of `strmprivacy`, which you can set via `kubens strmprivacy`
 ### Prometheus server
 Access the Prometheus server either via [telepresence][telepresence] or via a port-forward
 

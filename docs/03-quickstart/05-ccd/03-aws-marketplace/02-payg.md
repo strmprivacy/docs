@@ -48,8 +48,7 @@ add the `--profile your_profile` flag to the `aws` commands in the code blocks b
 :::
 
 1. **Subscribe**  
-   Click `Continue to Subscribe`, follow the instructions and start your subscription. Come back to this guide after
-   you've finished subscribing.
+   Click `Continue to Subscribe`, and then `Accept license` to start your subscription. **Don't** click `Continue to the Configuration`, but follow along with the steps below.
    :::important
    The installation instructions in the AWS Marketplace after subscribing are quite unclear, as many details are left
    out.
@@ -136,14 +135,11 @@ add the `--profile your_profile` flag to the `aws` commands in the code blocks b
    # Untar the chart and remove the tarball
    tar xf $(pwd)/* && find $(pwd) -maxdepth 1 -type f -delete
    
-   # Create the namespace
-   kubectl create namespace $namespace
-   
    # Install the chart
    // callout-1
    helm install strmprivacy \
    // callout-2
-   --namespace $namespace ./* \
+   --namespace $namespace --create-namespace ./* \
    // callout-3
    --set license.installationType=AWS_MARKETPLACE_PAYG \
    --set license.installationId=$installation_id \
