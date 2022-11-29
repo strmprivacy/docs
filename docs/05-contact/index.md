@@ -3,6 +3,11 @@
 Want to leave some feedback for us? Or require some assistance? We’re
 happy to help you!
 
+## Slack
+
+Join our [community Slack](https://join.slack.com/t/strmcommunity/shared_invite/zt-1kmv6pkhe-Z~JAuatGgJQ95WgxfA6wxw)
+workspace to interact with developers and other community members.
+
 ## Email
 
 Email us at [Developer
