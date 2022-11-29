@@ -65,4 +65,4 @@ The algorithm is as follows:
 
 ## Outputs
 
-STRM Privacy provides multiple ways to output data. Read more on exporting data [here](docs/03-quickstart/01-streaming/04-receiving-data/index.md).
+STRM Privacy provides multiple ways to output data. Read more on exporting data [here](docs/03-quickstart/02-streaming/04-receiving-data/index.md).

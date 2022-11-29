@@ -11,7 +11,7 @@ has been founded are discussed in this section.
 
 ## What problems are we trying to solve?
 
-- **PII Data Compliance**. Handle processing of data that contain [personally
+- **Privacy, data protection and personal data processing**. Handle processing of data that contain [personally
   identifiable information](./02-pii.md) in a privacy regulations compliant way.
 - **Low Event Data Quality**. Improve the quality of event data by separating the rules that govern
   the [shape and content of the event data](docs/02-concepts/02-data-contracts/index.md)
