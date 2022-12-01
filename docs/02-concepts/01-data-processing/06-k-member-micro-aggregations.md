@@ -174,7 +174,7 @@ in the same project. The configuration file should then look like this:
 ```
 
 1. The source of the data by the means of your data connector, the file name and path prefix and the type of
-   the data (only `csv` is possible at this point)
+   the data (only `csv` is available presently)
 2. The target location of the data, similar to the source data
 3. The reference to the data contract applied to the data
 4. The minimum amount of _`k`_-anonymity you want to ensure
