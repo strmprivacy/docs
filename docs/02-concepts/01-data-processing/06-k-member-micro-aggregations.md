@@ -128,13 +128,16 @@ Hence, for the micro-aggregations we will only use four columns of the data. A s
 
 | age | hairColor | size | transactionAmount |
 |-----|-----------|------|-------------------|
-| 1   | brown     | M    | 180               |
-| 1   | brown     | M    | 187               |
-| 0   | brown     | M    | 169               |
-| 2   | black     | XL   | 215               |
-| 0   | black     | XL   | 228               |
-| 0   | black     | XL   | 203               |
-| 1   | black     | XL   | 227               |
+| 30  | blonde    | XL   | 44                |
+| 30  | blonde    | XL   | 19                |
+| 26  | blonde    | XL   | 31                |
+| 27  | brown     | S    | 220               |
+| 27  | brown     | S    | 257               |
+| 32  | brown     | S    | 233               |
+| 28  | black     | XL   | 172               |
+| 31  | black     | XL   | 209               |
+| 28  | black     | XL   | 216               |
+| 28  | black     | XL   | 167               |
 
 ## Micro-Aggregations Batch Job
 
@@ -192,26 +195,32 @@ The results of our example are found below:
 
 | age | hairColor | size | transactionAmount |
 |-----|-----------|------|-------------------|
-| 1   | brown     | M    | 180               |
-| 1   | brown     | M    | 187               |
-| 0   | brown     | M    | 169               |
-| 2   | black     | XL   | 215               |
-| 0   | black     | XL   | 228               |
-| 0   | black     | XL   | 203               |
-| 1   | black     | XL   | 227               |
+| 30  | blonde    | XL   | 44                |
+| 30  | blonde    | XL   | 19                |
+| 26  | blonde    | XL   | 31                |
+| 27  | brown     | S    | 220               |
+| 27  | brown     | S    | 257               |
+| 32  | brown     | S    | 233               |
+| 28  | black     | XL   | 172               |
+| 31  | black     | XL   | 209               |
+| 28  | black     | XL   | 216               |
+| 28  | black     | XL   | 167               |
 
 
 </td><td>
 
 | age                | hairColor | size | transactionAmount  |
 |--------------------|-----------|------|--------------------|
-| 0.6666666666666643 | brown     | M    | 178.66666666666666 |
-| 0.6666666666666643 | brown     | M    | 178.66666666666666 |
-| 0.6666666666666643 | brown     | M    | 178.66666666666666 |
-| 0.7499999999999929 | black     | XL   | 218.25             |
-| 0.7499999999999929 | black     | XL   | 218.25             |
-| 0.7499999999999929 | black     | XL   | 218.25             |
-| 0.7499999999999929 | black     | XL   | 218.25             |
+| 28.666666666666668 | blonde    | XL   | 31.33333333333336  |
+| 28.666666666666668 | blonde    | XL   | 31.33333333333336  |
+| 28.666666666666668 | blonde    | XL   | 31.33333333333336  |
+| 28.666666666666668 | brown     | S    | 236.66666666666669 |
+| 28.666666666666668 | brown     | S    | 236.66666666666669 |
+| 28.666666666666668 | brown     | S    | 236.66666666666669 |
+| 28.75              | black     | XL   | 191.0              |
+| 28.75              | black     | XL   | 191.0              |
+| 28.75              | black     | XL   | 191.0              |
+| 28.75              | black     | XL   | 191.0              |
 
 
 </td></tr> </table>
