@@ -61,7 +61,7 @@ A sample of the generated data:
 
 ## Data contract
 
-For using micro-aggregations, additional information in the data contract is require. For each of the
+For using micro-aggregations, additional information in the data contract is required. For each of the
 quasi-identifiers we differentiate between three different statistical data types.
 
 1. Numerical: numerical data type with natural ordering, e.g. age in years
