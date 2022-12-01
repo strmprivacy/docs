@@ -66,7 +66,7 @@ quasi-identifiers we differentiate between three different statistical data type
 
 1. Numerical: numerical data type with natural ordering, e.g. age in years
 2. Nominal: categorical data without ordering, e.g. a person's hair color
-3. Categorical: categorical data with a specific order, e.g. clothing size (S, M, L, ...)
+3. Ordinal: categorical data with a specific order, e.g. clothing size (S, M, L, ...)
 
 We define the quasi-identifiers in the `FieldMetadata`.
 
