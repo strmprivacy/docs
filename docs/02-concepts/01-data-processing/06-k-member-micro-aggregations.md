@@ -61,12 +61,12 @@ A sample of the generated data:
 
 ## Data contract
 
-For using micro-aggregations, additional information in the data contract is require. For each of the
+For using micro-aggregations, additional information in the data contract is required. For each of the
 quasi-identifiers we differentiate between three different statistical data types.
 
 1. Numerical: numerical data type with natural ordering, e.g. age in years
 2. Nominal: categorical data without ordering, e.g. a person's hair color
-3. Categorical: categorical data with a specific order, e.g. clothing size (S, M, L, ...)
+3. Ordinal: categorical data with a specific order, e.g. clothing size (S, M, L, ...)
 
 We define the quasi-identifiers in the `FieldMetadata`.
 
@@ -173,7 +173,7 @@ in the same project. The configuration file should then look like this:
 ```
 
 1. The source of the data by the means of your data connector, the file name and path prefix and the type of
-   the data (only `csv` is possible at this point)
+   the data (only `csv` is available presently)
 2. The target location of the data, similar to the source data
 3. The reference to the data contract applied to the data
 4. The minimum amount of _`k`_-anonymity you want to ensure
