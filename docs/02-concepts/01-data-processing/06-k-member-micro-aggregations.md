@@ -126,16 +126,15 @@ We define the quasi-identifiers in the `FieldMetadata`.
 
 Hence, for the micro-aggregations we will only use four columns of the data. A sample is found below.
 
-| age |size |hairColor|transactionAmount |
-|-----|-----|---------|------------------|
-| 33  |XS   |red      |123               |
-| 16  |S    |brown    |46                |
-| 64  |XS   |black    |73                |
-| 12  |XL   |brown    |16                |
-| 79  |XS   |red      |186               |
-| 82  |M    |black    |259               |
-| 23  |L    |red      |134               |
-| 21  |L    |brown    |46                |
+| age | hairColor | size | transactionAmount |
+|-----|-----------|------|-------------------|
+| 1   | brown     | M    | 180               |
+| 1   | brown     | M    | 187               |
+| 0   | brown     | M    | 169               |
+| 2   | black     | XL   | 215               |
+| 0   | black     | XL   | 228               |
+| 0   | black     | XL   | 203               |
+| 1   | black     | XL   | 227               |
 
 ## Micro-Aggregations Batch Job
 
@@ -191,29 +190,29 @@ The results of our example are found below:
 <tr><th>Before</th><th>After</th></tr>
 <tr><td>
 
-| age |size |hairColor|transactionAmount |
-|-----|-----|---------|------------------|
-| 33  |XS   |red      |123               |
-| 16  |S    |brown    |46                |
-| 64  |XS   |black    |73                |
-| 12  |XL   |brown    |16                |
-| 79  |XS   |red      |186               |
-| 82  |M    |black    |259               |
-| 23  |L    |red      |134               |
-| 21  |L    |brown    |46                |
+| age | hairColor | size | transactionAmount |
+|-----|-----------|------|-------------------|
+| 1   | brown     | M    | 180               |
+| 1   | brown     | M    | 187               |
+| 0   | brown     | M    | 169               |
+| 2   | black     | XL   | 215               |
+| 0   | black     | XL   | 228               |
+| 0   | black     | XL   | 203               |
+| 1   | black     | XL   | 227               |
+
 
 </td><td>
 
-|age               |size |hairColor|transactionAmount |
-|------------------|-----|---------|------------------|
-|32.33333333333333 |XS   |red      |141.33333333333334|
-|16.25             |S    |brown    |49.250000000000014|
-|66.0              |XS   |black    |88.4              |
-|8.000000000000007 |XL   |brown    |7.333333333333314 |
-|80.0              |XS   |red      |174.75            |
-|82.66666666666666 |M    |black    |269.0             |
-|28.25             |L    |red      |139.25            |
-|20.666666666666664|L    |brown    |53.333333333333314|
+| age                | hairColor | size | transactionAmount  |
+|--------------------|-----------|------|--------------------|
+| 0.6666666666666643 | brown     | M    | 178.66666666666666 |
+| 0.6666666666666643 | brown     | M    | 178.66666666666666 |
+| 0.6666666666666643 | brown     | M    | 178.66666666666666 |
+| 0.7499999999999929 | black     | XL   | 218.25             |
+| 0.7499999999999929 | black     | XL   | 218.25             |
+| 0.7499999999999929 | black     | XL   | 218.25             |
+| 0.7499999999999929 | black     | XL   | 218.25             |
+
 
 </td></tr> </table>
 
