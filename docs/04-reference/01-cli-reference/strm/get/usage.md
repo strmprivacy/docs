@@ -16,10 +16,16 @@ The values are interpolated from cumulative event accounts, and sampled over int
 
 The default range is over the last 24 hours, with a default interval of 15 minutes.
 
-Example:
+### Usage
 
 ```
-strm get usage bart --by 15m --from 2021/7/27-10:00  --until 2021/7/27-12:00
+strm get usage (stream-name) [flags]
+```
+
+### Examples
+
+```
+strm get usage demo --by 15m --from 2021/7/27-10:00  --until 2021/7/27-12:00
 
 from,count,duration,change,rate
 2021-07-27T10:00:00.000000+0200,173478,900,NaN,NaN
@@ -31,12 +37,6 @@ from,count,duration,change,rate
 2021-07-27T11:30:00.000000+0200,227134,900,8942,9.94
 2021-07-27T11:45:00.000000+0200,236078,900,8944,9.94
 2021-07-27T12:00:00.000000+0200,245023,900,8945,9.94
-```
-
-### Usage
-
-```
-strm get usage (stream-name) [flags]
 ```
 
 ### Options
@@ -52,14 +52,11 @@ strm get usage (stream-name) [flags]
 ### Options inherited from parent commands
 
 ```
-      --api-auth-url string            User authentication host (default "https://accounts.strmprivacy.io")
-      --api-host string                API host and port (default "api.strmprivacy.io:443")
-      --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
-      --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
-  -p, --project string                 Project to use (defaults to context-configured project)
-  -r, --recursive                      Retrieve entities and their dependents
-      --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
-      --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
+      --api-auth-url string   user authentication host (default "https://accounts.strmprivacy.io")
+      --api-host string       api host and port (default "api.strmprivacy.io:443")
+  -p, --project string        project to use (defaults to context-configured project)
+  -r, --recursive             Retrieve entities and their dependents
+      --token-file string     token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
 ```
 
 ### SEE ALSO

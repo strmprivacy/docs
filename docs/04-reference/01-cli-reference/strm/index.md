@@ -4,20 +4,17 @@ hide_title: true
 ---
 ## strm
 
-STRM Privacy CLI 3.1.1
+STRM Privacy CLI 3.2.0
 
 ### Options
 
 ```
-      --api-auth-url string            User authentication host (default "https://accounts.strmprivacy.io")
-      --api-host string                API host and port (default "api.strmprivacy.io:443")
-      --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
-  -h, --help                           help for strm
-      --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
-  -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
-  -p, --project string                 Project to use (defaults to context-configured project)
-      --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
-      --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
+      --api-auth-url string   user authentication host (default "https://accounts.strmprivacy.io")
+      --api-host string       api host and port (default "api.strmprivacy.io:443")
+  -h, --help                  help for strm
+  -o, --output string         output format [json, json-raw, table, plain] (default "table")
+  -p, --project string        project to use (defaults to context-configured project)
+      --token-file string     token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
 ```
 
 ### SEE ALSO

@@ -17,11 +17,12 @@ A policy has the following attributes
 * retention: the number of days that encryption keys created under this
   policy should be kept. This might be a minimum or a maximum...
 * legal grounds: a legal text or ruling that identifies why the organization
-  created this policy
+  created this policy.
 * state: draft, active or archived. Policies can only be used in pipelines
   when they're in active state. They can still be modified while in draft.
   Deletion of policies is not allowed for active policies.
 
+### Usage
 
 ```
 strm create policy [flags]
@@ -47,13 +48,10 @@ strm create policy --name="1 year" --retention 365 --description "1 year for mar
 ### Options inherited from parent commands
 
 ```
-      --api-auth-url string            User authentication host (default "https://accounts.strmprivacy.io")
-      --api-host string                API host and port (default "api.strmprivacy.io:443")
-      --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
-      --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
-  -p, --project string                 Project to use (defaults to context-configured project)
-      --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
-      --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
+      --api-auth-url string   user authentication host (default "https://accounts.strmprivacy.io")
+      --api-host string       api host and port (default "api.strmprivacy.io:443")
+  -p, --project string        project to use (defaults to context-configured project)
+      --token-file string     token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
 ```
 
 ### SEE ALSO
