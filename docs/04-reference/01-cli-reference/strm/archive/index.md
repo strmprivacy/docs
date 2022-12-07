@@ -24,7 +24,7 @@ Set the state of an entity to ARCHIVED
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.2.0
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.3.0
 * [strm archive data-contract](docs/04-reference/01-cli-reference/strm/archive/data-contract.md)	 - Set the state of an Data Contract to ARCHIVED
 * [strm archive policy](docs/04-reference/01-cli-reference/strm/archive/policy.md)	 - Set the state of a Policy to ARCHIVED
 

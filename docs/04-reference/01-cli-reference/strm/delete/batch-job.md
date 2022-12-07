@@ -4,7 +4,7 @@ hide_title: true
 ---
 ## strm delete batch-job
 
-Delete on or more Batch Jobs by id
+Delete one or more Batch Jobs by id
 
 ```
 strm delete batch-job (id ...) [flags]
