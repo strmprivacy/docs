@@ -8,10 +8,10 @@ Read events via the web-socket (not for production purposes)
 
 ### Synopsis
 
-The global `listen` command is used for starting a Web Socket listener for a stream and output all events to the
-console.
+Listens to the web-socket debug endpoint to receive format events on streams transformed to json.
 
-This command can receive events from both Source Streams and Derived Streams.
+Note that this is not meant for production purposes. There's no access to the underlying Kafka consumer
+and no performance guarantees.
 
 ### Usage
 
@@ -19,25 +19,41 @@ This command can receive events from both Source Streams and Derived Streams.
 strm listen web-socket (stream-name) [flags]
 ```
 
+### Examples
+
+```
+# Simulate some events
+strm create stream test
+strm simulate random-events test
+Starting to simulate random strmprivacy/demo/1.0.2 events to stream test. Sending one event every 1000 ms.
+Sent 5 events
+Sent 10 events
+
+# And in another terminal
+
+strm listen web-socket test
+{"strmMeta": {"eventContractRef": "strmprivacy/example/1.3.0", "nonce": 1782462093, "timestamp": 1669990806395, "keyLink": "e6f...
+{"strmMeta": {"eventContractRef": "strmprivacy/example/1.3.0", "nonce": 1159687711, "timestamp": 1669990807404, "keyLink": "b58...
+{"strmMeta": {"eventContractRef": "strmprivacy/example/1.3.0", "nonce": -192240390, "timestamp": 1669990808413, "keyLink": "ba0...
+```
+
 ### Options
 
 ```
-      --client-id string       Client id to be used for receiving data
-      --client-secret string   Client secret to be used for receiving data
-  -h, --help                   help for web-socket
+      --client-id string        client id to be used for receiving data
+      --client-secret string    client secret to be used for receiving data
+  -h, --help                    help for web-socket
+      --web-socket-url string   websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
 ```
 
 ### Options inherited from parent commands
 
 ```
-      --api-auth-url string            User authentication host (default "https://accounts.strmprivacy.io")
-      --api-host string                API host and port (default "api.strmprivacy.io:443")
-      --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
-      --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
-  -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
-  -p, --project string                 Project to use (defaults to context-configured project)
-      --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
-      --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
+      --api-auth-url string   user authentication host (default "https://accounts.strmprivacy.io")
+      --api-host string       api host and port (default "api.strmprivacy.io:443")
+  -o, --output string         output format [json, json-raw, table, plain] (default "table")
+  -p, --project string        project to use (defaults to context-configured project)
+      --token-file string     token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
 ```
 
 ### SEE ALSO

@@ -4,29 +4,38 @@ hide_title: true
 ---
 ## strm create stream
 
-Create a stream
+Create a Stream
 
 ### Synopsis
 
-A stream is the central resource in STRM Privacy. Clients can connect to a stream to send and to receive events. A
-stream can be either an "input stream" or a "derived stream".
+A stream is a pipeline implementation in STRM Privacy using streaming technology (Kafka).
 
-Events are always sent to an input stream. Sending events to a derived stream is not possible. After validation and
-encryption of all PII fields, STRM Privacy sends all events to the input stream. Clients consuming from the input stream
-will see all events, but with all PII fields encrypted.
+Events are sent to the "Event Gateway" into an "Input Stream", where *all* personal data event attributes are encrypted
+after validating that the event conforms to a data contract. "Privacy Streams" are derived from input streams.
 
-Derived streams can be made on top of a input stream. A derived stream is configured with one or more consent levels and
-it only receives events with matching consent levels (see details about this matching process here). The PII fields with
-matching consent levels are decrypted and sent to the derived stream. Clients connecting to the derived stream will only
-receive the events on this stream.
+A derived "Privacy Stream" is configured with one or more consent levels and it only receives events matching those
+consent levels. The PII attributes with matching consent are decrypted, while non-matching attributes remain encrypted.
 
 Every stream has its own set of access tokens. Connecting to an input stream requires different credentials than when
-connecting to a derived stream.
+connecting to a derived Privacy Stream.
 
 ### Usage
 
 ```
-strm create stream [name] [flags]
+strm create stream (name) [flags]
+```
+
+### Examples
+
+```
+
+strm create stream test
+
+A name is not required for a derived stream; when absent it will be created from the derived stream
+and the consent-levels.
+
+strm create stream --derived-from test --levels 1,3,8 --consent-type GRANULAR test-marketing
+
 ```
 
 ### Options
@@ -34,10 +43,10 @@ strm create stream [name] [flags]
 ```
       --consent-type string         CUMULATIVE or GRANULAR (default "CUMULATIVE")
   -D, --derived-from string         name of stream that this stream is derived from
-      --description string          description
+      --description string          description of this stream
   -h, --help                        help for stream
   -L, --levels int32Slice           comma separated list of integers for derived streams (default [])
-      --mask-seed string            A seed used for masking
+      --mask-seed string            a seed used for masking
   -M, --masked-fields stringArray   -M strmprivacy/example/1.3.0:sensitiveValue,consistentValue \
                                     -M strmprivacy/clickstream/1.0.0:sessionId
                                     
@@ -45,21 +54,18 @@ strm create stream [name] [flags]
                                     	
       --policy-id string            the uuid of the policy to attach
       --policy-name string          the name of the policy to attach
-      --save                        if true, save the result in the config directory (~/.config/strmprivacy/saved-entities). (default is true) (default true)
-      --tags strings                tags
+      --save                        if true, save the credentials in ~/.config/strmprivacy/saved-entities. (default true)
+      --tags strings                a list of tags for this stream
 ```
 
 ### Options inherited from parent commands
 
 ```
-      --api-auth-url string            User authentication host (default "https://accounts.strmprivacy.io")
-      --api-host string                API host and port (default "api.strmprivacy.io:443")
-      --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
-      --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
-  -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
-  -p, --project string                 Project to use (defaults to context-configured project)
-      --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
-      --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
+      --api-auth-url string   user authentication host (default "https://accounts.strmprivacy.io")
+      --api-host string       api host and port (default "api.strmprivacy.io:443")
+  -o, --output string         output format [json, json-raw, table, plain] (default "table")
+  -p, --project string        project to use (defaults to context-configured project)
+      --token-file string     token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
 ```
 
 ### SEE ALSO

@@ -21,26 +21,23 @@ strm simulate random-events [stream-name] [flags]
 
 ```
       --consent-levels strings   consent levels to be simulated (default [,0,0/1,0/1/2,0/1/2/3])
-      --events-api-url string    Endpoint to send events to (default "https://events.strmprivacy.io/event")
+      --events-api-url string    endpoint to send events to (default "https://events.strmprivacy.io/event")
   -h, --help                     help for random-events
-      --interval int             Interval in ms. between simulated events (default 1000)
-      --quiet                    Do not print to stderr
-      --session-prefix string    Prefix string for sessions (default "session")
-      --session-range int        Number of different sessions being generated (default 1000)
+      --interval int             interval in ms. between simulated events (default 1000)
+      --quiet                    do not print to stderr
+      --session-prefix string    prefix string for sessions (default "session")
+      --session-range int        number of different sessions being generated (default 1000)
 ```
 
 ### Options inherited from parent commands
 
 ```
-      --api-auth-url string            User authentication host (default "https://accounts.strmprivacy.io")
-      --api-host string                API host and port (default "api.strmprivacy.io:443")
-      --events-auth-url string         Event authentication host (default "https://sts.strmprivacy.io")
-      --kafka-bootstrap-hosts string   Kafka bootstrap brokers, separated by comma (default "export-bootstrap.kafka.strmprivacy.io:9092")
-  -o, --output string                  Output format [json, json-raw, table, plain] (default "table")
-  -p, --project string                 Project to use (defaults to context-configured project)
-      --schema string                  Which schema to use for creating simulated events (default "strmprivacy/demo/1.0.2")
-      --token-file string              Token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
-      --web-socket-url string          Websocket to receive events from (default "wss://websocket.strmprivacy.io/ws")
+      --api-auth-url string   user authentication host (default "https://accounts.strmprivacy.io")
+      --api-host string       api host and port (default "api.strmprivacy.io:443")
+  -o, --output string         output format [json, json-raw, table, plain] (default "table")
+  -p, --project string        project to use (defaults to context-configured project)
+      --schema string         Which schema to use for creating simulated events (default "strmprivacy/demo/1.0.2")
+      --token-file string     token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
 ```
 
 ### SEE ALSO
