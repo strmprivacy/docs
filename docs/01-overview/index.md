@@ -20,6 +20,12 @@ in your data lake. If you'd like to jump right in:
   <a class="button button_dark" href="https://strmprivacy.io/request-demo/" target="_blank">Request a demo</a>
 </div>
 
+<br />
+
+:::important
+Looking for the quickest way to understand STRM? Have a look at the [**example notebook**](https://deepnote.com/workspace/STRM-demos-2614c69d-1aae-4c75-a0b8-ee631006da30/project/Data-team-in-a-day-with-STRM-eb9f78ee-b796-48e5-b1ff-b77815a3952a/notebook/Anonymisation%20pipelines%20with%20STRM%20Privacy-681be7708cf844589c24db36e0a5d2d9) outlining all the steps and configuration involved with running STRM. 
+:::
+
 ## Common use cases
 
 As STRM Privacy supports both streaming and batch data pipelines, any use case can be enabled with our data processing
