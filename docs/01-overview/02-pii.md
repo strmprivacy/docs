@@ -1,15 +1,15 @@
 ---
-title: Personally Identifiable Information
+title: Personal Data
 hide_table_of_contents: false
 ---
 
-The principles upon which STRM Privacy has been built, revolve around personally identifiable information,
-and the handling of these data. This section explains what personally identifiable information is, why
-it is important to treat these data differently from others and what the challenges are.
+The principles upon which STRM Privacy has been built, revolve around personal data,
+and the handling of it. This section explains what personal data and personally identifiable information are, why
+it is important to treat this data differently from non-personal data and what the challenges are.
 
-# Personally Identifiable Information (PII)
+# Personal data and Personally Identifiable Information (PII)
 
-Following along with [the Wikipedia article](https://en.wikipedia.org/wiki/Personal_data) we see that PII
+Privacy as a concept applies to personal data. This can be both *your data*, and *data indicating it's you* (PII). Following along with [the Wikipedia article](https://en.wikipedia.org/wiki/Personal_data) we see that PII
 data is *any information ... that can be used to distinguish or trace an individuals' identity*.
 
 Legally the concept of PII data is not utilized by the European GDPR
@@ -86,7 +86,7 @@ processing, whereupon the DPO will assign a set of required
 consent-levels, create a *decrypted stream* with these events, and assign
 access credentials.
 
-## No longer than necessary
+## Data retention: no longer than necessary
 
 > _Article 5.1(e)_
 >
