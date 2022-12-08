@@ -1,23 +1,26 @@
 ---
-title: Micro-Aggregations
+title: K-Anonymity (K-Member Micro-Aggregations)
 hide_table_of_contents: false
 ---
 
-One of the challenges with taking privacy into account is information loss: removing personality from data also
-removing potential information from the data.
-By using [masking](docs/02-concepts/02-data-contracts/03-masked-fields.md), plaintext data is hidden. However, there is
+For many use cases and tasks in an organization, de-identification is enough when you have to take care of privacy (for instance because the data was collected lawfully, which of course it was...). By using [masking](docs/02-concepts/02-data-contracts/03-masked-fields.md) or (rotated) [encryption](docs/02-concepts/01-data-processing/01-pii-field-encryption.md), plaintext data is hidden. This is great if you want to retain patterns and value inside your data. However, there is
 no _mathematical_ guarantee we can never re-identify any user based
 on patterns inside non-personal data.
 
+There are cases where strict guarantees on the level of personality inside data are necessary (by default, or mandated by policies inside organizations). By definition, removing personality from data also includes removing potential information from the data. 
+
+If this is a trade-off you need to strike you can extend your pipelines with K-MMA: K-member micro aggregations. 
+
+# K-Member Micro Aggregations and K-anonymity
 A common way to describe how hard re-identification of your data is, is by the means of k-anonymity. A dataset is
 said to be _k_-anonymous if and only if for any data subject at least _k-1_ other data subjects have the same
 characteristics. These characteristics are based on a set of _Quasi Identifiers_
-(see [definitions](docs/02-concepts/99-definitions.md)). With k-Member Micro-Aggregations we guarantee that for each
+(see [definitions](docs/02-concepts/99-definitions.md)). With k-Member Micro-Aggregations we can guarantee that for each
 row of the Quasi Identifiers you define at least _k-1_ rows exist with the same values.
 
 [//]: # (TODO expand on this with a k-anonymity example?)
 
-To illustrate this principle, consider the following example. We generate some random data that resemble some sort
+To illustrate this principle, consider the following example. We generate some random data that resembles some sort
 of ecommerce platform. We created a [data contract](/docs/02-concepts/02-data-contracts/index.md) with the following
 [simple schema](/docs/02-concepts/02-data-contracts/01-simple-schemas.md):
 
@@ -59,7 +62,7 @@ A sample of the generated data:
 
 [//]: # (TODO extra fields in data contract needed)
 
-## Data contract
+## Data contract annotation for K-Anonymity
 
 For using micro-aggregations, additional information in the data contract is required. For each of the
 quasi-identifiers we differentiate between three different statistical data types.
