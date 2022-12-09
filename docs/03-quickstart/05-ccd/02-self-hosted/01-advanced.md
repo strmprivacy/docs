@@ -58,7 +58,10 @@ STRM_PRIVACY_REGISTRY="europe-west4-docker.pkg.dev/stream-machine-production/doc
 
 for image_uri in $(gcrane ls "$STRM_PRIVACY_REGISTRY" -r | grep --invert-match "sha256")
 do
-    image_name_and_version=$(echo "${image_uri}" | sed 's|'"$STRM_PRIVACY_REGISTRY"'||' | sed 's|/|_|g')
+    image_name_and_version=$(echo "${image_uri}" | sed 's|'"$STRM_PRIVACY_REGISTRY"/'||' | sed 's|/|_|g')
     gcrane cp "${image_uri}" "${TARGET_REGISTRY}/${image_name_and_version}"
 done
 ```
+
+As it cannot be assumed that the private registry has a directory/folder structure, we replace every `/` in the image path to an `_`. For example, this would mean the image name of a 
+batch-exporter will not be the path `events/batch-exporters-agent` but rather the image name `events_batch-exporters-agent`.
