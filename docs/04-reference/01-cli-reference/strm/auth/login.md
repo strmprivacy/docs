@@ -18,7 +18,9 @@ strm auth login [flags]
 ### Options
 
 ```
-  -h, --help   help for login
+  -h, --help                                       help for login
+  -n, --non-interactive strm auth login --remote   is the current host a headless system, without access to a browser? If true, use strm auth login --remote
+  -r, --remote                                     should the current host act as a remote login for a headless system? If true, an authorization code flow result will be printed, that can be used for the non-interactive target host.
 ```
 
 ### Options inherited from parent commands
