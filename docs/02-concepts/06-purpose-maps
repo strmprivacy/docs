@@ -1,0 +1,20 @@
+---
+title: Purpose maps
+hide_table_of_contents: false
+---
+In the world of data processing and privacy, everything starts with a legal basis for processing: to acquire and use data, you need to a justified basis for it. Under GDPR, this for instance means you need the data to fulfill a contract, have a legitimate interest to the data, or obtain (different types of) consent.
+
+With STRM, you define these legal bases and the usage target as `purposes` in a purpose map: a list of different processing motivations. You attach this to every record or event prcessed with STRM. Together with the data contract, this acts as the instruction to transform and split the data into our privay streams. Do you have e.g. consent as legitimate purpose and does a user change it? Then the data processsing automagically changes with it! 
+
+:::note managing consent is not a feature of the STRM platform (yet). Make sure your consent and purpose map definitions match so you accurately attach the consent type obtained to the data. 
+
+## Cumulative vs Granular purposes
+Purpose maps are basically just a list of processing motivations you have for data. Technically, these are translated to simple numbers like `1 2 3` etc - that's the "map" part of the name. But in defining privacy streams, purposes can be used in two ways, `granular` and `cumulative`:
+
+- Every purpose is its own level when you define the purpose as `granular`,
+- With the `cumulative` setting applied, lower purpose levels are included in the specified higher purpose levels. E.g. an `analytical` purpose is part of the `marketing` purpose, which is part of the `personalisation` purpose. 
+
+When you create a purpose map, you have to make sure the levels you indicate in the map match this intended use: make sure the higher purpose has a higher purpose level when you intend to use them cumulatively. E.g. `contract fulfilment` is level `0`, `analytical` as level `1` and `marketing` as level `2`.
+
+## Creating purpose maps
+Creating purpose maps is done through our console: you add and describe the different purposes you have for data. The levels (the numbers) you assign to each are interpreted by our platform as context following the data contract you defined.
