@@ -11,23 +11,22 @@ has been founded are discussed in this section.
 
 ## What problems are we trying to solve?
 
-- **PII Data Compliance**. Handle processing of data that contain [personally
+- **Personal Data Processing Compliance**. Handle the processing of data that contain [personal and personally
   identifiable information](./02-pii.md) in a privacy regulations compliant way.
+- **Governance after data collection**. Move the decisions around privacy compliance from the
+  Software Engineers and Data Teams to those entities that know about
+  privacy. The rules that govern the personal data aspects of an event
+  are handled by [data contracts](docs/02-concepts/02-data-contracts/index.md) and are defined in collaboration between technical and legal stakeholders.
+- **Infrastructure management and performance**. STRM Privacy takes care of complexities of handling high-volume
+  (event) data with low latency and high availability.
+- **Auditability**. With STRM Privacy, an audit trail around the
+  handling of personal event data is available by design. It provides the tooling to show
+  what entity is using what personal data for what purpose, and interfaces to manage this data, exhaustively coupled to Data Subjects, without complicated indexes or full table scans.
 - **Low Event Data Quality**. Improve the quality of event data by separating the rules that govern
   the [shape and content of the event data](docs/02-concepts/02-data-contracts/index.md)
   from the teams that generate the data. So in essence, the Data Scientists and
   Data Analysts determine the rules, and not the front-end teams where the
-  data originates.
-- **Governance after data collection**. Move the decisions around privacy compliance from the
-  Software Engineers and Data Teams to those entities that know about
-  privacy. The rules that govern the personal data aspects of an event
-  are handled by so-called data contracts, and *do not* require work
-  by Software Engineers.
-- **Infrastructure management and performance**. STRM Privacy takes care of complexities of handling high-volume
-  event data with low latency and high availability.
-- **Auditability**. With STRM Privacy, an audit trail around the
-  handling of personal event data is available by design. It provides the tooling to show
-  what entity is using what personal data for what purpose.
+  data originates.  
 
 ## STRM Privacy Principles
 
@@ -50,12 +49,12 @@ must conform.
 ### 2. Events shall be privacy safe
 
 The events conform to a certain data contract that defines the shape and privacy implications. The data contract defines which
-event attributes contain [Personally Identifiable Information
+event attributes contain [Personal and Personally Identifiable Information
 (PII)](./02-pii.md). When STRM Privacy accepts an event, it encrypts these attributes _before_
 proceeding with further processing in its data platform. The encryption key is linked to a value of a field in the
 event that defines its *event sequence*, i.e. the attribute that ties
 the events together as a sequence belonging to one entity (read more
-about [PII Field Encryption](docs/02-concepts/01-data-processing/01-pii-field-encryption.md))
+about [Personal Data Field Encryption](docs/02-concepts/01-data-processing/01-pii-field-encryption.md))
 
 ### 3. Latency shall be low
 
@@ -84,7 +83,7 @@ The first time a new value is seen in the *keyField*, an
 encryption key is generated in STRM Privacy which is decoupled from the event by a `keyLink`. The value for the
 `keyLink` is included in each event, in the `strmMeta/keyLink` field.
 
-The way PII data is encrypted, follows a Privacy Algorithm. Currently, the Privacy Algorithm is time-based, yet others
+The way Personal Data is encrypted, follows a Privacy Algorithm. Currently, the Privacy Algorithm is time-based, yet others
 might be added in the future. Read more about the current Privacy Algorithm [here](docs/02-concepts/01-data-processing/01-pii-field-encryption.md).
 
 [^1]: Current implementation uses HTTP/2 for
