@@ -13,11 +13,8 @@ jobs:
     name: Link Checker
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Link Checker
-        uses: lycheeverse/lychee-action@v1.3.2
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Check links with linkcheck
+        uses: filiph/linkcheck@2.0.23
         with:
-          args: --verbose --no-progress './**/*.md' './**/*.html'
+          args: 'https://docs.strmprivacy.io'
           fail: true
