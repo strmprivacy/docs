@@ -6,7 +6,7 @@ hide_table_of_contents: false
 # STRM Privacy
 
 STRM Privacy is a privacy-focused data processing platform, that ensures that collected
-data from a source is of a strictly defined shape and content (the Data Contract), and that
+data from a source is of a strictly defined shape and content (the [data contract](docs/02-concepts/02-data-contracts/index.md)), and that
 it is compliant with all well known privacy regulations, such as
 [GDPR](https://gdpr.eu/). We strive to help you collect customer data
 in real-time or process data in batch with privacy and usability built-in.
