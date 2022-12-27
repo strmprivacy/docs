@@ -29,7 +29,7 @@ To use [Buf Studio][BSR], perform the following steps:
 4. Go to [Buf Studio][BSR] and open the `Headers` tab
 5. Add a header with:
    - Key = `Authorization`
-   - Value = `Bearer your_token` (the space after `Bearer` is intentional)
+   - Value = `Bearer <your_token>`
 6. Make a request
 
 :::important
