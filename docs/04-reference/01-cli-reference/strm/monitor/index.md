@@ -1,15 +1,15 @@
 ---
-title: "listen"
+title: "monitor"
 hide_title: true
 ---
-## strm listen
+## strm monitor
 
-Listen for events on a stream
+Monitor STRM entities
 
 ### Options
 
 ```
-  -h, --help   help for listen
+  -h, --help   help for monitor
 ```
 
 ### Options inherited from parent commands
@@ -25,6 +25,8 @@ Listen for events on a stream
 ### SEE ALSO
 
 * [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.6.0
-* [strm listen kafka](docs/04-reference/01-cli-reference/strm/listen/kafka.md)	 - Read events via the kafka consumer (not for production purposes)
-* [strm listen web-socket](docs/04-reference/01-cli-reference/strm/listen/web-socket.md)	 - Read events via the web-socket (not for production purposes)
+* [strm monitor all](docs/04-reference/01-cli-reference/strm/monitor/all.md)	 - monitor all entity types
+* [strm monitor batch-exporter](docs/04-reference/01-cli-reference/strm/monitor/batch-exporter.md)	 - monitor entities of type batch-exporter
+* [strm monitor batch-job](docs/04-reference/01-cli-reference/strm/monitor/batch-job.md)	 - monitor entities of type batch-job
+* [strm monitor stream](docs/04-reference/01-cli-reference/strm/monitor/stream.md)	 - monitor entities of type stream
 

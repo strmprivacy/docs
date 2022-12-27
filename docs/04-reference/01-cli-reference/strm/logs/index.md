@@ -1,15 +1,15 @@
 ---
-title: "listen"
+title: "logs"
 hide_title: true
 ---
-## strm listen
+## strm logs
 
-Listen for events on a stream
+Show logs of STRM entities
 
 ### Options
 
 ```
-  -h, --help   help for listen
+  -h, --help   help for logs
 ```
 
 ### Options inherited from parent commands
@@ -25,6 +25,7 @@ Listen for events on a stream
 ### SEE ALSO
 
 * [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.6.0
-* [strm listen kafka](docs/04-reference/01-cli-reference/strm/listen/kafka.md)	 - Read events via the kafka consumer (not for production purposes)
-* [strm listen web-socket](docs/04-reference/01-cli-reference/strm/listen/web-socket.md)	 - Read events via the web-socket (not for production purposes)
+* [strm logs batch-exporter](docs/04-reference/01-cli-reference/strm/logs/batch-exporter.md)	 - show logs for entity of type batch-exporter
+* [strm logs batch-job](docs/04-reference/01-cli-reference/strm/logs/batch-job.md)	 - show logs for entity of type batch-job
+* [strm logs stream](docs/04-reference/01-cli-reference/strm/logs/stream.md)	 - show logs for entity of type stream
 
