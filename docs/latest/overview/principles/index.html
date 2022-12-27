@@ -6,8 +6,8 @@
 <title data-rh="true">Principles | STRM Privacy Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.strmprivacy.io//docs/latest/overview/principles/"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Principles | STRM Privacy Documentation"><meta data-rh="true" name="description" content="STRM Privacy has been founded to solve the challenges that we experienced in large companies as Product Owners /"><meta data-rh="true" property="og:description" content="STRM Privacy has been founded to solve the challenges that we experienced in large companies as Product Owners /"><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.strmprivacy.io//docs/latest/overview/principles/"><link data-rh="true" rel="alternate" href="https://docs.strmprivacy.io//docs/latest/overview/principles/" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.strmprivacy.io//docs/latest/overview/principles/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://M24OHV52F0-dsn.algolia.net" crossorigin="anonymous"><link rel="search" type="application/opensearchdescription+xml" title="STRM Privacy Documentation" href="/opensearch.xml">
 
 <script src="https://plausible.io/js/plausible.js" defer="defer" data-domain="docs.strmprivacy.io"></script><link rel="stylesheet" href="/assets/css/styles.aba44b5d.css">
-<link rel="preload" href="/assets/js/runtime~main.9c63dd8d.js" as="script">
-<link rel="preload" href="/assets/js/main.ab14f923.js" as="script">
+<link rel="preload" href="/assets/js/runtime~main.40a7b060.js" as="script">
+<link rel="preload" href="/assets/js/main.c14344ea.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
@@ -15,19 +15,18 @@
 Managers,
 Software Engineers, and Software Architects. The problems that we try to solve and the principles upon which STRM
 Privacy
-has been founded are discussed in this section.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-problems-are-we-trying-to-solve">What problems are we trying to solve?<a class="hash-link" href="#what-problems-are-we-trying-to-solve" title="Direct link to heading">​</a></h2><ul><li><strong>PII Data Compliance</strong>. Handle processing of data that contain <a href="/docs/latest/overview/pii/">personally
-identifiable information</a> in a privacy regulations compliant way.</li><li><strong>Low Event Data Quality</strong>. Improve the quality of event data by separating the rules that govern
+has been founded are discussed in this section.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-problems-are-we-trying-to-solve">What problems are we trying to solve?<a class="hash-link" href="#what-problems-are-we-trying-to-solve" title="Direct link to heading">​</a></h2><ul><li><strong>Personal Data Processing Compliance</strong>. Handle the processing of data that contain <a href="/docs/latest/overview/pii/">personal and personally
+identifiable information</a> in a privacy regulations compliant way.</li><li><strong>Governance after data collection</strong>. Move the decisions around privacy compliance from the
+Software Engineers and Data Teams to those entities that know about
+privacy. The rules that govern the personal data aspects of an event
+are handled by <a href="/docs/latest/concepts/data-contracts/">data contracts</a> and are defined in collaboration between technical and legal stakeholders.</li><li><strong>Infrastructure management and performance</strong>. STRM Privacy takes care of complexities of handling high-volume
+(event) data with low latency and high availability.</li><li><strong>Auditability</strong>. With STRM Privacy, an audit trail around the
+handling of personal event data is available by design. It provides the tooling to show
+what entity is using what personal data for what purpose, and interfaces to manage this data, exhaustively coupled to Data Subjects, without complicated indexes or full table scans.</li><li><strong>Low Event Data Quality</strong>. Improve the quality of event data by separating the rules that govern
 the <a href="/docs/latest/concepts/data-contracts/">shape and content of the event data</a>
 from the teams that generate the data. So in essence, the Data Scientists and
 Data Analysts determine the rules, and not the front-end teams where the
-data originates.</li><li><strong>Governance after data collection</strong>. Move the decisions around privacy compliance from the
-Software Engineers and Data Teams to those entities that know about
-privacy. The rules that govern the personal data aspects of an event
-are handled by so-called data contracts, and <em>do not</em> require work
-by Software Engineers.</li><li><strong>Infrastructure management and performance</strong>. STRM Privacy takes care of complexities of handling high-volume
-event data with low latency and high availability.</li><li><strong>Auditability</strong>. With STRM Privacy, an audit trail around the
-handling of personal event data is available by design. It provides the tooling to show
-what entity is using what personal data for what purpose.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="strm-privacy-principles">STRM Privacy Principles<a class="hash-link" href="#strm-privacy-principles" title="Direct link to heading">​</a></h2><p>STRM Privacy is a privacy-focused data processing platform designed around the following
+data originates.  </li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="strm-privacy-principles">STRM Privacy Principles<a class="hash-link" href="#strm-privacy-principles" title="Direct link to heading">​</a></h2><p>STRM Privacy is a privacy-focused data processing platform designed around the following
 principles.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-events-shall-be-correct">1. Events shall be correct<a class="hash-link" href="#1-events-shall-be-correct" title="Direct link to heading">​</a></h3><p>Data science teams are well aware of the many ways that data
 are wrong. It’s generally left up to them to cope with the challenges.
 STRM Privacy aims to move the responsibility of
@@ -36,12 +35,12 @@ so that those entities that produce event data will receive <em>immediate</em> f
 Events that do not conform are rejected. For this, STRM Privacy uses
 <a href="/docs/latest/concepts/data-contracts/">Data Contracts</a> to which all events
 must conform.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-events-shall-be-privacy-safe">2. Events shall be privacy safe<a class="hash-link" href="#2-events-shall-be-privacy-safe" title="Direct link to heading">​</a></h3><p>The events conform to a certain data contract that defines the shape and privacy implications. The data contract defines which
-event attributes contain <a href="/docs/latest/overview/pii/">Personally Identifiable Information
+event attributes contain <a href="/docs/latest/overview/pii/">Personal and Personally Identifiable Information
 (PII)</a>. When STRM Privacy accepts an event, it encrypts these attributes <em>before</em>
 proceeding with further processing in its data platform. The encryption key is linked to a value of a field in the
 event that defines its <em>event sequence</em>, i.e. the attribute that ties
 the events together as a sequence belonging to one entity (read more
-about <a href="/docs/latest/concepts/data-processing/pii-field-encryption/">PII Field Encryption</a>)</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-latency-shall-be-low">3. Latency shall be low<a class="hash-link" href="#3-latency-shall-be-low" title="Direct link to heading">​</a></h3><p>Both on ingest, and on further processing, STRM Privacy is designed and
+about <a href="/docs/latest/concepts/data-processing/pii-field-encryption/">Personal Data Field Encryption</a>)</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-latency-shall-be-low">3. Latency shall be low<a class="hash-link" href="#3-latency-shall-be-low" title="Direct link to heading">​</a></h3><p>Both on ingest, and on further processing, STRM Privacy is designed and
 built to provide low latency<sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup>.</p><p>Internally, STRM Privacy is built using <a href="https://kafka.apache.org/" target="_blank" rel="noopener noreferrer">Kafka</a> for high throughput
 fault-tolerant pipelines. With the correct configuration, getting data to your own Kafka consumer within 1 second is
 easily achievable.</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="4-fault-tolerance-and-horizontal-scalability">4. Fault tolerance and horizontal scalability<a class="hash-link" href="#4-fault-tolerance-and-horizontal-scalability" title="Direct link to heading">​</a></h3><p>STRM Privacy was designed from the ground up for horizontal scalability
@@ -54,10 +53,10 @@ whether events belong to the same sequence. This might be webshop session id,
 or maybe a device id of a car sending location data, or anything else that is typically used to &quot;tie&quot; events together.
 The first time a new value is seen in the <em>keyField</em>, an
 encryption key is generated in STRM Privacy which is decoupled from the event by a <code>keyLink</code>. The value for the
-<code>keyLink</code> is included in each event, in the <code>strmMeta/keyLink</code> field.</p><p>The way PII data is encrypted, follows a Privacy Algorithm. Currently, the Privacy Algorithm is time-based, yet others
+<code>keyLink</code> is included in each event, in the <code>strmMeta/keyLink</code> field.</p><p>The way Personal Data is encrypted, follows a Privacy Algorithm. Currently, the Privacy Algorithm is time-based, yet others
 might be added in the future. Read more about the current Privacy Algorithm <a href="/docs/latest/concepts/data-processing/pii-field-encryption/">here</a>.</p><div class="footnotes"><hr><ol><li id="fn-1">Current implementation uses HTTP/2 for
 ingest, with typical 99 percentile latencies well below 10ms (excluding internet roundtrip time)<a href="#fnref-1" class="footnote-backref">↩</a></li></ol></div></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/overview/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">STRM Privacy</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/overview/pii/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Personal Data</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#what-problems-are-we-trying-to-solve" class="table-of-contents__link toc-highlight">What problems are we trying to solve?</a></li><li><a href="#strm-privacy-principles" class="table-of-contents__link toc-highlight">STRM Privacy Principles</a><ul><li><a href="#1-events-shall-be-correct" class="table-of-contents__link toc-highlight">1. Events shall be correct</a></li><li><a href="#2-events-shall-be-privacy-safe" class="table-of-contents__link toc-highlight">2. Events shall be privacy safe</a></li><li><a href="#3-latency-shall-be-low" class="table-of-contents__link toc-highlight">3. Latency shall be low</a></li><li><a href="#4-fault-tolerance-and-horizontal-scalability" class="table-of-contents__link toc-highlight">4. Fault tolerance and horizontal scalability</a></li><li><a href="#privacy-algorithms" class="table-of-contents__link toc-highlight">5. Deterministic Privacy Algorithms</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright (C) 2020-2022 STRM Privacy</div></div></div></footer></div>
-<script src="/assets/js/runtime~main.9c63dd8d.js"></script>
-<script src="/assets/js/main.ab14f923.js"></script>
+<script src="/assets/js/runtime~main.40a7b060.js"></script>
+<script src="/assets/js/main.c14344ea.js"></script>
 </body>
 </html>
