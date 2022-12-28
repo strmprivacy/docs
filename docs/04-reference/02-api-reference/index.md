@@ -16,7 +16,7 @@ authorization token. The [definitions are public on GitHub](https://github.com/s
 
 In a similar way, the [STRM Console](https://console.strmprivacy.io) is also only an interaction with this API.
 
-Because of this _api first_ design, it's quite feasible to _automate_ interaction of your systems with STRM.
+Because of this _API first_ design, it's quite feasible to _automate_ interaction of your systems with STRM.
 
 :::note
 To support Infrastructure as Code, we're planning on building a Terraform Provider.
