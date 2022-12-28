@@ -13,7 +13,18 @@ jobs:
     name: Link Checker
     runs-on: ubuntu-latest
     steps:
-      - name: Check links with linkcheck
-        uses: filiph/linkcheck@2.0.23
+      - uses: actions/setup-python@v4
         with:
-          arguments: 'https://docs.strmprivacy.io'
+          python-version: '3.10'
+        cache: 'pip'
+      - run: pip3 install linkchecker
+      - run: |
+          linkchecker https://docs.strmprivacy.io/sitemap.xml \
+            --check-extern \
+            --ignore-url "^https:\/\/console\.strmprivacy\.io" \
+            --ignore-url "^https:\/\/accounts\.strmprivacy\.io" \
+            --ignore-url "^https:\/\/sts\.strmprivacy\.io" \
+            --ignore-url "^https:\/\/events\.strmprivacy\.io" \
+            --ignore-url "^http:\/\/localhost" \
+            --ignore-url "^https:\/\/crates\.io"
+            

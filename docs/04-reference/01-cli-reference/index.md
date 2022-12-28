@@ -3,11 +3,11 @@ title: STRM Privacy CLI reference
 hide_table_of_contents: false
 ---
 
-The STRM Privacy CLI (strm) is the primary tool for managing your STRM
+The STRM Privacy CLI (`strm`) is the primary tool for managing your STRM
 Privacy resources.
 
 The CLI follows the same structure as many other popular CLI tools, like
-`kubectl`. This is visible in the following way:
+`kubectl`.
 
 ## Principles
 
