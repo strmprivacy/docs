@@ -13,7 +13,8 @@ strm delete project (project-name) [flags]
 ### Options
 
 ```
-  -h, --help   help for project
+  -y, --assume-yes   automatic yes to prompts.
+  -h, --help         help for project
 ```
 
 ### Options inherited from parent commands
