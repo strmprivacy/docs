@@ -328,7 +328,7 @@ important.
 It's not safe to allow modifications or removals on data contracts as it might impact either
 the workings of the streams, but it also hinders traceability.
 
-Data contracts can be in one of three states. See the image below:
+Data contracts can be in one of five states. See the image below:
 
 <img class="data-contract-states" alt="Data Contract states" src="/img/entity_states.svg"/>
 
@@ -336,6 +336,16 @@ Data contracts can be in one of three states. See the image below:
 
 This entity is still in development and thus can still be modified.
 It has not yet been accepted yet, and because of this, it cannot yet be used for processing events.
+
+### IN_REVIEW
+
+This entity has been asked to be reviewed by a member of the organization that has the correct [user role](docs/02-concepts/05-rbac.md#overview-of-permissions-per-role).
+In this state the entity can still be modified, and because of this, it cannot yet be used for processing events.
+
+### APPROVED
+
+This entity has been approved for use by a member of the organization and is ready to be used for processing events but is not yet active.
+In this state the entity can not be modified anymore.
 
 ### ACTIVE
 
