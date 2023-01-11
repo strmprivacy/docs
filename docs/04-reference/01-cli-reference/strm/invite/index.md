@@ -24,6 +24,6 @@ Invite users to your organization
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.7.0
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.7.1
 * [strm invite users](docs/04-reference/01-cli-reference/strm/invite/users.md)	 - Invite users to your organization by email
 

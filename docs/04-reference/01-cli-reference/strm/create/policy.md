@@ -42,7 +42,7 @@ strm create policy --name="1 year" --retention 365 --description "1 year for mar
       --legal-grounds string   legal grounds of this policy
       --name string            name
   -o, --output string          output format [plain, json, json-raw] (default "plain")
-      --retention int32        retention in days of this policy (default 365)
+      --retention int32        retention in days of this policy
 ```
 
 ### Options inherited from parent commands

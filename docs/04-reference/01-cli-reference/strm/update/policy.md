@@ -36,7 +36,7 @@ strm update policy 34c4709e-b8bc-4b45-aa5a-883f471869e3 --legal-grounds "EU law 
       --legal-grounds string   legal grounds of this policy
       --name string            name
   -o, --output string          output format [plain, json, json-raw] (default "plain")
-      --retention int32        retention in days of this policy (default 365)
+      --retention int32        retention in days of this policy
 ```
 
 ### Options inherited from parent commands
