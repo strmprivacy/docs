@@ -25,7 +25,7 @@ strm listen web-socket (stream-name) [flags]
 # Simulate some events
 strm create stream test
 strm simulate random-events test
-Starting to simulate random strmprivacy/demo/1.0.2 events to stream test. Sending one event every 1000 ms.
+Starting to simulate random strmprivacy/example/1.3.0 events to stream test. Sending one event every 1000 ms.
 Sent 5 events
 Sent 10 events
 
