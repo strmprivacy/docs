@@ -21,7 +21,9 @@
                         "IN_REVIEW",
                         4,
                         "INCOMPLETE",
-                        5
+                        5,
+                        "APPROVED",
+                        6
                     ],
                     "oneOf": [
                         {
