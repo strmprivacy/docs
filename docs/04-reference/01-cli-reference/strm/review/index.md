@@ -1,15 +1,15 @@
 ---
-title: "auth"
+title: "review"
 hide_title: true
 ---
-## strm auth
+## strm review
 
-Authentication command
+Set the state of an entity to IN_REVIEW
 
 ### Options
 
 ```
-  -h, --help   help for auth
+  -h, --help   help for review
 ```
 
 ### Options inherited from parent commands
@@ -25,8 +25,5 @@ Authentication command
 ### SEE ALSO
 
 * [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.8.0
-* [strm auth login](docs/04-reference/01-cli-reference/strm/auth/login.md)	 - Login
-* [strm auth print-access-token](docs/04-reference/01-cli-reference/strm/auth/print-access-token.md)	 - Print your current access-token to stdout
-* [strm auth revoke](docs/04-reference/01-cli-reference/strm/auth/revoke.md)	 - Revoke
-* [strm auth show](docs/04-reference/01-cli-reference/strm/auth/show.md)	 - Show your current login credentials
+* [strm review data-contract](docs/04-reference/01-cli-reference/strm/review/data-contract.md)	 - Set the state of a Data Contract to IN_REVIEW
 

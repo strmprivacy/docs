@@ -1,15 +1,26 @@
 ---
-title: "auth"
+title: "data-contract"
 hide_title: true
 ---
-## strm auth
+## strm approve data-contract
 
-Authentication command
+Set the state of a Data Contract to APPROVED
+
+### Synopsis
+
+Data Contracts are the core of STRM Privacy.
+See [here](https://docs.strmprivacy.io/docs/latest/concepts/data-contracts/) for details
+
+### Usage
+
+```
+strm approve data-contract (handle/name/version) [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for auth
+  -h, --help   help for data-contract
 ```
 
 ### Options inherited from parent commands
@@ -24,9 +35,5 @@ Authentication command
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.8.0
-* [strm auth login](docs/04-reference/01-cli-reference/strm/auth/login.md)	 - Login
-* [strm auth print-access-token](docs/04-reference/01-cli-reference/strm/auth/print-access-token.md)	 - Print your current access-token to stdout
-* [strm auth revoke](docs/04-reference/01-cli-reference/strm/auth/revoke.md)	 - Revoke
-* [strm auth show](docs/04-reference/01-cli-reference/strm/auth/show.md)	 - Show your current login credentials
+* [strm approve](docs/04-reference/01-cli-reference/strm/approve/index.md)	 - Set the state of an entity to APPROVED
 
