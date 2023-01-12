@@ -21,6 +21,7 @@ STRM Privacy CLI 3.7.1
 
 * [strm activate](docs/04-reference/01-cli-reference/strm/activate/index.md)	 - Set the state of an entity to ACTIVATED
 * [strm archive](docs/04-reference/01-cli-reference/strm/archive/index.md)	 - Set the state of an entity to ARCHIVED
+* [strm approve](docs/04-reference/01-cli-reference/strm/approve/index.md)	 - Set the state of an entity to APPROVED
 * [strm auth](docs/04-reference/01-cli-reference/strm/auth/index.md)	 - Authentication command
 * [strm completion](docs/04-reference/01-cli-reference/strm/completion.md)	 - Generate completion script
 * [strm context](docs/04-reference/01-cli-reference/strm/context/index.md)	 - Print the CLI context
@@ -33,6 +34,7 @@ STRM Privacy CLI 3.7.1
 * [strm logs](docs/04-reference/01-cli-reference/strm/logs/index.md)	 - Show logs of STRM entities
 * [strm manage](docs/04-reference/01-cli-reference/strm/manage/index.md)	 - Manage a project or organization
 * [strm monitor](docs/04-reference/01-cli-reference/strm/monitor/index.md)	 - Monitor STRM entities
+* [strm review](docs/04-reference/01-cli-reference/strm/review/index.md)	 - Set the state of an entity to IN_REVIEW
 * [strm simulate](docs/04-reference/01-cli-reference/strm/simulate/index.md)	 - Send simulated events with a predefined demo schema (not for production purposes)
 * [strm update](docs/04-reference/01-cli-reference/strm/update/index.md)	 - Update an entity
 * [strm version](docs/04-reference/01-cli-reference/strm/version.md)	 - Print CLI version
