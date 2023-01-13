@@ -4,6 +4,8 @@ hide_table_of_contents: false
 ---
 
 import DocCardList from '@theme/DocCardList';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 ## Installation
 
@@ -31,6 +33,16 @@ Customer Cloud Deployments](docs/02-concepts/03-deployment-modes/index.md).
 
 ## Installing your data plane
 
-Follow along with the following quickstarts to get started with your Data Plane.
+If you prefer to watch a video and follow along, you can do so here:
+
+<LiteYouTubeEmbed
+id="ds8HRgf2IJo"
+params="autoplay=1&autohide=1&showinfo=0&rel=0"
+title="STRM Privacy CCD Setup"
+poster="maxresdefault"
+webp
+/>
+
+Or, follow along with the following quickstarts to get started with your Data Plane.
 
 <DocCardList />
