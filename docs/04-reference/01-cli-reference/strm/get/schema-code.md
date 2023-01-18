@@ -25,7 +25,7 @@ strm get schema-code (data-contract-ref) [flags]
 ### Examples
 
 ```
-strm get schema-code strmprivacy/example/1.3.0 --language=python
+strm get schema-code strmprivacy/example/1.5.0 --language=python
 Saved to python-avro-example-1.3.0.zip
 ```
 

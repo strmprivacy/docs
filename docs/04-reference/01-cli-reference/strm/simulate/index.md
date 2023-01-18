@@ -10,7 +10,7 @@ Send simulated events with a predefined demo schema (not for production purposes
 
 ```
   -h, --help            help for simulate
-      --schema string   Which schema to use for creating simulated events (default "strmprivacy/example/1.3.0")
+      --schema string   Which schema to use for creating simulated events (default "strmprivacy/example/1.5.0")
 ```
 
 ### Options inherited from parent commands
@@ -25,6 +25,6 @@ Send simulated events with a predefined demo schema (not for production purposes
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.9.0
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.10.0
 * [strm simulate random-events](docs/04-reference/01-cli-reference/strm/simulate/random-events.md)	 - Run a simulator that will send random events to a stream
 

@@ -36,7 +36,7 @@ strm simulate random-events [stream-name] [flags]
       --api-host string       api host and port (default "api.strmprivacy.io:443")
   -o, --output string         output format [json, json-raw, table, plain] (default "table")
   -p, --project string        project to use (defaults to context-configured project)
-      --schema string         Which schema to use for creating simulated events (default "strmprivacy/example/1.3.0")
+      --schema string         Which schema to use for creating simulated events (default "strmprivacy/example/1.5.0")
       --token-file string     token file that contains an access token (default is $HOME/.config/strmprivacy/credentials-<api-auth-url>.json)
 ```
 

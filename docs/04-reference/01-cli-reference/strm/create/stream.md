@@ -47,7 +47,7 @@ strm create stream --derived-from test --levels 1,3,8 --consent-type GRANULAR te
   -h, --help                        help for stream
   -L, --levels int32Slice           comma separated list of integers for derived streams (default [])
       --mask-seed string            a seed used for masking
-  -M, --masked-fields stringArray   -M strmprivacy/example/1.3.0:sensitiveValue,consistentValue \
+  -M, --masked-fields stringArray   -M strmprivacy/example/1.5.0:sensitiveValue,consistentValue \
                                     -M strmprivacy/clickstream/1.0.0:sessionId
                                     
                                     Masks fields values in the output stream via hashing.
