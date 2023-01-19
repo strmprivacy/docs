@@ -30,7 +30,7 @@ The STRM Privacy *Event Gateway* will verify that the data:
     Data Contract (the contract reference is embedded in the mandatory [`strmMeta`](docs/02-concepts/02-data-contracts/02-strm-meta.md)
     section of the event)
 
-![High Level Architecture](images/strm-architecture-3B@2x.png)
+![High Level Architecture](images/strm-architecture-visual.png)
 
 Upon accepting an event, the *Event Gateway* will use the *Encrypter* to
 encrypt **all** defined [Personal data and PII](./02-pii.md)
