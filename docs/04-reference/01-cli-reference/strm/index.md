@@ -4,7 +4,7 @@ hide_title: true
 ---
 ## strm
 
-STRM Privacy CLI 3.10.0
+STRM Privacy CLI 3.11.0
 
 ### Options
 
@@ -27,6 +27,7 @@ STRM Privacy CLI 3.10.0
 * [strm context](docs/04-reference/01-cli-reference/strm/context/index.md)	 - Print the CLI context
 * [strm create](docs/04-reference/01-cli-reference/strm/create/index.md)	 - Create an entity
 * [strm delete](docs/04-reference/01-cli-reference/strm/delete/index.md)	 - Delete an entity
+* [strm evaluate](docs/04-reference/01-cli-reference/strm/evaluate/index.md)	 - Calculate Privacy Metrics
 * [strm get](docs/04-reference/01-cli-reference/strm/get/index.md)	 - Get an entity
 * [strm invite](docs/04-reference/01-cli-reference/strm/invite/index.md)	 - Invite users to your organization
 * [strm list](docs/04-reference/01-cli-reference/strm/list/index.md)	 - List entities

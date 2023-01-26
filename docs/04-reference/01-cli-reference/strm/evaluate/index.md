@@ -1,15 +1,15 @@
 ---
-title: "update"
+title: "evaluate"
 hide_title: true
 ---
-## strm update
+## strm evaluate
 
-Update an entity
+Calculate Privacy Metrics
 
 ### Options
 
 ```
-  -h, --help   help for update
+  -h, --help   help for evaluate
 ```
 
 ### Options inherited from parent commands
@@ -25,5 +25,5 @@ Update an entity
 ### SEE ALSO
 
 * [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.11.0
-* [strm update policy](docs/04-reference/01-cli-reference/strm/update/policy.md)	 - Update a Policy
+* [strm evaluate diagnostics](docs/04-reference/01-cli-reference/strm/evaluate/diagnostics.md)	 - Evaluate privacy diagnostics for your dataset
 
