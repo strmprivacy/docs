@@ -48,18 +48,18 @@ version from the [console][values].
 
 Start by adding the [GCS plugin][helm-gcs] for Helm, as the Helm Chart Repository for STRM Privacy resides in Google Cloud Storage:
 ```bash
-$ helm plugin install https://github.com/hayorov/helm-gcs.git
+helm plugin install https://github.com/hayorov/helm-gcs.git
 ```
 
 First, add the helm repo:
 
 ```bash
-$ helm repo add strmrepo gs://stream-machine-production-helm-chart/data-plane
+helm repo add strmrepo gs://stream-machine-production-helm-chart/data-plane
 ```
 
 Install _all_ the STRM components inside the `strmprivacy` namespace.
 ```bash
-$ helm install strmprivacy strmrepo/strm --values values.yaml
+helm install strmprivacy strmrepo/strm --values values.yaml
 ```
 `kubectl get pods --watch` or `k9s` provides nice feedback to see how the
 installation is progressing. We see that some supporting infrastructure like Redis, Postgresql and Kafka are also

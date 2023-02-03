@@ -85,19 +85,25 @@ Be cautious, as this may include major version upgrades. Consult the [migration 
 Ensure you have installed the GCS (Google Cloud Storage is where we host our Helm Chart Repository) plugin for Helm:
 
 ```bash
-$ helm plugin install https://github.com/hayorov/helm-gcs.git
+helm plugin install https://github.com/hayorov/helm-gcs.git
 ```
 
 Add the Helm Repo if it's not added yet:
 
 ```bash
-$ helm repo add strmrepo gs://stream-machine-production-helm-chart/data-plane
+helm repo add strmrepo gs://stream-machine-production-helm-chart/data-plane
+```
+
+Or update the repo if it was already added:
+
+```bash
+helm repo update
 ```
 
 Next, upgrade the deployed Helm Chart (assuming that your chart is named `strmprivacy-data-plane`):
 
 ```bash
-$ helm upgrade strmprivacy-data-plane --namespace strmprivacy strmrepo/strm --values values.yaml
+helm upgrade strmprivacy-data-plane --namespace strmprivacy strmrepo/strm --values values.yaml
 ```
 
 Either use a `values.yaml` file (a pre-populated version can be downloaded from the Console, in
