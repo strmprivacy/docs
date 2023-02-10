@@ -9,11 +9,13 @@ it provides a flexible way to read or export data. When creating a Data Connecto
 
 The following data connector and credential types are currently supported:
 
-| Data Connector Type          | Credentials Type                                |
-| -------------------          | -----------------                               |
-| Amazon S3 Bucket             | IAM User Access Key                             |
-| Google Cloud Storage Bucket  | Service Account Credentials                     |
+| Data Connector Type          | Credentials Type                               |
+|------------------------------|------------------------------------------------|
+| Amazon S3 Bucket             | IAM User Access Key                            |
+| Google Cloud Storage Bucket  | Service Account Credentials                    |
 | Azure Blob Storage Container | Application Principal Client Secret Credentials |
+| Mysql Database               | Database connection URI                        |
+| Postgresql Database          | Database connection URI                        |
 
 For examples on how to create and use these Data Connectors, see the [Data Connectors quickstart](docs/03-quickstart/03-data-connectors/index.md),
 or the [CLI reference](docs/04-reference/01-cli-reference/strm/create/data-connector/index.md) for data connectors.
