@@ -30,7 +30,7 @@ strm create data-connector jdbc my-jdbc <JDBC-URL>
 
 An example of the Jdbc Url can be found below:
 ```
-jdbc:postgres://api.strmprivacy.com:5432/test
+jdbc:postgres://example.com:5432/test
 ```
 
 ```json showLineNumbers
