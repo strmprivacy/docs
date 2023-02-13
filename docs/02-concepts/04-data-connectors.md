@@ -16,6 +16,7 @@ The following data connector and credential types are currently supported:
 | Azure Blob Storage Container | Application Principal Client Secret Credentials |
 | Mysql Database               | Database connection URI                        |
 | Postgresql Database          | Database connection URI                        |
+| BigQuery | BigQuery connection URI|
 
 For examples on how to create and use these Data Connectors, see the [Data Connectors quickstart](docs/03-quickstart/03-data-connectors/index.md),
 or the [CLI reference](docs/04-reference/01-cli-reference/strm/create/data-connector/index.md) for data connectors.

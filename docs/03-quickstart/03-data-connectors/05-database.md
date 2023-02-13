@@ -9,7 +9,7 @@ description: Data Connector for databases
 |------------|-----------|
 | Mysql      | ✅         |
 | Postgresql | ✅         |
-| BigQuery   | ❌          |
+| BigQuery   | ✅          |
 
 ## Prepare the storage
 
@@ -25,12 +25,12 @@ If you're running a CCD you will need to provide permission to let the Batch Job
 A Database Data Connector can be created with the following command, using the 
 
 ```bash
-strm create data-connector jdbc my-jdbc <JDBC-URL>
+strm create data-connector jdbc my-jdbc "<JDBC-URL>"
 ```
 
 An example of the Jdbc Url can be found below:
 ```
-jdbc:postgres://example.com:5432/test
+jdbc:postgresql://example.com:5432/test
 ```
 
 ```json showLineNumbers
