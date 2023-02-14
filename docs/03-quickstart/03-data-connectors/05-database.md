@@ -40,7 +40,7 @@ jdbc:postgresql://example.com:5432/test
     "projectId": "30fcd008-9696-...."
   },
   "jdbcLocation": {
-    "uri": "jdbc:postgres://example.com:5432/test",
+    "uri": "jdbc:postgresql://example.com:5432/test",
     "databaseType": "POSTGRES"
   }
 }
