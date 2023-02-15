@@ -19,7 +19,7 @@ steps:
 
 This section assumes that you are able to connect to your Kubernetes cluster and have the appropriate access rights
 to upgrade the Helm Chart. Furthermore, this also assumes that you have followed
-the [pre-requisites](docs/03-quickstart/05-ccd/01-pre-requisites.md) section and have installed the tools mentioned
+the [prerequisites](docs/03-quickstart/05-ccd/01-pre-requisites.md) section and have installed the tools mentioned
 there.
 
 The `kubectl` commands below assume a default namespace of `strmprivacy` which you can set via `kubens strmprivacy`.

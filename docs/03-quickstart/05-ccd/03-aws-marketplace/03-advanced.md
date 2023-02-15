@@ -24,10 +24,10 @@ default, [all components](docs/03-quickstart/05-ccd/index.md#components) enabled
 wish otherwise, you can edit the `values.yaml` to match your needs.
 
 
-## Using managed pre-requisites for the Data Plane
+## Using managed prerequisites for the Data Plane
 
 As the STRM Privacy Data Plane depends on Kafka, Redis and/or a Postgres Database, you should only use the embedded
-instances of these pre-requisites to deploy your initial version. For production purposes, we recommend to use managed
+instances of these prerequisites to deploy your initial version. For production purposes, we recommend to use managed
 instances.
 
 ### Purpose of using managed instances
@@ -35,7 +35,7 @@ instances.
 The subcharts for Kafka, Redis and PostgreSQL that are included in the STRM Privacy Data Plane Helm Chart are not meant
 for production purposes, as they have not been configured as such. Furthermore, not all Kubernetes Clusters fulfill the
 pre-requisites for this (e.g. support for persistent storage). The more convenient route here, is to use managed
-instances of the pre-requisites for your Data Plane. The following sections discuss how to set up these managed
+instances of the prerequisites for your Data Plane. The following sections discuss how to set up these managed
 instances.
 
 ### AWS RDS for PostgreSQL

@@ -11,7 +11,7 @@ This section describes how to get up and running with a Customer Cloud Deploymen
 Before you can launch your AWS Marketplace STRM Privacy - Bring Your Own License Installation, you need to follow along
 with [step 1](docs/03-quickstart/05-ccd/01-pre-requisites.md#step1)
 and [step 2](docs/03-quickstart/05-ccd/01-pre-requisites.md#step2)
-from the pre-requisites section.
+from the prerequisites section.
 
 Additionally, to the tools mentioned in [step 2](docs/03-quickstart/05-ccd/01-pre-requisites.md#step2), you'll need to
 install:
@@ -21,7 +21,7 @@ install:
 
 ## Step 2: Setup a Kubernetes cluster with AWS EKS
 
-One of the pre-requisites for the STRM Privacy Data Plane is an operational Kubernetes cluster. If you don't have an EKS
+One of the prerequisites for the STRM Privacy Data Plane is an operational Kubernetes cluster. If you don't have an EKS
 cluster yet, please follow the instructions on how to setup an EKS cluster in
 the [AWS EKS getting started guide](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html).
 

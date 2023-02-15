@@ -16,7 +16,7 @@ See the [pricing](#pricing) section for more details.
 Before you can launch your AWS Marketplace STRM Privacy - Pay As You Go Installation, you need to follow along
 with [step 1](docs/03-quickstart/05-ccd/01-pre-requisites.md#step1)
 and [step 2](docs/03-quickstart/05-ccd/01-pre-requisites.md#step2)
-from the pre-requisites section.
+from the prerequisites section.
 
 Additionally, to the tools mentioned in [step 2](docs/03-quickstart/05-ccd/01-pre-requisites.md#step2), you'll need to
 install:
