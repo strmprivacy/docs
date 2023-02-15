@@ -49,11 +49,14 @@ To interact with the `event-gateway` and `web-socket` for testing purposes we wi
 To add a forwarding port to a deployment either use `k9s` and press `shift+f` on the deployments for the `event-gateway`
 and the `web-socket` or do the following:
 
-Run the next commands in separate shells, and keep them running:
+Run the next commands in separate shells (make sure you have activated the right namespace!), and keep them running:
 
 ```bash
-kubectl port-forward deployment/event-gateway 8080:8080 &
-kubectl port-forward deployment/web-socket 8082:8080 &
+kubectl port-forward deployment/event-gateway 8080:8080
+```
+
+```bash
+kubectl port-forward deployment/web-socket 8082:8080
 ```
 
 In a production setting you obviously would not use port-forwarding. Typically one would
