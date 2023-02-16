@@ -1,15 +1,25 @@
 ---
-title: "auth"
+title: "jdbc"
 hide_title: true
 ---
-## strm auth
+## strm create data-connector jdbc
 
-Authentication command
+Create a Data Connector for jdbc database
+
+### Synopsis
+
+Creates a data connector for a JDBC-compatible database.
+
+### Usage
+
+```
+strm create data-connector jdbc (data-connector-name) "<JDBC URL>" [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for auth
+  -h, --help   help for jdbc
 ```
 
 ### Options inherited from parent commands
@@ -24,9 +34,5 @@ Authentication command
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.12.0
-* [strm auth login](docs/04-reference/01-cli-reference/strm/auth/login.md)	 - Login
-* [strm auth print-access-token](docs/04-reference/01-cli-reference/strm/auth/print-access-token.md)	 - Print your current access-token to stdout
-* [strm auth revoke](docs/04-reference/01-cli-reference/strm/auth/revoke.md)	 - Revoke
-* [strm auth show](docs/04-reference/01-cli-reference/strm/auth/show.md)	 - Show your current login credentials
+* [strm create data-connector](docs/04-reference/01-cli-reference/strm/create/data-connector/index.md)	 - Create a Data Connector
 

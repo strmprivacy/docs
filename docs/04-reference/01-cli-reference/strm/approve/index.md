@@ -24,6 +24,6 @@ Set the state of an entity to APPROVED
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.11.0
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.12.0
 * [strm approve data-contract](docs/04-reference/01-cli-reference/strm/approve/data-contract.md)	 - Set the state of a Data Contract to APPROVED
 
