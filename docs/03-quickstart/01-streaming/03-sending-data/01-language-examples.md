@@ -43,11 +43,9 @@ that is being sent and to debug issues.
 :::
 
 :::note
-Currently (Aug. 2021) every example language has a different configuration file format. This is inconvenient and will be
-fixed. We aim to standardize this to the format created with
-`strm create stream (stream-name) --save`, so that getting up-and-running becomes easier.
+To send events to your own Customer Cloud Instance of the STRM Data Plane, you will need to modify the client configuration
+by specifying the gateway host, port and http scheme.
 :::
-
 
 <Tabs>
   <TabItem value="java" label="Java" default>
@@ -75,10 +73,9 @@ java -jar target/java-examples-0.0.1-SNAPSHOT-jar-with-dependencies.jar \
 ```
 org.eclipse.jetty.util.log                  - Logging initialized ...
 io.strmprivacy.driver.client.AuthService  - Initializing a new Auth Provider
-io.strmprivacy.examples.Sender            - 204
-io.strmprivacy.examples.Sender            - 204
-io.strmprivacy.examples.Sender            - 204
-
+io.strmprivacy.examples.Sender            - Successfully sent event
+io.strmprivacy.examples.Sender            - Successfully sent event
+io.strmprivacy.examples.Sender            - Successfully sent event
 ...
 ```
 
