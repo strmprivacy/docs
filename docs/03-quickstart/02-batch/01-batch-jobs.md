@@ -301,9 +301,11 @@ mask.
         "file_name": "databert-demo-derived.csv"
       },
       "consent_levels": [
+        0, 
+        1, 
         2
       ],
-      "consent_level_type": "CUMULATIVE",
+      "consent_level_type": "GRANULAR",
       "masked_fields": {
         "field_patterns": {
           "databert-handle/batch_job_public/1.0.0": {

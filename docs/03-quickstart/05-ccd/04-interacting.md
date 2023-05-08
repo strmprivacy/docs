@@ -141,10 +141,10 @@ sort of includes your computer within the Kubernetes dns.
 ```
 $ strm list streams
 
- STREAM   DERIVED   CONSENT LEVEL TYPE   CONSENT LEVELS   ENABLED   KAFKA TOPIC
+ STREAM   DERIVED   PURPOSES   ENABLED   KAFKA TOPIC
 
- test     false                          []               true      stream-e379c8e5-0e25-4b95-b1f4-c5ceb20a233f
- test-2   true      CUMULATIVE           [2]              true      stream-f704507b-1e88-4464-98e0-b7cfa501ec75
+ test     false     []         true      stream-e379c8e5-0e25-4b95-b1f4-c5ceb20a233f
+ test-2   true      [2]        true      stream-f704507b-1e88-4464-98e0-b7cfa501ec75
 ```
 
 Then pass this topic to the kafka consumer:

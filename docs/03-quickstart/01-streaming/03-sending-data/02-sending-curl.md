@@ -63,13 +63,6 @@ With help of [this
 tool](https://github.com/confluentinc/avro-random-generator), it's possible to easily generate some random data for the
 [clickstream](https://console.strmprivacy.io/schemas/) demo schema.
 
-```json title=my-json.json placeholders my_placeholder=AWS Region, another_one=AWS Account ID
-{
-    "someKey": "Using placeholders is simple, just fill out a text in the input, and it'll be shown here: $my_placeholder",
-    "someOtherKey": "Did I say this already? Any user value is shown here = $another_one"
-}
-```
-
 ```json showLineNumbers title=demo.json download=demo.json
 {
   "strmMeta": {
@@ -154,12 +147,12 @@ curl -v https://events.strmprivacy.io/event \
 
 First, create a decrypted stream:
 
-```bash
-strm create stream --derived-from by-hand --levels 2 --save
+```json
+$ strm create stream --derived-from by-hand --purposes 0,1,2 --save by-hand-decrypted
 {
-  "ref": { "name": "by-hand-2", "projectId": "30fcd008-9696-...." },
-  "consentLevels": [ 2 ],
-  "consentLevelType": "CUMULATIVE",
+  "ref": { "name": "by-hand-decrypted", "projectId": "30fcd008-9696-...." },
+  "consentLevels": [ 0, 1, 2 ],
+  "consentLevelType": "GRANULAR",
   "enabled": true,
   "linkedStream": "by-hand",
   "credentials": [
@@ -175,7 +168,7 @@ Send an event as described above with cURL or httpie. Observe the
 decrypted attributes in the events received from the web-socket.
 
 ```bash
-$ strm listen web-socket by-hand-2
+$ strm listen web-socket by-hand-decrypted
 
 {
   "strmMeta": {
@@ -203,12 +196,11 @@ decryption [here](docs/02-concepts/01-data-processing/01-pii-field-encryption.md
 And finally, to clean up the resources:
 
 ```bash
-strm delete stream by-hand --recursive
-
-# note that everything that has been deleted is returned from this call.
+$ strm delete stream by-hand --recursive
+Stream has been deleted
 ```
 
-# Receiving from the websocket without the strm cli.
+# Receiving from the websocket without the STRM cli.
 
 If you want to retrieve json serialized events *without using the strm
 listen web-socket tool*, follow [these

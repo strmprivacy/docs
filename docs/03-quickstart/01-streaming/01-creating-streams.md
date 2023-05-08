@@ -4,6 +4,8 @@ description: Streams are the start of sending and receiving data with STRM Priva
 hide_table_of_contents: false
 ---
 
+[purpose map]: docs/02-concepts/06-purpose-maps.md
+
 See [Authentication with the CLI](docs/03-quickstart/06-authentication-cli.md)
 page on how to authenticate.
 
@@ -59,9 +61,9 @@ Streams can be listed and will be shown as a table.
 
 ```bash
 $ strm list streams
- STREAM           DERIVED   CONSENT LEVEL TYPE   CONSENT LEVELS   ENABLED
+ STREAM   DERIVED   PURPOSES   ENABLED
 
- demo      false                          []               true
+ demo     false     []         true
 ```
 
 To show more info, use the `--output` flag, and try out different
@@ -98,49 +100,16 @@ $ strm list streams --output json
 
 ## Creating decrypted streams
 
-If you want to have STRM Privacy decrypt data with certain consent
-levels, you need to create an output stream.
+If you want STRM Privacy to decrypt data for certain data purposes, you need to create a _privacy stream_ derived from
+a regular (source) stream.
 
-```
-$ strm create stream --help
-Create a stream
+So let’s create one, in this case for the purposes 0 and 1 (refer to your [purpose map] to know which values to use):
 
-Usage:
-  strm create stream [flags]
-
-Flags:
-      --consent-type string   CUMULATIVE or GRANULAR (default "CUMULATIVE")
-  -D, --derived-from string   name of stream that this stream is derived from
-      --description string    description
-  -h, --help                  help for stream
-  -L, --levels int32Slice     comma separated list of integers for derived streams (default [])
-      --tags strings          tags
-```
-
-So let’s create one, with two consent levels, and a *granular* consent
-level type interpretation.
-```json showLineNumbers
-$ strm create stream --derived-from demo --levels 0,1 --consent-type GRANULAR -o json
-{
-  "stream": {
-    "ref": {
-      "name": "demo-0-1",
-      "projectId": "30fcd008-9696-...."
-    },
-    "consentLevels": [ 0, 1 ],
-    "consentLevelType": "GRANULAR",
-    "enabled": true,
-    "linkedStream": "demo",
-    "credentials": [
-      {
-        "clientId": "stream-11jvxvpy1e6jl...",
-        "clientSecret": "tJkhj8lT9ybAA...",
-        "projectId": "30fcd008-9696-...."
-      }
-    ],
-    "maskedFields": {}
-  }
-}
+```bash showLineNumbers
+$ strm create stream --derived-from demo --purposes 0,1
+ STREAM     DERIVED   PURPOSES   ENABLED 
+   
+ demo-0-1   true      [0 1]      true                 
 ```
 
 The derived stream is provided with a default name `demo-0-1`
@@ -148,78 +117,17 @@ because we did not provide an explicit name. If we had added a name
 after the `strm create stream` we would have created a stream with that
 name.
 
-So the derived stream named `demo-0-1` captures data from
-encrypted stream `demo`. It will
-drop all events that don’t at least have consent levels 0 and 1 in the
-event. Another way of defining decrypted streams is with consent level
-type *cumulative*. This means that the decrypted stream is configured
-with just one consent level, and it will accept all events that have at
-least that consent level. It will decrypt PII fields up to and including
-the decrypted stream consent level. *Cumulative* is the default for
-creating derived streams.
-```json showLineNumbers
-$ strm delete stream demo-0-1 -o json
-{
-  "streamTree": {
-    "stream": {
-      "ref": { "name": "demo-0-1",     "projectId": "30fcd008-9696-...." },
-      "consentLevels": [ 0, 1 ],
-      "consentLevelType": "GRANULAR",
-      "enabled": true,
-      "limits": {},
-      "linkedStream": "demo",
-      "credentials": [ { "clientId": "stream-11jvxvpy1e6jl...", "clientSecret": "tJkhj8lT9ybAA..."} ],
-      "maskedFields": { "seed": "****" }
-    }
-  }
-}
-```
-
-Note the `streamTree` field might also contain all the items derived
-from a source stream, like exporters.
-```json showLineNumbers
-$ strm create stream --derived-from demo --levels 1 -o json
-{
-  "ref": { "name": "demo-1", "projectId": "30fcd008-9696-...." },
-  "consentLevels": [ 1 ],
-  "consentLevelType": "CUMULATIVE",
-  "enabled": true,
-  "linkedStream": "demo",
-  "credentials": [ { "clientId": "stream-vnfku72pl3bgx...", "clientSecret": "UMkNFnKt8ly#F...", "projectId": "30fcd008-9696-...." } ]
-}
-```
-
-This stream named `demo-1` will contain the identical subset of
-events as `demo-0-1`
+The derived stream `demo-0-1` captures data from the encrypted source stream `demo`. It will
+drop all events that have not been allowed to be used for the configured purposes 
+(for example due to a data subject not consenting). The events that do have permission to be processed,
+will be (partially) decrypted: fields filed under these purposes will be decrypted, while any other
+sensitive fields will remain encrypted.
 
 ## Cleaning up
 
-Delete a stream, all its dependents and all its data (that hasn’t been
-exported yet)
-```json showLineNumbers
-$ strm delete stream demo --recursive -o json
-{
-  "streamTree": {
-    "stream": {
-      "ref": { "name": "demo", "projectId": "30fcd008-9696-...." },
-      "enabled": true,
-      "credentials": [ { "clientId": "stream-11jvxvpy1e6jl...", "clientSecret": "tJkhj8lT9ybAA...",
-      } ]
-    },
-    "keyStream": {
-      "ref": { "name": "demo", "projectId": "30fcd008-9696-...." }
-    },
-    "derived": [
-      {
-        "ref": { "name": "demo-1", "projectId": "30fcd008-9696-...." },
-        "consentLevels": [ 1 ],
-        "consentLevelType": "CUMULATIVE",
-        "enabled": true,
-        "limits": {},
-        "linkedStream": "demo",
-        "credentials": [ { "clientId": "stream-vnfku72pl3bgx...", "clientSecret": "UMkNFnKt8ly#F..." } ]
-      }
-    ]
-  }
-}
+Delete a stream, all its dependents and all its data (that hasn’t been exported yet) with the `--recursive` flag:
+
+```bash showLineNumbers
+$ strm delete stream demo --recursive
+Stream has been deleted
 ```
