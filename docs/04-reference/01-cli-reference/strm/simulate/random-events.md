@@ -20,13 +20,13 @@ strm simulate random-events [stream-name] [flags]
 ### Options
 
 ```
-      --consent-levels strings   consent levels to be simulated (default [,0,0/1,0/1/2,0/1/2/3])
-      --events-api-url string    endpoint to send events to (default "https://events.strmprivacy.io/event")
-  -h, --help                     help for random-events
-      --interval int             interval in ms. between simulated events (default 1000)
-      --quiet                    do not print to stderr
-      --session-prefix string    prefix string for sessions (default "session")
-      --session-range int        number of different sessions being generated (default 1000)
+      --events-api-url string   endpoint to send events to (default "https://events.strmprivacy.io/event")
+  -h, --help                    help for random-events
+      --interval int            interval in ms. between simulated events (default 1000)
+      --purposes strings        purpose consent to be simulated (default [,0,0/1,0/1/2,0/1/2/3])
+      --quiet                   do not print to stderr
+      --session-prefix string   prefix string for sessions (default "session")
+      --session-range int       number of different sessions being generated (default 1000)
 ```
 
 ### Options inherited from parent commands

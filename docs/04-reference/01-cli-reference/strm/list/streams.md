@@ -14,14 +14,14 @@ strm list streams [flags]
 
 ```
 strm list streams
- STREAM              DERIVED   CONSENT LEVEL TYPE   CONSENT LEVELS   ENABLED   POLICY NAME
+ STREAM              DERIVED   PURPOSES   ENABLED   POLICY NAME
 
- e-commerce-masked   true      CUMULATIVE           [1]              true
- ecommerce-1         true      CUMULATIVE           [1]              true
- ecommerce           false                          []               true
- ecommerce-2         true      CUMULATIVE           [2]              true
- demo                false                          []               true
- demo-0-1            true      GRANULAR             [0 1]            true
+ e-commerce-masked   true      [1]        true
+ ecommerce-1         true      [1]        true
+ ecommerce           false     []         true
+ ecommerce-2         true      [2]        true
+ demo                false     []         true
+ demo-0-1            true      [0 1]      true
 ```
 
 ### Options
