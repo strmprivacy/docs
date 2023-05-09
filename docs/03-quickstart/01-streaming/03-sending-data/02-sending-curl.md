@@ -186,11 +186,11 @@ $ strm listen web-socket by-hand-decrypted
 ```
 
 :::note
-That most fields are decrypted, but the `someSensitiveValue` field
-**not**, is because of consent level 3 (see the data contract). If
+Most fields are decrypted, but the `someSensitiveValue` field
+**not**, because of purpose 3 (see the data contract), for which no consent was given. If
 the event had not contained `2` in its consent levels, we wouldn't even
 have seen the event in this decrypted stream. Read more on field
-decryption [here](docs/02-concepts/01-data-processing/01-pii-field-encryption.md#consent-level-types).
+decryption [here](docs/02-concepts/01-data-processing/01-pii-field-encryption.md).
 :::
 
 And finally, to clean up the resources:

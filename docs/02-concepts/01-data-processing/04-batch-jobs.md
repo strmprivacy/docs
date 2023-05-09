@@ -2,6 +2,7 @@
 title: Batch Jobs
 hide_table_of_contents: false
 ---
+[purpose-maps]: docs/02-concepts/06-purpose-maps.md
 
 With the differences between [Batch and Stream](./02-batch-vs-streaming.md) processing covered,
 you have already encountered Batch Jobs. This article covers how batch jobs work.
@@ -114,8 +115,9 @@ To fit into as many environments as possible, a mechanism is provided to
 extract the consent from the source data:
 
 1. Specify the field that contains the consent
-2. Specify a mapping to translate your terminology to consent
-   levels (which are integer arrays). A mapping in pseudo-code could be:
+2. Specify a mapping to translate your terminology to purposes from your [purpose maps][purpose-maps].
+   Provide the integer values ("levels") of the applicable purposes.
+   A mapping in pseudo-code could be:
    ```
    functional -> [0]
    personalized-ads -> [1]

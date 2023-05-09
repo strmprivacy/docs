@@ -34,9 +34,9 @@ The STRM Privacy *Event Gateway* will verify that the data:
 
 Upon accepting an event, the *Event Gateway* will use the *Encrypter* to
 encrypt **all** defined [Personal data and PII](./02-pii.md)
-attributes of the event. Which fields are personal data is defined in the [data
+attributes of the event. Which fields are sensitive (personal) data is defined in the [data
 contract](docs/02-concepts/02-data-contracts/index.md). The
-schema can have multiple levels of Personal Data attributes but all of them are
+contract can consist of attributes related to different purposes, but all of them are
 encrypted with the same encryption key that is linked to the [`keyField`](docs/02-concepts/02-data-contracts/index.md#contracts).
 
 You can create decrypted streams that contain a subset of the
@@ -47,16 +47,16 @@ fields decrypted that you have requested. It is **not** required to create decry
 The algorithm is as follows:
 
 -   we define a derived stream where for example we request to receive
-    events that provide a processing basis for levels 1, 3 and 8.
+    events that provide a processing basis for purposes 1, 3 and 8.
 
 -   the decrypter will inspect every event, and will ignore all events
-    that don’t have *at least* these 3 levels set in the
+    that don’t have consent for *at least* these 3 purposes set in the
     [`strmMeta.consentLevels`](docs/02-concepts/02-data-contracts/02-strm-meta.md).
 
 -   the events that are accepted by the decrypter will then be partially
-    decrypted; only the encrypted data fields with Personal Data levels 1, 3 and 8 will be
+    decrypted; only the encrypted data fields for purposes 1, 3 and 8 will be
     decrypted. This means that assuming a data subject has given consent for
-    a couple more Personal Data levels, fields with those purpose levels will
+    more than these purposes, fields related to other purposes will
     **not be decrypted**. This is the mechanism that STRM Privacy uses
     to adhere to [article 6 of the
     GDPR](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&qid=1620048611044&from=EN#d1e1888-1-1).

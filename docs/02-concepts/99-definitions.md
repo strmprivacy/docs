@@ -46,14 +46,21 @@ Structure of the data that is sent to STRM Privacy. Also named
 *serialization schema* See [data contracts](docs/02-concepts/02-data-contracts/index.md) for details.
 
 **Data Contract**  
-A contract, that contains which fields are [Personally Identifiable
-Information (PII)](https://en.wikipedia.org/wiki/Personal_data), which
+A contract that specifies which fields are sensitive (and possibly [Personally Identifiable
+Information (PII)](https://en.wikipedia.org/wiki/Personal_data)), which
 validations should be applied to events, etc. See [data
 contracts](docs/02-concepts/02-data-contracts/index.md) for details.
 
-**Consent level**  
-The level of consent, given by the data subject (your customer), to use
-certain information (typically PII). This is used both in the events, and
+**Purpose**
+The goal or purpose for which certain data is collected, and (legally) allowed to be used. E.g. functional or marketing. 
+
+**Data Subject**  
+A data subject is the individual that the personal data applies to. A data subject is the owner of the data that is
+collected on this individual.
+
+**Data Subject Consent**  
+The set of purposes for which the data subject (your customer) has given consent to use
+sensitive data (typically PII). This is used both in the events, and
 in the configuration of a decrypted stream.
 
 **Data Subject**  
