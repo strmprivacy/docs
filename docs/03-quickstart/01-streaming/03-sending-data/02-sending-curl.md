@@ -18,7 +18,7 @@ This quickstart uses both cURL and [httpie](https://httpie.io/), which often is 
 First create a stream.
 
 ```bash
-$ strm create stream by-hand --save
+$ strm create stream by-hand
 {
   "ref": {
     "name": "by-hand",
@@ -148,7 +148,7 @@ curl -v https://events.strmprivacy.io/event \
 First, create a decrypted stream:
 
 ```json
-$ strm create stream --derived-from by-hand --purposes 0,1,2 --save by-hand-decrypted
+$ strm create stream --derived-from by-hand --purposes 0,1,2 by-hand-decrypted
 {
   "ref": { "name": "by-hand-decrypted", "projectId": "30fcd008-9696-...." },
   "consentLevels": [ 0, 1, 2 ],

@@ -71,8 +71,8 @@ In a production setting you obviously would not use port-forwarding. Typically o
 
 First create two streams.
 
-    strm create stream test --save
-    strm create stream --derived-from test --purposes 2 --save
+    strm create stream test
+    strm create stream --derived-from test --purposes 2
 
 Because you've created a derived stream (named `test-2` by default) we should be able to see a decrypter deployment:
 

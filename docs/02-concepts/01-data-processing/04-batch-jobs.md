@@ -116,7 +116,7 @@ extract the consent from the source data:
 
 1. Specify the field that contains the consent
 2. Specify a mapping to translate your terminology to purposes from your [purpose maps][purpose-maps].
-   Provide the integer values ("levels") of the applicable purposes.
+   List the integer value(s) ("levels") of the applicable purpose(s) for which consent should be considered provided.
    A mapping in pseudo-code could be:
    ```
    functional -> [0]
