@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v2.1.0">
-<title data-rh="true">Personal Data | STRM Privacy Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.strmprivacy.io//docs/latest/overview/pii/"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Personal Data | STRM Privacy Documentation"><meta data-rh="true" name="description" content="The principles upon which STRM Privacy has been built, revolve around personal data,"><meta data-rh="true" property="og:description" content="The principles upon which STRM Privacy has been built, revolve around personal data,"><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.strmprivacy.io//docs/latest/overview/pii/"><link data-rh="true" rel="alternate" href="https://docs.strmprivacy.io//docs/latest/overview/pii/" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.strmprivacy.io//docs/latest/overview/pii/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://M24OHV52F0-dsn.algolia.net" crossorigin="anonymous"><link rel="search" type="application/opensearchdescription+xml" title="STRM Privacy Documentation" href="/opensearch.xml">
+<title data-rh="true">Personal Data | STRM Privacy Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.strmprivacy.io//docs/latest/overview/pii/"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Personal Data | STRM Privacy Documentation"><meta data-rh="true" name="description" content="[purpose-map]: docs/02-concepts/06-purpose-maps.md"><meta data-rh="true" property="og:description" content="[purpose-map]: docs/02-concepts/06-purpose-maps.md"><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.strmprivacy.io//docs/latest/overview/pii/"><link data-rh="true" rel="alternate" href="https://docs.strmprivacy.io//docs/latest/overview/pii/" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.strmprivacy.io//docs/latest/overview/pii/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://M24OHV52F0-dsn.algolia.net" crossorigin="anonymous"><link rel="search" type="application/opensearchdescription+xml" title="STRM Privacy Documentation" href="/opensearch.xml">
 
 <script src="https://plausible.io/js/plausible.js" defer="defer" data-domain="docs.strmprivacy.io"></script><link rel="stylesheet" href="/assets/css/styles.114cbd88.css">
-<link rel="preload" href="/assets/js/runtime~main.b1386dec.js" as="script">
+<link rel="preload" href="/assets/js/runtime~main.c6b2ac72.js" as="script">
 <link rel="preload" href="/assets/js/main.3a35f4c1.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
@@ -23,15 +23,13 @@ manner in relation to the data subject (&#x27;lawfulness, fairness and
 transparency&#x27;);</p></blockquote><p>This is the responsibility of the Data Protection Officer (DPO) of a company.
 STRM Privacy cannot identify the purposes and transparency associated with <em>what
 purposes</em> our customers have for collecting personal data. The DPO of the
-customer shall identify the purpose(s) for which certain personal data
-is collected and assign <em>consent-levels</em> to these purposes. These
-consent-levels link data processing goals with personal data attributes
-in the STRM Privacy events.</p><p>The data subject (i.e. the person on your website, your client,
-your patient ...) needs to give permission for the separate
-consent-levels, and the representation of these will be added to
-<em>every</em> event that gets processed by STRM Privacy. <sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup></p><p>STRM Privacy removes the personal data aspect of <strong>all</strong> events upon
-acceptance of the event, by encrypting <strong>all</strong> personal data
-attributes (irrespective of any consent-levels given). These encrypted
+customer shall <a href="/docs/latest/concepts/purpose-maps/">identify the purpose(s)</a> for which certain personal data
+is collected. These purposes are at the core of STRM&#x27;s <a href="/docs/latest/concepts/data-contracts/">data contracts</a>,
+specifying which data fields/attributes contain sensitive information.</p><p>The data subject (i.e. the person on your website, your client,
+your patient ...) provides their consent for each purpose,
+which is added to <em>every</em> event that gets processed by STRM Privacy.</p><p>STRM Privacy removes the personal data aspect of <strong>all</strong> events upon
+acceptance of the event, by <a href="/docs/latest/concepts/data-processing/pii-field-encryption/">encrypting</a> <strong>all</strong> personal data
+attributes (irrespective of their purpose). These encrypted
 events do not enter any long-term or persistent storage within STRM Privacy
 but are transported onwards to customer storage.</p><p>These encrypted events do not contain <em>any personal data</em>. Losing them
 might cost the customer business value, but implies <em>no privacy</em> risks.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="data-minimization">Data minimization<a class="hash-link" href="#data-minimization" title="Direct link to heading">​</a></h2><blockquote><p><em>Article 5.1(c)</em> </p><p>adequate, relevant and limited to what is necessary in relation to the
@@ -44,17 +42,16 @@ stream of <em>decrypted</em> events (which is not persisted), where only
 events with adequate consent are visible, and with only those personal
 data attributes that correspond to the purposes.</p><p>Access to these data is delegated to the DPO of the customer. The data
 consumer in the company only has to explain the purpose of the data
-processing, whereupon the DPO will assign a set of required
-consent-levels, create a <em>decrypted stream</em> with these events, and assign
+processing, whereupon the DPO will assign a set of allowed purposes,
+create a <em>decrypted stream</em> with these events, and assign
 access credentials.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="data-retention-no-longer-than-necessary">Data retention: no longer than necessary<a class="hash-link" href="#data-retention-no-longer-than-necessary" title="Direct link to heading">​</a></h2><blockquote><p><em>Article 5.1(e)</em></p><p>kept in a form which permits identification of data subjects for no
-longer than is necessary for the purposes for which the personal data are processed</p></blockquote><p>STRM Privacy itself keeps the encrypted event data for 7 days <sup id="fnref-2"><a href="#fn-2" class="footnote-ref">2</a></sup> for
+longer than is necessary for the purposes for which the personal data are processed</p></blockquote><p>STRM Privacy itself keeps the encrypted event data for 7 days <sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup> for
 technical purposes, so that a temporary failure of processing events
 does not cause data loss. During this time, the data can
 not be searched or queried in any meaningful way.</p><p>The key idea is that the customer does <em>not keep</em> decrypted data for
 longer than is required for the purpose of the processing, specifically
-these data should not be stored into long-term storage.</p><div class="footnotes"><hr><ol><li id="fn-1">technically these consent-levels are added as binary encoded small
-integers, so there is negligible performance overhead.<a href="#fnref-1" class="footnote-backref">↩</a></li><li id="fn-2">configurable setting<a href="#fnref-2" class="footnote-backref">↩</a></li></ol></div></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/overview/principles/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Principles</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/overview/hla/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Design and Architecture</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#lawful-processing" class="table-of-contents__link toc-highlight">Lawful processing</a></li><li><a href="#data-minimization" class="table-of-contents__link toc-highlight">Data minimization</a></li><li><a href="#data-retention-no-longer-than-necessary" class="table-of-contents__link toc-highlight">Data retention: no longer than necessary</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright (C) 2020-2023 STRM Privacy</div></div></div></footer></div>
-<script src="/assets/js/runtime~main.b1386dec.js"></script>
+these data should not be stored into long-term storage.</p><div class="footnotes"><hr><ol><li id="fn-1">configurable setting<a href="#fnref-1" class="footnote-backref">↩</a></li></ol></div></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/overview/principles/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Principles</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/overview/hla/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Design and Architecture</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#lawful-processing" class="table-of-contents__link toc-highlight">Lawful processing</a></li><li><a href="#data-minimization" class="table-of-contents__link toc-highlight">Data minimization</a></li><li><a href="#data-retention-no-longer-than-necessary" class="table-of-contents__link toc-highlight">Data retention: no longer than necessary</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright (C) 2020-2023 STRM Privacy</div></div></div></footer></div>
+<script src="/assets/js/runtime~main.c6b2ac72.js"></script>
 <script src="/assets/js/main.3a35f4c1.js"></script>
 </body>
 </html>
