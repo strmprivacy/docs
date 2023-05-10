@@ -148,7 +148,7 @@ using: `strm get data-contract strmprivacy/example/1.3.0 -ojson | jq '.dataContr
 </Tabs>
 
 You can use an existing data contract or create your own. Refer to this blog on [creating data
-contracts](https://strmprivacy.io/posts/add-your-own-schemas/). Furthermore, you can aslo use [Simple
+contracts](https://strmprivacy.io/posts/add-your-own-schemas/). Furthermore, you can also use [Simple
 Schemas](https://strmprivacy.io/posts/simple-data-schemas/), a much easier way to define your data shape than the
 underlying Avro serialization schema.
 
