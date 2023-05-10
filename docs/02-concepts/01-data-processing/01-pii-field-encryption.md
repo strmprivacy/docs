@@ -3,8 +3,8 @@ title: PII Field Encryption
 hide_table_of_contents: false
 ---
 
-[data contract]: docs/02-concepts/02-data-contracts/index.md
-[streams quickstart]: docs/03-quickstart/01-streaming/01-creating-streams.md 
+[data-contract]: docs/02-concepts/02-data-contracts/index.md
+[streams-quickstart]: docs/03-quickstart/01-streaming/01-creating-streams.md 
 
 STRM Privacy aims to protect [PII](docs/01-overview/02-pii.md) data, by encrypting content specified in event fields,
 that are marked as **sensitive** in the [data contract](docs/02-concepts/02-data-contracts/index.md).
@@ -82,13 +82,13 @@ This only happens for events where (data subject) consent is granted for these p
 
 - Exclude all events that have not been allowed to be used for these requested purposes.
 
-- Decrypt event data (fields/attributes) filed under the purposes you requested (in the event's [data contract]).
+- Decrypt event data (fields/attributes) filed under the purposes you requested (in the event's [data contract][data-contract]).
   Attributes with corresponding to other purposes will not be decrypted.
 
 This means that data consumers will only receive the data they are (legally) allowed to process.
 
 :::note
-For more info about creating (privacy) streams, see our [streams quickstart].
+For more info about creating (privacy) streams, see our [streams quickstart][streams-quickstart].
 :::
 
 [^1]: at least from a GDPR perspective

@@ -4,7 +4,7 @@ description: Streams are the start of sending and receiving data with STRM Priva
 hide_table_of_contents: false
 ---
 
-[purpose map]: docs/02-concepts/06-purpose-maps.md
+[purpose-map]: docs/02-concepts/06-purpose-maps.md
 
 See [Authentication with the CLI](docs/03-quickstart/06-authentication-cli.md)
 page on how to authenticate.
@@ -101,9 +101,9 @@ $ strm list streams --output json
 ## Creating decrypted streams
 
 If you want STRM Privacy to decrypt data for certain data purposes, you need to create a _privacy stream_ derived from
-a regular (source) stream.
+an existing encrypted stream.
 
-So let’s create one, in this case for the purposes 0 and 1 (refer to your [purpose map] to know which values to use):
+So let’s create one, in this case for the purposes 0 and 1 (refer to your [purpose map][purpose-map] to know which values to use):
 
 ```bash showLineNumbers
 $ strm create stream --derived-from demo --purposes 0,1

@@ -301,8 +301,8 @@ if __name__ == '__main__':
 Continuing, create the following two streams:
 
 ```bash
-strm create stream demo --save
-strm create stream --derived-from demo --save --levels 1
+strm create stream demo
+strm create stream --derived-from demo --levels 1
 ```
 
 Create a few environment variables that can be used to start up the
