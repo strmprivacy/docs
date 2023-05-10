@@ -89,7 +89,7 @@ the **much faster** and more compact Avro binary format.
 
 To use the random data and send it to the `/event` endpoint:
 
-```bash
+```
 cat demo.json | http post https://events.strmprivacy.io/event\
   authorization:"Bearer $accessToken" \
   Strm-Schema-Ref:strmprivacy/clickstream/1.0.0
