@@ -11,6 +11,7 @@ import TabItem from '@theme/TabItem';
 [batch-job-apidocs]: https://buf.build/strmprivacy/apis/docs/main:strmprivacy.api.entities.v1#strmprivacy.api.entities.v1.BatchJob
 [batch-job-encryption-apidocs]: https://buf.build/strmprivacy/apis/docs/main:strmprivacy.api.entities.v1#strmprivacy.api.entities.v1.EncryptionConfig
 [batch-job-encryption-timestamp-config-apidocs]: https://buf.build/strmprivacy/apis/docs/main:strmprivacy.api.entities.v1#strmprivacy.api.entities.v1.TimestampConfig
+[purpose-maps]: docs/02-concepts/06-purpose-maps.md
 
 STRM Privacy offers support for batch processing. This quickstart helps you to get started with Batch Jobs. To read
 more about the background for batch data pipelines, go [here](docs/02-concepts/01-data-processing/04-batch-jobs.md).
@@ -178,17 +179,22 @@ Configure your editor ([VS Code](https://code.visualstudio.com/docs/languages/js
 the [JSON Schema](https://json-schema.api.strmprivacy.io/latest/strmprivacy.api.entities.v1.BatchJob.json).
 :::
 
-#### Indicate the consent field
+#### Indicate the data subject consent field
 
-An important part of the definition file is the consent mapping. In streaming mode, you simply send STRM Privacy the
-consent (legal ground under which the data was collected) as part of every
-event. For batch mode you need to indicate which field in your data actually contains the legal ground per row.
+For each record (row) processed by a batch job, the data subject (data owner) may or may not consent with
+their data being used for certain purposes. In other words, the legal ground under which the data was collected
+may differ per record.
+In streaming pipelines, the consent is provided by you and embedded in the metadata of each event.
+Similarly, for batch jobs, you need to indicate which field in your data contains the legal ground per row.
+This field does not necessarily need to be defined in your data contract.
 
 In the definition file you need to set these three values:
 
-- what the default legal ground (consent level) is.
+- what the default legal ground (consent level) is
 - the field that contains the legal ground in your data
-- what each of these fields mean (a mapping of name to integer values)
+- how each of field's values map to consent levels
+
+Here, consent levels are integer values referring to the respective purposes as defined in your [purpose map][purpose-maps].
 
 About the default consent: It's safest to keep this to the integer value 0. It just means the data was collected under
 the most basic consent or legal ground you use.
@@ -239,7 +245,7 @@ The next step is to define the derived data - the privacy-transformed output. Ju
 that contains data that is ready for a specific purpose (like, in the example below, training a recommender).
 
 First, let's dive a bit deeper into how transformations are applied. In this quickstart, we'll focus on a specific derived
-stream - in real-world applications you would probably have many consent levels and so a bunch of different derived streams.
+stream - in real-world applications you would probably have many different purposes and so a bunch of different derived streams.
 
 #### Intermezzo: Privacy-transforming your data
 
@@ -278,8 +284,11 @@ By masking a field, the actual value (e.g. the customer id) is replaced with a h
 points to a single user, without revealing personal information. This can be done with derived streams.
 
 In the snippet below, you will find the `derived_data` configuration of the batch-job. This configuration shows the
-data-connector to read _from_, the file to write _to_ and the allowed consent levels and consent type of the data like
-before. Finally, the snippet also shows the `masked_fields`. Within the data contract block
+data-connector to read _from_, the file to write _to_, and the allowed consent levels (purposes that should be decrypted).
+The consent level type is deprecated and should typically be set to _GRANULAR_, meaning that each desired purpose should
+be listed explicitly under the consent levels, and each record should explicitly specify consent for each corresponding
+purpose as well. Here, _CUMULATIVE_ means that a consent for purpose 2 will include consent for purpose 1 as well.
+Finally, the snippet also shows the `masked_fields`. Within the data contract block
 `"databert-handle/batch_job_public/1.0.1"{ ... }` you can see the column names or `field_patterns` of the fields to
 mask.
 
@@ -301,11 +310,9 @@ mask.
         "file_name": "databert-demo-derived.csv"
       },
       "consent_levels": [
-        0, 
-        1, 
         2
       ],
-      "consent_level_type": "GRANULAR",
+      "consent_level_type": "CUMULATIVE",
       "masked_fields": {
         "field_patterns": {
           "databert-handle/batch_job_public/1.0.0": {
@@ -361,12 +368,14 @@ Basically, all connections that might exist between rows are destroyed here: the
 It becomes more interesting looking at the derived data (as defined by the derived stream above). Remember,
 the goal was to apply masking instead of destroying any connection between rows that might exist.
 
-Per the data contract, the derived data is allowed to contain entries with a consent level of 2 or higher. From the
+Per the batch job configuration, the derived data is allowed to contain entries with a consent level of 2 or higher. From the
 input data it is known that there are 3 entries with a consent level of 2, which correspond to the three outputs below. In
 the table below, you can also see that the values for `UserName` and `Email` are hashed. This corresponds to the
 `field_patterns` that have been set in de `masked_fields` section of the data contract for `derived_data`. The username
 has been masked, but the hashed username is consistent over all rows. The `Email` field is different for every entry and
 therefore the hashed field is too.
+
+Records that did not include consent for purpose 2 have been excluded from the derived data.
 
 ![derived data](../images/derived-data.png)
 
