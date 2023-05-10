@@ -3,8 +3,11 @@ title: PII Field Encryption
 hide_table_of_contents: false
 ---
 
+[data-contract]: docs/02-concepts/02-data-contracts/index.md
+[streams-quickstart]: docs/03-quickstart/01-streaming/01-creating-streams.md 
+
 STRM Privacy aims to protect [PII](docs/01-overview/02-pii.md) data, by encrypting content specified in event fields,
-that are marked as sensitive in the [data contract](docs/02-concepts/02-data-contracts/index.md).
+that are marked as **sensitive** in the [data contract](docs/02-concepts/02-data-contracts/index.md).
 
 ## Privacy Algorithm {#algorithm}
 
@@ -12,17 +15,17 @@ The process of encrypting PII data according to the time-based Privacy Algorithm
 
 ![pii-field-encryption](./images/pii-field-encryption.svg#fullwidth)
 
-1. An event is sent to the STRM Privacy Event Gateway
+1. An event is sent to the STRM Privacy Event Gateway.
 2. An HTTP Header specifies the reference to the schema that was used to serialize the message. The schema is retrieved
    from the Data Contracts API and the message can be deserialized. Next,
    the [`strmMeta`](02-concepts/02-data-contracts/02-strm-meta.md)
    section is extracted from the event data.
 3. The reference to the Data Contract that should be applied to this event is extracted from `strmMeta`.
-4. The Data Contract is retrieved and the names of the PII fields and the name of the `keyField` are extracted from the
+4. The Data Contract is retrieved and the names of the sensitive fields and the name of the `keyField` are extracted from the
    Data Contract.
-5. Get an existing / generate a new `keyLink` based on the value in the `keyField` of the event data
-6. Encrypt the PII fields using the encryption key
-7. After **24 hours** when the `keyLink` and encryption key have been generated, the `keyLink` and the encryption key
+5. Get an existing / generate a new `keyLink` based on the value in the `keyField` of the event data.
+6. Encrypt the PII fields using the encryption key.
+7. **24 hours** after the `keyLink` and encryption key have been generated, the `keyLink` and the encryption key
    rotate. This is called the _time-based Privacy Algorithm_.
 
 :::warning
@@ -47,7 +50,8 @@ encryption key).
 ## Using the encrypted data
 
 When sending data to STRM Privacy, the PII data fields are encrypted. The resulting
-data stream is called the *encrypted stream*. By design, this data stream does not contain any PII data anymore.
+data stream is called the *encrypted stream*, or _source stream_. By design, this data stream does not contain any
+sensitive data anymore.
 This implies that anyone in your company can use it [^1]. In case these data become compromised, you have a business
 issue, but **not** a privacy issue.
 
@@ -64,50 +68,29 @@ customer journeys, without compromising the privacy of your users.
 
 ## Using the decrypted data
 
-### Identify the consent levels you need.
+### Identify the data purposes you need
 
 Ask
 the [Data Protection Officer](https://edps.europa.eu/data-protection/data-protection/reference-library/data-protection-officer-dpo_en)
-the
-specific consent levels your use case requires. This will return a list
-of values [^3] that you need.
+the specific data purposes your use case requires, or is allowed to use.
+Data for purposes that do not apply to your use case will not be decrypted when creating a _privacy stream_.
 
-### Consent level types
+### Create a privacy stream
 
-STRM Privacy supports two types of consent levels when creating a
-decrypted output stream: granular and cumulative.
+Here you instruct STRM Privacy to create a derived stream where event data corresponding to the requested purposes is decrypted.
+This only happens for events where (data subject) consent is granted for these purposes. As such, STRM Privacy will:
 
-1. _Cumulative_: Only the highest consent level is configured on the
-   output stream. All consent levels from zero (included) up to this
-   level (included) are decrypted in the output stream.
+- Exclude all events that have not been allowed to be used for these requested purposes.
 
-2. _Granular_: All the consent levels that are to be decrypted in the
-   output stream are explicitly configured. This way, it’s possible to
-   have "gaps" between the consent levels. For example, can specify
-   level 1 and 4, which means that all other levels, including 2 and 3
-   remain encrypted.
+- Decrypt event data (fields/attributes) filed under the purposes you requested (in the event's [data contract][data-contract]).
+  Attributes with corresponding to other purposes will not be decrypted.
 
-The resulting set of consent levels effects two things, see:
-[Create a decrypted stream](#create-a-decrypted-stream)
+This means that data consumers will only receive the data they are (legally) allowed to process.
 
-### Create a decrypted stream {#create-a-decrypted-stream}
-
-Here you instruct STRM Privacy to decrypt event data with corresponding to the requested consent
-levels, but only for data of which the data subject has provided the required consent. STRM Privacy will:
-
-- exclude all events that don’t at least contain all the consent levels
-  you require from the resulting data stream.
-
-- decrypt attributes with the consent levels you requested. Attributes
-  with other consent levels will not be decrypted. So you receive exactly
-  only those events for which consent was provided, and nothing more.
-
-This means that data consumers will only receive the data they are
-legally allowed to receive, provided the company is not
-re-using credentials.
+:::note
+For more info about creating (privacy) streams, see our [streams quickstart][streams-quickstart].
+:::
 
 [^1]: at least from a GDPR perspective
 
 [^2]: according to the current time-based privacy algorithm
-
-[^3]: small integers

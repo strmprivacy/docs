@@ -3,6 +3,10 @@ title: Personal Data
 hide_table_of_contents: false
 ---
 
+[purpose-map]: docs/02-concepts/06-purpose-maps.md
+[data-contracts]: docs/02-concepts/02-data-contracts/index.md
+[pii-encryption]: docs/02-concepts/01-data-processing/01-pii-field-encryption.md
+
 The principles upon which STRM Privacy has been built, revolve around personal data,
 and the handling of it. This section explains what personal data and personally identifiable information are, why
 it is important to treat this data differently from non-personal data and what the challenges are.
@@ -43,19 +47,17 @@ The following article of the GDPR states:
 This is the responsibility of the Data Protection Officer (DPO) of a company.
 STRM Privacy cannot identify the purposes and transparency associated with *what
 purposes* our customers have for collecting personal data. The DPO of the
-customer shall identify the purpose(s) for which certain personal data
-is collected and assign *consent-levels* to these purposes. These
-consent-levels link data processing goals with personal data attributes
-in the STRM Privacy events.
+customer shall [identify the purpose(s)][purpose-map] for which certain personal data
+is collected. These purposes are at the core of STRM's [data contracts][data-contracts],
+specifying which data fields/attributes contain sensitive information.
 
 The data subject (i.e. the person on your website, your client,
-your patient ...) needs to give permission for the separate
-consent-levels, and the representation of these will be added to
-*every* event that gets processed by STRM Privacy. [^1]
+your patient ...) provides their consent for each purpose, 
+which is added to *every* event that gets processed by STRM Privacy.
 
 STRM Privacy removes the personal data aspect of **all** events upon
-acceptance of the event, by encrypting **all** personal data
-attributes (irrespective of any consent-levels given). These encrypted
+acceptance of the event, by [encrypting][pii-encryption] **all** personal data
+attributes (irrespective of their purpose). These encrypted
 events do not enter any long-term or persistent storage within STRM Privacy
 but are transported onwards to customer storage.
 
@@ -82,8 +84,8 @@ data attributes that correspond to the purposes.
 
 Access to these data is delegated to the DPO of the customer. The data
 consumer in the company only has to explain the purpose of the data
-processing, whereupon the DPO will assign a set of required
-consent-levels, create a *decrypted stream* with these events, and assign
+processing, whereupon the DPO will assign a set of allowed purposes, 
+create a *decrypted stream* with these events, and assign
 access credentials.
 
 ## Data retention: no longer than necessary
@@ -93,7 +95,7 @@ access credentials.
 > kept in a form which permits identification of data subjects for no
 > longer than is necessary for the purposes for which the personal data are processed
 
-STRM Privacy itself keeps the encrypted event data for 7 days [^2] for
+STRM Privacy itself keeps the encrypted event data for 7 days [^1] for
 technical purposes, so that a temporary failure of processing events
 does not cause data loss. During this time, the data can
 not be searched or queried in any meaningful way.
@@ -102,7 +104,4 @@ The key idea is that the customer does *not keep* decrypted data for
 longer than is required for the purpose of the processing, specifically
 these data should not be stored into long-term storage.
 
-[^1]: technically these consent-levels are added as binary encoded small
-integers, so there is negligible performance overhead.
-
-[^2]: configurable setting
+[^1]: configurable setting

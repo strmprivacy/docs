@@ -3,6 +3,8 @@ title: The strmMeta section
 hide_table_of_contents: false
 ---
 
+[purpose-maps]: docs/02-concepts/06-purpose-maps.md
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -145,9 +147,9 @@ using: `strm get data-contract strmprivacy/example/1.3.0 -ojson | jq '.dataContr
 5. `billingId`: **deprecated** this field was required in the past, but not anymore. Will be removed in a future version
    of `strmMeta`.
 6. `consentLevels` <div class="chip"> <div class="chip-content">required</div> </div>: 0 or more *consents* that were
-   given by the data subject for the further
-   use of this event. The sending application **must set this field**. Read more on consent
-   levels [here](docs/01-overview/04-organization.md#consent-levels).
+   given by the data subject for the further use of this event. Each value refers to a specific purpose.
+   The sending application **must set this field**. Read more on purposes
+   [here](docs/01-overview/04-organization.md#purposes).
 
 :::info
 The fact that the `strmMeta` section does not use `dataContractRef`, but `eventContractRef`,
@@ -171,17 +173,14 @@ process [here](docs/02-concepts/01-data-processing/01-pii-field-encryption.md#al
 
 The sending application **must fill in this field** with a list of
 consents given by the data-owner for the use of this event. Technically
-this field holds a list of 0 or more integers, and the meaning of those
-integers is **completely up to the customer**. This means that some
-way needs to be found to determine permission(s) from the
-data subject (typically via HTTP cookies), and implement the
-technical means to set those values in
-this field. 0 consent levels means the data subject does not give any
-permissions for the PII fields. For this customer, all PII data are
-permanently hidden in the encrypted stream.
+this field holds a list of 0 or more integers, which refer to your
+organization's [purpose maps][purpose-maps].
+If no consent levels are set, the data subject does not give any
+permissions to use their sensitive (personal) data fields. In such case, all 
+sensitive data are permanently hidden in the encrypted stream.
 
-See [here](docs/01-overview/04-organization.md#consent-levels) for a discussion on
-consent levels in your organization.
+See [here](docs/01-overview/04-organization.md#purposes) for a discussion on
+purposes in your organization.
 
 ### Reference to the used encryption key (keyLink)
 

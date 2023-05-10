@@ -52,7 +52,7 @@ that:
 
 - `SessionId` is the `keyField`, the attribute that
   ties events together.
-- `UserName` is a PII field, level 1
+- `UserName` is a PII field, purpose 1
 
 :::important
 These names currently are the [`avroName`](#name-and-avroname)s, not the names in the simple
@@ -301,8 +301,8 @@ if __name__ == '__main__':
 Continuing, create the following two streams:
 
 ```bash
-strm create stream demo --save
-strm create stream --derived-from demo --save --levels 1
+strm create stream demo
+strm create stream --derived-from demo --levels 1
 ```
 
 Create a few environment variables that can be used to start up the
@@ -358,11 +358,10 @@ receiving the original Simple Schema names, please [contact us](docs/05-contact/
 :::
 
 Regarding the derived stream, `UserName` is now decrypted, and
-it would only receive events with *at least* consent level 1 in the
-event.
+only events with *at least* consent for purpose 1 are processed.
 
-With the web xocket endpoint, it is also possible to listen on the derived stream with consent level 1. Then,
-only events with *at least* consent level 1 in them will be received.
+With the web socket endpoint, it is also possible to listen on the derived stream for purpose 1.
+Here too, only events where the data subject consented to purpose 1 will be received.
 
 ```json showLineNumbers
 $ strm listen web-socket demo-1
