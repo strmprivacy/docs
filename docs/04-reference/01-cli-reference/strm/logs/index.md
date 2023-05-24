@@ -24,7 +24,7 @@ Show logs of STRM entities
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.13.0
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.14.0
 * [strm logs batch-exporter](docs/04-reference/01-cli-reference/strm/logs/batch-exporter.md)	 - show logs for entity of type batch-exporter
 * [strm logs batch-job](docs/04-reference/01-cli-reference/strm/logs/batch-job.md)	 - show logs for entity of type batch-job
 * [strm logs stream](docs/04-reference/01-cli-reference/strm/logs/stream.md)	 - show logs for entity of type stream
