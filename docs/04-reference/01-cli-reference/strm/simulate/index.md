@@ -25,6 +25,6 @@ Send simulated events with a predefined demo schema (not for production purposes
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.14.1
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.14.2
 * [strm simulate random-events](docs/04-reference/01-cli-reference/strm/simulate/random-events.md)	 - Run a simulator that will send random events to a stream
 

@@ -24,7 +24,7 @@ Monitor STRM entities
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.14.1
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.14.2
 * [strm monitor all](docs/04-reference/01-cli-reference/strm/monitor/all.md)	 - monitor all entity types
 * [strm monitor batch-exporter](docs/04-reference/01-cli-reference/strm/monitor/batch-exporter.md)	 - monitor entities of type batch-exporter
 * [strm monitor batch-job](docs/04-reference/01-cli-reference/strm/monitor/batch-job.md)	 - monitor entities of type batch-job

@@ -24,6 +24,6 @@ Update an entity
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.14.1
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.14.2
 * [strm update policy](docs/04-reference/01-cli-reference/strm/update/policy.md)	 - Update a Policy
 
