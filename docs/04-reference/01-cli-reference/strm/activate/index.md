@@ -24,7 +24,7 @@ Set the state of an entity to ACTIVATED
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.14.2
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.15.0
 * [strm activate data-contract](docs/04-reference/01-cli-reference/strm/activate/data-contract.md)	 - Set the state of a Data Contract to ACTIVATED
 * [strm activate policy](docs/04-reference/01-cli-reference/strm/activate/policy.md)	 - Set the state of a Policy to ACTIVATED
 

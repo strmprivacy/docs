@@ -25,7 +25,7 @@ Get an entity
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.14.2
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.15.0
 * [strm get batch-exporter](docs/04-reference/01-cli-reference/strm/get/batch-exporter.md)	 - Get Batch Exporter by name
 * [strm get batch-job](docs/04-reference/01-cli-reference/strm/get/batch-job.md)	 - Get a Batch Job by id
 * [strm get data-connector](docs/04-reference/01-cli-reference/strm/get/data-connector.md)	 - Get Data Connector by name
@@ -37,6 +37,7 @@ Get an entity
 * [strm get key-stream](docs/04-reference/01-cli-reference/strm/get/key-stream.md)	 - Get Key Stream by name
 * [strm get policy](docs/04-reference/01-cli-reference/strm/get/policy.md)	 - Get Policy by name or id
 * [strm get project](docs/04-reference/01-cli-reference/strm/get/project.md)	 - Get a project
+* [strm get purpose-mapping](docs/04-reference/01-cli-reference/strm/get/purpose-mapping.md)	 - Get a purpose mapping by the integer value
 * [strm get schema-code](docs/04-reference/01-cli-reference/strm/get/schema-code.md)	 - Get schema code archive by data-contract-ref
 * [strm get stream](docs/04-reference/01-cli-reference/strm/get/stream.md)	 - Get Stream by name
 * [strm get usage](docs/04-reference/01-cli-reference/strm/get/usage.md)	 - Get Usage for a certain stream name

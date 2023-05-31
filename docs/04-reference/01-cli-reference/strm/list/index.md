@@ -25,7 +25,7 @@ List entities
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.14.2
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.15.0
 * [strm list batch-exporters](docs/04-reference/01-cli-reference/strm/list/batch-exporters.md)	 - List Batch Exporters
 * [strm list batch-jobs](docs/04-reference/01-cli-reference/strm/list/batch-jobs.md)	 - List Batch Jobs
 * [strm list data-connectors](docs/04-reference/01-cli-reference/strm/list/data-connectors.md)	 - List Data Connectors
@@ -39,6 +39,7 @@ List entities
 * [strm list key-streams](docs/04-reference/01-cli-reference/strm/list/key-streams.md)	 - List Key Streams
 * [strm list policies](docs/04-reference/01-cli-reference/strm/list/policies.md)	 - list all policies belonging to this organization
 * [strm list projects](docs/04-reference/01-cli-reference/strm/list/projects.md)	 - List all projects you have access to
+* [strm list purpose-mappings](docs/04-reference/01-cli-reference/strm/list/purpose-mappings.md)	 - List purpose mappings
 * [strm list streams](docs/04-reference/01-cli-reference/strm/list/streams.md)	 - List Streams
 * [strm list users](docs/04-reference/01-cli-reference/strm/list/users.md)	 - List all users of your organization or members of the active project
 

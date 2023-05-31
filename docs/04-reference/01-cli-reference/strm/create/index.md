@@ -24,7 +24,7 @@ Create an entity
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.14.2
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.15.0
 * [strm create batch-exporter](docs/04-reference/01-cli-reference/strm/create/batch-exporter.md)	 - Create a Batch Exporter
 * [strm create batch-job](docs/04-reference/01-cli-reference/strm/create/batch-job.md)	 - Create a Batch Job
 * [strm create data-connector](docs/04-reference/01-cli-reference/strm/create/data-connector/index.md)	 - Create a Data Connector
@@ -33,5 +33,6 @@ Create an entity
 * [strm create kafka-user](docs/04-reference/01-cli-reference/strm/create/kafka-user.md)	 - Create a Kafka User on a Kafka Exporter
 * [strm create policy](docs/04-reference/01-cli-reference/strm/create/policy.md)	 - Create a Policy
 * [strm create project](docs/04-reference/01-cli-reference/strm/create/project.md)	 - Create a Project
+* [strm create purpose-mapping](docs/04-reference/01-cli-reference/strm/create/purpose-mapping.md)	 - Create a purpose mapping
 * [strm create stream](docs/04-reference/01-cli-reference/strm/create/stream.md)	 - Create a Stream
 
