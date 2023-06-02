@@ -24,7 +24,7 @@ Print the CLI context
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.15.0
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.15.1
 * [strm context account](docs/04-reference/01-cli-reference/strm/context/account.md)	 - Show the handle of this account
 * [strm context config](docs/04-reference/01-cli-reference/strm/context/config.md)	 - Shows the config path and preferences
 * [strm context info](docs/04-reference/01-cli-reference/strm/context/info.md)	 - Show the stored information for a saved entity

@@ -24,8 +24,8 @@ strm list users [flags]
 strm list users --organization
  EMAIL                     FIRST NAME   LAST NAME   USER ROLES
 
- [...]@strmprivacy.io   bob          rbac        [MEMBER]
- [...]@strmprivacy.io       Demo         STRM        [ADMIN MEMBER]
+ [...]@strmprivacy.io      bob          rbac        [MEMBER]
+ [...]@strmprivacy.io      Demo         STRM        [ADMIN MEMBER]
 ```
 
 ### Options
