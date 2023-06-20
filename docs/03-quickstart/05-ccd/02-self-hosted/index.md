@@ -64,7 +64,8 @@ helm install strmprivacy strmrepo/strm --values values.yaml --namespace strmpriv
 </TabItem>
 <TabItem value="github-chart" label="Directly from GitHub">
 
-Alternatively, clone the Helm Chart's [GitHub repo][github-chart] and checkout the master branch.
+Alternatively, clone the Helm Chart's [GitHub repo][github-chart] and checkout the [latest release](https://github.com/strmprivacy/data-plane-helm-chart/releases), e.g.
+`git checkout tags/<tag> -b latest`.
 
 From the repo's root, and assuming your `values.yaml` file is in the root as well, execute the following
 to install _all_ the STRM components inside the `strmprivacy` namespace (or a different one of your choice).
