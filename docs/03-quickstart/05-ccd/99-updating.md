@@ -71,43 +71,37 @@ versions < 1.16.0, the `appVersion` differs from the `version`.
 
 ### Upgrade the Helm Chart
 
-Next, make sure you are able to access the Helm Chart Repository and do the upgrade. This depends on which installation
-mode you have chosen:
+The upgrade procedure depends on the type of installation you have chosen (self-hosted or AWS Marketplace).
 
 :::danger
 Omitting the `--version` flag in the `helm upgrade` command results in Helm upgrading to the **latest** version.
-Be cautious, as this may include major version upgrades. Consult the [migration guides](#migration-guides) first.
+Be cautious, as this may include major version upgrades. Consult the [migration guides](#migration-guides) first
+for any breaking changes.
 :::
 
 <Tabs>
 <TabItem value="self-hosted" label="Self-Hosted Installation">
 
-Ensure you have installed the GCS (Google Cloud Storage is where we host our Helm Chart Repository) plugin for Helm:
+First, make sure you are able to access the Helm Chart Repository, either through the Helm GCS Plugin or directly from
+our GitHub repo (see [here](docs/03-quickstart/05-ccd/02-self-hosted/index.md#step-2-install-the-helm-chart)).
 
-```bash
-helm plugin install https://github.com/hayorov/helm-gcs.git
-```
+If you installed the Helm chart directly from our GitHub repo, make sure you checkout the latest release tag again,
+and use the same command as during installation, but replace `install` by `upgrade`.
 
-Add the Helm Repo if it's not added yet:
-
-```bash
-helm repo add strmrepo gs://stream-machine-production-helm-chart/data-plane
-```
-
-Or update the repo if it was already added:
+If you have installed the GCS Helm plugin, update the STRM Repo first like so:
 
 ```bash
 helm repo update
 ```
 
-Next, upgrade the deployed Helm Chart (assuming that your chart is named `strmprivacy-data-plane`):
+Then, upgrade the deployed Helm Chart (assuming that your chart is named `strmprivacy-data-plane`):
 
 ```bash
 helm upgrade strmprivacy-data-plane --namespace strmprivacy strmrepo/strm --values values.yaml
 ```
 
-Either use a `values.yaml` file (a pre-populated version can be downloaded from the Console, in
-your [installation page](https://console.strmprivacy.io)), or use the `--set` option to set individual properties.
+In both cases, either use a `values.yaml` file (a pre-populated version can be downloaded from the Console, in
+your [installation page](https://console.strmprivacy.io/settings/installation)), or use the `--set` option to set individual properties.
 
 </TabItem>
 
