@@ -24,6 +24,6 @@ Calculate Privacy Metrics
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.15.1
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.15.2
 * [strm evaluate diagnostics](docs/04-reference/01-cli-reference/strm/evaluate/diagnostics.md)	 - Evaluate privacy diagnostics for your dataset
 
