@@ -10,149 +10,149 @@ import {ExternalCodeBlock} from '/external-code-block.js';
 [sasl-plain]: https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html
 
 [kafka-ssl]: https://docs.confluent.io/platform/current/kafka/encryption.html#kafka-ssl-encryption
-[console]: https://console.strmprivacy.io
+[installation-config]: https://console.strmprivacy.io/settings/installation
 
 [keys-certs]: https://docs.confluent.io/platform/current/security/security_tutorial.html#generating-keys-certs
 
+[upgrading]: docs/03-quickstart/05-ccd/99-updating.md
+
 ## Using an existing Kafka cluster over TLS, with SASL/Plain authentication{#tls-sasl-plain}
 
-This hands-on session shows how to get up-and-running with your Customer Cloud Deployment using an _authenticated Kafka
+:::info
+This page requires version 2.0.0 or later of our Helm chart.
+:::
+
+This hands-on section shows how to get up-and-running with your Customer Cloud Deployment using an _authenticated Kafka
 Cluster_ that uses [SASL/PLAIN over TLS][sasl-plain] authentication.
+This is a username/password scheme, where the
+Kafka cluster has a list of pairs that it accepts. The communication is _plain
+text_ but since the channel is TLS-encrypted, this cannot be intercepted.
+It is the only type of authentication we currently support.
 
 It's probably a good idea to first run the getting started with the unauthenticated demo Kafka detailed in
 the [self-hosted section](./02-self-hosted/index.md) to make sure you have all the tools configured correctly and understand how
 it should work.
 
-### TLS truststore
-
-In order for our Kafka clients to interact with your Kafka brokers over TLS, they'll have to trust them. This goes via
-[a truststore][kafka-ssl]. A truststore is an encrypted file that the Kafka clients have to use in order to trust the
-broker. You'll have to generate one as described in the [Confluent documentation][keys-certs], and put the generated
-value in a Kubernetes secret. The truststore has a password to protect it. You must add this password to the Kubernetes
-secret also.
-
-    kubectl create secret generic client-truststore-jks \
-      --from-file=client.truststore.jks=<your-truststore-jks-file> \
-      --from-literal=truststore.password=<your-truststore-password>
+Some private Kafka clusters may require a TLS truststore to successfully interact.
+Managed services like Azure Event Hubs and Confluent Cloud typically don't require this.
 
 :::note
-don't change the `client.truststore.jks` and `truststore.password` keys. These names are being used by the various
-Kubernetes
-deployments to retrieve the entities.
+First try the setup without a TLS truststore, unless you know you will need one.
 :::
 
-Once this secret exists and has been made available to the Kafka clients inside the STRM ecosystem, these clients can
-communicate securely with the Kafka brokers.
+### Setup without a TLS Truststore
 
-### Authentication
+#### Required Kafka permissions
 
-Currently we only support [SASL/PLAIN][sasl-plain] authentication; this is a username/password scheme, where the
-Kafka cluster has a list of pairs that it accepts. The communication is _plain text_ but since the channel is TLS
-encrypted, this can not be intercepted.
+The following permissions are required for the various STRM components, and
+should thus be available through the credentials used:
 
-### `values.yaml`
+* `event-gateway` needs write rights to topics with names starting with `stream-` or `keys-` and a
+  topic named `billing`.
+* `streams-agent` needs topic admin rights to create, delete and inspect topics. It will create topics with names
+  starting with `stream-` or `keys-`.
+* `web-socket` needs topic consume rights to topics starting with `stream-`.
+* `decrypter` instances need topic consume and write rights to topics starting with `stream-`.
+* `batch-exporter` instances need topic consume rights to topics starting with `stream-` or `keys-`.
+* `esr-proxy` needs topic consume rights to a topic named `billing`.
 
-The `values.yaml` file you download from the [console][console] adds a `kafka.enabled: true` override, so the helm chart
-will actually deploy a Kafka instance inside your k8s namespace. Make sure you have in your `values.yaml`
+#### Disabling the built-in kafka cluster
 
-    kafka:
-      enabled: false
-      # you could have multiple separated with a comma
-      bootstrapServers: <your-kafka-broker>:<port>
+The `values.yaml` file you download from the [console][installation-config] does not override the default values related to Kafka, so the helm chart
+will actually deploy a Kafka instance inside your k8s namespace. 
+To use your own cluster, make sure to include the following in your `values.yaml` file:
 
-Configuring the credentials is done in two parts.
+```yaml
+kafka:
+  # This disables the built-in kafka instance.
+  enabled: false
+  # Specify your Kafka bootstrap server(s), separated by a comma.
+  bootstrapServers: <your-kafka-broker>:<port>
+  # Since STRM cannot currently integrate with your own Schema Registry, 
+  # or you may not use one at all, ensure Avro is serialized as JSON. 
+  serializeAvroAsJson: true
+  # If desired, specify a default number of partitions for STRM Kafka topics.
+  numPartitions: 5
+  # If desired, increase the default replication factor for STRM Kafka topics
+  # from the default value of 1. Confluent Cloud may require a value of 3.
+  defaultReplicationFactor: 3
+```
 
 #### Kafka Security Config
 
-The top-level `kafkaSecurityConfig` section defines how to configure the TLS connection
+Next, add the following top-level `globalKafkaSecurityConfig` section:
 
-    kafkaSecurityConfig:
-      enabled: true
-      securityProtocol: "SASL_SSL"
-      sslTruststoreSecretName: "client-truststore-jks" # use k8s secret name you created.
-
-:::note
-You can omit the `sslTruststoreSecretName` if you used the default `client-truststore-jks` name for the secret.
-:::
-
-#### Authentication
-
-The various parts of STRM that interact with Kafka all have to be given a principal name and password. This has to be
-done in
-the individual Helm override sections. The `user/password` pairs have to be created in your Kafka broker configuration.
-In the little sample below, Trivial identities have been added for the various components. You could use the principal one
-for
-every one of them, but they must be defined separately.
-
-```yaml showLineNumbers
-components:
-  eventGateway:
-    configuration:
-      kafkaAuth:
-        user: strm-event-gateway
-        password: strmprivacy
-  webSocket:
-    configuration:
-      kafkaAuth:
-        user: strm-web-socket
-        password: strmprivacy
-  batchExportersAgent:
-    configuration:
-      kafkaAuth:
-        user: strm-batch-exporter
-        password: strmprivacy
-  streamsAgent:
-    configuration:
-      kafkaAuth:
-        user: strm-streams-agent
-        password: strmprivacy
-  esrProxy:
-    configuration:
-      kafkaAuth:
-        user: strm-esr-proxy
-        password: strmprivacy
-  decrypterConfig:
-    configuration:
-      kafkaAuth:
-        user: strm-decrypter
-        password: strmprivacy
-  batchExporterConfig:
-    configuration:
-      kafkaAuth:
-        user: strm-batch-exporter
-        password: strmprivacy
+```yaml
+globalKafkaSecurityConfig:
+  enabled: true
+  securityProtocol: "SASL_SSL"
+  saslJaasConfig: 'org.apache.kafka.common.security.plain.PlainLoginModule required username="<your-username>" password="<your password>";'
 ```
 
-#### Authorization
+Make sure the `saslJaasConfig` value matches the value provided by your Kafka
+provider. 
 
-We assume that once authorized, the entity has the permissions it needs. In case you have fine-grained authorization via
-RBAC or ACLs on the Kafka cluster, the following permissions are required:
+#### Applying the changes
 
-* `event-gateway` needs topic write rights to topics in the cluster whose name starts with `stream-` or `keys-` and a
-  topic named `billing`
-* `streams-agent` needs topic admin rights to create and delete and inspect topics. It will create topics whose name
-  starts with `stream-` or `keys-`
-* `web-socket` needs topic consume rights to topics starting with `stream-`.
-* `batch-exporters-agent` needs topic consume rights to topics starting with `stream-` or `keys-`.
-* `esr-proxy` needs topic consume rights to a topic named `billing`
+Once you have modified the `values.yaml` as described above, you can apply the
+changes to your installation by performing a helm upgrade, for example:
 
-### Installing
+```bash
+helm upgrade strmprivacy strmrepo/strm --namespace strmprivacy --values values.yaml
+```
 
-Once you have created the `values.yaml` as described above, you can
+Or follow the general [upgrading][upgrading] instructions.
 
-    helm install strmprivacy strmrepo/strm --values values.yaml
+Then follow along with the [Interacting with your Data Plane](#interacting) section.
+All Kafka interaction will now go through your own Kafka cluster. If you
+run into any issues, check the Troubleshooting section below.
 
-and follow along with the [Interacting with the CCD Cluster](#interacting) section.
+### Setup with a TLS truststore
 
-#### Troubleshooting
+In order for our Kafka clients to interact with your Kafka brokers over TLS, they'll have to trust them. This goes via
+[a truststore][kafka-ssl]. A truststore is an encrypted file that the Kafka
+clients have to use in order to trust the broker. 
 
-It is _highly likely_ that this won't go correctly the first try. Setting up the TLS can go wrong in many ways, from the
+You may have to generate one as described in the [Confluent documentation][keys-certs]
+if your Kafka broker doesn't integrate with default trust stores, and the
+above setup without one didn't succeed.
+
+If so, put the generated value in a Kubernetes secret. The truststore has a
+password to protect it, which must also be added to the Kubernetes secret.
+
+```bash
+kubectl create secret generic client-truststore-jks \
+  --from-file=client.truststore.jks=<your-truststore-jks-file> \
+  --from-literal=truststore.password=<your-truststore-password>
+```
+
+:::info
+Don't change the `client.truststore.jks` and `truststore.password` keys. 
+These names are used by the various Kubernetes deployments to retrieve the entities.
+:::
+
+Once the secret is created, add its name to the `globalKafkaSecurityConfig`:
+
+```yaml
+kafkaSecurityConfig:
+  enabled: true
+  securityProtocol: "SASL_SSL"
+  saslJaasConfig: "<your saslJaasConfig>"
+  sslTruststoreSecretName: "client-truststore-jks" # use the k8s secret name you created.
+```
+
+Your STRM Data Plane deployment should now be able to communicate with your
+Kafka cluster.
+
+### Troubleshooting
+
+It is _quite likely_ that this won't go correctly the first try. Setting up the TLS can go wrong in many ways, from the
 trivial (missing secret), to the painful (reverse hostname verification doesn't work). The logging of deployments like
 the `streams-agent` or the `event-gateway` will probably give a clue what's going on.
 
-Troubleshooting with a Kafka test-client.
-
-Use this Kubernetes manifest to interact with the Kafka cluster.
+The following Kubernetes manifest, available in the `test-utils` directory
+of our Helm chart git repository, can be used to troubleshoot (TLS) connectivity
+issues with your Kafka cluster:
 
 <ExternalCodeBlock
 url="https://raw.githubusercontent.com/strmprivacy/data-plane-helm-chart/master/test-utils/kafka-tls-client.yaml"
@@ -172,14 +172,14 @@ pair)
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required     username="strm-event-gateway"     password="strmprivacy";
 ```
 
-:::note
-make sure you keep the `sasl.jaas.config` on one line and don't forget the semi-colon at the end!
+:::info
+Make sure you keep the `sasl.jaas.config` on one line and don't forget the semicolon at the end!
 :::
 
-You can now interact with the Kafka cluster from within the pod.
+Apply the manifest and interact with the Kafka cluster from within the pod:
 
 ```
-$ kubectl apply -f kafka-tls-test-client
+$ kubectl apply -f kafka-tls-test-client.yaml
 $ kubectl exec -ti kafka-tls-test-client-... -- bash
 
 $ kafka-topics.sh --bootstrap-server <your-bootstrap-server> --list \
@@ -192,12 +192,3 @@ stream-28a3152d-f6c8-4c52-8bd7-c587089938eb
 stream-35bc9088-c41c-41de-b042-fa835a4cb3b1
 stream-e00843bd-86c8-4b85-a1bd-b7b509fc6804
 ```
-
-### Trying again
-
-If you've made mistakes and want to start over:
-
-1. `helm uninstall strmprivacy --namespace strmprivacy`
-1. `kubectl delete ns strmprivacy` kills everything
-   (including the k8s namespace). Don't forget to recreate the
-   namespace afterwards.

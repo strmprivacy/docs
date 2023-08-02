@@ -159,7 +159,19 @@ Running into issues while upgrading? [Contact us](docs/05-contact/index.md) if y
 
 ## Migration guides
 
-### Migrating to 1.15.0
+### Upgrading from 1.x to 2.0.0
+
+**Breaking chart changes**  
+The `kafkaAuth` configuration properties of the various components have been replaced
+by a global security config under the top-level section `globalKafkaSecurityConfig`.
+See [Authenticated Kafka](docs/03-quickstart/05-ccd/06-authenticated.md) page for more details.
+
+**Chart additions**  
+A new property `serializeAvroAsJson` has been added under the `kafka` section. Setting this
+to `true` will result in Avro events to be serialized as Avro JSON instead of Avro Binary,
+allowing you to deserialize STRM events without a schema registry.
+
+### Upgrading to 1.15.0
 
 **Chart changes**  
 This release allows to configure Kubernetes Services of type `LoadBalancer` with allowed IP CIDR ranges and
@@ -172,15 +184,3 @@ configure the exposed port of the Service.
 [//]: # (2. Get the changelog from GitLab)
 
 [//]: # (3. Generate the application changes section)
-
-**Application changes**  
-The following images are included in this release:
-
-- `events/event-gateway`: `v0.71.0`
-- `events/web-socket`: `v1.22.0`
-- `management/entity-agents/batch-jobs-agent`: `v1.17.0`
-- `management/entity-agents/batch-exporters-agent`: `v1.17.0`
-- `management/entity-agents/streams-agent`: `v1.20.0`
-- `management/entity-agents/data-connectors-agent`: `v1.5.0`
-- `management/entity-agents/confluent-schema-proxy`: `v1.2.1`
-- `management/esr-proxy`: `v1.3.0`
