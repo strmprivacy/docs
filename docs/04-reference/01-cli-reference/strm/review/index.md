@@ -24,6 +24,6 @@ Set the state of an entity to IN_REVIEW
 
 ### SEE ALSO
 
-* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.15.2
+* [strm](docs/04-reference/01-cli-reference/strm/index.md)	 - STRM Privacy CLI 3.16.1
 * [strm review data-contract](docs/04-reference/01-cli-reference/strm/review/data-contract.md)	 - Set the state of a Data Contract to IN_REVIEW
 

@@ -4,7 +4,7 @@ hide_title: true
 ---
 ## strm get data-contract
 
-Get Event Contract by reference
+Get Data-Contract by reference
 
 ### Synopsis
 
