@@ -151,7 +151,8 @@ $ aws s3 cp s3://strmprivacy-export-demo/perf-test-keys/2021-05-04T14:13:00-keys
 ```
 1. `.strm_test...95-dfec21be8251.jsonl`: This is a test file created by STRM Privacy to verify that the exporter can
     actually write in this bucket. Because it starts with a `.` it is
-    ignored by most tools.
+    ignored by most tools. If the data connector used has delete
+    permissions, this file will be deleted after the test and therefore absent.
 2. `2021-05-04T14:13:00-keys-e1...-7-8-9.csv`: Because the interval is 30 seconds, a file is written every 30
     seconds. Each file contains JSONL with one key per line. The
     line contains both a `keyLink` attribute, with the key link of the
